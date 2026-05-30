@@ -1,0 +1,6 @@
+node_modules
+dist
+.vercel
+.git
+*.deb
+google-chrome-stable_current_amd64.deb

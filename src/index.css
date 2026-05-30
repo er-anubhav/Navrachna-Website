@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&family=Sora:wght@300;400;500;600;700;800&display=swap');
+@import 'tailwindcss';
+
+:root {
+  font-family: 'Karla', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #0d0d0d;
+  background:
+    radial-gradient(circle at top left, rgba(255, 160, 72, 0.16), transparent 30%),
+    radial-gradient(circle at top right, rgba(237, 193, 139, 0.22), transparent 24%),
+    linear-gradient(180deg, #fff8f1 0%, #fffdf9 48%, #fff 100%);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  color: #0d0d0d;
+  font-family: 'Karla', sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+::selection {
+  background: rgba(230, 118, 20, 0.2);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* ── Typography: Sora for all headings, Karla for body ── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Sora', sans-serif;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.font-display {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.font-body {
+  font-family: 'Karla', sans-serif;
+}
+
+.page-shell {
+  position: relative;
+  overflow-x: clip;
+}
+
+.grid-sheen {
+  background-image:
+    linear-gradient(rgba(122, 90, 58, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(122, 90, 58, 0.07) 1px, transparent 1px);
+  background-size: 36px 36px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.26), transparent 90%);
+}
+
+.glass-card {
+  background: rgba(255, 252, 247, 0.76);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 24px 70px rgba(107, 72, 36, 0.1);
+}
+
+.section-kicker {
+  letter-spacing: 0.18em;
+}
+
+/* ── Marquee / Infinite Scroll Animation ── */
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee-infinite {
+  animation: marquee 30s linear infinite;
+}
+
+.animate-marquee-infinite:hover {
+  animation-play-state: paused;
+}

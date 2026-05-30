@@ -1,0 +1,37 @@
+## Plan: Zapier-Style Navrachna Rebuild
+
+Rebuild Navrachna as a multi-page, responsive site using React.js + Tailwind, closely mirroring Zapier’s information density, visual rhythm, and conversion-first UX while preserving Navrachna branding/content and avoiding direct copying of proprietary assets or copy.
+
+**Steps**
+1. Phase 1 - Project bootstrap and design tokens: initialize React.js app router project, configure Tailwind theme tokens (spacing scale, typography hierarchy, color system, shadows, border radii), define reusable primitives (container, section shell, button, badge, card, stat, logo strip). This is a blocker for all UI work.
+2. Phase 2 - Global shell and navigation system: implement sticky header with desktop mega-nav patterns, mobile drawer nav, global CTA treatment, footer with Zapier-like dense link architecture, and shared page layout wrappers. *depends on 1*.
+3. Phase 3 - Homepage rebuild (high-conversion structure): implement hero (headline/subheadline/dual CTAs), social-proof logo band, metric counters, value proposition sections, feature/program cards, testimonials carousel, FAQ accordion, and final CTA block. *depends on 2*.
+4. Phase 4 - Multi-page templates and content mapping: build and connect internal pages (About, Programs index, Program detail pages, Facilities, Startup stories/testimonials, Contact, FAQ) using shared components and consistent section rhythm. *depends on 2; parallel with late stage of 3 once core components stabilize*.
+5. Phase 5 - Asset integration and content refinement: replace placeholders with real alumni logos, team photos, testimonials, and validated metrics; normalize copy tone to concise, benefit-led style; ensure all CTAs map to desired actions (Apply, Book Call, Program Details). *depends on 3 and 4*.
+6. Phase 6 - Interaction and motion pass: add tasteful entrance reveals, carousel behavior, counter animation, hover/focus transitions, and reduced-motion fallback. *depends on 3 and 4*.
+7. Phase 7 - SEO, accessibility, and performance hardening: metadata, open graph, sitemap/robots, semantic heading structure, keyboard navigation, ARIA where needed, image optimization, lazy loading, and CWV-focused tuning. *depends on 5 and 6*.
+8. Phase 8 - Final QA and launch readiness: cross-browser/device verification, link/form validation, analytics event checks, error-state handling, and deployment checklist for production cutover. *depends on 7*.
+
+**Relevant files**
+- New React.js app structure to be created under the workspace root (app routes, shared components, styles, assets, and config files).
+- Persistent plan document: /memories/session/plan.md.
+
+**Verification**
+1. Functional QA: all primary nav routes render correctly, mobile menu works, all CTA buttons route to intended destinations, and no broken links remain.
+2. Responsive QA: validate at common breakpoints (mobile, tablet, desktop, wide desktop) for layout stability and readable typography.
+3. Accessibility QA: keyboard-only nav, visible focus states, semantic landmarks/headings, contrast checks (WCAG AA target), and reduced-motion behavior.
+4. Performance QA: Lighthouse targets >= 90 for Performance/Accessibility/Best Practices/SEO on key pages, optimized images, and no major layout shifts.
+5. Content QA: approved startup metrics/testimonials/logos are accurate and current; no placeholder text remains.
+6. Regression QA: shared components render consistently across homepage and inner pages with no style drift.
+
+**Decisions**
+- Stack selected: Reactjs + Tailwind.
+- Scope selected: full multi-page rebuild.
+- Design direction selected: near-duplicate Zapier-like style; implementation will mimic interaction/layout patterns but use Navrachna-owned brand assets/copy.
+- Included: IA overhaul, reusable component system, homepage + inner pages, responsiveness, SEO/a11y/perf hardening.
+- Excluded for phase 1 unless requested: authenticated portals, CMS editorial workflows, and complex backend features.
+
+**Further Considerations**
+1. Legal-safe execution recommendation: use original iconography/illustrations and rewrite all copy to avoid infringement while preserving visual parity.
+2. Asset readiness risk: delays in startup logos/testimonials/metrics will slow content-complete delivery; placeholders can unblock development temporarily.
+3. Optional acceleration: parallel design-and-build track (wireframe + implementation concurrently) can reduce timeline if rapid feedback is available.
