@@ -820,6 +820,146 @@ export function LandingPage() {
       </section>
 
 
+      {/* ── E-Cell ITSEC Initiative Section ── */}
+      <section className="w-full bg-[#f8fafc] py-24 border-t border-slate-100">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+          {/* Section eyebrow */}
+          <div className="text-center mb-16">
+            <span className="inline-block rounded-full bg-[#074887]/10 px-4 py-1.5 text-xs font-normal tracking-widest text-[#074887] uppercase mb-4">
+              Initiative by Navrachna
+            </span>
+            <h2 className="text-3xl md:text-5xl font-normal text-[#013759] tracking-tight">
+              E-Cell I.T.S Engineering College
+            </h2>
+            <p className="mt-4 mx-auto max-w-6xl text-sm text-gray-500 leading-relaxed">
+              A student-run entrepreneurship cell that promotes innovation and startup culture —{' '}
+              <span className="font-medium text-[#074887]">For The Students, From The Students.</span>
+            </p>
+          </div>
+
+          {/* Hero card */}
+          <div className="relative overflow-hidden rounded-[2rem] bg-[#013759] px-8 py-12 md:px-16 mb-16 text-white">
+            {/* bg grid */}
+            <div className="absolute inset-0 opacity-10"
+              style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.2) 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+            <div className="relative z-10 flex flex-col lg:flex-row items-center gap-10">
+              <div className="flex-1 text-center lg:text-left">
+                <h3 className="text-2xl md:text-4xl font-normal tracking-tight leading-snug">
+                  Building Real Startups.<br />
+                  <span className="text-sky-300">Not Just Learning About Them.</span>
+                </h3>
+                <p className="mt-5 max-w-xl text-sm text-white/75 leading-relaxed">
+                  E-Cell at I.T.S Engineering College helps students turn ideas into real businesses by providing mentorship, workshops, networking opportunities, and practical exposure. Our flagship initiative <strong className="text-white">Kartavyam</strong> drives social impact through innovation.
+                </p>
+                <div className="mt-8 flex flex-wrap gap-3 justify-center lg:justify-start">
+                  <a href="mailto:ecell@its.edu.in" className="rounded-xl bg-white px-6 py-3 text-sm font-normal !text-black shadow hover:-translate-y-0.5 transition-all duration-300">
+                    Get Started
+                  </a>
+                  <a href="#ecell-what-we-do" className="rounded-xl border border-white/30 bg-white/10 px-6 py-3 text-sm font-normal text-white backdrop-blur-md hover:-translate-y-0.5 transition-all duration-300">
+                    Learn More
+                  </a>
+                </div>
+              </div>
+              {/* Stats */}
+              <div className="grid grid-cols-2 gap-4 shrink-0 w-full lg:w-auto">
+                {[
+                  { value: '200+', label: 'Active Student Entrepreneurs' },
+                  { value: '10+', label: 'Ideas → Working Ventures' },
+                  { value: '25+', label: 'Founder & Investor Partners' },
+                  { value: '100%', label: 'Hands-on Learning Focus' },
+                ].map((s) => (
+                  <div key={s.label} className="rounded-2xl bg-white/10 border border-white/10 px-6 py-5 text-center">
+                    <div className="text-2xl font-normal text-white">{s.value}</div>
+                    <div className="mt-1 text-xs text-white/60 leading-snug">{s.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* What We Do */}
+          <div id="ecell-what-we-do">
+            <div className="text-center mb-10">
+              <h3 className="text-2xl md:text-3xl font-normal text-[#013759] tracking-tight">What We Do</h3>
+              <p className="mt-2 text-sm text-gray-500">Creating opportunities and support pathways for entrepreneurial success.</p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+              {[
+                { title: 'Startup Incubation Programs', desc: 'Helping students convert ideas into real startups with structured incubation support.', icon: '🚀' },
+                { title: 'Entrepreneurship Workshops', desc: 'Hands-on sessions on product building, funding, pitching, and market validation.', icon: '🛠️' },
+                { title: 'Startup Competitions & Hackathons', desc: 'Events where students validate ideas, compete, and gain real-world feedback.', icon: '🏆' },
+                { title: 'Mentorship Programs', desc: 'Connect students with founders, investors, and industry experts for 1-on-1 guidance.', icon: '🤝' },
+                { title: 'Industry Exposure', desc: 'Startup visits, founder talks, and networking events with the broader ecosystem.', icon: '🏢' },
+                { title: 'Networking Events', desc: 'Alumni mixers and ecosystem meetups to build essential long-term connections.', icon: '🌐' },
+              ].map((item) => (
+                <div key={item.title} className="rounded-2xl border border-slate-100 bg-white p-7 hover:shadow-md hover:border-slate-200 transition-all duration-300">
+                  <div className="text-2xl mb-3">{item.icon}</div>
+                  <h4 className="text-base font-normal text-[#013759] mb-2">{item.title}</h4>
+                  <p className="text-xs text-gray-500 leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* TECHTRIX 2026 Teaser */}
+          <div className="rounded-[2rem] border border-slate-100 bg-white overflow-hidden">
+            <div className="flex flex-col lg:flex-row">
+              {/* Left */}
+              <div className="flex-1 px-8 py-10 lg:px-12">
+                <span className="inline-block rounded-full bg-amber-50 px-3 py-1 text-xs font-normal tracking-widest text-amber-600 uppercase mb-4">
+                  Upcoming Flagship Event
+                </span>
+                <h3 className="text-3xl font-normal text-[#013759] tracking-tight">TECHTRIX 2026</h3>
+                <p className="mt-2 text-sm text-gray-500">The Ultimate Event of the Year Returns!</p>
+                <p className="mt-4 text-sm text-gray-600 leading-relaxed max-w-md">
+                  Get ready for an even bigger and better experience. TECHTRIX 2026 is coming with more competitions, bigger prizes, and incredible opportunities for student innovators.
+                </p>
+                <div className="mt-8 grid grid-cols-3 gap-4">
+                  {[
+                    { label: 'Date', value: 'October 2026' },
+                    { label: 'Venue', value: 'I.T.S Engg. College' },
+                    { label: 'Prize Pool', value: 'TBA' },
+                  ].map((d) => (
+                    <div key={d.label} className="text-center rounded-2xl bg-slate-50 px-4 py-4 border border-slate-100">
+                      <div className="text-xs text-gray-400 mb-1">{d.label}</div>
+                      <div className="text-sm font-normal text-[#013759]">{d.value}</div>
+                    </div>
+                  ))}
+                </div>
+                <a href="mailto:ecell@its.edu.in?subject=TECHTRIX 2026 Notification"
+                  className="mt-8 inline-flex rounded-xl bg-[#013759] px-6 py-3 text-sm font-normal !text-white hover:-translate-y-0.5 transition-all duration-300 shadow-sm">
+                  Get Notified →
+                </a>
+              </div>
+              {/* Right: event categories */}
+              <div className="lg:w-80 bg-[#013759] px-8 py-10 shrink-0">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky-300/70 mb-4">Event Categories</p>
+                <ul className="space-y-2">
+                  {['Junior Ideathon', 'Project Exhibition', 'Hack the Issue', 'Business Plan / Mentoring Meet',
+                    'Crack-o-Code', 'Hack The Box Challenge', 'Drone Race', 'Robo Race & War',
+                    'Gaming Tournament - LAN', 'Robo Football', 'Quick Challenge', '+ 5 more'].map((cat, i) => (
+                    <li key={cat} className="flex items-center gap-3 text-xs text-white/75">
+                      <span className="text-[10px] text-sky-400/70 w-4 shrink-0">{String(i + 1).padStart(2, '0')}</span>
+                      {cat}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* CTA strip */}
+          <div className="mt-8 text-center">
+            <a href="mailto:ecell@its.edu.in" className="text-sm font-normal text-[#074887] hover:underline">
+              Contact E-Cell: ecell@its.edu.in →
+            </a>
+          </div>
+
+        </div>
+      </section>
+
+
       {/* Clients Carousel Section */}
       <section className="w-full bg-white py-24 border-t border-slate-100 overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
