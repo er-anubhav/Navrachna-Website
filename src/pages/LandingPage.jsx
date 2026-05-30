@@ -830,33 +830,33 @@ export function LandingPage() {
               Initiative by Navrachna
             </span>
             <h2 className="text-3xl md:text-5xl font-normal text-[#013759] tracking-tight">
-              E-Cell I.T.S Engineering College
+              <span className="inline-block"><span className="text-[#10b981]">E</span><span className="text-[#ec4899]">-</span><span className="text-[#3b82f6]">C</span><span className="text-[#f59e0b]">e</span><span className="text-[#ef4444]">l</span><span className="text-[#8b5cf6]">l</span></span> I.T.S Engineering College
             </h2>
             <p className="mt-4 mx-auto max-w-6xl text-sm text-gray-500 leading-relaxed">
-              A student-run entrepreneurship cell that promotes innovation and startup culture —{' '}
-              <span className="font-medium text-[#074887]">For The Students, From The Students.</span>
+              An active student-run entrepreneurship cell powered, mentored, and supported by the{' '}
+              <span className="font-medium text-[#074887]">Navrachna Foundation for Entrepreneurship Development</span>.
             </p>
           </div>
 
           {/* Hero card */}
-          <div className="relative overflow-hidden rounded-[2rem] bg-[#013759] px-8 py-12 md:px-16 mb-16 text-white">
+          <div className="relative overflow-hidden px-8 py-12 md:px-16 mb-16 text-black">
             {/* bg grid */}
             <div className="absolute inset-0 opacity-10"
               style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.2) 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
             <div className="relative z-10 flex flex-col lg:flex-row items-center gap-10">
               <div className="flex-1 text-center lg:text-left">
                 <h3 className="text-2xl md:text-4xl font-normal tracking-tight leading-snug">
-                  Building Real Startups.<br />
-                  <span className="text-sky-300">Not Just Learning About Them.</span>
+                  Navrachna Powers Student Innovation.
+                  <span className="text-[#013759]"> Turning Ideas Into Scalable Ventures.</span>
                 </h3>
-                <p className="mt-5 max-w-xl text-sm text-white/75 leading-relaxed">
-                  E-Cell at I.T.S Engineering College helps students turn ideas into real businesses by providing mentorship, workshops, networking opportunities, and practical exposure. Our flagship initiative <strong className="text-white">Kartavyam</strong> drives social impact through innovation.
+                <p className="mt-5 max-w-xl text-sm text-[#013759]/80 leading-relaxed">
+                  With the active sponsorship, infrastructure, and strategic direction of Navrachna Foundation, E-Cell helps students transition from academic projects to registered entities. Navrachna supports student-led workshops, provides seed capital resources, and coordinates high-impact programs like the flagship initiative <strong className="text-[#013759]">Kartavyam</strong>.
                 </p>
                 <div className="mt-8 flex flex-wrap gap-3 justify-center lg:justify-start">
-                  <a href="mailto:ecell@its.edu.in" className="rounded-xl bg-white px-6 py-3 text-sm font-normal !text-black shadow hover:-translate-y-0.5 transition-all duration-300">
+                  <a href="mailto:ecell@its.edu.in" className="rounded-xl bg-white border border-black px-6 py-3 text-sm font-normal !text-black shadow hover:-translate-y-0.5 transition-all duration-300">
                     Get Started
                   </a>
-                  <a href="#ecell-what-we-do" className="rounded-xl border border-white/30 bg-white/10 px-6 py-3 text-sm font-normal text-white backdrop-blur-md hover:-translate-y-0.5 transition-all duration-300">
+                  <a href="#ecell-what-we-do" className="rounded-xl border border-black bg-white/10 px-6 py-3 text-sm font-normal text-black backdrop-blur-md hover:-translate-y-0.5 transition-all duration-300">
                     Learn More
                   </a>
                 </div>
@@ -865,13 +865,13 @@ export function LandingPage() {
               <div className="grid grid-cols-2 gap-4 shrink-0 w-full lg:w-auto">
                 {[
                   { value: '200+', label: 'Active Student Entrepreneurs' },
-                  { value: '10+', label: 'Ideas → Working Ventures' },
-                  { value: '25+', label: 'Founder & Investor Partners' },
-                  { value: '100%', label: 'Hands-on Learning Focus' },
+                  { value: '10+', label: 'Navrachna-Backed Ventures' },
+                  { value: '25+', label: 'Ecosystem & Funding Partners' },
+                  { value: '100%', label: 'Hands-on Incubation Support' },
                 ].map((s) => (
-                  <div key={s.label} className="rounded-2xl bg-white/10 border border-white/10 px-6 py-5 text-center">
-                    <div className="text-2xl font-normal text-white">{s.value}</div>
-                    <div className="mt-1 text-xs text-white/60 leading-snug">{s.label}</div>
+                  <div key={s.label} className="rounded-2xl bg-white border border-black px-6 py-5 text-center">
+                    <div className="text-2xl font-normal text-black">{s.value}</div>
+                    <div className="mt-1 text-xs text-black/60 leading-snug">{s.label}</div>
                   </div>
                 ))}
               </div>
@@ -881,17 +881,16 @@ export function LandingPage() {
           {/* What We Do */}
           <div id="ecell-what-we-do">
             <div className="text-center mb-10">
-              <h3 className="text-2xl md:text-3xl font-normal text-[#013759] tracking-tight">What We Do</h3>
-              <p className="mt-2 text-sm text-gray-500">Creating opportunities and support pathways for entrepreneurial success.</p>
+              <h3 className="text-2xl md:text-3xl font-normal text-[#013759] tracking-tight">How Navrachna Supports E-Cell</h3>
+              <p className="mt-2 text-sm text-gray-500">Creating custom resources and structured incubation pathways for student success.</p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
               {[
-                { title: 'Startup Incubation Programs', desc: 'Helping students convert ideas into real startups with structured incubation support.', icon: '🚀' },
-                { title: 'Entrepreneurship Workshops', desc: 'Hands-on sessions on product building, funding, pitching, and market validation.', icon: '🛠️' },
-                { title: 'Startup Competitions & Hackathons', desc: 'Events where students validate ideas, compete, and gain real-world feedback.', icon: '🏆' },
-                { title: 'Mentorship Programs', desc: 'Connect students with founders, investors, and industry experts for 1-on-1 guidance.', icon: '🤝' },
-                { title: 'Industry Exposure', desc: 'Startup visits, founder talks, and networking events with the broader ecosystem.', icon: '🏢' },
-                { title: 'Networking Events', desc: 'Alumni mixers and ecosystem meetups to build essential long-term connections.', icon: '🌐' },
+                { title: 'Startup Incubation Programs', desc: 'Navrachna provides workspace, cloud credits, and government registration handholding to E-Cell members.', icon: '🚀' },
+                { title: 'Co-Organized Workshops', desc: 'Jointly structured bootcamps on product building, IP filing, and commercial pitch preparation.', icon: '🛠️' },
+                { title: '1-to-1 Mentor Connections', desc: 'Linking student innovators directly with industry veterans, angel investors, and seasoned academic advisors.', icon: '🤝' },
+                { title: 'Ecosystem & Corporate Visits', desc: 'Navrachna facilitates and funds student exposure trips to corporate innovation centers and technology hubs.', icon: '🏢' },
+                { title: 'Alumni & Funding Mixers', desc: 'Organizing exclusive networking sessions connecting promising student projects with early-stage venture funding.', icon: '🌐' },
               ].map((item) => (
                 <div key={item.title} className="rounded-2xl border border-slate-100 bg-white p-7 hover:shadow-md hover:border-slate-200 transition-all duration-300">
                   <div className="text-2xl mb-3">{item.icon}</div>
@@ -908,18 +907,18 @@ export function LandingPage() {
               {/* Left */}
               <div className="flex-1 px-8 py-10 lg:px-12">
                 <span className="inline-block rounded-full bg-amber-50 px-3 py-1 text-xs font-normal tracking-widest text-amber-600 uppercase mb-4">
-                  Upcoming Flagship Event
+                  Navrachna Co-Organized Flagship Event
                 </span>
                 <h3 className="text-3xl font-normal text-[#013759] tracking-tight">TECHTRIX 2026</h3>
-                <p className="mt-2 text-sm text-gray-500">The Ultimate Event of the Year Returns!</p>
+                <p className="mt-2 text-sm text-gray-500">The Ultimate Innovation & Tech Challenge Returns!</p>
                 <p className="mt-4 text-sm text-gray-600 leading-relaxed max-w-md">
-                  Get ready for an even bigger and better experience. TECHTRIX 2026 is coming with more competitions, bigger prizes, and incredible opportunities for student innovators.
+                  Co-organized and hosted by Navrachna Foundation & E-Cell, TECHTRIX 2026 returns with cutting-edge engineering tracks, enhanced prize pools, and direct path to incubation funding.
                 </p>
                 <div className="mt-8 grid grid-cols-3 gap-4">
                   {[
                     { label: 'Date', value: 'October 2026' },
                     { label: 'Venue', value: 'I.T.S Engg. College' },
-                    { label: 'Prize Pool', value: 'TBA' },
+                    { label: 'Organizers', value: 'Navrachna & E-Cell' },
                   ].map((d) => (
                     <div key={d.label} className="text-center rounded-2xl bg-slate-50 px-4 py-4 border border-slate-100">
                       <div className="text-xs text-gray-400 mb-1">{d.label}</div>
@@ -952,7 +951,7 @@ export function LandingPage() {
           {/* CTA strip */}
           <div className="mt-8 text-center">
             <a href="mailto:ecell@its.edu.in" className="text-sm font-normal text-[#074887] hover:underline">
-              Contact E-Cell: ecell@its.edu.in →
+              Contact E-Cell Team: ecell@its.edu.in →
             </a>
           </div>
 
