@@ -2,149 +2,223 @@ import React, { useState } from 'react'
 
 /**
  * FacilityTabs
- * Horizontally scrollable tab switcher with detail panel below.
- * Tabs scroll horizontally on mobile, grid on lg+.
- *
- * content: {
- *   heading,
- *   discoverHref,
- *   facilities: [{
- *     id, label,
- *     identity: { name, tagline, icon },
- *     specs: [{ label, value }]
- *   }]
- * }
- * style: { bg, textColor, headingColor, accentColor, darkPanelBg }
+ * Matches the original 'Our Facilities' tab-switcher section.
  */
 export function FacilityTabs({
-  heading      = 'Our Facilities',
-  discoverHref = '#',
-  facilities   = [],
-  style        = {},
+  heading     = 'Our Facilities',
+  eyebrow     = 'Top-Notch Setup',
+  description = 'We provide access to state-of-the-art labs, compute resources, co-working desks, and hardware tooling setups.',
+  facilities  = [],
+  style       = {},
 }) {
   const {
     bg           = '#ffffff',
-    textColor    = '#1e293b',
+    textColor    = '#475569',
     headingColor = '#013759',
-    accentColor  = '#074887',
-    darkPanelBg  = '#013759',
   } = style
 
   const defaultFacilities = [
     {
-      id: 'electronics', label: 'Electronics Lab',
-      identity: { name: 'Electronics Lab', tagline: 'Circuit design & embedded systems', icon: '🔌' },
+      id: 'fablab',
+      title: 'Fabrication & Tool Room',
+      subtitle: 'Advanced Prototyping & Fabrication Assets',
+      icon: (
+        <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+          <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+        </svg>
+      ),
       specs: [
-        { label: 'Stations', value: '20 workstations' },
-        { label: 'Equipment', value: 'Oscilloscopes, DMMs, signal generators' },
-        { label: 'PCB',      value: 'In-house PCB etching & soldering' },
-        { label: 'Hours',    value: 'Mon–Sat, 9AM–8PM' },
-      ],
+        'CNC CO2 Laser Cutter & Engraver',
+        'Inverter Plasma Cutter & Welding Station',
+        'Precision Woodworking Bench Tools',
+        'Bench Grinder, Belt Sander & Pillar Drill Machines',
+        'Full inventory of mechanical assembly tools'
+      ]
     },
     {
-      id: '3dprinting', label: '3D Printing Lab',
-      identity: { name: '3D Printing Lab', tagline: 'Rapid prototyping at scale', icon: '🖨️' },
+      id: 'printing',
+      title: '3D Printing Lab',
+      subtitle: 'High-Fidelity SLA & FDM Materials Systems',
+      icon: (
+        <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+          <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+          <line x1="12" y1="22.08" x2="12" y2="12"/>
+        </svg>
+      ),
       specs: [
-        { label: 'Printers', value: '8 FDM + 2 Resin printers' },
-        { label: 'Materials', value: 'PLA, PETG, ABS, Resin' },
-        { label: 'Build Vol', value: 'Up to 300×300×400mm' },
-        { label: 'Turnaround', value: 'Same-day for small parts' },
-      ],
+        'Commercial FDM 3D Printers (PLA, ABS, PETG, Nylon)',
+        'SLA/Resin printers for high-fidelity detailing',
+        'In-house washing & UV curing post-processing nodes',
+        'Filament dryer & dual-extrusion hardware system',
+        'Library of over 40+ engineering polymers'
+      ]
     },
     {
-      id: 'coworking', label: 'Co-Working',
-      identity: { name: 'Co-Working Space', tagline: 'Collaborate, focus, grow', icon: '🏢' },
+      id: 'compute',
+      title: 'AI & Simulations Grid',
+      subtitle: 'High-Performance AI & Machine Learning Nodes',
+      icon: (
+        <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+          <rect x="4" y="4" width="16" height="16" rx="2" ry="2"/>
+          <rect x="9" y="9" width="6" height="6"/>
+          <line x1="9" y1="1" x2="9" y2="4"/>
+          <line x1="15" y1="1" x2="15" y2="4"/>
+          <line x1="9" y1="20" x2="9" y2="23"/>
+          <line x1="15" y1="20" x2="15" y2="23"/>
+          <line x1="20" y1="9" x2="23" y2="9"/>
+          <line x1="20" y1="14" x2="23" y2="14"/>
+          <line x1="1" y1="9" x2="4" y2="9"/>
+          <line x1="1" y1="14" x2="4" y2="14"/>
+        </svg>
+      ),
       specs: [
-        { label: 'Seats',    value: '80 hot desks + 20 dedicated' },
-        { label: 'Internet', value: '1 Gbps fibre, 99.9% uptime' },
-        { label: 'Meeting',  value: '4 conference rooms' },
-        { label: 'Access',   value: '24×7 for registered startups' },
-      ],
+        'GPU simulation nodes with Tensor cores',
+        'Dedicated compute allocation keys for registered projects',
+        'Complete suite of engineering simulators (MATLAB, Ansys)',
+        'Private developer local environment setup support',
+        'Simulations & AI training pipeline configurations'
+      ]
     },
     {
-      id: 'compute', label: 'Compute Lab',
-      identity: { name: 'Compute Lab', tagline: 'High-performance AI & ML infrastructure', icon: '🖥️' },
+      id: 'coworking',
+      title: 'Co-Working Facility',
+      subtitle: 'Premium Collaboration Desks & Plug-n-Play Stations',
+      icon: (
+        <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+      ),
       specs: [
-        { label: 'Workstations', value: '15 high-end PCs' },
-        { label: 'GPU',          value: '4× NVIDIA A100 servers' },
-        { label: 'Storage',      value: '1PB NAS cluster' },
-        { label: 'Software',     value: 'MATLAB, Ansys, CUDA, PyTorch' },
-      ],
-    },
+        'High-density open space co-working area',
+        'Plug-and-play workstations with high-speed internet',
+        'Ergonomic seating layouts and local locker systems',
+        'Premium discussion tables & meeting rooms',
+        'Complimentary pantry & hot drink nodes access'
+      ]
+    }
   ]
 
   const displayFacilities = facilities.length > 0 ? facilities : defaultFacilities
-  const [activeId, setActiveId] = useState(displayFacilities[0]?.id)
-  const active = displayFacilities.find(f => f.id === activeId) || displayFacilities[0]
+  const [activeFacility, setActiveFacility] = useState(0)
+  const spec = displayFacilities[activeFacility] || displayFacilities[0]
+
+  const renderColoredHeading = (text) => {
+    if (text.toLowerCase().includes('facilities')) {
+      const parts = text.split(/facilities/i)
+      return (
+        <>
+          {parts[0]}
+          <span className="inline-block">
+            <span className="text-[#10b981]">F</span>
+            <span className="text-[#ec4899]">a</span>
+            <span className="text-[#3b82f6]">c</span>
+            <span className="text-[#f59e0b]">i</span>
+            <span className="text-[#ef4444]">l</span>
+            <span className="text-[#8b5cf6]">i</span>
+            <span className="text-[#06b6d4]">t</span>
+            <span className="text-[#3b82f6]">i</span>
+            <span className="text-[#ec4899]">e</span>
+            <span className="text-[#10b981]">s</span>
+          </span>
+          {parts[1]}
+        </>
+      )
+    }
+    return text
+  }
 
   return (
-    <section className="w-full py-12 md:py-16 px-4" style={{ background: bg }}>
-      <div className="max-w-6xl mx-auto">
-        {/* Header row */}
-        <div className="flex items-center justify-between mb-8 flex-wrap gap-4">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold" style={{ color: headingColor }}>
-            {heading}
-          </h2>
-          <a
-            href={discoverHref}
-            className="text-sm font-semibold px-5 py-2 rounded-full border-2 transition-colors hover:text-white"
-            style={{ borderColor: accentColor, color: accentColor }}
-            onMouseEnter={e => { e.currentTarget.style.background = accentColor; e.currentTarget.style.color = '#fff' }}
-            onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = accentColor }}
-          >
-            Discover More →
-          </a>
+    <section className="relative w-full py-20 border-t border-gray-100" style={{ background: bg }}>
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        
+        {/* Header row with punchy h2 and description stacked */}
+        <div className="mb-12 flex flex-col md:flex-row items-start md:items-end justify-between gap-8">
+          <div className="max-w-2xl text-left">
+            {eyebrow && (
+              <span className="mb-4 inline-block whitespace-nowrap rounded-full bg-[#074887]/10 px-4 py-1.5 text-xs font-normal tracking-widest text-[#074887] uppercase">
+                {eyebrow}
+              </span>
+            )}
+            <h2 className="mb-4 font-normal text-3xl md:text-5xl tracking-tight" style={{ color: headingColor }}>
+              {renderColoredHeading(heading)}
+            </h2>
+            {description && (
+              <p className="text-gray-650 text-sm md:text-base leading-relaxed text-justify font-normal" style={{ color: textColor }}>
+                {description}
+              </p>
+            )}
+          </div>
         </div>
 
-        {/* Tab bar — horizontal scroll on mobile */}
-        <div className="flex gap-2 overflow-x-auto pb-2 mb-6" style={{ scrollbarWidth: 'none' }}>
-          {displayFacilities.map(f => {
-            const isActive = f.id === activeId
+        {/* Interactive Tab Switcher Bar */}
+        <div className="flex flex-wrap justify-center gap-3 mb-10">
+          {displayFacilities.map((f, idx) => {
+            const isActive = activeFacility === idx
             return (
               <button
-                key={f.id}
-                onClick={() => setActiveId(f.id)}
-                className="shrink-0 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200"
-                style={{
-                  background: isActive ? accentColor : 'transparent',
-                  color:      isActive ? '#ffffff' : headingColor,
-                  border:     `2px solid ${isActive ? accentColor : '#e2e8f0'}`,
-                }}
+                key={idx}
+                onClick={() => setActiveFacility(idx)}
+                className={`px-5 py-2.5 rounded-full text-xs tracking-wide transition-all duration-300 cursor-pointer ${
+                  isActive
+                    ? 'bg-[#000000] text-white shadow-md shadow-sky-900/20 scale-[1.02]'
+                    : 'bg-slate-100 text-gray-600 hover:bg-slate-200 hover:text-[#013759]'
+                }`}
               >
-                {f.label}
+                {f.title}
               </button>
             )
           })}
         </div>
 
-        {/* Detail panel — stacked on mobile, side-by-side on lg+ */}
-        {active && (
-          <div className="flex flex-col lg:flex-row rounded-2xl overflow-hidden shadow-md min-h-[200px]">
-            {/* Left dark identity panel */}
-            <div
-              className="lg:w-2/5 p-8 flex flex-col justify-center gap-3"
-              style={{ background: darkPanelBg }}
-            >
-              <span className="text-5xl" aria-hidden="true">{active.identity?.icon}</span>
-              <h3 className="text-xl md:text-2xl font-bold text-white">{active.identity?.name}</h3>
-              <p className="text-sm text-slate-300">{active.identity?.tagline}</p>
+        {/* Active Facility Content Display */}
+        {spec && (
+          <div className="w-full flex flex-col lg:flex-row gap-0 overflow-hidden rounded-[2rem] border border-slate-100 shadow-sm text-left">
+            
+            {/* Left: dark identity panel */}
+            <div className="bg-[#013759] px-8 py-10 flex flex-col justify-between lg:w-64 shrink-0">
+              <div>
+                <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-sky-300/70 mb-3 leading-relaxed">
+                  {spec.subtitle}
+                </p>
+                <h3 className="text-2xl font-normal tracking-tight text-white leading-snug">
+                  {spec.title}
+                </h3>
+              </div>
+              <div className="mt-10 flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 text-sky-300 border border-white/10">
+                {spec.icon}
+              </div>
             </div>
 
-            {/* Right spec list */}
-            <div
-              className="lg:w-3/5 p-8 flex flex-col justify-center divide-y"
-              style={{ background: '#f8fafc', borderColor: '#e2e8f0' }}
-            >
-              {(active.specs || []).map((spec, i) => (
-                <div key={i} className="flex justify-between py-3 text-sm md:text-base">
-                  <span className="font-semibold" style={{ color: headingColor }}>{spec.label}</span>
-                  <span className="text-right" style={{ color: textColor }}>{spec.value}</span>
-                </div>
-              ))}
+            {/* Right: plain spec list with dividers */}
+            <div className="flex-1 bg-white px-8 py-6 flex flex-col justify-between">
+              <ul className="divide-y divide-slate-100">
+                {(spec.specs || []).map((item, i) => (
+                  <li key={i} className="flex items-start gap-5 py-4">
+                    <span className="mt-0.5 text-[10px] font-bold text-[#013759]/40 w-5 shrink-0 text-right">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    <span className="text-sm text-gray-700 leading-relaxed">
+                      {item}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-4 border-t border-slate-100 pt-4">
+                <a href="/facilities" className="text-xs font-semibold text-[#013759] hover:underline">
+                  Explore all facilities →
+                </a>
+              </div>
             </div>
+
           </div>
         )}
+
       </div>
     </section>
   )
 }
+
