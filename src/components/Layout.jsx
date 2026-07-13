@@ -11,7 +11,7 @@ export function Layout() {
       </main>
       
       {/* Floating Social Sidebar */}
-      <div className="fixed right-0 top-1/2 -translate-y-1/2 flex flex-col z-50 shadow-2xl hidden sm:flex border border-white/10 bg-black/40 backdrop-blur-md rounded-l-xl overflow-hidden">
+      <div className="fixed right-0 top-1/2 -translate-y-1/2 flex flex-col z-50 shadow-2xl sm:flex border border-white/10 bg-black/40 backdrop-blur-md rounded-l-xl overflow-hidden">
         {/* Facebook */}
         <a 
           href="https://www.facebook.com/share/1EsxYHE9Rr/" 

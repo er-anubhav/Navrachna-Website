@@ -1,22 +1,6 @@
-/**
- * seedLandingPage.js
- * ──────────────────
- * Run this ONCE to seed the Landing Page block config into Firestore.
- * It creates:
- *   /pages/home          — the published page document
- *   /pages_drafts/home   — a matching draft copy
- *
- * Usage: import and call seedLandingPage() from your browser console
- * while logged in as admin, OR add a "Seed Landing" button to the
- * Migration Tools tab in AdminPage.
- *
- * After seeding, visit /page/home to see the CMS-rendered landing page.
- */
-
 import { setDoc, doc } from 'firebase/firestore'
 import { db } from '../../firebase'
 
-// ── Landing Page Block Config ────────────────────────────────────
 const LANDING_BLOCKS = [
   // 1. Announcement Banner
   {
@@ -24,17 +8,16 @@ const LANDING_BLOCKS = [
     type: 'AnnouncementBanner',
     content: {
       items: [
-        '🎉 Applications open for the 2025–26 Incubation Cohort — Apply Now!',
-        '🚀 TECHTRIX 2026 — National Tech Fest — Registration Open',
-        '📢 New 3D Printing Lab equipment now installed in Fabrication Lab',
-        '🏆 Navrachna startups win 3 awards at National Innovation Summit 2025',
-        '📋 MSME Hackathon results announced — Congratulations to all winners!',
+        'Applications are now open for the Annual Logo Design Competition. Submit your creative portfolios today.',
+        'Join the upcoming MSME Hackathons to solve real-world industry challenges and secure seed funding.',
+        'Discover funding and incubation opportunities through our specialized Startin-Up and NewGen-IEDC programs.',
+        'Access our state-of-the-art Fabrication Lab and High-End Compute resources to accelerate your prototyping.',
       ],
     },
     style: {
-      bg:          '#013759',
+      bg:          '#111111',
       textColor:   '#ffffff',
-      accentColor: '#fbbf24',
+      labelBg:     '#074887',
     },
     layout:     {},
     visibility: { hideOnMobile: false, hideOnTablet: false, hideOnDesktop: false },
@@ -45,32 +28,36 @@ const LANDING_BLOCKS = [
     id:   'block-hero-1',
     type: 'PageHero',
     content: {
-      eyebrow:  'Navrachna Foundation for Entrepreneurship Development',
-      title:    'Empowering the\nInnovators of Tomorrow',
-      subtitle: 'A premier incubation center nurturing startups, researchers, and entrepreneurs through world-class facilities, expert mentorship, and government-backed funding programs.',
-      ctaLabel: 'Explore Incubation',
-      ctaHref:  '/programs',
-      bgImage:  '',
+      title:       'Where Ideas, Take Flight',
+      description: 'A premium co-working and incubation experience \ndesigned for clarity, momentum, and exceptional founder conversion.',
+      subtitle:    'Navrachna Foundation for Entrepreneurship Development',
+      bgImage:     '',
+      cta1Label:   'Join the Workspace',
+      cta1Href:    '/contact',
+      cta2Label:   'Explore Programs',
+      cta2Href:    '/programs',
     },
     style: {
-      bg:             '#013759',
+      bg:             '#111111',
       textColor:      '#ffffff',
-      overlayOpacity: 0.6,
+      overlayOpacity: 0.65,
       minHeight:      '85vh',
+      titleSize:      'text-6xl',
+      descSize:       'text-md sm:text-md',
     },
     layout:     {},
     visibility: { hideOnMobile: false, hideOnTablet: false, hideOnDesktop: false },
   },
 
-  // 3. About / NFED — NfedAbout (staggered rounded cards + text layout)
+  // 3. NfedAbout (overlapping cards about section)
   {
     id:   'block-about-staggered',
     type: 'NfedAbout',
     content: {
-      title: 'Navrachna Foundation for Entrepreneurship Development (NFED)',
+      title: 'Navrachna Foundation for\nEntrepreneurship\nDevelopment',
       paragraphs: [
-        'Navrachna Foundation for Entrepreneurship Development (NFED) is an MSME-recognized Business Incubator operating under ITS Engineering College, Greater Noida. We support innovators, researchers, and startups with state-of-the-art infrastructure, experienced mentors, and access to government schemes like Startup India, NIDHI PRAYAS, and MSME-BI grants.',
-        'Our mission is to convert ideas into sustainable, impactful enterprises that contribute to the national startup ecosystem. We offer hot-desking, compute infrastructure, and active pipeline matches.'
+        'Navrachna Foundation for Entrepreneurship Development (NFED) is an autonomous, sector-agnostic startup incubator and premium co-working ecosystem registered under the societies registration framework to empower founders with early-stage velocity and institutional support.',
+        'NFED nurtures innovation-driven startups by providing seamless physical incubation infrastructure, high-fidelity mentoring channels, deep access to institutional and private seed funds, fabrication assets, and business matchmaking. Operated under the aegis of I.T.S. Engineering College, Greater Noida, NFED serves as the strategic regional node for transforming research and raw academic ideas into high-conversion, venture-backed startups.'
       ],
       btnLabel: 'Read More',
       btnHref: '/about',
@@ -87,26 +74,25 @@ const LANDING_BLOCKS = [
     visibility: { hideOnMobile: false, hideOnTablet: false, hideOnDesktop: false },
   },
 
-  // 4. Stats Row
+  // 4. StatsRow (Horizontal values strip)
   {
     id:   'block-stats-1',
     type: 'StatsRow',
     content: {
       heading: '',
       stats: [
-        { icon: '🔧', value: '150+', label: 'Startups Incubated' },
-        { icon: '🖨️', value: '8',    label: '3D Printers' },
-        { icon: '🖥️', value: '40+',  label: 'Compute Workstations' },
-        { icon: '👥', value: '500+', label: 'Students Mentored' },
+        { value: '96+',     label: 'Projects Developed' },
+        { value: '₹2.87 Cr', label: 'DST Grant Received' },
+        { value: '₹1.59 Cr', label: 'MSME Grant Received' },
+        { value: '66+',     label: 'Patents Filed' },
       ],
     },
     style: {
-      bg:          '#f8fafc',
-      textColor:   '#013759',
-      accentColor: '#fbbf24',
-      cardBg:      '#ffffff',
+      bg:          '#ffffff',
+      textColor:   '#074887',
+      accentColor: '#013759',
     },
-    layout:     {},
+    layout: { type: 'flat' },
     visibility: { hideOnMobile: false, hideOnTablet: false, hideOnDesktop: false },
   },
 
@@ -136,16 +122,17 @@ const LANDING_BLOCKS = [
     content: {
       heading: 'Our Spaces',
       spaces: [
-        { title: 'Electronics Lab',     description: 'PCB design, soldering stations, oscilloscopes, and component library for rapid prototyping.' },
-        { title: '3D Printing Lab',     description: 'FDM and resin 3D printers for high-resolution rapid prototyping.' },
-        { title: 'Fabrication Lab',     description: 'Laser cutters, CNC routers, and precision hand tools.' },
-        { title: 'Co-Working Space',    description: '80+ hot desks with 1 Gbps fiber internet and 4 conference rooms.' },
-        { title: 'Compute Lab',         description: 'High-performance workstations and 4× NVIDIA GPU servers.' },
-        { title: 'Conference Rooms',    description: 'Fully equipped AV-enabled meeting spaces for presentations and demos.' },
+        { title: 'Acceleration Programs',            description: 'Access tailored incubation modules, prototype funding, venture mentorship, and investor matchmaking pipelines to scale your early-stage startup.', image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80' },
+        { title: 'Mentorship & Expert Guidance',     description: 'Work shoulder-to-shoulder with veteran entrepreneurs, technology experts, and IP advisors to accelerate product-market fit.', image: 'https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=800&q=80' },
+        { title: 'Co-working Space & Infrastructure', description: 'Scale in our premium co-working facility, featuring plug-and-play seating, smart meeting rooms, high-end compute systems, and prototyping labs.', image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80' },
+        { title: 'Fabrication & Tool Room',          description: 'Build deep prototypes using precision machinery, including CNC CO2 Laser Cutters, Plasma Cutters, and advanced manual prototyping tools.', image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80' },
+        { title: '3D Printing Facility',             description: 'Bring design concepts to life with professional FDM, SLA, and resin 3D printers, supporting over 40 types of specialized engineering filaments.', image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80' },
+        { title: 'AI & Simulations Grid',            description: 'Leverage state-of-the-art compute hardware on a flexible compute-rental basis for intensive AI model training and engineering simulations.', image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80' },
+        { title: 'Premium Meeting Rooms',            description: 'Host presentations, pitch panels, and board reviews in modern rooms featuring integrated AV gear, screen casting, and high-speed Wi-Fi.', image: 'https://images.unsplash.com/photo-1431540015161-0bf868a2d407?auto=format&fit=crop&w=800&q=80' },
       ],
     },
     style: {
-      bg:           '#f8fafc',
+      bg:           '#ffffff',
       textColor:    '#ffffff',
       headingColor: '#013759',
       accentColor:  '#fbbf24',
@@ -160,16 +147,13 @@ const LANDING_BLOCKS = [
     type: 'ProgramCards',
     content: {
       heading:     'Schemes & Programs',
-      description: 'Explore our government-backed schemes and programs designed to accelerate your entrepreneurial journey — from ideation to funding.',
+      description: 'At Navrachna Foundation (NFED), we coordinate flagship incubation schemes that nurture entrepreneurs across every stage of their startup journey. These structured programs combine equity-free prototype grants, monthly fellowship stipends, intensive commercial scaling pipelines, and institutional resources to ensure early-stage ventures gain the right strategic assets to succeed.',
       ctaLabel:    'View All Programs',
       ctaHref:     '/programs',
       programs: [
-        { badge: 'MSME',    title: 'Startup India Seed Fund',  body: 'Up to ₹20L seed funding for early-stage startups with innovative ideas.', tag: 'Funding' },
-        { badge: 'DST',     title: 'NIDHI PRAYAS',             body: 'Support for proof-of-concept development for deep-tech and hardware innovations.', tag: 'R&D' },
-        { badge: 'SIDBI',   title: 'SMILE Scheme',             body: 'Soft loans and marketing support for small and micro enterprises.', tag: 'Loan' },
-        { badge: 'NEN',     title: 'E-Cell Mentorship',        body: 'Dedicated mentorship, workshops, and hackathons via the E-Cell network.', tag: 'Mentorship' },
-        { badge: 'UP Govt', title: 'UP StartUp Fund',          body: 'State initiative offering grants and subsidies for UP-based startups.', tag: 'Grant' },
-        { badge: 'MeitY',   title: 'Digital India Program',    body: 'Support for tech-focused startups working in digital infrastructure.', tag: 'Tech' },
+        { badge: 'Startin-Up', title: 'Startin-Up',  body: 'Discover funding and incubation opportunities through our specialized Startin-Up program, designed to assist and enable young entrepreneurs to initiate commercial exploitation of their technologies.', tag: 'Commercial exploitation' },
+        { badge: 'NewGen IEDC', title: 'NewGen-IEDC', body: 'The NewGen IEDC program helps students develop entrepreneurial skills, test startup ideas, and connect with investors. We provide a dynamic and collaborative workspace that empowers you.', tag: 'Entrepreneurial skills' },
+        { badge: 'MSME-BI',    title: 'MSME-BI',     body: 'Participate in MSME Hackathons to solve real-world industry challenges and secure seed funding. A direct approach towards solving your startup problems with 1 to 1 mentorship.', tag: 'Hackathon & Mentorship' },
       ],
     },
     style: {
@@ -192,53 +176,42 @@ const LANDING_BLOCKS = [
       discoverHref: '/facilities',
       facilities: [
         {
-          id: 'electronics', label: 'Electronics Lab',
-          identity: { name: 'Electronics Lab', tagline: 'Circuit design & embedded systems prototyping', icon: '🔌' },
-          specs: [
-            { label: 'Stations',   value: '20 workstations' },
-            { label: 'Equipment',  value: 'Oscilloscopes, DMMs, signal generators' },
-            { label: 'PCB',        value: 'In-house PCB etching & soldering' },
-            { label: 'Hours',      value: 'Mon–Sat, 9 AM – 8 PM' },
-          ],
-        },
-        {
-          id: '3dprinting', label: '3D Printing Lab',
-          identity: { name: '3D Printing Lab', tagline: 'Rapid prototyping at scale', icon: '🖨️' },
-          specs: [
-            { label: 'Printers',    value: '8 FDM + 2 Resin printers' },
-            { label: 'Materials',   value: 'PLA, PETG, ABS, Resin' },
-            { label: 'Build Vol',   value: 'Up to 300×300×400 mm' },
-            { label: 'Turnaround', value: 'Same-day for small parts' },
-          ],
-        },
-        {
           id: 'fabrication', label: 'Fabrication Lab',
-          identity: { name: 'Fabrication Lab', tagline: 'Precision cutting, milling & assembly', icon: '🔧' },
+          identity: { name: 'Fabrication Lab', tagline: '20 Workstations, CNC Plasma Tooling, Non-Metallic CNC Laser, Manual Power Tools', icon: '🔧' },
           specs: [
-            { label: 'Machines',   value: 'Laser cutter, CNC router, lathe' },
-            { label: 'Materials',  value: 'Wood, acrylic, aluminium, steel' },
-            { label: 'Software',   value: 'AutoCAD, Fusion 360, LaserGRBL' },
-            { label: 'Capacity',   value: '10 concurrent users' },
+            { label: 'Workstations', value: '20 Workstations' },
+            { label: 'Plasma',       value: 'CNC Plasma Tooling' },
+            { label: 'Laser',        value: 'Non-Metallic CNC Laser' },
+            { label: 'Tools',        value: 'Manual Power Tools' },
           ],
         },
         {
-          id: 'coworking', label: 'Co-Working',
-          identity: { name: 'Co-Working Space', tagline: 'Collaborate, focus, grow', icon: '🏢' },
+          id: '3dprinting', label: '3D Printers',
+          identity: { name: '3D Printers', tagline: '02 FDM Printers, FormLabs SLA Printer, 48 Resins, Medical/Rigid', icon: '🖨️' },
           specs: [
-            { label: 'Seats',    value: '80 hot desks + 20 dedicated' },
-            { label: 'Internet', value: '1 Gbps fibre, 99.9% uptime' },
-            { label: 'Meeting',  value: '4 conference rooms' },
-            { label: 'Access',   value: '24×7 for registered startups' },
+            { label: 'FDM',     value: '02 FDM Printers (PLA/ABS/TPU)' },
+            { label: 'SLA',     value: 'FormLabs SLA Printer (Form 3B+)' },
+            { label: 'Resins',  value: '48 Advanced Resins Supported' },
+            { label: 'Grade',   value: 'Medical & Rigid Engineering Grade' },
           ],
         },
         {
-          id: 'compute', label: 'Compute Lab',
-          identity: { name: 'Compute Lab', tagline: 'High-performance AI & ML infrastructure', icon: '🖥️' },
+          id: 'compute', label: 'High End Compute Systems',
+          identity: { name: 'High End Compute Systems', tagline: 'Intel i9-12th Gen, 128GB DDR5, RTX 3060/3090 GPU nodes', icon: '🖥️' },
           specs: [
-            { label: 'Workstations', value: '15 high-end PCs' },
-            { label: 'GPU',          value: '4× NVIDIA A100 servers' },
-            { label: 'Storage',      value: '1 PB NAS cluster' },
-            { label: 'Software',     value: 'MATLAB, Ansys, CUDA, PyTorch' },
+            { label: 'Simulation', value: '02 Simulation Nodes (RTX 3060)' },
+            { label: 'AI Node',    value: '01 AI Superstation (RTX 3090 x2)' },
+            { label: 'Computing',  value: 'Intel i9-12th Gen Computing' },
+            { label: 'RAM',        value: '128GB High-Speed DDR5 RAM' },
+          ],
+        },
+        {
+          id: 'coworking', label: 'Co-Working Area',
+          identity: { name: 'Co-Working Area', tagline: '23 seats, Gigabit Internet, plug-n-play ready', icon: '🏢' },
+          specs: [
+            { label: 'Capacity', value: '23 Premium Co-Working Seats' },
+            { label: 'Nodes',    value: '06 Plug-n-Play ready Nodes' },
+            { label: 'Internet', value: 'High-Speed Gigabit Internet' },
           ],
         },
       ],
@@ -263,12 +236,15 @@ const LANDING_BLOCKS = [
       subheading: 'Discover the exclusive benefits, technical facilities, and robust investment opportunities that make Navrachna Foundation the elite partner for modern startups.',
       eyebrow:    'FOUNDATION ADVANTAGE',
       cards: [
-        { icon: '💡', title: 'Expert Mentorship',   body: 'One-on-one guidance from 30+ industry veterans, IIT/IIM alumni, and successful entrepreneurs.' },
-        { icon: '🔬', title: 'World-Class Labs',    body: 'Access to electronics, 3D printing, fabrication, and GPU compute labs.' },
-        { icon: '📶', title: 'High-Speed Internet', body: '1 Gbps dedicated fibre with 99.9% SLA uptime for uninterrupted research.' },
-        { icon: '🤝', title: 'Investor Network',    body: 'Direct introductions to angel investors, VC funds, and government grant officers.' },
-        { icon: '🏛️', title: 'Legal & IP Support',  body: 'Patent filing, IP strategy, legal counsel, and trademark guidance.' },
-        { icon: '🌐', title: 'Global Exposure',     body: 'Represent at national and international startup expos, competitions, and Demo Days.' },
+        { icon: '💡', title: 'Direct Mentorship',                          body: 'A more direct approach towards solving your startup problems. We offer 1 to 1 mentorship for your entrepreneurial journey.' },
+        { icon: '🔬', title: 'Lab Support',                                 body: "Providing a comprehensive lab support to your startup's prototyping needs, with a variety of tools and machineries." },
+        { icon: '📶', title: 'Free Unlimited High-Speed Internet',          body: 'Stay connected with our reliable and fast internet connection.' },
+        { icon: '🤝', title: 'Rich Ecosystem',                             body: 'At the heart of our rich ecosystem lies a culture of inclusivity and shared success helping founders accelerate their journey.' },
+        { icon: '🏛️', title: 'Strategic Location',                          body: 'Provide easy accessibility, connectivity, and a thriving business environment for entrepreneurs and startups.' },
+        { icon: '🌐', title: 'Access to Funding & Investment Opportunities', body: 'We connect you with various government grants, equity and non-equity based funding, potential investors, and VC opportunities.' },
+        { icon: '⚡', title: 'Flexible Solutions',                          body: 'Tailoring layout configurations and workspace sizes to match your specific business requirements, ensuring productivity.' },
+        { icon: '🏷️', title: 'Most Affordable',                            body: 'We offer cost-effective workspace solutions without compromising on quality, ensuring startups scale with ease.' },
+        { icon: '🛠️', title: 'IT Support',                                  body: 'If you’re looking for additional IT services tailored to your specific needs, we specialize in comprehensive IT solutions.' },
       ],
     },
     style: {
@@ -332,19 +308,8 @@ const LANDING_BLOCKS = [
     id:   'block-logos-1',
     type: 'LogoScroller',
     content: {
-      heading: 'Our Clients & Partners',
-      logos: [
-        { alt: 'Arun Chaudhary' },
-        { alt: 'DIGIERA' },
-        { alt: 'JagmagLights' },
-        { alt: 'MyLyfCare' },
-        { alt: 'TripoSaints' },
-        { alt: 'UPROI' },
-        { alt: 'Verdant' },
-        { alt: 'Weaclim' },
-        { alt: 'Indus' },
-        { alt: 'Intelliginetia' },
-      ],
+      heading: 'Our Portfolio Startups',
+      logos: [],
     },
     style: {
       bg:        '#ffffff',
@@ -360,18 +325,18 @@ const LANDING_BLOCKS = [
     type: 'FAQAccordion',
     content: {
       heading: 'Frequently Asked Questions',
+      eyebrow: 'COMMON QUERIES',
+      subheading: 'Find clear, simple answers to common questions about the Navrachna Foundation setup and application process.',
       faqs: [
-        { q: 'Who can apply for incubation at NFED?',         a: 'Any student, alumni, faculty member, or external entrepreneur with an innovative idea or early-stage startup can apply. We welcome tech and non-tech ventures alike.' },
-        { q: 'Is there a fee to join NFED programs?',         a: 'NFED offers a range of programs at different price points, including fully funded government-backed programs like MSME-BI and NIDHI PRAYAS.' },
-        { q: 'What facilities are available to incubatees?',  a: 'Incubatees get access to electronics labs, 3D printing, fabrication shop, co-working desks, GPU compute lab, high-speed internet, and mentorship sessions.' },
-        { q: 'How long is the incubation period?',            a: 'Programs run from 6 months up to 2 years depending on the stage and scope of your startup. Extensions are available based on progress.' },
-        { q: 'Do you provide funding to startups?',           a: 'We help startups access government grants (Startup India, NIDHI PRAYAS), angel investment networks, and SIDBI soft-loan schemes. NFED itself does not provide equity-free grants, but assists in applications.' },
-        { q: 'How do I apply?',                               a: 'Visit the Contact page and fill in the application form. Our team will review and reach out within 5–7 working days for an interview.' },
+        { q: 'What is Navrachna Foundation for Entrepreneurship Development?', a: 'Navrachna Foundation for Entrepreneurship Development is a subsidiary of I.T.S. Engineering College that supports young entrepreneurs in commercializing their technologies and launching startups.' },
+        { q: 'Who can benefit from the foundation?', a: 'Students, faculty, and staff looking to develop their entrepreneurial skills, test startup ideas, and connect with investors can benefit from the foundation.' },
+        { q: 'What resources does the foundation provide?', a: 'The foundation offers mentorship, funding opportunities, networking support, and business development resources to help startups grow.' },
+        { q: 'How does the foundation help bridge the gap between inventors and venture capitalists?', a: 'It connects innovators with industry experts, investors, and mentors to transform ideas into viable businesses.' },
       ],
     },
     style: {
-      bg:           '#f8fafc',
-      textColor:    '#1e293b',
+      bg:           '#ffffff',
+      textColor:    '#6b7280',
       headingColor: '#013759',
       accentColor:  '#074887',
     },
@@ -400,7 +365,6 @@ const LANDING_BLOCKS = [
   },
 ]
 
-// ── Seed function ────────────────────────────────────────────────
 export async function seedLandingPage() {
   const payload = {
     slug:        'home',
