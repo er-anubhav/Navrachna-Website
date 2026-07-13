@@ -45,14 +45,10 @@ export default function DynamicPage() {
   }
 
   return (
-    <>
-      <HeaderV1 />
-      <main>
-        {(page.blocks || []).map((block) => (
-          <BlockRenderer key={block.id} block={block} />
-        ))}
-      </main>
-      <FooterV1 />
-    </>
+    <div className="w-full bg-[#f8fafc]">
+      {(page.blocks || []).map((block) => (
+        <BlockRenderer key={block.id} block={block} />
+      ))}
+    </div>
   )
 }
