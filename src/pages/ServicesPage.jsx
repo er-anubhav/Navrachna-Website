@@ -2,97 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import heroImage from '../assets/co-working-area-in-greater-noida-12-scaled.webp'
 
-const tools = [
-  {
-    name: 'Digital Vernier Caliper & Toolset',
-    description: 'Precision measuring instrument for accurate dimensional analysis in prototyping and fabrication tasks.',
-    category: 'Measurement',
-  },
-  {
-    name: 'Handheld Soldering Iron (60W)',
-    description: 'High-wattage soldering station suitable for PCB assembly, component soldering, and electronic prototyping.',
-    category: 'Electronics',
-  },
-  {
-    name: '3D Printer (FDM)',
-    description: 'Fused Deposition Modelling printer for rapid plastic prototyping, proof-of-concept models, and component manufacturing.',
-    category: '3D Printing',
-  },
-  {
-    name: 'Digital Lux Meter',
-    description: 'Measures ambient light intensity with precision — essential for optical, environmental, and IoT project testing.',
-    category: 'Measurement',
-  },
-  {
-    name: 'Laser Distance Meter',
-    description: 'Non-contact laser-based distance measurement tool for architectural, structural, and design projects.',
-    category: 'Measurement',
-  },
-  {
-    name: 'Programmable Coil Winding Machine',
-    description: 'CNC-controlled machine for precision winding of inductors, transformers, and motor coils in custom quantities.',
-    category: 'Fabrication',
-  },
-  {
-    name: 'Desktop Drilling Machine',
-    description: 'Benchtop drill press for accurate hole placement in PCBs, enclosures, and mechanical prototyping assemblies.',
-    category: 'Fabrication',
-  },
-  {
-    name: 'Insulation Tester (Digital Meter)',
-    description: 'Evaluates electrical insulation resistance in cables, motors, and transformer windings for safety validation.',
-    category: 'Electronics',
-  },
-  {
-    name: 'Universal USB Programmer',
-    description: 'Multi-protocol chip programmer supporting a broad range of microcontrollers, EEPROMs, and flash memories.',
-    category: 'Electronics',
-  },
-  {
-    name: 'Oscilloscope (Digital Storage)',
-    description: '100 MHz 4-channel DSO for real-time signal analysis, debugging embedded firmware, and circuit characterization.',
-    category: 'Electronics',
-  },
-  {
-    name: 'Function / Waveform Generator',
-    description: 'Arbitrary waveform generator covering sine, square, pulse, ramp and noise outputs up to 25 MHz dual channel.',
-    category: 'Electronics',
-  },
-  {
-    name: 'DC Regulated Power Supply (SMPS)',
-    description: '0–30 V / 0–10 A single-output switched-mode power supply with CV/CC mode and dual LED meters.',
-    category: 'Power',
-  },
-  {
-    name: 'SMD Rework Station',
-    description: 'Combined hot-air gun (700 W, 100–450 °C) and electric soldering iron (40 W, 200–480 °C) for SMD component work.',
-    category: 'Electronics',
-  },
-  {
-    name: 'Digital Multimeter (Benchtop)',
-    description: '4½-digit True-RMS bench multimeter measuring up to 1000 V DC/AC, 20 A, 20 MΩ resistance, capacitance, frequency, and diode test.',
-    category: 'Measurement',
-  },
-]
-
-const faqs = [
-  {
-    q: 'What is Navrachna Foundation for Entrepreneurship Development?',
-    a: 'Navrachna Foundation for Entrepreneurship Development is a subsidiary of I.T.S. Engineering College that supports young entrepreneurs in commercializing their technologies and launching startups.',
-  },
-  {
-    q: 'Who can benefit from the foundation?',
-    a: 'Students, faculty, and staff looking to develop their entrepreneurial skills, test startup ideas, and connect with investors can benefit from the foundation.',
-  },
-  {
-    q: 'What resources does the foundation provide?',
-    a: 'The foundation offers mentorship, funding opportunities, networking support, and business development resources to help startups grow.',
-  },
-  {
-    q: 'How does the foundation help bridge the gap between inventors and venture capitalists?',
-    a: 'It connects innovators with industry experts, investors, and mentors to transform ideas into viable businesses.',
-  },
-]
+import { useCms } from '../hooks/useCms'
 
 const categoryColors = {
   Measurement: 'bg-sky-50 text-sky-700 border-sky-100',
@@ -103,7 +13,19 @@ const categoryColors = {
 }
 
 export function ServicesPage() {
-  const [openFaq, setOpenFaq] = useState(null)
+  const { data: servicesData, loading } = useCms('services');
+  const [openFaq, setOpenFaq] = useState(null);
+
+  if (loading || !servicesData) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-white text-slate-900">
+        <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-sky-600"></div>
+      </div>
+    )
+  }
+
+  const tools = servicesData.tools || [];
+  const faqs = servicesData.faqs || [];
 
   return (
     <div className="min-h-screen bg-white font-sans antialiased" style={{ fontWeight: 400 }}>
@@ -119,11 +41,11 @@ export function ServicesPage() {
         </div>
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
           <p className="text-[10px] uppercase tracking-[0.2em] text-white/50 mb-3">What We Offer</p>
-          <h1 className="text-3xl sm:text-4xl text-white leading-tight" style={{ fontWeight: 400 }}>
-            Prototyping Facility of Navrachna Foundation
+          <h1 className={`text-white leading-tight ${servicesData.hero.titleSize || 'text-3xl sm:text-4xl'}`} style={{ fontWeight: 400 }}>
+            {servicesData.hero.title}
           </h1>
           <p className="mt-4 max-w-xl mx-auto text-sm text-white/70 leading-relaxed">
-            We provide a dynamic prototyping facility to help startups and entrepreneurs turn their ideas into working prototypes.
+            {servicesData.hero.description}
           </p>
         </div>
       </section>
@@ -192,8 +114,8 @@ export function ServicesPage() {
         <div className="flex flex-col gap-8 border-t border-slate-100 pt-16">
           <div className="flex flex-col gap-2">
             <span className="text-[10px] text-gray-400 uppercase tracking-widest">Common Questions</span>
-            <h2 className="text-2xl text-[#013759]" style={{ fontWeight: 400 }}>Everything You Need to Know About Our Spaces</h2>
-            <p className="text-sm text-gray-400">Find answers to common questions about the Navrachna Foundation for Entrepreneurship Development.</p>
+            <h2 className="text-2xl text-[#013759]" style={{ fontWeight: 400 }}>{servicesData.faqHeader.title}</h2>
+            <p className="text-sm text-gray-400">{servicesData.faqHeader.description}</p>
           </div>
 
           <div className="flex flex-col divide-y divide-slate-100 border border-slate-100 rounded-2xl overflow-hidden">

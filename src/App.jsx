@@ -22,10 +22,13 @@ import { IicItsecPage } from './pages/IicItsecPage'
 import { FabricationLabPage } from './pages/FabricationLabPage'
 import { NewGenIedcPage } from './pages/NewGenIedcPage'
 import { ServicesPage } from './pages/ServicesPage'
+import { GalleryPage } from './pages/GalleryPage'
+import { AdminPage } from './pages/AdminPage'
 
 function App() {
   return (
     <Routes>
+      <Route path="/admin" element={<AdminPage />} />
       <Route element={<Layout />}>
         <Route path="/" element={<LandingPage />} />
         <Route path="/about" element={<AboutPage />} />
@@ -47,6 +50,7 @@ function App() {
         <Route path="/innovation-cell/iic-itsec" element={<IicItsecPage />} />
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/stories" element={<StoriesPage />} />
+        <Route path="/gallery" element={<GalleryPage />} />
         <Route path="/faq" element={<FaqPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />

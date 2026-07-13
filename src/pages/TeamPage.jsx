@@ -9,90 +9,32 @@ import teamShubham from '../assets/navrachna_images/team_shubham.png'
 import teamSamiruddin from '../assets/navrachna_images/team_samiruddin.png'
 import teamAlpana from '../assets/navrachna_images/team_alpana.png'
 
-export function TeamPage() {
-  const TEAM_MEMBERS = [
-    {
-      name: "Dr. S P Mishra",
-      role: "Advisor, I.T.S Education Group",
-      expertise: [
-        "Team Management",
-        "Researcher",
-        "Organizational Development",
-        "Entrepreneurship Development",
-        "Leadership"
-      ],
-      tag: "Advisor",
-      image: teamMishra
-    },
-    {
-      name: "Mr. Sudhanshu Ranjan",
-      role: "Head of Incubation",
-      expertise: [
-        "Startup Selection",
-        "Commercialization",
-        "Technology Transfer",
-        "Business Assessment",
-        "Market Survey",
-        "Event Management",
-        "Networking",
-        "Branding & Marketing",
-        "Financial & Budgeting"
-      ],
-      tag: "Head of Incubation",
-      image: teamSudhanshu
-    },
-    {
-      name: "Mr. Shashwat Panday",
-      role: "Business Plan, Software Developer",
-      expertise: [
-        "AI & ML Systems",
-        "AR and VR Environments",
-        "Deep Tech Prototyping",
-        "Product Survey",
-        "Market Survey"
-      ],
-      tag: "Deep Tech",
-      image: teamShashwat
-    },
-    {
-      name: "Mr. Shubham Kumar",
-      role: "Assistant Operations Manager",
-      expertise: [
-        "Financials & Budgeting",
-        "Electricals & IoT",
-        "Product Designing",
-        "Engineering Concepts",
-        "3D Modeling & Animation"
-      ],
-      tag: "Operations Manager",
-      image: teamShubham
-    },
-    {
-      name: "Md. Samiruddin Ansari",
-      role: "Assistant Portfolio Manager",
-      expertise: [
-        "Embedded Expert",
-        "Industrial IoT (IIoT)",
-        "Electrical & Electronics",
-        "PoC to Product Lifecycle",
-        "Project Management"
-      ],
-      tag: "Portfolio Manager",
-      image: teamSamiruddin
-    },
-    {
-      name: "Ms. Alpana Chaudhary",
-      role: "Office Executive",
-      expertise: [
-        "Documentation & Compliance",
-        "Event Management",
-        "Program Moderator"
-      ],
-      tag: "Executive Support",
-      image: teamAlpana
-    }
-  ]
+import { useCms } from '../hooks/useCms'
 
+const TEAM_PHOTOS = {
+  mishra: teamMishra,
+  sudhanshu: teamSudhanshu,
+  shashwat: teamShashwat,
+  shubham: teamShubham,
+  samiruddin: teamSamiruddin,
+  alpana: teamAlpana
+}
+
+export function TeamPage() {
+  const { data: teamData, loading } = useCms('team');
+
+  if (loading || !teamData) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-white text-slate-900">
+        <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-sky-600"></div>
+      </div>
+    )
+  }
+
+  const TEAM_MEMBERS = (teamData.members || []).map(m => ({
+    ...m,
+    image: TEAM_PHOTOS[m.imageKey]
+  }));
   return (
     <div className="min-h-screen bg-white font-sans text-gray-900 antialiased">
       
@@ -107,11 +49,11 @@ export function TeamPage() {
         </div>
 
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          <h1 className="text-4xl sm:text-5xl font-normal tracking-tight text-white leading-tight drop-shadow-md">
-            Our Team
+          <h1 className={`font-normal tracking-tight text-white leading-tight drop-shadow-md ${teamData.hero.titleSize || 'text-4xl sm:text-5xl'}`}>
+            {teamData.hero.title}
           </h1>
           <p className="mt-4 max-w-2xl mx-auto text-base text-white/80 leading-relaxed">
-            The advisors, engineers, and incubation experts behind the technology entrepreneurs of the Navrachna Foundation.
+            {teamData.hero.description}
           </p>
         </div>
       </section>

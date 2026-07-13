@@ -23,3 +23,25 @@ dist-ssr
 *.sln
 *.sw?
 .vercel
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Firebase local config (sensitive — not for git)
+.firebaserc
+firebase.json
+firestore.rules
+.firebase/
+
+# Large media / binary assets — store outside git or use cloud storage
+Newgen_Video*/
+*.mp4
+*.mov
+*.avi
+*.zip
+image\ copy*.png
+
+# Agent memory scratchpad
+.memory/

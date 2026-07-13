@@ -1,7 +1,24 @@
 import React, { useState } from 'react'
 import logo from '../assets/navrachna_images/nfed_logo.png'
+import { useCms } from '../hooks/useCms'
 
-export function HeaderV1() {
+const DEFAULT_HEADER = {
+  topBar: {
+    phone: "+91 9540527700",
+    email: "head.nfed@its.edu.in",
+    facebook: "https://www.facebook.com/share/1EsxYHE9Rr/",
+    instagram: "https://www.instagram.com/itsec_nfed",
+    linkedin: "https://www.linkedin.com/company/itsec-nfed/"
+  },
+  navbar: {
+    brandName: "NFED"
+  }
+}
+
+export function HeaderV1({ data: customData }) {
+  const { data: dbData } = useCms('header')
+  const data = customData || dbData || DEFAULT_HEADER
+
   const [msmeOpen, setMsmeOpen] = useState(false)
   const [moreOpen, setMoreOpen] = useState(false)
 
@@ -10,6 +27,13 @@ export function HeaderV1() {
   const [subFacilitiesOpen, setSubFacilitiesOpen] = useState(false)
   const [subInnovationOpen, setSubInnovationOpen] = useState(false)
 
+  const phone = data.topBar?.phone || DEFAULT_HEADER.topBar.phone
+  const email = data.topBar?.email || DEFAULT_HEADER.topBar.email
+  const facebook = data.topBar?.facebook || DEFAULT_HEADER.topBar.facebook
+  const instagram = data.topBar?.instagram || DEFAULT_HEADER.topBar.instagram
+  const linkedin = data.topBar?.linkedin || DEFAULT_HEADER.topBar.linkedin
+  const brandName = data.navbar?.brandName || DEFAULT_HEADER.navbar.brandName
+
   return (
     <>
       {/* Top Info Contact Bar */}
@@ -17,41 +41,57 @@ export function HeaderV1() {
         <div className="w-full px-4 sm:px-8 lg:px-12 flex flex-col sm:flex-row items-center justify-between gap-3">
           {/* Left: Contact Info */}
           <div className="flex flex-wrap items-center justify-center gap-5 sm:justify-start">
-            <a href="tel:+919540527700" className="flex items-center gap-2 text-white/95 hover:text-white transition-colors">
+            <a href={`tel:${phone}`} className="flex items-center gap-2 text-white/95 hover:text-white transition-colors">
               <svg className="h-3.5 w-3.5 text-white" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
               </svg>
-              <span>+91 9540527700</span>
+              <span>{phone}</span>
             </a>
             <span className="hidden sm:inline text-white/30">|</span>
-            <a href="mailto:head.nfed@its.edu.in" className="flex items-center gap-2 text-white/95 hover:text-white transition-colors">
+            <a href={`mailto:${email}`} className="flex items-center gap-2 text-white/95 hover:text-white transition-colors">
               <svg className="h-3.5 w-3.5 text-white" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                 <polyline points="22,6 12,13 2,6"/>
               </svg>
-              <span>head.nfed@its.edu.in</span>
+              <span>{email}</span>
             </a>
           </div>
 
-          {/* Right: Social Handles */}
-          <div className="flex items-center gap-4">
-            <a href="https://www.facebook.com/share/1EsxYHE9Rr/" target="_blank" rel="noreferrer" className="text-white/80 hover:text-white transition-colors" aria-label="Facebook">
-              <svg className="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-              </svg>
+          {/* Right: Quick links + Social Handles */}
+          <div className="flex items-center gap-5">
+            {/* Gallery & Contact quick links */}
+            <a href="/gallery" className="text-white/80 hover:text-white transition-colors tracking-wide">
+              Gallery
             </a>
-            <a href="https://www.instagram.com/itsec_nfed" target="_blank" rel="noreferrer" className="text-white/80 hover:text-white transition-colors" aria-label="Instagram">
-              <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-              </svg>
+            <span className="text-white/30">|</span>
+            <a href="/contact" className="text-white/80 hover:text-white transition-colors tracking-wide">
+              Contact Us
             </a>
-            <a href="https://www.linkedin.com/company/itsec-nfed/" target="_blank" rel="noreferrer" className="text-white/80 hover:text-white transition-colors" aria-label="LinkedIn">
-              <svg className="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-              </svg>
-            </a>
+            <span className="text-white/30">|</span>
+            {/* Social icons */}
+            {facebook && (
+              <a href={facebook} target="_blank" rel="noreferrer" className="text-white/80 hover:text-white transition-colors" aria-label="Facebook">
+                <svg className="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                </svg>
+              </a>
+            )}
+            {instagram && (
+              <a href={instagram} target="_blank" rel="noreferrer" className="text-white/80 hover:text-white transition-colors" aria-label="Instagram">
+                <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+              </a>
+            )}
+            {linkedin && (
+              <a href={linkedin} target="_blank" rel="noreferrer" className="text-white/80 hover:text-white transition-colors" aria-label="LinkedIn">
+                <svg className="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+              </a>
+            )}
           </div>
         </div>
       </div>
@@ -59,8 +99,9 @@ export function HeaderV1() {
       {/* Main Navbar */}
       <header className="relative z-50 flex items-center justify-between px-8 py-5 text-black bg-white backdrop-blur-sm border-b border-slate-100">
         <div className="flex items-center">
-          <a href="/">
+          <a href="/" className="flex items-center gap-3">
             <img src={logo} alt="NFED Logo" className="h-10 w-auto object-contain" />
+            <span className="text-2xl tracking-wider text-[#074887]">{brandName}</span>
           </a>
         </div>
         <nav className="flex items-center justify-end gap-x-8 text-sm font-normal tracking-wider text-black">
@@ -158,25 +199,6 @@ export function HeaderV1() {
                         >
                           3D Printing
                         </a>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Innovation Cell (Left Flyout on Hover) */}
-                  <div className="relative group/inn">
-                    <div className="flex items-center justify-between rounded-lg px-4 py-2 text-xs  text-black hover:bg-slate-50 hover:text-[#074887] cursor-pointer transition-colors">
-                      <span>Innovation Cell</span>
-                      <span className="text-[8px] text-gray-400">◀</span>
-                    </div>
-                    {/* Flyout Submenu Panel */}
-                    <div className="invisible group-hover/inn:visible absolute right-full top-0 pr-2 w-52 z-50">
-                      <div className="rounded-xl border border-slate-100 bg-white p-2 shadow-xl flex flex-col">
-                        <a 
-                          href="/innovation-cell/iic-itsec" 
-                          className="block rounded-lg px-4 py-2 text-xs font-normal text-black hover:bg-slate-50 hover:text-[#074887] transition-colors"
-                        >
-                          IIC-ITSEC
-                        </a>
                         <a 
                           href="/facilities/fabrication-lab" 
                           className="block rounded-lg px-4 py-2 text-xs font-normal text-black hover:bg-slate-50 hover:text-[#074887] transition-colors"
@@ -187,12 +209,15 @@ export function HeaderV1() {
                     </div>
                   </div>
 
+                  {/* IIC-ITSEC removed — now in main nav */}
+
                 </div>
               </div>
             )}
           </div>
 
-          <a href="/contact" className="transition-colors hover:text-[#074887]">Contact Us</a>
+          <a href="/innovation-cell/iic-itsec" className="transition-colors hover:text-[#074887]">IIC-ITSEC</a>
+
         </nav>
       </header>
     </>
