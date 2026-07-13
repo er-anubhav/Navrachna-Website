@@ -5,6 +5,8 @@ import { useCms } from '../hooks/useCms'
 import { migrateAllData } from '../data/cms/migrateToFirestore'
 import { HeaderV1 } from '../components/HeaderV1'
 import { FooterV1 } from '../components/FooterV1'
+import { PageManager } from './admin/PageManager'
+import { seedLandingPage } from '../data/cms/seedLandingPage'
 
 const FontSizeSelect = ({ label, value, onChange, defaultLabel }) => (
   <div className="flex flex-col gap-2">
@@ -37,6 +39,8 @@ export function AdminPage() {
   const [activeTab, setActiveTab] = useState('landing')
   const [migrationStatus, setMigrationStatus] = useState(null)
   const [migrationLoading, setMigrationLoading] = useState(false)
+  const [seedStatus, setSeedStatus] = useState(null)
+  const [seedLoading, setSeedLoading] = useState(false)
 
   // Sub-forms local states to edit data
   const [landingForm, setLandingForm] = useState(null)
@@ -220,6 +224,7 @@ export function AdminPage() {
               { id: 'services', label: 'Services & Tools' },
               { id: 'header', label: 'Header Menu' },
               { id: 'footer', label: 'Footer Menu' },
+              { id: 'page-builder', label: '🧩 Page Builder' },
               { id: 'migration', label: 'Migration Tools' }
             ].map((tab) => (
               <button
@@ -1355,6 +1360,56 @@ export function AdminPage() {
                 </div>
               )}
             </div>
+
+            {/* Seed Landing Page Blocks */}
+            <div className="bg-slate-950/60 border border-slate-900 rounded-2xl p-6 flex flex-col gap-4">
+              <h3 className="text-xs text-emerald-400 font-semibold tracking-wider uppercase mb-2">🧩 Seed Landing Page Blocks</h3>
+              <p className="text-xs text-slate-400 leading-relaxed">
+                Seeds the <strong className="text-slate-300">/page/home</strong> CMS route with 11 pre-configured blocks
+                mirroring the current Landing Page — Announcement Banner, Hero, About, Stats,
+                Spaces Carousel, Programs, Facilities Tabs, Benefits Grid, Client Logos, FAQ, and CTA.
+              </p>
+              <div className="flex items-center gap-4 flex-wrap">
+                <button
+                  onClick={async () => {
+                    setSeedLoading(true)
+                    setSeedStatus(null)
+                    try {
+                      const result = await seedLandingPage()
+                      setSeedStatus({ success: true, msg: `✅ Seeded ${result.blockCount} blocks to /pages/home` })
+                    } catch (e) {
+                      setSeedStatus({ success: false, msg: `❌ Failed: ${e.message}` })
+                    }
+                    setSeedLoading(false)
+                  }}
+                  disabled={seedLoading}
+                  className="bg-emerald-600 hover:bg-emerald-500 text-white px-6 py-3 rounded-xl font-medium text-xs self-start transition-colors disabled:opacity-50 cursor-pointer"
+                >
+                  {seedLoading ? 'Seeding…' : 'Seed Landing Page → /pages/home'}
+                </button>
+                {!seedLoading && (
+                  <a
+                    href="/page/home"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-xs text-sky-400 underline hover:text-sky-300 transition-colors"
+                  >
+                    Preview /page/home ↗
+                  </a>
+                )}
+              </div>
+              {seedStatus && (
+                <p className={`text-xs font-medium ${seedStatus.success ? 'text-emerald-400' : 'text-rose-400'}`}>
+                  {seedStatus.msg}
+                </p>
+              )}
+            </div>
+          </div>
+        )}
+        {/* ── TAB: PAGE BUILDER ── */}
+        {activeTab === 'page-builder' && (
+          <div className="-mx-6 md:-mx-10 -mb-24 h-[calc(100vh-120px)] flex flex-col">
+            <PageManager />
           </div>
         )}
           </>

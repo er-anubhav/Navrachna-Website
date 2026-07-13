@@ -1,0 +1,14 @@
+{
+  "colors": {
+    "primary":    "#074887",
+    "dark":       "#013759",
+    "accent":     "#fbbf24",
+    "bg":         "#f8fafc",
+    "text":       "#1e293b",
+    "cardBg":     "#ffffff"
+  },
+  "fonts": {
+    "heading": "Sora",
+    "body":    "Karla"
+  }
+}

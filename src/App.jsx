@@ -24,6 +24,7 @@ import { NewGenIedcPage } from './pages/NewGenIedcPage'
 import { ServicesPage } from './pages/ServicesPage'
 import { GalleryPage } from './pages/GalleryPage'
 import { AdminPage } from './pages/AdminPage'
+import DynamicPage from './pages/DynamicPage'
 
 function App() {
   return (
@@ -53,6 +54,7 @@ function App() {
         <Route path="/gallery" element={<GalleryPage />} />
         <Route path="/faq" element={<FaqPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/page/:slug" element={<DynamicPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Route>
     </Routes>
