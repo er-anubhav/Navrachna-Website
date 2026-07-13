@@ -131,7 +131,7 @@ function DesktopDropdown({ item }) {
     >
       <a
         href={item.href === '#' ? undefined : item.href}
-        className="flex items-center gap-1 transition-colors hover:text-[#074887] cursor-pointer py-1"
+        className="flex items-center gap-1 transition-colors text-black hover:text-[#074887] cursor-pointer py-1"
       >
         {item.label} <span className="text-[9px] text-gray-400">▼</span>
       </a>
@@ -235,7 +235,7 @@ export function HeaderV1({ data: customData }) {
             item.children ? (
               <DesktopDropdown key={i} item={item} />
             ) : (
-              <a key={i} href={item.href} className="transition-colors hover:text-[#074887]">
+              <a key={i} href={item.href} className="transition-colors text-black hover:text-[#074887]">
                 {item.label}
               </a>
             )
