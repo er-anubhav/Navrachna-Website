@@ -230,7 +230,7 @@ export function HeaderV1({ data: customData }) {
         </a>
 
         {/* Desktop Nav — hidden below lg */}
-        <nav className="hidden lg:flex items-center justify-end gap-x-8 text-sm font-normal tracking-wider text-black">
+        <nav className="flex max-lg:hidden items-center justify-end gap-x-8 text-sm font-normal tracking-wider text-black">
           {NAV_ITEMS.map((item, i) =>
             item.children ? (
               <DesktopDropdown key={i} item={item} />
@@ -247,7 +247,7 @@ export function HeaderV1({ data: customData }) {
           onClick={() => setMobileOpen(true)}
           aria-label="Open navigation menu"
           aria-expanded={mobileOpen}
-          className="lg:hidden flex flex-col justify-center gap-1.5 w-9 h-9 items-center rounded-lg hover:bg-slate-100 transition-colors"
+          className="hidden max-lg:flex flex-col justify-center gap-1.5 w-9 h-9 items-center rounded-lg hover:bg-slate-100 transition-colors"
         >
           <span className="block w-5 h-0.5 bg-[#013759] rounded-full" />
           <span className="block w-5 h-0.5 bg-[#013759] rounded-full" />
