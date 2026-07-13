@@ -104,7 +104,7 @@ export function ECellInitiative({
             {/* Stats list */}
             <div className="grid grid-cols-2 gap-4 shrink-0 w-full lg:w-auto">
               {stats.map((s) => (
-                <div key={s.label} className="rounded-2xl bg-white border border-black/10 px-6 py-5 text-center shadow-sm">
+                <div key={s.label} className="rounded-2xl bg-white border border-black px-6 py-5 text-center">
                   <div className="text-2xl font-normal text-black">{s.value}</div>
                   <div className="mt-1 text-xs text-black/60 leading-snug">{s.label}</div>
                 </div>
@@ -124,7 +124,7 @@ export function ECellInitiative({
               <div key={item.title} className="rounded-2xl border border-slate-100 bg-white p-7 hover:shadow-md hover:border-slate-200 transition-all duration-300">
                 <div className="text-2xl mb-3">{item.icon}</div>
                 <h4 className="text-base font-normal mb-2" style={{ color: titleColor }}>{item.title}</h4>
-                <p className="text-xs leading-relaxed" style={{ color: textColor }}>{item.desc}</p>
+                <p className="text-xs text-gray-500 leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>

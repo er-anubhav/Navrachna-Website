@@ -158,7 +158,7 @@ export function ImageCarousel({
                 <p className="text-sm font-normal text-white/90 leading-relaxed mb-8">
                   {space.description}
                 </p>
-                <button className="w-full py-3.5 rounded-xl bg-[#fbbf24] hover:bg-yellow-400 text-[#013759] font-semibold text-sm transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 shadow-lg">
+                <button className="w-full py-3.5 rounded-xl bg-[#fbbf24] hover:bg-yellow-400 text-[#013759] font-semibold text-sm transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 duration-500 delay-100 shadow-lg">
                   Explore Program
                 </button>
               </div>

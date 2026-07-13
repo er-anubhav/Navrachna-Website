@@ -122,7 +122,7 @@ export function ProgramCards({
                     <h3 className="text-xl font-normal tracking-tight text-[#013759]">
                       {prog.title}
                     </h3>
-                    <p className="text-sm font-normal text-gray-650 leading-relaxed mt-2 text-justify">
+                    <p className="text-sm font-normal text-gray-600 leading-relaxed mt-2 text-justify">
                       {prog.body}
                     </p>
                     <a

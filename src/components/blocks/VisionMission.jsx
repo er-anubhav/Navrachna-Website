@@ -33,7 +33,7 @@ export function VisionMission({
             <h2 className="mb-6 text-3xl md:text-4xl font-normal tracking-tight" style={{ color: titleColor }}>
               {visionTitle}
             </h2>
-            <p className="text-base md:text-md leading-relaxed text-justify font-normal" style={{ color: textColor }}>
+            <p className="text-gray-600 text-base md:text-md leading-relaxed text-justify font-normal">
               {visionBody}
             </p>
           </div>
@@ -49,7 +49,7 @@ export function VisionMission({
             <h2 className="mb-6 text-3xl md:text-4xl font-normal tracking-tight" style={{ color: titleColor }}>
               {missionTitle}
             </h2>
-            <p className="text-base md:text-md leading-relaxed text-justify font-normal" style={{ color: textColor }}>
+            <p className="text-gray-600 text-base md:text-md leading-relaxed text-justify font-normal">
               {missionBody}
             </p>
           </div>

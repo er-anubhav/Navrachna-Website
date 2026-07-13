@@ -30,8 +30,8 @@ export function PageHero({
 
   return (
     <section
-      className="relative flex py-20 w-full items-center justify-center overflow-hidden"
-      style={{ minHeight, background: bg }}
+      className="relative flex min-h-[85vh] md:min-h-[90vh] py-20 w-full items-center justify-center overflow-hidden"
+      style={{ background: bg }}
       aria-label="Hero section"
     >
       {/* Background Image / Video layer */}
@@ -49,12 +49,12 @@ export function PageHero({
       {/* Content */}
       <div className="relative z-10 flex max-w-4xl flex-col items-center px-4 text-center sm:px-6 lg:px-8">
         <h1 className="text-7xl mt-12 tracking-tighter text-white drop-shadow-lg">
-          <span className={`font-serif tracking-tighter leading-tight ${titleSize} block whitespace-pre-line`}>
+          <span className={`font-serif tracking-tighter ${titleSize}`}>
             {title}
           </span>
         </h1>
         {description && (
-          <p className={`mt-6 max-w-2xl text-white/90 whitespace-pre-line leading-relaxed ${descSize}`}>
+          <p className={`mt-6 max-w-2xl text-white whitespace-pre-line leading-relaxed ${descSize}`}>
             {description}
           </p>
         )}
@@ -68,7 +68,7 @@ export function PageHero({
           {cta1Label && (
             <a
               href={cta1Href}
-              className="rounded-md bg-[#074887] px-6 py-4 font-semibold text-white shadow-[0_0_20px_rgba(7,72,135,0.4)] transition-all hover:bg-[#013759] hover:shadow-[0_0_30px_rgba(7,72,135,0.6)] hover:-translate-y-1 block text-center"
+              className="rounded-md bg-[#074887] px-4 py-4 font-semibold text-white shadow-[0_0_20px_rgba(7,72,135,0.4)] transition-all hover:bg-[#013759] hover:shadow-[0_0_30px_rgba(7,72,135,0.6)] hover:-translate-y-1 block text-center"
             >
               {cta1Label}
             </a>

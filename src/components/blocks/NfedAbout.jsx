@@ -29,7 +29,7 @@ export function NfedAbout({
   const imgR = imageRight || defaultImgRight
 
   return (
-    <section className="relative w-full py-24 overflow-hidden border-b border-gray-100" style={{ background: bg }}>
+    <section id="about" className="relative w-full py-24 overflow-hidden border-b border-gray-100" style={{ background: bg }}>
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-16">
         
         {/* Left Column: Staggered Rounded Cards */}
