@@ -10,6 +10,8 @@ import { LogoScroller }       from './blocks/LogoScroller'
 import { ProgramCards }       from './blocks/ProgramCards'
 import { ImageCarousel }      from './blocks/ImageCarousel'
 import { FacilityTabs }       from './blocks/FacilityTabs'
+import { NfedAbout }          from './blocks/NfedAbout'
+import { ECellInitiative }    from './blocks/ECellInitiative'
 import { getVisibilityClass } from './blocks/utils'
 
 // Registry: maps block type strings → React components
@@ -25,6 +27,8 @@ const BLOCK_REGISTRY = {
   ProgramCards,
   ImageCarousel,
   FacilityTabs,
+  NfedAbout,
+  ECellInitiative,
 }
 
 /**

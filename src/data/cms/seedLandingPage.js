@@ -62,19 +62,26 @@ const LANDING_BLOCKS = [
     visibility: { hideOnMobile: false, hideOnTablet: false, hideOnDesktop: false },
   },
 
-  // 3. About / NFED — TextBlock
+  // 3. About / NFED — NfedAbout (staggered rounded cards + text layout)
   {
-    id:   'block-text-about',
-    type: 'TextBlock',
+    id:   'block-about-staggered',
+    type: 'NfedAbout',
     content: {
-      heading: 'What is NFED?',
-      body:    'Navrachna Foundation for Entrepreneurship Development (NFED) is an MSME-recognized Business Incubator operating under ITS Engineering College, Greater Noida. We support innovators, researchers, and startups with state-of-the-art infrastructure, experienced mentors, and access to government schemes like Startup India, NIDHI PRAYAS, and MSME-BI grants.\n\nOur mission is to convert ideas into sustainable, impactful enterprises that contribute to the national startup ecosystem.',
-      align:   'left',
+      title: 'Navrachna Foundation for Entrepreneurship Development (NFED)',
+      paragraphs: [
+        'Navrachna Foundation for Entrepreneurship Development (NFED) is an MSME-recognized Business Incubator operating under ITS Engineering College, Greater Noida. We support innovators, researchers, and startups with state-of-the-art infrastructure, experienced mentors, and access to government schemes like Startup India, NIDHI PRAYAS, and MSME-BI grants.',
+        'Our mission is to convert ideas into sustainable, impactful enterprises that contribute to the national startup ecosystem. We offer hot-desking, compute infrastructure, and active pipeline matches.'
+      ],
+      btnLabel: 'Read More',
+      btnHref: '/about',
+      imageLeft: '',
+      imageRight: '',
     },
     style: {
       bg:           '#ffffff',
-      textColor:    '#1e293b',
-      headingColor: '#013759',
+      titleColor:   '#013759',
+      textColor:    '#4b5563',
+      titleSize:    'text-4xl md:text-5xl',
     },
     layout:     {},
     visibility: { hideOnMobile: false, hideOnTablet: false, hideOnDesktop: false },
@@ -233,8 +240,9 @@ const LANDING_BLOCKS = [
     id:   'block-cards-benefits',
     type: 'CardGrid',
     content: {
-      heading:    'Why Choose NFED?',
-      subheading: 'Everything you need to take your startup from idea to market.',
+      heading:    'Why Choose Us',
+      subheading: 'Discover the exclusive benefits, technical facilities, and robust investment opportunities that make Navrachna Foundation the elite partner for modern startups.',
+      eyebrow:    'FOUNDATION ADVANTAGE',
       cards: [
         { icon: '💡', title: 'Expert Mentorship',   body: 'One-on-one guidance from 30+ industry veterans, IIT/IIM alumni, and successful entrepreneurs.' },
         { icon: '🔬', title: 'World-Class Labs',    body: 'Access to electronics, 3D printing, fabrication, and GPU compute labs.' },
@@ -246,12 +254,57 @@ const LANDING_BLOCKS = [
     },
     style: {
       bg:           '#f8fafc',
-      textColor:    '#1e293b',
+      textColor:    '#64748b',
       cardBg:       '#ffffff',
       accentColor:  '#fbbf24',
       headingColor: '#013759',
     },
     layout: { columns: { mobile: 1, tablet: 2, desktop: 3 } },
+    visibility: { hideOnMobile: false, hideOnTablet: false, hideOnDesktop: false },
+  },
+
+  // 8b. E-Cell ITSEC Initiative
+  {
+    id:   'block-ecell-initiative',
+    type: 'ECellInitiative',
+    content: {
+      heading:     'E-Cell I.T.S Engineering College',
+      eyebrow:     'Initiative by Navrachna',
+      subheading:  'An active student-run entrepreneurship cell powered, mentored, and supported by the Navrachna Foundation.',
+      stats: [
+        { value: '200+', label: 'Active Student Entrepreneurs' },
+        { value: '10+',  label: 'Navrachna-Backed Ventures' },
+        { value: '25+',  label: 'Ecosystem & Funding Partners' },
+        { value: '100%', label: 'Hands-on Incubation Support' },
+      ],
+      supportCards: [
+        { title: 'Startup Incubation Programs', desc: 'Navrachna provides workspace, cloud credits, and government registration handholding to E-Cell members.', icon: '🚀' },
+        { title: 'Co-Organized Workshops', desc: 'Jointly structured bootcamps on product building, IP filing, and commercial pitch preparation.', icon: '🛠️' },
+        { title: '1-to-1 Mentor Connections', desc: 'Linking student innovators directly with industry veterans, angel investors, and seasoned academic advisors.', icon: '🤝' },
+        { title: 'Ecosystem & Corporate Visits', desc: 'Navrachna facilitates and funds student exposure trips to corporate innovation centers and technology hubs.', icon: '🏢' },
+        { title: 'Alumni & Funding Mixers', desc: 'Organizing exclusive networking sessions connecting promising student projects with early-stage venture funding.', icon: '🌐' },
+      ],
+      techtrixTitle:      'TECHTRIX 2026',
+      techtrixSubtitle:   'The Ultimate Innovation & Tech Challenge Returns!',
+      techtrixDesc:       'Co-organized and hosted by Navrachna Foundation & E-Cell, TECHTRIX 2026 returns with cutting-edge engineering tracks, enhanced prize pools, and direct path to incubation funding.',
+      techtrixStats: [
+        { label: 'Date', value: 'October 2026' },
+        { label: 'Venue', value: 'I.T.S Engg. College' },
+        { label: 'Organizers', value: 'Navrachna & E-Cell' },
+      ],
+      techtrixCategories: [
+        'Junior Ideathon', 'Project Exhibition', 'Hack the Issue', 'Business Plan Meet',
+        'Crack-o-Code', 'Hack The Box', 'Drone Race', 'Robo Race & War',
+        'LAN Gaming', 'Robo Football', 'Quick Challenge'
+      ],
+    },
+    style: {
+      bg:          '#f8fafc',
+      textColor:   '#64748b',
+      titleColor:  '#013759',
+      accentColor: '#074887',
+    },
+    layout:     {},
     visibility: { hideOnMobile: false, hideOnTablet: false, hideOnDesktop: false },
   },
 
