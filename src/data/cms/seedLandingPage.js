@@ -343,26 +343,6 @@ const LANDING_BLOCKS = [
     layout:     {},
     visibility: { hideOnMobile: false, hideOnTablet: false, hideOnDesktop: false },
   },
-
-  // 11. Call to Action
-  {
-    id:   'block-cta-1',
-    type: 'CallToAction',
-    content: {
-      heading:  'Ready to Build Your Startup?',
-      body:     'Join the NFED incubation programme and turn your innovative idea into a sustainable business.',
-      btnLabel: 'Apply for Incubation',
-      btnHref:  '/contact',
-    },
-    style: {
-      bg:           '#013759',
-      textColor:    '#ffffff',
-      btnBg:        '#fbbf24',
-      btnTextColor: '#013759',
-    },
-    layout:     {},
-    visibility: { hideOnMobile: false, hideOnTablet: false, hideOnDesktop: false },
-  },
 ]
 
 export async function seedLandingPage() {
