@@ -1,0 +1,253 @@
+{
+  "hero": {
+    "title": "Where Ideas, Take Flight",
+    "subtitle": "Navrachna Foundation for Entrepreneurship Development",
+    "description": "A premium co-working and incubation experience \ndesigned for clarity, momentum, and exceptional founder conversion."
+  },
+  "updates": [
+    "Applications are now open for the Annual Logo Design Competition. Submit your creative portfolios today.",
+    "Join the upcoming MSME Hackathons to solve real-world industry challenges and secure seed funding.",
+    "Discover funding and incubation opportunities through our specialized Startin-Up and NewGen-IEDC programs.",
+    "Access our state-of-the-art Fabrication Lab and High-End Compute resources to accelerate your prototyping."
+  ],
+  "stats": [
+    {
+      "iconKey": "fabrication",
+      "stat": "20+",
+      "badge": "Fabrication Lab",
+      "desc": "Concurrent Prototyping Workstations"
+    },
+    {
+      "iconKey": "3d_printers",
+      "stat": "48",
+      "badge": "3D Printers",
+      "desc": "Types of Supported Resins & Materials"
+    },
+    {
+      "iconKey": "compute",
+      "stat": "128GB",
+      "badge": "Compute Systems",
+      "desc": "High-End AI & Simulation Workstations"
+    },
+    {
+      "iconKey": "co_working",
+      "stat": "23",
+      "badge": "Co-Working Area",
+      "desc": "Seating Capacity with Plug 'n' Play"
+    }
+  ],
+  "nfedSection": {
+    "title": "Navrachna Foundation for\nEntrepreneurship\nDevelopment",
+    "paragraphs": [
+      "Navrachna Foundation for Entrepreneurship Development (NFED) is an autonomous, sector-agnostic startup incubator and premium co-working ecosystem registered under the societies registration framework to empower founders with early-stage velocity and institutional support.",
+      "NFED nurtures innovation-driven startups by providing seamless physical incubation infrastructure, high-fidelity mentoring channels, deep access to institutional and private seed funds, fabrication assets, and business matchmaking. Operated under the aegis of I.T.S. Engineering College, Greater Noida, NFED serves as the strategic regional node for transforming research and raw academic ideas into high-conversion, venture-backed startups."
+    ]
+  },
+  "valuesStrip": [
+    { "value": "96+", "label": "Projects Developed" },
+    { "value": "₹2.87 Cr", "label": "DST Grant Received" },
+    { "value": "₹1.59 Cr", "label": "MSME Grant Received" },
+    { "value": "66+", "label": "Patents Filed" }
+  ],
+  "programs": [
+    {
+      "title": "Startin-Up",
+      "description": "Discover funding and incubation opportunities through our specialized Startin-Up program, designed to assist and enable young entrepreneurs to initiate commercial exploitation of their technologies.",
+      "link": "#"
+    },
+    {
+      "title": "NewGen-IEDC",
+      "description": "The NewGen IEDC program helps students develop entrepreneurial skills, test startup ideas, and connect with investors. We provide a dynamic and collaborative workspace that empowers you.",
+      "link": "#"
+    },
+    {
+      "title": "MSME-BI",
+      "description": "Participate in MSME Hackathons to solve real-world industry challenges and secure seed funding. A direct approach towards solving your startup problems with 1 to 1 mentorship.",
+      "link": "#"
+    }
+  ],
+  "benefitsCol1": [
+    {
+      "title": "Direct Mentorship",
+      "iconKey": "mentorship",
+      "desc": "A more direct approach towards solving your startup problems. We offer 1 to 1 mentorship for your entrepreneurial journey."
+    },
+    {
+      "title": "Lab Support",
+      "iconKey": "lab",
+      "desc": "Providing a comprehensive lab support to your startup's prototyping needs, with a variety of tools and machineries."
+    },
+    {
+      "title": "Free Unlimited High-Speed Internet",
+      "iconKey": "wifi",
+      "desc": "Stay connected with our reliable and fast internet connection"
+    }
+  ],
+  "benefitsCol2": [
+    {
+      "title": "Rich Ecosystem",
+      "iconKey": "ecosystem",
+      "desc": "At the heart of our rich ecosystem lies a culture of inclusivity and shared success helping founders accelerate their journey with funding guidance, market connections, and continuous capacity building."
+    },
+    {
+      "title": "Strategic Location",
+      "iconKey": "location",
+      "desc": "Provide easy accessibility, connectivity, and a thriving business environment for entrepreneurs and startups."
+    },
+    {
+      "title": "Access to Funding & Investment Opportunities",
+      "iconKey": "funding",
+      "desc": "We connect you with various government grants equity and non-equity based funding potential investors, venture capitalists, and funding opportunities."
+    }
+  ],
+  "benefitsCol3": [
+    {
+      "title": "Flexible Solutions",
+      "iconKey": "flexible",
+      "desc": "Your business requirements, ensuring productivity and growth."
+    },
+    {
+      "title": "Most Affordable",
+      "iconKey": "affordable",
+      "desc": "We offer cost-effective workspace solutions without compromising on quality, ensuring that startups and entrepreneurs"
+    },
+    {
+      "title": "IT Support",
+      "iconKey": "it_support",
+      "desc": "If you’re looking for additional IT services tailored to your specific needs, we specialize in comprehensive IT solutions, ensuring that your business runs smoothly and securely. Learn more about our services here."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "What is Navrachna Foundation for Entrepreneurship Development?",
+      "answer": "Navrachna Foundation for Entrepreneurship Development is a subsidiary of I.T.S. Engineering College that supports young entrepreneurs in commercializing their technologies and launching startups."
+    },
+    {
+      "question": "Who can benefit from the foundation?",
+      "answer": "Students, faculty, and staff looking to develop their entrepreneurial skills, test startup ideas, and connect with investors can benefit from the foundation."
+    },
+    {
+      "question": "What resources does the foundation provide?",
+      "answer": "The foundation offers mentorship, funding opportunities, networking support, and business development resources to help startups grow."
+    },
+    {
+      "question": "How does the foundation help bridge the gap between inventors and venture capitalists?",
+      "answer": "It connects innovators with industry experts, investors, and mentors to transform ideas into viable businesses."
+    }
+  ],
+  "ourSpacesHeader": {
+    "description": "We provide dynamic workspaces, expert mentorship, networking opportunities, and business support services to help startups and entrepreneurs thrive."
+  },
+  "ourSpaces": [
+    {
+      "title": "Acceleration Programs",
+      "description": "Access tailored incubation modules, prototype funding, venture mentorship, and investor matchmaking pipelines to scale your early-stage startup.",
+      "image": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      "title": "Mentorship & Expert Guidance",
+      "description": "Work shoulder-to-shoulder with veteran entrepreneurs, technology experts, and IP advisors to accelerate product-market fit.",
+      "image": "https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      "title": "Co-working Space & Infrastructure",
+      "description": "Scale in our premium co-working facility, featuring plug-and-play seating, smart meeting rooms, high-end compute systems, and prototyping labs.",
+      "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      "title": "Fabrication & Tool Room",
+      "description": "Build deep prototypes using precision machinery, including CNC CO2 Laser Cutters, Plasma Cutters, and advanced manual prototyping tools.",
+      "image": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      "title": "3D Printing Facility",
+      "description": "Bring design concepts to life with professional FDM, SLA, and resin 3D printers, supporting over 40 types of specialized engineering filaments.",
+      "image": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      "title": "AI & Simulations Grid",
+      "description": "Leverage state-of-the-art compute hardware on a flexible compute-rental basis for intensive AI model training and engineering simulations.",
+      "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      "title": "Premium Meeting Rooms",
+      "description": "Host presentations, pitch panels, and board reviews in modern rooms featuring integrated AV gear, screen casting, and high-speed Wi-Fi.",
+      "image": "https://images.unsplash.com/photo-1431540015161-0bf868a2d407?auto=format&fit=crop&w=800&q=80"
+    }
+  ],
+  "schemesHeader": {
+    "description": "At Navrachna Foundation (NFED), we coordinate flagship incubation schemes that nurture entrepreneurs across every stage of their startup journey. These structured programs combine equity-free prototype grants, monthly fellowship stipends, intensive commercial scaling pipelines, and institutional resources to ensure early-stage ventures gain the right strategic assets to succeed."
+  },
+  "schemes": [
+    {
+      "code": "Startin-Up",
+      "subCode": "Commercial exploitation",
+      "title": "Startin-Up",
+      "description": "Discover funding and incubation opportunities through our specialized Startin-Up program, designed to assist and enable young entrepreneurs to initiate commercial exploitation of their technologies.",
+      "gradient": "from-indigo-950 via-purple-900 to-fuchsia-800"
+    },
+    {
+      "code": "NewGen IEDC",
+      "subCode": "Entrepreneurial skills",
+      "title": "NewGen-IEDC",
+      "description": "The NewGen IEDC program helps students develop entrepreneurial skills, test startup ideas, and connect with investors. We provide a dynamic and collaborative workspace that empowers you.",
+      "gradient": "from-emerald-950 via-green-800 to-yellow-600"
+    },
+    {
+      "code": "MSME-BI",
+      "subCode": "Hackathon & Mentorship",
+      "title": "MSME-BI",
+      "description": "Participate in MSME Hackathons to solve real-world industry challenges and secure seed funding. A direct approach towards solving your startup problems with 1 to 1 mentorship.",
+      "gradient": "from-rose-950 via-red-800 to-orange-600"
+    }
+  ],
+  "facilitiesHeader": {
+    "description": "We provide a well-equipped, elite workspace designed to boost productivity and rapid prototyping. Select a workspace tab below to view our advanced specifications."
+  },
+  "facilitiesFeatures": [
+    { "title": "High-Speed Internet", "desc": "Reliable and fast connectivity for uninterrupted work." },
+    { "title": "Ergonomic Workspaces", "desc": "Comfortable seating and well-designed desks for maximum efficiency." },
+    { "title": "Fully Equipped Meeting Rooms", "desc": "Professional spaces with AV support for seamless discussions and presentations." },
+    { "title": "24/7 Access", "desc": "Work at your convenience with round-the-clock facility access." },
+    { "title": "Security & Surveillance", "desc": "Safe and secure environment with CCTV monitoring." },
+    { "title": "On-Site Refreshments", "desc": "Cafeteria and pantry services to keep you energized." },
+    { "title": "Printing & Office Supplies", "desc": "Essential business tools readily available." }
+  ],
+  "facilitiesSpecs": [
+    {
+      "title": "Fabrication Lab",
+      "specs": [
+        "20 Workstations",
+        "CNC Plasma Tooling",
+        "Non-Metallic CNC Laser",
+        "Manual Power Tools"
+      ]
+    },
+    {
+      "title": "3D Printers",
+      "specs": [
+        "02 FDM Printers (PLA/ABS/TPU)",
+        "FormLabs SLA Printer (Form 3B+)",
+        "48 Advanced Resins Supported",
+        "Medical & Rigid Engineering Grade"
+      ]
+    },
+    {
+      "title": "High End Compute Systems",
+      "specs": [
+        "02 Simulation Nodes (RTX 3060)",
+        "01 AI Superstation (RTX 3090 x2)",
+        "Intel i9-12th Gen Computing",
+        "128GB High-Speed DDR5 RAM"
+      ]
+    },
+    {
+      "title": "Co-Working Area",
+      "specs": [
+        "23 Premium Co-Working Seats",
+        "06 Plug-n-Play ready Nodes",
+        "High-Speed Gigabit Internet"
+      ]
+    }
+  ]
+}

@@ -1,10 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import heroImage from '../assets/co-working-area-in-greater-noida-12-scaled.webp'
 import programsBg from '../assets/navrachna_images/co-working-area-in-greater-noida-13-scaled.webp'
-import spaceImg1 from '../assets/navrachna_images/image-RHC5QKD-e1734675533295.jpg'
-import spaceImg2 from '../assets/navrachna_images/image-JJL9YTX-e1734675480258.jpg'
-import spaceImg3 from '../assets/navrachna_images/image-KJ66VQB-e1734675565430.jpg'
-import spaceImg4 from '../assets/navrachna_images/image-A2SAUCS-e1734675593163.jpg'
 import { HeaderV1 } from '../components/HeaderV1'
 import { FooterV1 } from '../components/FooterV1'
 
@@ -18,249 +14,141 @@ import client7 from '../assets/navrachna_images/VerdantLogo-1.png'
 import client8 from '../assets/navrachna_images/Weaclim-1.png'
 import client9 from '../assets/navrachna_images/indus-1.jpg'
 import client10 from '../assets/navrachna_images/intelliginetia-1.jpg'
+import { useCms } from '../hooks/useCms'
 
 const CLIENTS = [client1, client2, client3, client4, client5, client6, client7, client8, client9, client10];
 
-const UPDATES = [
-  "Applications are now open for the Annual Logo Design Competition. Submit your creative portfolios today.",
-  "Join the upcoming MSME Hackathons to solve real-world industry challenges and secure seed funding.",
-  "Discover funding and incubation opportunities through our specialized Startin-Up and NewGen-IEDC programs.",
-  "Access our state-of-the-art Fabrication Lab and High-End Compute resources to accelerate your prototyping."
-];
+const STAT_ICONS = {
+  fabrication: (
+    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#013759]">
+      <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+    </svg>
+  ),
+  "3d_printers": (
+    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#013759]">
+      <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+      <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+      <line x1="12" y1="22.08" x2="12" y2="12" />
+    </svg>
+  ),
+  compute: (
+    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#013759]">
+      <rect x="4" y="4" width="16" height="16" rx="2" ry="2" />
+      <rect x="9" y="9" width="6" height="6" />
+      <line x1="9" y1="1" x2="9" y2="4" />
+      <line x1="15" y1="1" x2="15" y2="4" />
+      <line x1="9" y1="20" x2="9" y2="23" />
+      <line x1="15" y1="20" x2="15" y2="23" />
+      <line x1="20" y1="9" x2="23" y2="9" />
+      <line x1="20" y1="14" x2="23" y2="14" />
+      <line x1="1" y1="9" x2="4" y2="9" />
+      <line x1="1" y1="14" x2="4" y2="14" />
+    </svg>
+  ),
+  co_working: (
+    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#013759]">
+      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+      <circle cx="9" cy="7" r="4" />
+      <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+    </svg>
+  )
+};
 
-const STATS = [
-  {
-    icon: <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#013759]"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>,
-    stat: "20+",
-    badge: "Fabrication Lab",
-    desc: "Concurrent Prototyping Workstations"
-  },
-  {
-    icon: <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#013759]"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>,
-    stat: "48",
-    badge: "3D Printers",
-    desc: "Types of Supported Resins & Materials"
-  },
-  {
-    icon: <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#013759]"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>,
-    stat: "128GB",
-    badge: "Compute Systems",
-    desc: "High-End AI & Simulation Workstations"
-  },
-  {
-    icon: <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#013759]"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>,
-    stat: "23",
-    badge: "Co-Working Area",
-    desc: "Seating Capacity with Plug 'n' Play"
-  }
-];
-
-const PROGRAMS = [
-  {
-    title: "Startin-Up",
-    description: "Discover funding and incubation opportunities through our specialized Startin-Up program, designed to assist and enable young entrepreneurs to initiate commercial exploitation of their technologies.",
-    link: "#"
-  },
-  {
-    title: "NewGen-IEDC",
-    description: "The NewGen IEDC program helps students develop entrepreneurial skills, test startup ideas, and connect with investors. We provide a dynamic and collaborative workspace that empowers you.",
-    link: "#"
-  },
-  {
-    title: "MSME-BI",
-    description: "Participate in MSME Hackathons to solve real-world industry challenges and secure seed funding. A direct approach towards solving your startup problems with 1 to 1 mentorship.",
-    link: "#"
-  }
-];
-
-const BENEFITS_COL1 = [
-  {
-    title: "Direct Mentorship",
-    icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#fbbf24]"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.9 1.2 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>,
-    desc: "A more direct approach towards solving your startup problems. We offer 1 to 1 mentorship for your entrepreneurial journey."
-  },
-  {
-    title: "Lab Support",
-    icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#fbbf24]"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>,
-    desc: "Providing a comprehensive lab support to your startup's prototyping needs, with a variety of tools and machineries."
-  },
-  {
-    title: "Free Unlimited High-Speed Internet",
-    icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#fbbf24]"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>,
-    desc: "Stay connected with our reliable and fast internet connection"
-  }
-];
-
-const BENEFITS_COL2 = [
-  {
-    title: "Rich Ecosystem",
-    icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#fbbf24]"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>,
-    desc: "At the heart of our rich ecosystem lies a culture of inclusivity and shared success helping founders accelerate their journey with funding guidance, market connections, and continuous capacity building."
-  },
-  {
-    title: "Strategic Location",
-    icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#fbbf24]"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>,
-    desc: "Provide easy accessibility, connectivity, and a thriving business environment for entrepreneurs and startups."
-  },
-  {
-    title: "Access to Funding & Investment Opportunities",
-    icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#fbbf24]"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>,
-    desc: "We connect you with various government grants equity and non-equity based funding potential investors, venture capitalists, and funding opportunities."
-  }
-];
-
-const BENEFITS_COL3 = [
-  {
-    title: "Flexible Solutions",
-    icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#fbbf24]"><path d="M21.21 15.89A10 10 0 1 1 8 2.83M22 12A10 10 0 0 0 12 2v10z"/></svg>,
-    desc: "Your business requirements, ensuring productivity and growth."
-  },
-  {
-    title: "Most Affordable",
-    icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#fbbf24]"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>,
-    desc: "We offer cost-effective workspace solutions without compromising on quality, ensuring that startups and entrepreneurs"
-  },
-  {
-    title: "IT Support",
-    icon: <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#fbbf24]"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>,
-    desc: "If you’re looking for additional IT services tailored to your specific needs, we specialize in comprehensive IT solutions, ensuring that your business runs smoothly and securely. Learn more about our services here."
-  }
-];
-
-const FAQS = [
-  {
-    question: "What is Navrachna Foundation for Entrepreneurship Development?",
-    answer: "Navrachna Foundation for Entrepreneurship Development is a subsidiary of I.T.S. Engineering College that supports young entrepreneurs in commercializing their technologies and launching startups."
-  },
-  {
-    question: "Who can benefit from the foundation?",
-    answer: "Students, faculty, and staff looking to develop their entrepreneurial skills, test startup ideas, and connect with investors can benefit from the foundation."
-  },
-  {
-    question: "What resources does the foundation provide?",
-    answer: "The foundation offers mentorship, funding opportunities, networking support, and business development resources to help startups grow."
-  },
-  {
-    question: "How does the foundation help bridge the gap between inventors and venture capitalists?",
-    answer: "It connects innovators with industry experts, investors, and mentors to transform ideas into viable businesses."
-  }
-];
-
-const OUR_SPACES = [
-  {
-    title: "Acceleration Programs",
-    description: "Access tailored incubation modules, prototype funding, venture mentorship, and investor matchmaking pipelines to scale your early-stage startup.",
-    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80"
-  },
-  {
-    title: "Mentorship & Expert Guidance",
-    description: "Work shoulder-to-shoulder with veteran entrepreneurs, technology experts, and IP advisors to accelerate product-market fit.",
-    image: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=800&q=80"
-  },
-  {
-    title: "Co-working Space & Infrastructure",
-    description: "Scale in our premium co-working facility, featuring plug-and-play seating, smart meeting rooms, high-end compute systems, and prototyping labs.",
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80"
-  },
-  {
-    title: "Fabrication & Tool Room",
-    description: "Build deep prototypes using precision machinery, including CNC CO2 Laser Cutters, Plasma Cutters, and advanced manual prototyping tools.",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80"
-  },
-  {
-    title: "3D Printing Facility",
-    description: "Bring design concepts to life with professional FDM, SLA, and resin 3D printers, supporting over 40 types of specialized engineering filaments.",
-    image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80"
-  },
-  {
-    title: "AI & Simulations Grid",
-    description: "Leverage state-of-the-art compute hardware on a flexible compute-rental basis for intensive AI model training and engineering simulations.",
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80"
-  },
-  {
-    title: "Premium Meeting Rooms",
-    description: "Host presentations, pitch panels, and board reviews in modern rooms featuring integrated AV gear, screen casting, and high-speed Wi-Fi.",
-    image: "https://images.unsplash.com/photo-1431540015161-0bf868a2d407?auto=format&fit=crop&w=800&q=80"
-  }
-];
-
-const FACILITIES_FEATURES = [
-  { title: "High-Speed Internet", desc: "Reliable and fast connectivity for uninterrupted work." },
-  { title: "Ergonomic Workspaces", desc: "Comfortable seating and well-designed desks for maximum efficiency." },
-  { title: "Fully Equipped Meeting Rooms", desc: "Professional spaces with AV support for seamless discussions and presentations." },
-  { title: "24/7 Access", desc: "Work at your convenience with round-the-clock facility access." },
-  { title: "Security & Surveillance", desc: "Safe and secure environment with CCTV monitoring." },
-  { title: "On-Site Refreshments", desc: "Cafeteria and pantry services to keep you energized." },
-  { title: "Printing & Office Supplies", desc: "Essential business tools readily available." }
-];
-
-const FACILITIES_SPECS = [
-  {
-    title: "Fabrication Lab",
-    specs: [
-      "20 Workstations",
-      "CNC Plasma Tooling",
-      "Non-Metallic CNC Laser",
-      "Manual Power Tools"
-    ]
-  },
-  {
-    title: "3D Printers",
-    specs: [
-      "02 FDM Printers (PLA/ABS/TPU)",
-      "FormLabs SLA Printer (Form 3B+)",
-      "48 Advanced Resins Supported",
-      "Medical & Rigid Engineering Grade"
-    ]
-  },
-  {
-    title: "High End Compute Systems",
-    specs: [
-      "02 Simulation Nodes (RTX 3060)",
-      "01 AI Superstation (RTX 3090 x2)",
-      "Intel i9-12th Gen Computing",
-      "128GB High-Speed DDR5 RAM"
-    ]
-  },
-  {
-    title: "Co-Working Area",
-    specs: [
-      "23 Premium Co-Working Seats",
-      "06 Plug-n-Play ready Nodes",
-      "High-Speed Gigabit Internet"
-    ]
-  }
-];
-
-const SCHEMES = [
-  {
-    code: "Startin-Up",
-    subCode: "Commercial exploitation",
-    title: "Startin-Up",
-    description: "Discover funding and incubation opportunities through our specialized Startin-Up program, designed to assist and enable young entrepreneurs to initiate commercial exploitation of their technologies.",
-    gradient: "from-indigo-950 via-purple-900 to-fuchsia-800"
-  },
-  {
-    code: "NewGen IEDC",
-    subCode: "Entrepreneurial skills",
-    title: "NewGen-IEDC",
-    description: "The NewGen IEDC program helps students develop entrepreneurial skills, test startup ideas, and connect with investors. We provide a dynamic and collaborative workspace that empowers you.",
-    gradient: "from-emerald-950 via-green-800 to-yellow-600"
-  },
-  {
-    code: "MSME-BI",
-    subCode: "Hackathon & Mentorship",
-    title: "MSME-BI",
-    description: "Participate in MSME Hackathons to solve real-world industry challenges and secure seed funding. A direct approach towards solving your startup problems with 1 to 1 mentorship.",
-    gradient: "from-rose-950 via-red-800 to-orange-600"
-  }
-];
+const BENEFIT_ICONS = {
+  mentorship: (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#fbbf24]">
+      <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.9 1.2 1.5 1.5 2.5" />
+      <path d="M9 18h6" />
+      <path d="M10 22h4" />
+    </svg>
+  ),
+  lab: (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#fbbf24]">
+      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+      <circle cx="9" cy="7" r="4" />
+      <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+    </svg>
+  ),
+  wifi: (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#fbbf24]">
+      <path d="M5 12.55a11 11 0 0 1 14.08 0" />
+      <path d="M1.42 9a16 16 0 0 1 21.16 0" />
+      <path d="M8.53 16.11a6 6 0 0 1 6.95 0" />
+      <line x1="12" y1="20" x2="12.01" y2="20" />
+    </svg>
+  ),
+  ecosystem: (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#fbbf24]">
+      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+      <circle cx="9" cy="7" r="4" />
+      <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+    </svg>
+  ),
+  location: (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#fbbf24]">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+      <circle cx="12" cy="10" r="3" />
+    </svg>
+  ),
+  funding: (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#fbbf24]">
+      <line x1="12" y1="1" x2="12" y2="23" />
+      <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+    </svg>
+  ),
+  flexible: (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#fbbf24]">
+      <path d="M21.21 15.89A10 10 0 1 1 8 2.83M22 12A10 10 0 0 0 12 2v10z" />
+    </svg>
+  ),
+  affordable: (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#fbbf24]">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+      <polyline points="14 2 14 8 20 8" />
+      <line x1="16" y1="13" x2="8" y2="13" />
+      <line x1="16" y1="17" x2="8" y2="17" />
+      <polyline points="10 9 9 9 8 9" />
+    </svg>
+  ),
+  it_support: (
+    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#fbbf24]">
+      <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+    </svg>
+  )
+};
 
 export function LandingPage() {
+  const { data: landingData, loading } = useCms('landing');
+
   const [currentUpdate, setCurrentUpdate] = useState(0);
   const [openFaq, setOpenFaq] = useState(null);
   const [activeFacility, setActiveFacility] = useState(0);
   const scrollRef = useRef(null);
+
+  const UPDATES = landingData?.updates || [];
+  const STATS = (landingData?.stats || []).map(s => ({
+    ...s,
+    icon: STAT_ICONS[s.iconKey]
+  }));
+  const PROGRAMS = landingData?.programs || [];
+  const BENEFITS_COL1 = (landingData?.benefitsCol1 || []).map(b => ({
+    ...b,
+    icon: BENEFIT_ICONS[b.iconKey]
+  }));
+  const BENEFITS_COL2 = (landingData?.benefitsCol2 || []).map(b => ({
+    ...b,
+    icon: BENEFIT_ICONS[b.iconKey]
+  }));
+  const BENEFITS_COL3 = (landingData?.benefitsCol3 || []).map(b => ({
+    ...b,
+    icon: BENEFIT_ICONS[b.iconKey]
+  }));
+  const FAQS = landingData?.faqs || [];
+  const OUR_SPACES = landingData?.ourSpaces || [];
+  const FACILITIES_FEATURES = landingData?.facilitiesFeatures || [];
+  const FACILITIES_SPECS = landingData?.facilitiesSpecs || [];
+  const SCHEMES = landingData?.schemes || [];
 
   const scroll = (direction) => {
     if (scrollRef.current) {
@@ -297,11 +185,20 @@ export function LandingPage() {
   }, []);
 
   useEffect(() => {
+    if (UPDATES.length === 0) return;
     const timer = setInterval(() => {
       setCurrentUpdate((prev) => (prev + 1) % UPDATES.length);
     }, 4000);
     return () => clearInterval(timer);
-  }, []);
+  }, [UPDATES.length]);
+
+  if (loading || !landingData) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[#070b15] text-white">
+        <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-sky-500"></div>
+      </div>
+    )
+  }
 
   return (
     <div className="relative min-h-screen w-full bg-[#111111]">
@@ -340,12 +237,13 @@ export function LandingPage() {
 
         <div className="relative z-10 flex max-w-4xl flex-col items-center px-4 text-center sm:px-6 lg:px-8">
           <h1 className="text-7xl mt-12 tracking-tighter text-white drop-shadow-lg">
-            <span className='font-serif text-6xl tracking-tighter'>Where Ideas, Take Flight</span></h1>
-          <p className="mt-6 max-w-2xl text-md text-white sm:text-md">
-            A premium co-working and incubation experience <br /> designed for clarity, momentum, and exceptional founder conversion.
+            <span className={`font-serif tracking-tighter ${landingData.hero.titleSize || 'text-6xl'}`}>{landingData.hero.title}</span>
+          </h1>
+          <p className={`mt-6 max-w-2xl text-white whitespace-pre-line ${landingData.hero.descSize || 'text-md sm:text-md'}`}>
+            {landingData.hero.description}
           </p>
           <span className="mb-2 mt-8 rounded-md border border-white/20 px-4 py-1.5 text-sm tracking-wider text-white backdrop-blur-md">
-            Navrachna Foundation for Entrepreneurship Development
+            {landingData.hero.subtitle}
           </span>
           
           <div className="mt-2 flex flex-col gap-4 sm:flex-row">
@@ -385,24 +283,19 @@ export function LandingPage() {
 
           {/* Right Column: Informational Content */}
           <div className="flex-1 flex flex-col items-start text-left">
-            <h2 className="mb-6 text-4xl md:text-5xl tracking-tight text-[#013759] leading-tight">
-              Navrachna Foundation for
-              Entrepreneurship 
-              Development
+            <h2 className={`mb-6 tracking-tight text-[#013759] leading-tight whitespace-pre-line ${landingData.nfedSection.titleSize || 'text-4xl md:text-5xl'}`}>
+              {landingData.nfedSection.title}
             </h2>
 
             <div className="text-gray-600 text-md font-normal leading-relaxed space-y-6 text-justify mb-8">
-              <p>
-                Navrachna Foundation for Entrepreneurship Development (NFED) is an autonomous, sector-agnostic startup incubator and premium co-working ecosystem registered under the societies registration framework to empower founders with early-stage velocity and institutional support.
-              </p>
-              <p>
-                NFED nurtures innovation-driven startups by providing seamless physical incubation infrastructure, high-fidelity mentoring channels, deep access to institutional and private seed funds, fabrication assets, and business matchmaking. Operated under the aegis of I.T.S. Engineering College, Greater Noida, NFED serves as the strategic regional node for transforming research and raw academic ideas into high-conversion, venture-backed startups.
-              </p>
+              {landingData.nfedSection.paragraphs.map((p, idx) => (
+                <p key={idx}>{p}</p>
+              ))}
             </div>
 
-            <button className="rounded-lg bg-black px-8 py-3.5 font-bold text-white shadow-lg hover:bg-[#074887] hover:shadow-2xl hover:-translate-y-0.5 transition-all duration-300">
+            <a href="/about" className="rounded-lg bg-black px-8 py-3.5 !text-white shadow-lg hover:bg-[#074887] hover:shadow-2xl hover:-translate-y-0.5 transition-all duration-300 inline-block">
               Read More
-            </button>
+            </a>
           </div>
         </div>
       </section>
@@ -411,26 +304,12 @@ export function LandingPage() {
       <section className="relative w-full bg-white py-10 border-y border-[#074887]/10">
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-[#074887]/10">
-            {/* Value 1 — PDF: 96+ Projects Developed */}
-            <div className="flex flex-col items-center justify-center p-2">
-              <span className="text-4xl md:text-5xl font-normal tracking-tight text-[#013759]">96+</span>
-              <span className="text-xs font-normal text-[#074887] uppercase tracking-wider mt-2">Projects Developed</span>
-            </div>
-            {/* Value 2 — PDF: ₹2.87 Cr DST Grant */}
-            <div className="flex flex-col items-center justify-center p-2 pt-6 md:pt-2">
-              <span className="text-4xl md:text-5xl font-normal tracking-tight text-[#013759]">₹2.87 Cr</span>
-              <span className="text-xs font-normal text-[#074887] uppercase tracking-wider mt-2">DST Grant Received</span>
-            </div>
-            {/* Value 3 — PDF: ₹1.59 Cr MSME Grant */}
-            <div className="flex flex-col items-center justify-center p-2 pt-6 md:pt-2">
-              <span className="text-4xl md:text-5xl font-normal tracking-tight text-[#013759]">₹1.59 Cr</span>
-              <span className="text-xs font-normal text-[#074887] uppercase tracking-wider mt-2">MSME Grant Received</span>
-            </div>
-            {/* Value 4 — PDF: 66+ Patents Filed */}
-            <div className="flex flex-col items-center justify-center p-2 pt-6 md:pt-2">
-              <span className="text-4xl md:text-5xl font-normal tracking-tight text-[#013759]">66+</span>
-              <span className="text-xs font-normal text-[#074887] uppercase tracking-wider mt-2">Patents Filed</span>
-            </div>
+            {landingData.valuesStrip.map((item, idx) => (
+              <div key={idx} className="flex flex-col items-center justify-center p-2 pt-6 md:pt-2 first:pt-2">
+                <span className="text-4xl md:text-5xl font-normal tracking-tight text-[#013759]">{item.value}</span>
+                <span className="text-xs font-normal text-[#074887] uppercase tracking-wider mt-2">{item.label}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -477,21 +356,18 @@ export function LandingPage() {
 
       {/* Social Sidebar */}
       <div className="fixed right-0 top-1/2 -translate-y-1/2 flex flex-col z-50 shadow-2xl hidden sm:flex border border-white/10 bg-black/40 backdrop-blur-md rounded-l-xl overflow-hidden">
-        <a href="#" className="p-3 text-[#fbbf24] hover:bg-white/20 transition-colors border-b border-white/10">
-           <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+        {/* Facebook */}
+        <a href="https://www.facebook.com/share/1EsxYHE9Rr/" target="_blank" rel="noreferrer" aria-label="Facebook" className="p-3 text-[#fbbf24] hover:bg-white/20 transition-colors border-b border-white/10">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
         </a>
-          <a href="#" className="p-3 text-[#fbbf24] hover:bg-white/20 transition-colors border-b border-white/10">
-             <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-          </a>
-          <a href="#" className="p-3 text-[#fbbf24] hover:bg-white/20 transition-colors border-b border-white/10">
-             <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-          </a>
-          <a href="#" className="p-3 text-[#fbbf24] hover:bg-white/20 transition-colors border-b border-white/10">
-             <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M4 4l11.73 16h5L9 4z"></path></svg>
-          </a>
-          <a href="#" className="p-3 text-[#fbbf24] hover:bg-white/20 transition-colors">
-             <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
-          </a>
+        {/* Instagram */}
+        <a href="https://www.instagram.com/itsec_nfed" target="_blank" rel="noreferrer" aria-label="Instagram" className="p-3 text-[#fbbf24] hover:bg-white/20 transition-colors border-b border-white/10">
+          <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+        </a>
+        {/* LinkedIn */}
+        <a href="https://www.linkedin.com/company/itsec-nfed/" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="p-3 text-[#fbbf24] hover:bg-white/20 transition-colors">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
+        </a>
       </div>
 
       {/* Our Spaces Section */}
@@ -505,7 +381,7 @@ export function LandingPage() {
               Our <span className="inline-block"><span className="text-[#10b981]">S</span><span className="text-[#ec4899]">p</span><span className="text-[#3b82f6]">a</span><span className="text-[#f59e0b]">c</span><span className="text-[#ef4444]">e</span><span className="text-[#8b5cf6]">s</span></span>
             </h2>
             <p className="mx-auto max-w-3xl text-gray-600 text-base md:text-lg leading-relaxed mb-8">
-              We provide dynamic workspaces, expert mentorship, networking opportunities, and business support services to help startups and entrepreneurs thrive.
+              {landingData.ourSpacesHeader.description}
             </p>
             {/* Scroll Navigation Controls */}
             <div className="flex justify-center gap-4">
@@ -604,7 +480,7 @@ export function LandingPage() {
               Explore Our <span className="inline-block"><span className="text-[#10b981]">F</span><span className="text-[#ec4899]">l</span><span className="text-[#3b82f6]">a</span><span className="text-[#f59e0b]">g</span><span className="text-[#ef4444]">s</span><span className="text-[#8b5cf6]">h</span><span className="text-[#06b6d4]">i</span><span className="text-[#3b82f6]">p</span></span> <br /> Schemes and Programmes
             </h2>
             <p className="text-gray-600 text-base md:text-md leading-relaxed text-justify mb-8 font-normal">
-              At Navrachna Foundation (NFED), we coordinate flagship incubation schemes that nurture entrepreneurs across every stage of their startup journey. These structured programs combine equity-free prototype grants, monthly fellowship stipends, intensive commercial scaling pipelines, and institutional resources to ensure early-stage ventures gain the right strategic assets to succeed.
+              {landingData.schemesHeader.description}
             </p>
             <button className="rounded-xl bg-black px-8 py-3.5 font-medium text-white shadow-lg hover:bg-gray-800 transition-all duration-300 active:scale-95 cursor-pointer">
               View all Program
@@ -690,7 +566,7 @@ export function LandingPage() {
                 Our <span className="inline-block"><span className="text-[#10b981]">F</span><span className="text-[#ec4899]">a</span><span className="text-[#3b82f6]">c</span><span className="text-[#f59e0b]">i</span><span className="text-[#ef4444]">l</span><span className="text-[#8b5cf6]">i</span><span className="text-[#06b6d4]">t</span><span className="text-[#3b82f6]">i</span><span className="text-[#ec4899]">e</span><span className="text-[#10b981]">s</span></span>
               </h2>
               <p className="text-gray-600 text-sm md:text-base leading-relaxed text-justify font-normal">
-                We provide a well-equipped, elite workspace designed to boost productivity and rapid prototyping. Select a workspace tab below to view our advanced specifications.
+                {landingData.facilitiesHeader.description}
               </p>
             </div>
           </div>
@@ -1009,7 +885,7 @@ export function LandingPage() {
             <span className="mb-4 inline-block whitespace-nowrap rounded-full bg-[#074887]/10 px-4 py-1.5 text-xs font-normal tracking-widest text-[#074887] uppercase">
               COMMON QUERIES
             </span>
-            <h2 className="mb-4 font-normal text-3xl md:text-5xl font-normal tracking-tight text-[#013759] sm:text-5xl">
+            <h2 className="mb-4 font-normal text-3xl md:text-5xl tracking-tight text-[#013759] sm:text-5xl">
               Frequently Asked <span className="inline-block"><span className="text-[#10b981]">Q</span><span className="text-[#ec4899]">u</span><span className="text-[#3b82f6]">e</span><span className="text-[#f59e0b]">s</span><span className="text-[#ef4444]">t</span><span className="text-[#8b5cf6]">i</span><span className="text-[#06b6d4]">o</span><span className="text-[#3b82f6]">n</span><span className="text-[#ec4899]">s</span></span>
             </h2>
             <p className="text-sm font-normal text-gray-500 max-w-2xl mx-auto">

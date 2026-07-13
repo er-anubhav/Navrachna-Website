@@ -1,0 +1,88 @@
+{
+  "hero": {
+    "title": "Our Team",
+    "description": "The advisors, engineers, and incubation experts behind the technology entrepreneurs of the Navrachna Foundation."
+  },
+  "members": [
+    {
+      "name": "Dr. S P Mishra",
+      "role": "Advisor, I.T.S Education Group",
+      "expertise": [
+        "Team Management",
+        "Researcher",
+        "Organizational Development",
+        "Entrepreneurship Development",
+        "Leadership"
+      ],
+      "tag": "Advisor",
+      "imageKey": "mishra"
+    },
+    {
+      "name": "Mr. Sudhanshu Ranjan",
+      "role": "Head of Incubation",
+      "expertise": [
+        "Startup Selection",
+        "Commercialization",
+        "Technology Transfer",
+        "Business Assessment",
+        "Market Survey",
+        "Event Management",
+        "Networking",
+        "Branding & Marketing",
+        "Financial & Budgeting"
+      ],
+      "tag": "Head of Incubation",
+      "imageKey": "sudhanshu"
+    },
+    {
+      "name": "Mr. Shashwat Panday",
+      "role": "Business Plan, Software Developer",
+      "expertise": [
+        "AI & ML Systems",
+        "AR and VR Environments",
+        "Deep Tech Prototyping",
+        "Product Survey",
+        "Market Survey"
+      ],
+      "tag": "Deep Tech",
+      "imageKey": "shashwat"
+    },
+    {
+      "name": "Mr. Shubham Kumar",
+      "role": "Assistant Operations Manager",
+      "expertise": [
+        "Financials & Budgeting",
+        "Electricals & IoT",
+        "Product Designing",
+        "Engineering Concepts",
+        "3D Modeling & Animation"
+      ],
+      "tag": "Operations Manager",
+      "imageKey": "shubham"
+    },
+    {
+      "name": "Md. Samiruddin Ansari",
+      "role": "Assistant Portfolio Manager",
+      "expertise": [
+        "Embedded Expert",
+        "Industrial IoT (IIoT)",
+        "Electrical & Electronics",
+        "PoC to Product Lifecycle",
+        "Project Management"
+      ],
+      "tag": "Portfolio Manager",
+      "imageKey": "samiruddin"
+    },
+    {
+      "name": "Ms. Alpana Chaudhary",
+      "role": "Office Executive",
+      "expertise": [
+        "Documentation & Compliance",
+        "Event Management",
+        "Program Moderator"
+      ],
+      "tag": "Executive Support",
+      "imageKey": "alpana"
+    }
+  ]
+}

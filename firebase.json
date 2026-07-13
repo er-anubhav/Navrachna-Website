@@ -1,0 +1,16 @@
+{
+  "auth": {
+    "providers": {
+      "googleSignIn": {
+        "oAuthBrandDisplayName": "Navrachna CMS",
+        "supportEmail": "er.tripathianubhav@gmail.com",
+        "authorizedRedirectUris": [
+          "https://navrachna-foundation-cms.firebaseapp.com/__/auth/handler"
+        ]
+      }
+    }
+  },
+  "firestore": {
+    "rules": "firestore.rules"
+  }
+}

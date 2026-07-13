@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&family=Sora:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 @import 'tailwindcss';
 
 :root {
-  font-family: 'Karla', sans-serif;
+  font-family: 'Inter', sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  color: #0d0d0d;
+  color: #2f261f;
   background:
     radial-gradient(circle at top left, rgba(255, 160, 72, 0.16), transparent 30%),
     radial-gradient(circle at top right, rgba(237, 193, 139, 0.22), transparent 24%),
@@ -23,8 +23,7 @@ html {
 body {
   margin: 0;
   min-width: 320px;
-  color: #0d0d0d;
-  font-family: 'Karla', sans-serif;
+  color: #2f261f;
 }
 
 a {
@@ -47,21 +46,10 @@ select {
   min-height: 100vh;
 }
 
-/* ── Typography: Sora for all headings, Karla for body ── */
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Sora', sans-serif;
-  letter-spacing: -0.03em;
-  line-height: 1.15;
-}
-
 .font-display {
-  font-family: 'Sora', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 700;
-  letter-spacing: -0.04em;
-}
-
-.font-body {
-  font-family: 'Karla', sans-serif;
+  letter-spacing: -0.06em;
 }
 
 .page-shell {
@@ -87,16 +75,23 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0.18em;
 }
 
-/* ── Marquee / Infinite Scroll Animation ── */
+/* Infinite Marquee Animation for Startup Logos */
 @keyframes marquee {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .animate-marquee-infinite {
+  display: flex;
+  width: max-content;
   animation: marquee 30s linear infinite;
 }
 
 .animate-marquee-infinite:hover {
   animation-play-state: paused;
 }
+

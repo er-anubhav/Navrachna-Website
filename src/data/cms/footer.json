@@ -1,0 +1,20 @@
+{
+  "brand": {
+    "title": "Navrachna Foundation",
+    "description": "The center provides a range of resources that empower students, faculty & staff to pursue entrepreneurial achievements."
+  },
+  "contact": {
+    "address": "Navrachna Foundation, Plot no. 46, Knowledge Park 3, Greater Noida",
+    "phone": "+91 9540527700",
+    "email": "head.nfed@its.edu.in"
+  },
+  "socials": {
+    "instagram": "https://www.instagram.com/itsec_nfed",
+    "facebook": "https://www.facebook.com/share/1EsxYHE9Rr/",
+    "linkedin": "https://www.linkedin.com/company/itsec-nfed/"
+  },
+  "bottomBar": {
+    "copyright": "© Copyright 2026. All Rights Reserved. Navrachna Foundation for Entrepreneurship Development",
+    "credits": "Crafted and engineered by Orbitron Labs LLP"
+  }
+}

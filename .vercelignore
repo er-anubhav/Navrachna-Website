@@ -4,3 +4,12 @@ dist
 .git
 *.deb
 google-chrome-stable_current_amd64.deb
+
+# Large media source folders (not needed for build)
+Newgen_Video's & Photo's.zip
+Newgen_Video's & Photo's/
+*.zip
+*.pdf
+image.png
+image copy.png
+image copy 2.png

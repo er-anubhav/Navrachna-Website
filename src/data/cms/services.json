@@ -1,0 +1,106 @@
+{
+  "hero": {
+    "title": "Prototyping Facility of Navrachna Foundation",
+    "description": "We provide a dynamic prototyping facility to help startups and entrepreneurs turn their ideas into working prototypes."
+  },
+  "tools": [
+    {
+      "name": "Digital Vernier Caliper & Toolset",
+      "description": "Precision measuring instrument for accurate dimensional analysis in prototyping and fabrication tasks.",
+      "category": "Measurement"
+    },
+    {
+      "name": "Handheld Soldering Iron (60W)",
+      "description": "High-wattage soldering station suitable for PCB assembly, component soldering, and electronic prototyping.",
+      "category": "Electronics"
+    },
+    {
+      "name": "3D Printer (FDM)",
+      "description": "Fused Deposition Modelling printer for rapid plastic prototyping, proof-of-concept models, and component manufacturing.",
+      "category": "3D Printing"
+    },
+    {
+      "name": "Digital Lux Meter",
+      "description": "Measures ambient light intensity with precision — essential for optical, environmental, and IoT project testing.",
+      "category": "Measurement"
+    },
+    {
+      "name": "Laser Distance Meter",
+      "description": "Non-contact laser-based distance measurement tool for architectural, structural, and design projects.",
+      "category": "Measurement"
+    },
+    {
+      "name": "Programmable Coil Winding Machine",
+      "description": "CNC-controlled machine for precision winding of inductors, transformers, and motor coils in custom quantities.",
+      "category": "Fabrication"
+    },
+    {
+      "name": "Desktop Drilling Machine",
+      "description": "Benchtop drill press for accurate hole placement in PCBs, enclosures, and mechanical prototyping assemblies.",
+      "category": "Fabrication"
+    },
+    {
+      "name": "Insulation Tester (Digital Meter)",
+      "description": "Evaluates electrical insulation resistance in cables, motors, and transformer windings for safety validation.",
+      "category": "Electronics"
+    },
+    {
+      "name": "Universal USB Programmer",
+      "description": "Multi-protocol chip programmer supporting a broad range of microcontrollers, EEPROMs, and flash memories.",
+      "category": "Electronics"
+    },
+    {
+      "name": "Oscilloscope (Digital Storage)",
+      "description": "100 MHz 4-channel DSO for real-time signal analysis, debugging embedded firmware, and circuit characterization.",
+      "category": "Electronics"
+    },
+    {
+      "name": "Function / Waveform Generator",
+      "description": "Arbitrary waveform generator covering sine, square, pulse, ramp and noise outputs up to 25 MHz dual channel.",
+      "category": "Electronics"
+    },
+    {
+      "name": "DC Regulated Power Supply (SMPS)",
+      "description": "0–30 V / 0–10 A single-output switched-mode power supply with CV/CC mode and dual LED meters.",
+      "category": "Power"
+    },
+    {
+      "name": "SMD Rework Station",
+      "description": "Combined hot-air gun (700 W, 100–450 °C) and electric soldering iron (40 W, 200–480 °C) for SMD component work.",
+      "category": "Electronics"
+    },
+    {
+      "name": "Digital Multimeter (Benchtop)",
+      "description": "4½-digit True-RMS bench multimeter measuring up to 1000 V DC/AC, 20 A, 20 MΩ resistance, capacitance, frequency, and diode test.",
+      "category": "Measurement"
+    }
+  ],
+  "facilitiesQuickLinks": [
+    { "label": "Electronics Labs", "href": "/facilities/electronics-labs", "desc": "Oscilloscopes, power supplies, SMD rework, and more." },
+    { "label": "High End Computers", "href": "/facilities/high-end-computers", "desc": "Intel i9, RTX 3090, 128 GB RAM workstations for CAD & simulation." },
+    { "label": "3D Printing", "href": "/facilities/3d-printing", "desc": "SLA and FDM printers for precision prototype manufacturing." },
+    { "label": "Fabrication Lab", "href": "/facilities/fabrication-lab", "desc": "CO₂ laser cutter, CNC plasma, vinyl cutter, and more." }
+  ],
+  "faqHeader": {
+    "title": "Everything You Need to Know About Our Spaces",
+    "description": "Find answers to common questions about the Navrachna Foundation for Entrepreneurship Development."
+  },
+  "faqs": [
+    {
+      "q": "What is Navrachna Foundation for Entrepreneurship Development?",
+      "a": "Navrachna Foundation for Entrepreneurship Development is a subsidiary of I.T.S. Engineering College that supports young entrepreneurs in commercializing their technologies and launching startups."
+    },
+    {
+      "q": "Who can benefit from the foundation?",
+      "a": "Students, faculty, and staff looking to develop their entrepreneurial skills, test startup ideas, and connect with investors can benefit from the foundation."
+    },
+    {
+      "q": "What resources does the foundation provide?",
+      "a": "The foundation offers mentorship, funding opportunities, networking support, and business development resources to help startups grow."
+    },
+    {
+      "q": "How does the foundation help bridge the gap between inventors and venture capitalists?",
+      "a": "It connects innovators with industry experts, investors, and mentors to transform ideas into viable businesses."
+    }
+  ]
+}

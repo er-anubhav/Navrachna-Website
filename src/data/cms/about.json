@@ -1,0 +1,83 @@
+{
+  "hero": {
+    "title": "About Us",
+    "eyebrow": "Navrachna Foundation",
+    "description": "A platform to assist and enable young entrepreneurs to initiate the commercial exploitation of technologies."
+  },
+  "whoWeAre": {
+    "eyebrow": "Who We Are",
+    "title": "Navrachna Foundation for Entrepreneurship Development",
+    "paragraphs": [
+      "Navrachna Foundation for Entrepreneurship Development, a subsidiary of \"I.T.S. Engineering College\", is a platform to assist and enable young entrepreneurs to initiate the commercial exploitation of technologies developed by them.",
+      "It also enables budding entrepreneurs to showcase and test their abilities to run a start-up business. The center provides a range of resources that empower students, faculty & staff to pursue entrepreneurial achievements to improve people's lives, drive the economy & help innovators bridge the gap between inventors and venture capitalists."
+    ]
+  },
+  "visionMission": {
+    "vision": {
+      "title": "Vision",
+      "description": "To create an innovative workspace that nurtures entrepreneurs, fosters creativity, and accelerates startup success."
+    },
+    "mission": {
+      "title": "Mission",
+      "description": "To provide a dynamic and collaborative workspace that empowers entrepreneurs with resources, mentorship, and networking opportunities."
+    }
+  },
+  "leadership": [
+    {
+      "photoKey": "chairman",
+      "role": "Chairman",
+      "title": "Chairman's Message",
+      "message": "I am delighted to know that I.T.S Engineering College, Greater Noida has come up with its own startup policy. I am happy that institute has formulated a start-up policy that aims to propel the engineering and management students of I.T.S Engineering College, to contributes to the nation's socio-economic progress through promotion of technology-driven students start-up. Students have lot of potential to do wonders and have big dreams while studying in the campus. In fact many students wish to start his own venture and looking himself as boss but they fails due to lack of pre-entrepreneurial knowledge, guidance and eco-systems. I hope successful implementation of this startup policy will create many world renowned CEOs from I.T.S Engineering College Campus."
+    },
+    {
+      "photoKey": "vice_chairman",
+      "role": "Vice Chairman",
+      "title": "Vice Chairman's Message",
+      "message": "I am delighted to know that I.T.S Engineering College, Greater Noida has come up with its own startup policy. I am happy that institute has formulated a start-up policy that aims to propel the engineering and management students of I.T.S Engineering College, to contributes to the nation's socio-economic progress through promotion of technology-driven students start-up. Students have lot of potential to do wonders and have big dreams while studying in the campus. In fact many students wish to start his own venture and looking himself as boss but they fails due to lack of pre-entrepreneurial knowledge, guidance and eco-systems. I hope successful implementation of this startup policy will create many world renowned CEOs from I.T.S Engineering College Campus."
+    },
+    {
+      "photoKey": "director",
+      "role": "Director",
+      "title": "Director's Message",
+      "message": "I am delighted to know that I.T.S Engineering College, Greater Noida has come up with its own startup policy. I am happy that institute has formulated a start-up policy that aims to propel the engineering and management students of I.T.S Engineering College, to contributes to the nation's socio-economic progress through promotion of technology-driven students start-up. Students have lot of potential to do wonders and have big dreams while studying in the campus. In fact many students wish to start his own venture and looking himself as boss but they fails due to lack of pre-entrepreneurial knowledge, guidance and eco-systems. I hope successful implementation of this startup policy will create many world renowned CEOs from I.T.S Engineering College Campus."
+    },
+    {
+      "photoKey": "advisor",
+      "role": "Advisor",
+      "title": "Advisor's Message",
+      "message": "I am delighted to know that I.T.S Engineering College, Greater Noida has come up with its own startup policy. I am happy that institute has formulated a start-up policy that aims to propel the engineering and management students of I.T.S Engineering College, to contributes to the nation's socio-economic progress through promotion of technology-driven students start-up. Students have lot of potential to do wonders and have big dreams while studying in the campus. In fact many students wish to start his own venture and looking himself as boss but they fails due to lack of pre-entrepreneurial knowledge, guidance and eco-systems. I hope successful implementation of this startup policy will create many world renowned CEOs from I.T.S Engineering College Campus."
+    }
+  ],
+  "offers": [
+    {
+      "iconKey": "coworking",
+      "title": "Co-working Spaces",
+      "desc": "Premium co-working hot desks and private offices designed for high-focus, collaborative startup work."
+    },
+    {
+      "iconKey": "mentorship",
+      "title": "Mentorship Programs",
+      "desc": "Dedicated domain mentors — seasoned industry professionals and academic experts guiding your startup journey."
+    },
+    {
+      "iconKey": "labs",
+      "title": "Fabrication & Electronics Labs",
+      "desc": "Hands-on access to electronics testing labs, 3D printers, fabrication workspaces, and high-end computing systems."
+    },
+    {
+      "iconKey": "funding",
+      "title": "Seed Funding Access",
+      "desc": "Financial support through government schemes — DST NewGen IEDC grants, MSME-BI, and StartinUP UP state incentives."
+    },
+    {
+      "iconKey": "networking",
+      "title": "Networking Opportunities",
+      "desc": "Bridge the gap between innovators and venture capitalists through structured networking events and investor connects."
+    },
+    {
+      "iconKey": "ip",
+      "title": "IP & Patent Support",
+      "desc": "Guidance and funding for domestic and international patent filing to protect your proprietary innovations and inventions."
+    }
+  ]
+}
