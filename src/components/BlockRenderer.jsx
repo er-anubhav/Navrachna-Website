@@ -12,6 +12,7 @@ import { ImageCarousel }      from './blocks/ImageCarousel'
 import { FacilityTabs }       from './blocks/FacilityTabs'
 import { NfedAbout }          from './blocks/NfedAbout'
 import { ECellInitiative }    from './blocks/ECellInitiative'
+import { VisionMission }      from './blocks/VisionMission'
 import { getVisibilityClass } from './blocks/utils'
 
 // Registry: maps block type strings → React components
@@ -29,6 +30,7 @@ const BLOCK_REGISTRY = {
   FacilityTabs,
   NfedAbout,
   ECellInitiative,
+  VisionMission,
 }
 
 /**

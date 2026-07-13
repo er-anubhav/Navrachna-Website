@@ -110,6 +110,25 @@ const LANDING_BLOCKS = [
     visibility: { hideOnMobile: false, hideOnTablet: false, hideOnDesktop: false },
   },
 
+  // 4b. Vision & Mission Section
+  {
+    id:   'block-vision-mission',
+    type: 'VisionMission',
+    content: {
+      visionTitle:  'Vision',
+      visionBody:   'To create an innovative workspace and sector-agnostic startup incubator that nurtures passionate entrepreneurs, fosters highly collaborative creativity, and accelerates early-stage startup success into prominent global market leaders.',
+      missionTitle: 'Mission',
+      missionBody:  'To provide a dynamic, world-class collaborative workspace that empowers young founders and student innovators with seed prototype funding, high-fidelity mentoring frameworks, state-of-the-art labs, and a robust investor matchmaking pipeline.',
+    },
+    style: {
+      bg:          '#f8fafc',
+      titleColor:  '#013759',
+      textColor:   '#4b5563',
+    },
+    layout:     {},
+    visibility: { hideOnMobile: false, hideOnTablet: false, hideOnDesktop: false },
+  },
+
   // 5. Our Spaces — ImageCarousel
   {
     id:   'block-carousel-spaces',

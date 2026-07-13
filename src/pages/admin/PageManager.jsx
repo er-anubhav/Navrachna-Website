@@ -20,6 +20,7 @@ const BLOCK_DEFAULTS = {
   FacilityTabs:       { heading: 'Facilities', facilities: [] },
   NfedAbout:          { title: 'What is NFED?', paragraphs: ['Para 1', 'Para 2'], btnLabel: 'Read More', btnHref: '/about', imageLeft: '', imageRight: '' },
   ECellInitiative:    { heading: 'E-Cell I.T.S Engineering College', eyebrow: 'Initiative by Navrachna', subheading: 'An active student-run cell...', stats: [], supportCards: [], techtrixTitle: 'TECHTRIX 2026', techtrixSubtitle: '', techtrixDesc: '', techtrixStats: [], techtrixCategories: [] },
+  VisionMission:      { visionTitle: 'Vision', visionBody: 'To create an innovative workspace...', missionTitle: 'Mission', missionBody: 'To provide a dynamic, world-class collaborative workspace...' },
 }
 
 // ─── HELPERS ──────────────────────────────────────────────────────
@@ -198,7 +199,7 @@ function AddBlockModal({ onAdd, onClose }) {
                 { AnnouncementBanner: '📢', PageHero: '🖼️', TextBlock: '📝', StatsRow: '📊',
                   CardGrid: '🃏', FAQAccordion: '❓', CallToAction: '🚀', LogoScroller: '🏷️',
                   ProgramCards: '📋', ImageCarousel: '🎠', FacilityTabs: '🏛️',
-                  NfedAbout: '🏢', ECellInitiative: '🎓' }[type] || '🧩'
+                  NfedAbout: '🏢', ECellInitiative: '🎓', VisionMission: '🎯' }[type] || '🧩'
               }</span>
               <span className="text-xs font-semibold text-white">{type}</span>
             </button>
