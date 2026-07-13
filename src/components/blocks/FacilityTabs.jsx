@@ -196,16 +196,21 @@ export function FacilityTabs({
             {/* Right: plain spec list with dividers */}
             <div className="flex-1 bg-white px-8 py-6 flex flex-col justify-between">
               <ul className="divide-y divide-slate-100">
-                {(spec.specs || []).map((item, i) => (
-                  <li key={i} className="flex items-start gap-5 py-4">
-                    <span className="mt-0.5 text-[10px] font-bold text-[#013759]/40 w-5 shrink-0 text-right">
-                      {String(i + 1).padStart(2, '0')}
-                    </span>
-                    <span className="text-sm text-gray-700 leading-relaxed">
-                      {item}
-                    </span>
-                  </li>
-                ))}
+                {(spec.specs || []).map((item, i) => {
+                  const displayText = typeof item === 'object' && item !== null
+                    ? `${item.label}: ${item.value}`
+                    : item
+                  return (
+                    <li key={i} className="flex items-start gap-5 py-4">
+                      <span className="mt-0.5 text-[10px] font-bold text-[#013759]/40 w-5 shrink-0 text-right">
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+                      <span className="text-sm text-gray-700 leading-relaxed">
+                        {displayText}
+                      </span>
+                    </li>
+                  )
+                })}
               </ul>
               <div className="mt-4 border-t border-slate-100 pt-4">
                 <a href="/facilities" className="text-xs font-semibold text-[#013759] hover:underline">
