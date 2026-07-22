@@ -307,21 +307,27 @@ export function LandingPage() {
     <div className="relative min-h-screen w-full bg-[#111111]">
 
       {/* Top Announcement Bar */}
-      <div className="relative z-40 flex h-10 w-full items-stretch border-b border-white/10 bg-[#111111]">
-        <div className="flex items-center bg-[#074887] px-4 py-2 text-xs tracking-wider text-white sm:px-6 sm:text-sm">
-          Announcements
+      <div className="relative z-40 flex min-h-[40px] w-full items-center border-b border-white/10 bg-[#111111] overflow-hidden">
+        <div className="flex items-center shrink-0 bg-[#074887] px-3 py-2.5 text-[11px] font-semibold tracking-wider text-white uppercase sm:px-6 sm:text-xs">
+          <span className="hidden sm:inline">Announcements</span>
+          <span className="sm:hidden flex items-center gap-1.5">
+            <svg className="w-3.5 h-3.5 text-sky-300 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
+            </svg>
+            Updates
+          </span>
         </div>
-        <div className="relative flex flex-1 items-center overflow-hidden px-4">
+        <div className="relative flex flex-1 items-center overflow-hidden px-3 sm:px-4 min-h-[40px]">
           {UPDATES.map((update, index) => (
             <div
               key={index}
-              className={`absolute left-4 right-4 flex items-center transition-all duration-700 ease-in-out ${
+              className={`absolute left-3 right-3 sm:left-4 sm:right-4 flex items-center transition-all duration-700 ease-in-out ${
                 index === currentUpdate
                   ? 'translate-y-0 opacity-100 z-10'
                   : 'translate-y-4 opacity-0 z-0 pointer-events-none'
               }`}
             >
-              <span className="text-xs font-medium text-white sm:text-sm">
+              <span className="text-xs font-medium text-white/90 sm:text-sm truncate block w-full" title={update}>
                 {update}
               </span>
             </div>
