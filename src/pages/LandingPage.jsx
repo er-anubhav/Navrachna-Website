@@ -961,43 +961,42 @@ export function LandingPage() {
 
       {/* Clients Carousel Section */}
       <section className="w-full bg-white py-24 border-t border-slate-100 overflow-hidden">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="text-xs font-normal tracking-widest text-[#074887] mb-4 block">OUR ECOSYSTEM</span>
-            <h2 className="text-3xl md:text-5xl font-normal text-black tracking-tight">
-              Our Portfolio <span className="inline-block"><span className="text-[#10b981]">S</span><span className="text-[#ec4899]">t</span><span className="text-[#3b82f6]">a</span><span className="text-[#f59e0b]">r</span><span className="text-[#ef4444]">t</span><span className="text-[#8b5cf6]">u</span><span className="text-[#06b6d4]">p</span><span className="text-[#3b82f6]">s</span></span>
-            </h2>
-          </div>
-          
-          <div className="relative w-full overflow-hidden">
-            {/* Left and Right Fade Overlays */}
-            <div className="absolute top-0 left-0 h-full w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
-            <div className="absolute top-0 right-0 h-full w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-16 text-center">
+          <span className="text-xs font-normal tracking-widest text-[#074887] mb-4 block">OUR ECOSYSTEM</span>
+          <h2 className="text-3xl md:text-5xl font-normal text-black tracking-tight">
+            Our Portfolio <span className="inline-block"><span className="text-[#10b981]">S</span><span className="text-[#ec4899]">t</span><span className="text-[#3b82f6]">a</span><span className="text-[#f59e0b]">r</span><span className="text-[#ef4444]">t</span><span className="text-[#8b5cf6]">u</span><span className="text-[#06b6d4]">p</span><span className="text-[#3b82f6]">s</span></span>
+          </h2>
+        </div>
+        
+        <div className="relative w-full overflow-hidden">
+          {/* Left and Right Fade Overlays */}
+          <div className="absolute top-0 left-0 h-full w-24 sm:w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute top-0 right-0 h-full w-24 sm:w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
 
-            <div className="flex w-max animate-marquee-infinite">
-              {[...CLIENTS, ...CLIENTS].map((logo, idx) => {
-                const borderColors = [
-                  'border-sky-100/90 hover:border-sky-200',      // Light blue
-                  'border-orange-100/90 hover:border-orange-200',  // Light orange/peach
-                  'border-lime-100/90 hover:border-lime-200',      // Light yellow-green/lime
-                  'border-rose-100/90 hover:border-rose-200',      // Light pink/rose
-                  'border-teal-100/90 hover:border-teal-200',      // Light teal
-                  'border-purple-100/90 hover:border-purple-200'   // Light purple
-                ];
-                const borderClass = borderColors[idx % borderColors.length];
-                return (
-                  <div key={idx} className="flex h-36 w-64 shrink-0 items-center justify-center px-4">
-                    <div className={`w-full h-full bg-white rounded-[2rem] flex items-center justify-center p-6 shadow-sm border-4 ${borderClass} transition-all duration-300 hover:-translate-y-1 hover:shadow-md`}>
-                      <img 
-                        src={logo} 
-                        alt={`Client Logo ${idx}`} 
-                        className="max-h-full max-w-full object-contain transition-all duration-300" 
-                      />
-                    </div>
+          <div className="flex w-max animate-marquee-infinite">
+            {[...CLIENTS, ...CLIENTS, ...CLIENTS, ...CLIENTS].map((logo, idx) => {
+              const borderColors = [
+                'border-sky-100/90 hover:border-sky-200',      // Light blue
+                'border-orange-100/90 hover:border-orange-200',  // Light orange/peach
+                'border-lime-100/90 hover:border-lime-200',      // Light yellow-green/lime
+                'border-rose-100/90 hover:border-rose-200',      // Light pink/rose
+                'border-teal-100/90 hover:border-teal-200',      // Light teal
+                'border-purple-100/90 hover:border-purple-200'   // Light purple
+              ];
+              const logoIndex = idx % CLIENTS.length;
+              const borderClass = borderColors[logoIndex % borderColors.length];
+              return (
+                <div key={idx} className="flex h-36 w-64 shrink-0 items-center justify-center px-4">
+                  <div className={`w-full h-full bg-white rounded-[2rem] flex items-center justify-center p-6 shadow-sm border-4 ${borderClass} transition-all duration-300 hover:-translate-y-1 hover:shadow-md`}>
+                    <img 
+                      src={logo} 
+                      alt={`Portfolio Startup Logo ${logoIndex + 1}`} 
+                      className="max-h-full max-w-full object-contain transition-all duration-300" 
+                    />
                   </div>
-                );
-              })}
-            </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
