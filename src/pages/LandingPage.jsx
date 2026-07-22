@@ -22,10 +22,22 @@ import client10 from '../assets/navrachna_images/intelliginetia-1.jpg'
 const CLIENTS = [client1, client2, client3, client4, client5, client6, client7, client8, client9, client10];
 
 const UPDATES = [
-  "Applications are now open for the Annual Logo Design Competition. Submit your creative portfolios today.",
-  "Join the upcoming MSME Hackathons to solve real-world industry challenges and secure seed funding.",
-  "Discover funding and incubation opportunities through our specialized Startin-Up and NewGen-IEDC programs.",
-  "Access our state-of-the-art Fabrication Lab and High-End Compute resources to accelerate your prototyping."
+  {
+    tag: "Competition",
+    text: "Applications are now open for the Annual Logo Design Competition. Submit your creative portfolios today."
+  },
+  {
+    tag: "MSME Hackathon",
+    text: "Join the upcoming MSME Hackathons to solve real-world industry challenges and secure seed funding."
+  },
+  {
+    tag: "Incubation",
+    text: "Discover funding and incubation opportunities through our specialized Startin-Up and NewGen-IEDC programs."
+  },
+  {
+    tag: "Labs & Infra",
+    text: "Access our state-of-the-art Fabrication Lab and High-End Compute resources to accelerate your prototyping."
+  }
 ];
 
 const STATS = [
@@ -258,6 +270,7 @@ const SCHEMES = [
 
 export function LandingPage() {
   const [currentUpdate, setCurrentUpdate] = useState(0);
+  const [showAnnouncementsModal, setShowAnnouncementsModal] = useState(false);
   const [openFaq, setOpenFaq] = useState(null);
   const [activeFacility, setActiveFacility] = useState(0);
   const scrollRef = useRef(null);
@@ -307,58 +320,130 @@ export function LandingPage() {
     <div className="relative min-h-screen w-full bg-[#111111]">
 
       {/* Top Announcement Bar */}
-      <div className="relative z-40 flex min-h-[40px] w-full items-center border-b border-white/10 bg-[#111111] overflow-hidden">
-        <div className="flex items-center shrink-0 bg-[#074887] px-3 py-2.5 text-[11px] font-semibold tracking-wider text-white uppercase sm:px-6 sm:text-xs">
+      <div className="relative z-40 flex min-h-[44px] sm:min-h-[40px] py-1 sm:py-0 w-full items-center border-b border-white/10 bg-[#111111] overflow-hidden">
+        <div className="flex items-center shrink-0 bg-[#074887] px-2.5 sm:px-6 py-2.5 text-[10px] sm:text-xs font-bold tracking-wider text-white uppercase">
           <span className="hidden sm:inline">Announcements</span>
-          <span className="sm:hidden flex items-center gap-1.5">
+          <span className="sm:hidden flex items-center">
             <svg className="w-3.5 h-3.5 text-sky-300 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
             </svg>
-            Updates
           </span>
         </div>
-        <div className="relative flex flex-1 items-center overflow-hidden px-3 sm:px-4 min-h-[40px]">
+        <div 
+          onClick={() => setShowAnnouncementsModal(true)}
+          className="relative flex flex-1 items-center overflow-hidden px-2 sm:px-4 min-h-[44px] sm:min-h-[40px] cursor-pointer hover:bg-white/5 transition-colors"
+          title="Click to view all announcements"
+        >
           {UPDATES.map((update, index) => (
             <div
               key={index}
-              className={`absolute left-3 right-3 sm:left-4 sm:right-4 flex items-center transition-all duration-700 ease-in-out ${
+              className={`absolute left-2 right-2 sm:left-4 sm:right-4 flex items-center transition-all duration-700 ease-in-out ${
                 index === currentUpdate
                   ? 'translate-y-0 opacity-100 z-10'
                   : 'translate-y-4 opacity-0 z-0 pointer-events-none'
               }`}
             >
-              <span className="text-xs font-medium text-white/90 sm:text-sm truncate block w-full" title={update}>
-                {update}
-              </span>
+              <div className="text-[11px] sm:text-sm font-medium text-white/90 leading-tight sm:leading-normal line-clamp-2 sm:truncate w-full">
+                <span className="inline-block text-sky-300 mr-1.5 font-semibold text-[10px] sm:text-xs bg-sky-950/80 px-1.5 py-0.5 rounded border border-sky-500/30 shrink-0">
+                  {update.tag}
+                </span>
+                <span>{update.text}</span>
+              </div>
             </div>
           ))}
         </div>
+        <button
+          onClick={() => setShowAnnouncementsModal(true)}
+          className="shrink-0 mr-2 text-[8px] font-bold text-sky-200 hover:text-white bg-sky-500/20 hover:bg-sky-500/40 border border-sky-400/30 px-1.5 py-0.2 rounded-full transition-colors cursor-pointer leading-none"
+          title="View all 4 announcements"
+        >
+          4
+        </button>
       </div>
 
-      <section className="relative flex min-h-[85vh] md:min-h-[90vh] py-20 w-full items-center justify-center overflow-hidden">
+      {/* All Announcements Modal */}
+      {showAnnouncementsModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm">
+          <div className="relative w-full max-w-xl rounded-2xl bg-white p-5 sm:p-6 shadow-2xl border border-slate-100 max-h-[85vh] flex flex-col animate-in fade-in zoom-in-95 duration-200">
+            {/* Modal Header */}
+            <div className="flex items-center justify-between border-b border-slate-100 pb-3.5 mb-4">
+              <div>
+                <h3 className="text-base sm:text-lg font-bold text-[#013759] flex items-center gap-2">
+                  <span>📢</span> All Announcements & Updates
+                </h3>
+                <p className="text-xs text-slate-500 mt-0.5">Read all active announcements line-by-line</p>
+              </div>
+              <button 
+                onClick={() => setShowAnnouncementsModal(false)}
+                className="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition-colors cursor-pointer text-sm font-bold"
+                aria-label="Close modal"
+              >
+                ✕
+              </button>
+            </div>
+
+            {/* Announcements List */}
+            <div className="overflow-y-auto space-y-3 pr-1 flex-1">
+              {UPDATES.map((item, idx) => (
+                <div 
+                  key={idx}
+                  className="flex items-start gap-3 p-3.5 rounded-xl bg-slate-50 border border-slate-100 hover:border-[#074887]/30 transition-all"
+                >
+                  <div className="shrink-0 w-7 h-7 rounded-full bg-[#074887] text-white flex items-center justify-center text-xs font-bold shadow-sm mt-0.5">
+                    {idx + 1}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-[#074887] bg-[#074887]/10 px-2 py-0.5 rounded-full">
+                        {item.tag}
+                      </span>
+                    </div>
+                    <p className="text-xs sm:text-sm font-medium text-slate-800 leading-relaxed">
+                      {item.text}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Modal Footer */}
+            <div className="mt-4 pt-3 border-t border-slate-100 flex justify-end">
+              <button
+                onClick={() => setShowAnnouncementsModal(false)}
+                className="px-4 py-2 bg-[#074887] text-white text-xs font-medium rounded-lg hover:bg-[#013759] transition-colors cursor-pointer"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <section className="relative flex min-h-[50vh] md:min-h-[70vh] lg:min-h-[85vh] xl:min-h-[90vh] py-12 md:py-20 lg:py-28 w-full items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <div 
-            className="absolute inset-0 bg-cover bg-center bg-fixed opacity-70"
+            className="absolute inset-0 bg-cover bg-center bg-scroll md:bg-fixed opacity-70"
             style={{ backgroundImage: `url(${heroImage})` }}
           ></div>
           <div className="absolute inset-0 bg-black/65 pointer-events-none"></div>
         </div>
 
-        <div className="relative z-10 flex max-w-4xl flex-col items-center px-4 text-center sm:px-6 lg:px-8">
-          <h1 className="text-7xl mt-12 tracking-tighter text-white drop-shadow-lg">
-            <span className='font-serif text-6xl tracking-tighter'>Where Ideas, Take Flight</span></h1>
-          <p className="mt-6 max-w-2xl text-md text-white sm:text-md">
-            A premium co-working and incubation experience <br /> designed for clarity, momentum, and exceptional founder conversion.
+        <div className="relative z-10 flex max-w-5xl flex-col items-center px-4 text-center sm:px-6 lg:px-8">
+          <h1 className="mt-2 sm:mt-4 font-serif text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-normal tracking-tight text-white leading-tight drop-shadow-lg">
+            Where Ideas, Take Flight
+          </h1>
+          <p className="mt-3 sm:mt-5 max-w-2xl text-xs sm:text-base md:text-lg text-white/90 leading-relaxed">
+            A premium co-working and incubation experience <br className="hidden sm:inline" /> designed for clarity, momentum, and exceptional founder conversion.
           </p>
-          <span className="mb-2 mt-8 rounded-md border border-white/20 px-4 py-1.5 text-sm tracking-wider text-white backdrop-blur-md">
+          <span className="mt-5 sm:mt-6 mb-2 rounded-full border border-white/20 px-3.5 py-1 sm:px-5 sm:py-1.5 text-xs sm:text-sm tracking-wider text-white/90 backdrop-blur-md">
             Navrachna Foundation for Entrepreneurship Development
           </span>
           
-          <div className="mt-2 flex flex-col gap-4 sm:flex-row">
-            <button className="rounded-md bg-[#074887] px-4 py-4 font-semibold text-white shadow-[0_0_20px_rgba(7,72,135,0.4)] transition-all hover:bg-[#013759] hover:shadow-[0_0_30px_rgba(7,72,135,0.6)] hover:-translate-y-1">
+          <div className="mt-4 sm:mt-6 flex flex-row flex-wrap items-center justify-center gap-2.5 sm:gap-4">
+            <button className="rounded-lg bg-[#074887] px-3.5 py-1.5 text-[11px] sm:px-6 sm:py-3 sm:text-sm font-medium text-white shadow-md transition-all hover:bg-[#013759] hover:shadow-lg hover:-translate-y-0.5 cursor-pointer">
               Join the Workspace
             </button>
-            <button className="rounded-md border border-white/30 bg-white/10 px-8 py-4 font-semibold text-white backdrop-blur-md transition-all hover:bg-white/20 hover:-translate-y-1">
+            <button className="rounded-lg border border-white/30 bg-white/10 px-3.5 py-1.5 text-[11px] sm:px-6 sm:py-3 sm:text-sm font-medium text-white backdrop-blur-md transition-all hover:bg-white/20 hover:-translate-y-0.5 cursor-pointer">
               Explore Programs
             </button>
           </div>
@@ -369,18 +454,18 @@ export function LandingPage() {
       <section id="about" className="relative w-full bg-white py-24 overflow-hidden border-b border-gray-100">
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-16">
           
-          {/* Left Column: Staggered Rounded Cards */}
-          <div className="w-full lg:w-[48%] flex items-center justify-center h-[520px] relative">
-            {/* Elevated Left Card */}
-            <div className="w-[46%] h-[400px] rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white absolute left-4 top-4 transform -translate-y-8 hover:-translate-y-10 transition-all duration-500 ease-out hover:scale-[1.02] bg-[#013759]">
+          {/* Left Column: Image Layout */}
+          <div className="w-full lg:w-[48%] flex sm:block flex-row items-center justify-center gap-3 sm:gap-0 h-[220px] sm:h-[450px] lg:h-[520px] relative">
+            {/* First Card */}
+            <div className="w-1/2 sm:w-[46%] h-full sm:h-[350px] lg:h-[400px] rounded-2xl sm:rounded-[2.5rem] overflow-hidden shadow-xl sm:shadow-2xl sm:border-4 sm:border-white sm:absolute sm:left-4 sm:top-8 lg:top-4 transform sm:-translate-y-6 lg:-translate-y-8 sm:hover:-translate-y-8 lg:hover:-translate-y-10 transition-all duration-500 ease-out hover:scale-[1.02] bg-[#013759]">
               <img 
                 src={heroImage} 
                 alt="Navrachna Incubator Facility" 
                 className="w-full h-full object-cover object-center"
               />
             </div>
-            {/* Lower Right Card */}
-            <div className="w-[46%] h-[400px] rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white absolute right-4 bottom-4 transform translate-y-8 hover:translate-y-6 transition-all duration-500 ease-out hover:scale-[1.02] bg-[#074887]">
+            {/* Second Card */}
+            <div className="w-1/2 sm:w-[46%] h-full sm:h-[350px] lg:h-[400px] rounded-2xl sm:rounded-[2.5rem] overflow-hidden shadow-xl sm:shadow-2xl sm:border-4 sm:border-white sm:absolute sm:right-4 sm:bottom-8 lg:bottom-4 transform sm:translate-y-6 lg:translate-y-8 sm:hover:translate-y-4 lg:hover:translate-y-6 transition-all duration-500 ease-out hover:scale-[1.02] bg-[#074887]">
               <img 
                 src={programsBg} 
                 alt="Co-working workspace desks" 

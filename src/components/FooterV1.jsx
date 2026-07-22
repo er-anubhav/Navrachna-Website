@@ -8,7 +8,7 @@ export function FooterV1() {
       {/* Background Image matching other sections */}
       <div className="absolute inset-0 z-0">
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-fixed opacity-70"
+          className="absolute inset-0 bg-cover bg-center bg-scroll md:bg-fixed opacity-70"
           style={{ backgroundImage: `url(${bgImage})` }}
         ></div>
         <div className="absolute inset-0 bg-black/85 pointer-events-none"></div>

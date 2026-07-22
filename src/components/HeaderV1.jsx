@@ -28,12 +28,12 @@ export function HeaderV1() {
               <span>+91 9540527700</span>
             </a>
             <span className="text-white/30">|</span>
-            <a href="mailto:head.nfed@its.edu.in" className="flex items-center gap-1.5 text-white/95 hover:text-white transition-colors min-w-0 truncate">
+            <a href="mailto:head.nfed@its.edu.in" className="flex items-center gap-1.5 text-white/95 hover:text-white transition-colors shrink-0">
               <svg className="h-3.5 w-3.5 text-white shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                 <polyline points="22,6 12,13 2,6"/>
               </svg>
-              <span className="truncate hidden sm:inline">head.nfed@its.edu.in</span>
+              <span className="max-sm:hidden">head.nfed@its.edu.in</span>
               <span className="sm:hidden">Email</span>
             </a>
           </div>
@@ -64,18 +64,34 @@ export function HeaderV1() {
       {/* Main Header Container */}
       <header className="relative z-50 bg-white border-b border-slate-100 shadow-xs">
         <div className="flex items-center justify-between px-4 sm:px-8 py-4 lg:py-5">
-          {/* Logo */}
+          {/* Logo & Brand Name */}
           <div className="flex items-center">
-            <a href="/" className="flex items-center">
-              <img src={logo} alt="NFED Logo" className="h-9 sm:h-10 w-auto object-contain" />
+            <a href="/" className="flex items-center gap-2 sm:gap-3 group">
+              <img src={logo} alt="Navrachna Logo" className="h-9 sm:h-10 w-auto object-contain shrink-0 transition-transform duration-300 group-hover:scale-[1.02]" />
+              
+              <div className="h-8 sm:h-9 w-px bg-slate-200 shrink-0"></div>
+
+              <div className="flex flex-col justify-center leading-tight min-w-0">
+                <div className="flex items-center gap-1.5">
+                  <span className="text-xl sm:text-lg font-bold tracking-tight text-[#013759] uppercase group-hover:text-[#074887] transition-colors whitespace-nowrap">
+                    NAVRACHNA
+                  </span>
+                  <span className="inline-block rounded bg-[#074887]/10 px-1.5 py-0.5 text-[9px] sm:text-[10px] font-semibold text-[#074887] tracking-wider uppercase shrink-0">
+                    NFED
+                  </span>
+                </div>
+                <span className="max-sm:hidden text-[10px] sm:text-[11px] font-medium text-gray-500 tracking-wide">
+                  Foundation for Entrepreneurship Development
+                </span>
+              </div>
             </a>
           </div>
 
-          {/* Desktop Navigation (lg:flex) */}
-          <nav className="hidden lg:flex items-center justify-end gap-x-8 text-sm font-normal tracking-wider text-black">
-            <a href="/" className="transition-colors hover:text-[#074887]">Home</a>
-            <a href="/startin-up" className="transition-colors hover:text-[#074887]">Startin-up</a>
-            <a href="/programs/newgen-iedc" className="transition-colors hover:text-[#074887]">Newgen-IEDC</a>
+          {/* Desktop Navigation (max-lg:hidden flex) */}
+          <nav className="max-lg:hidden flex items-center justify-end gap-x-4 xl:gap-x-7 text-xs xl:text-sm font-medium tracking-wide text-[#013759] shrink-0">
+            <a href="/" className="text-[#013759] transition-colors hover:text-[#074887]">Home</a>
+            <a href="/startin-up" className="text-[#013759] transition-colors hover:text-[#074887]">Startin-up</a>
+            <a href="/programs/newgen-iedc" className="text-[#013759] transition-colors hover:text-[#074887]">Newgen-IEDC</a>
             
             {/* MSME-BI Dropdown */}
             <div 
@@ -83,7 +99,7 @@ export function HeaderV1() {
               onMouseEnter={() => setMsmeOpen(true)}
               onMouseLeave={() => setMsmeOpen(false)}
             >
-              <a href="/msme-bi" className="flex items-center gap-1 transition-colors hover:text-[#074887] cursor-pointer py-1">
+              <a href="/msme-bi" className="flex items-center gap-1 text-[#013759] transition-colors hover:text-[#074887] cursor-pointer py-1">
                 MSME-BI <span className="text-[9px] text-gray-400">▼</span>
               </a>
               
@@ -107,8 +123,8 @@ export function HeaderV1() {
               )}
             </div>
 
-            <a href="/policies" className="transition-colors hover:text-[#074887]">Our Policies</a>
-            <a href="/portfolio" className="transition-colors hover:text-[#074887]">Portfolio</a>
+            <a href="/policies" className="text-[#013759] transition-colors hover:text-[#074887]">Our Policies</a>
+            <a href="/portfolio" className="text-[#013759] transition-colors hover:text-[#074887]">Portfolio</a>
             
             {/* Combined More Dropdown */}
             <div 
@@ -116,21 +132,19 @@ export function HeaderV1() {
               onMouseEnter={() => setMoreOpen(true)}
               onMouseLeave={() => setMoreOpen(false)}
             >
-              <button className="flex items-center gap-1 transition-colors hover:text-[#074887] focus:outline-none cursor-pointer py-1">
+              <button className="flex items-center gap-1 text-[#013759] transition-colors hover:text-[#074887] focus:outline-none cursor-pointer py-1 font-medium">
                 More <span className="text-[9px] text-gray-400">▼</span>
               </button>
               
               {moreOpen && (
                 <div className="absolute right-0 top-full pt-1.5 w-52 z-50">
                   <div className="rounded-xl border border-slate-100 bg-white p-2 shadow-xl flex flex-col">
-                    
                     <a 
                       href="/about" 
                       className="block rounded-lg px-4 py-2 text-xs text-black hover:bg-slate-50 hover:text-[#074887] transition-colors"
                     >
                       About Us
                     </a>
-
                     <a 
                       href="/team" 
                       className="block rounded-lg px-4 py-2 text-xs text-black hover:bg-slate-50 hover:text-[#074887] transition-colors"
@@ -197,7 +211,7 @@ export function HeaderV1() {
               )}
             </div>
 
-            <a href="/contact" className="transition-colors hover:text-[#074887]">Contact Us</a>
+            <a href="/contact" className="text-[#013759] transition-colors hover:text-[#074887]">Contact Us</a>
           </nav>
 
           {/* Mobile Hamburger Button (lg:hidden) */}
