@@ -2,13 +2,17 @@ import React, { useState } from 'react'
 import logo from '../assets/navrachna_images/nfed_logo.png'
 
 export function HeaderV1() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+  // Desktop dropdown states
   const [msmeOpen, setMsmeOpen] = useState(false)
   const [moreOpen, setMoreOpen] = useState(false)
 
-  // Inner submenus inside More dropdown
-  const [subAboutOpen, setSubAboutOpen] = useState(false)
-  const [subFacilitiesOpen, setSubFacilitiesOpen] = useState(false)
-  const [subInnovationOpen, setSubInnovationOpen] = useState(false)
+  // Mobile accordion states
+  const [mobileMsmeOpen, setMobileMsmeOpen] = useState(false)
+  const [mobileMoreOpen, setMobileMoreOpen] = useState(false)
+  const [mobileFacOpen, setMobileFacOpen] = useState(false)
+  const [mobileInnOpen, setMobileInnOpen] = useState(false)
 
   return (
     <>
@@ -18,14 +22,14 @@ export function HeaderV1() {
           {/* Left: Contact Info */}
           <div className="flex flex-wrap items-center justify-center gap-5 sm:justify-start">
             <a href="tel:+919540527700" className="flex items-center gap-2 text-white/95 hover:text-white transition-colors">
-              <svg className="h-3.5 w-3.5 text-white" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+              <svg className="h-3.5 w-3.5 text-white shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
               </svg>
               <span>+91 9540527700</span>
             </a>
             <span className="hidden sm:inline text-white/30">|</span>
             <a href="mailto:head.nfed@its.edu.in" className="flex items-center gap-2 text-white/95 hover:text-white transition-colors">
-              <svg className="h-3.5 w-3.5 text-white" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+              <svg className="h-3.5 w-3.5 text-white shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                 <polyline points="22,6 12,13 2,6"/>
               </svg>
@@ -56,144 +60,284 @@ export function HeaderV1() {
         </div>
       </div>
 
-      {/* Main Navbar */}
-      <header className="relative z-50 flex items-center justify-between px-8 py-5 text-black bg-white backdrop-blur-sm border-b border-slate-100">
-        <div className="flex items-center">
-          <a href="/">
-            <img src={logo} alt="NFED Logo" className="h-10 w-auto object-contain" />
-          </a>
+      {/* Main Header Container */}
+      <header className="relative z-50 bg-white border-b border-slate-100 shadow-xs">
+        <div className="flex items-center justify-between px-4 sm:px-8 py-4 lg:py-5">
+          {/* Logo */}
+          <div className="flex items-center">
+            <a href="/" className="flex items-center">
+              <img src={logo} alt="NFED Logo" className="h-9 sm:h-10 w-auto object-contain" />
+            </a>
+          </div>
+
+          {/* Desktop Navigation (lg:flex) */}
+          <nav className="hidden lg:flex items-center justify-end gap-x-8 text-sm font-normal tracking-wider text-black">
+            <a href="/" className="transition-colors hover:text-[#074887]">Home</a>
+            <a href="/startin-up" className="transition-colors hover:text-[#074887]">Startin-up</a>
+            <a href="/programs/newgen-iedc" className="transition-colors hover:text-[#074887]">Newgen-IEDC</a>
+            
+            {/* MSME-BI Dropdown */}
+            <div 
+              className="relative"
+              onMouseEnter={() => setMsmeOpen(true)}
+              onMouseLeave={() => setMsmeOpen(false)}
+            >
+              <a href="/msme-bi" className="flex items-center gap-1 transition-colors hover:text-[#074887] cursor-pointer py-1">
+                MSME-BI <span className="text-[9px] text-gray-400">▼</span>
+              </a>
+              
+              {msmeOpen && (
+                <div className="absolute left-0 top-full pt-1.5 w-56 z-50">
+                  <div className="rounded-xl border border-slate-100 bg-white p-2 shadow-xl">
+                    <a 
+                      href="/msme-yearly-activities" 
+                      className="block rounded-lg px-4 py-2 text-xs font-normal text-black hover:bg-slate-50 hover:text-[#074887] transition-colors"
+                    >
+                      MSME Yearly Activities
+                    </a>
+                    <a 
+                      href="/msme-hackathons" 
+                      className="block rounded-lg px-4 py-2 text-xs font-normal text-black hover:bg-slate-50 hover:text-[#074887] transition-colors"
+                    >
+                      MSME Hackathons
+                    </a>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <a href="/policies" className="transition-colors hover:text-[#074887]">Our Policies</a>
+            <a href="/portfolio" className="transition-colors hover:text-[#074887]">Portfolio</a>
+            
+            {/* Combined More Dropdown */}
+            <div 
+              className="relative"
+              onMouseEnter={() => setMoreOpen(true)}
+              onMouseLeave={() => setMoreOpen(false)}
+            >
+              <button className="flex items-center gap-1 transition-colors hover:text-[#074887] focus:outline-none cursor-pointer py-1">
+                More <span className="text-[9px] text-gray-400">▼</span>
+              </button>
+              
+              {moreOpen && (
+                <div className="absolute right-0 top-full pt-1.5 w-52 z-50">
+                  <div className="rounded-xl border border-slate-100 bg-white p-2 shadow-xl flex flex-col">
+                    
+                    <a 
+                      href="/about" 
+                      className="block rounded-lg px-4 py-2 text-xs text-black hover:bg-slate-50 hover:text-[#074887] transition-colors"
+                    >
+                      About Us
+                    </a>
+
+                    <a 
+                      href="/team" 
+                      className="block rounded-lg px-4 py-2 text-xs text-black hover:bg-slate-50 hover:text-[#074887] transition-colors"
+                    >
+                      Our Team
+                    </a>
+
+                    {/* Facilities Flyout */}
+                    <div className="relative group/fac">
+                      <div className="flex items-center justify-between rounded-lg px-4 py-2 text-xs text-black hover:bg-slate-50 hover:text-[#074887] cursor-pointer transition-colors">
+                        <span>Facilities</span>
+                        <span className="text-[8px] text-gray-400">◀</span>
+                      </div>
+                      <div className="invisible group-hover/fac:visible absolute right-full top-0 pr-2 w-52 z-50">
+                        <div className="rounded-xl border border-slate-100 bg-white p-2 shadow-xl flex flex-col">
+                          <a 
+                            href="/facilities/electronics-labs" 
+                            className="block rounded-lg px-4 py-2 text-xs font-normal text-black hover:bg-slate-50 hover:text-[#074887] transition-colors"
+                          >
+                            Electronics Labs
+                          </a>
+                          <a 
+                            href="/facilities/high-end-computers" 
+                            className="block rounded-lg px-4 py-2 text-xs font-normal text-black hover:bg-slate-50 hover:text-[#074887] transition-colors"
+                          >
+                            High End Computers
+                          </a>
+                          <a 
+                            href="/facilities/3d-printing" 
+                            className="block rounded-lg px-4 py-2 text-xs font-normal text-black hover:bg-slate-50 hover:text-[#074887] transition-colors"
+                          >
+                            3D Printing
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Innovation Cell Flyout */}
+                    <div className="relative group/inn">
+                      <div className="flex items-center justify-between rounded-lg px-4 py-2 text-xs text-black hover:bg-slate-50 hover:text-[#074887] cursor-pointer transition-colors">
+                        <span>Innovation Cell</span>
+                        <span className="text-[8px] text-gray-400">◀</span>
+                      </div>
+                      <div className="invisible group-hover/inn:visible absolute right-full top-0 pr-2 w-52 z-50">
+                        <div className="rounded-xl border border-slate-100 bg-white p-2 shadow-xl flex flex-col">
+                          <a 
+                            href="/innovation-cell/iic-itsec" 
+                            className="block rounded-lg px-4 py-2 text-xs font-normal text-black hover:bg-slate-50 hover:text-[#074887] transition-colors"
+                          >
+                            IIC-ITSEC
+                          </a>
+                          <a 
+                            href="/facilities/fabrication-lab" 
+                            className="block rounded-lg px-4 py-2 text-xs font-normal text-black hover:bg-slate-50 hover:text-[#074887] transition-colors"
+                          >
+                            Fabrication Lab
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <a href="/contact" className="transition-colors hover:text-[#074887]">Contact Us</a>
+          </nav>
+
+          {/* Mobile Hamburger Button (lg:hidden) */}
+          <div className="flex items-center lg:hidden">
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              type="button"
+              className="inline-flex items-center justify-center p-2 rounded-xl text-gray-700 hover:text-[#074887] hover:bg-slate-100 focus:outline-none transition-colors"
+              aria-expanded={mobileMenuOpen}
+              aria-label="Toggle navigation menu"
+            >
+              {mobileMenuOpen ? (
+                <svg className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
+            </button>
+          </div>
         </div>
-        <nav className="flex items-center justify-end gap-x-8 text-sm font-normal tracking-wider text-black">
-          <a href="/" className="transition-colors hover:text-[#074887]">Home</a>
-          <a href="/startin-up" className="transition-colors hover:text-[#074887]">Startin-up</a>
-          <a href="/programs/newgen-iedc" className="transition-colors hover:text-[#074887]">Newgen-IEDC</a>
-          
-          {/* MSME-BI Dropdown */}
-          <div 
-            className="relative"
-            onMouseEnter={() => setMsmeOpen(true)}
-            onMouseLeave={() => setMsmeOpen(false)}
-          >
-            <a href="/msme-bi" className="flex items-center gap-1 transition-colors hover:text-[#074887] cursor-pointer py-1">
-              MSME-BI <span className="text-[9px] text-gray-400">▼</span>
+
+        {/* Mobile Navigation Drawer Panel */}
+        {mobileMenuOpen && (
+          <div className="lg:hidden border-t border-slate-100 bg-white px-4 pt-3 pb-6 space-y-1 shadow-lg max-h-[85vh] overflow-y-auto">
+            <a 
+              href="/" 
+              className="block rounded-lg px-3 py-2.5 text-sm font-medium text-gray-900 hover:bg-slate-50 hover:text-[#074887]"
+            >
+              Home
             </a>
             
-            {msmeOpen && (
-              <div className="absolute left-0 top-full pt-1.5 w-56 z-50">
-                <div className="rounded-xl border border-slate-100 bg-white p-2 shadow-xl">
-                  <a 
-                    href="/msme-yearly-activities" 
-                    className="block rounded-lg px-4 py-2 text-xs font-normal text-black hover:bg-slate-50 hover:text-[#074887] transition-colors"
-                  >
-                    MSME Yearly Activities
-                  </a>
-                  <a 
-                    href="/msme-hackathons" 
-                    className="block rounded-lg px-4 py-2 text-xs font-normal text-black hover:bg-slate-50 hover:text-[#074887] transition-colors"
-                  >
-                    MSME Hackathons
-                  </a>
+            <a 
+              href="/startin-up" 
+              className="block rounded-lg px-3 py-2.5 text-sm font-medium text-gray-900 hover:bg-slate-50 hover:text-[#074887]"
+            >
+              Startin-up
+            </a>
+
+            <a 
+              href="/programs/newgen-iedc" 
+              className="block rounded-lg px-3 py-2.5 text-sm font-medium text-gray-900 hover:bg-slate-50 hover:text-[#074887]"
+            >
+              Newgen-IEDC
+            </a>
+
+            {/* MSME-BI Mobile Accordion */}
+            <div>
+              <button 
+                onClick={() => setMobileMsmeOpen(!mobileMsmeOpen)}
+                className="w-full flex items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium text-gray-900 hover:bg-slate-50 hover:text-[#074887]"
+              >
+                <span>MSME-BI</span>
+                <span className="text-xs text-gray-400">{mobileMsmeOpen ? '▲' : '▼'}</span>
+              </button>
+              {mobileMsmeOpen && (
+                <div className="pl-4 pr-2 py-1 space-y-1 bg-slate-50/50 rounded-lg">
+                  <a href="/msme-bi" className="block px-3 py-2 text-xs text-gray-700 hover:text-[#074887]">Overview</a>
+                  <a href="/msme-yearly-activities" className="block px-3 py-2 text-xs text-gray-700 hover:text-[#074887]">MSME Yearly Activities</a>
+                  <a href="/msme-hackathons" className="block px-3 py-2 text-xs text-gray-700 hover:text-[#074887]">MSME Hackathons</a>
                 </div>
-              </div>
-            )}
-          </div>
+              )}
+            </div>
 
-          <a href="/policies" className="transition-colors hover:text-[#074887]">Our Policies</a>
-          <a href="/portfolio" className="transition-colors hover:text-[#074887]">Portfolio</a>
-          
-          {/* Combined More Dropdown */}
-          <div 
-            className="relative"
-            onMouseEnter={() => setMoreOpen(true)}
-            onMouseLeave={() => setMoreOpen(false)}
-          >
-            <button className="flex items-center gap-1 transition-colors hover:text-[#074887] focus:outline-none cursor-pointer py-1">
-              More <span className="text-[9px] text-gray-400">▼</span>
-            </button>
-            
-            {moreOpen && (
-              <div className="absolute right-0 top-full pt-1.5 w-52 z-50">
-                <div className="rounded-xl border border-slate-100 bg-white p-2 shadow-xl flex flex-col">
-                  
-                  {/* About Us (Direct Link) */}
-                  <a 
-                    href="/about" 
-                    className="block rounded-lg px-4 py-2 text-xs  text-black hover:bg-slate-50 hover:text-[#074887] transition-colors"
-                  >
-                    About Us
-                  </a>
+            <a 
+              href="/policies" 
+              className="block rounded-lg px-3 py-2.5 text-sm font-medium text-gray-900 hover:bg-slate-50 hover:text-[#074887]"
+            >
+              Our Policies
+            </a>
 
-                  {/* Our Team (Direct Link) */}
-                  <a 
-                    href="/team" 
-                    className="block rounded-lg px-4 py-2 text-xs  text-black hover:bg-slate-50 hover:text-[#074887] transition-colors"
-                  >
-                    Our Team
-                  </a>
+            <a 
+              href="/portfolio" 
+              className="block rounded-lg px-3 py-2.5 text-sm font-medium text-gray-900 hover:bg-slate-50 hover:text-[#074887]"
+            >
+              Portfolio
+            </a>
 
-                  {/* Facilities (Left Flyout on Hover) */}
-                  <div className="relative group/fac">
-                    <div className="flex items-center justify-between rounded-lg px-4 py-2 text-xs  text-black hover:bg-slate-50 hover:text-[#074887] cursor-pointer transition-colors">
+            {/* More Mobile Accordion */}
+            <div>
+              <button 
+                onClick={() => setMobileMoreOpen(!mobileMoreOpen)}
+                className="w-full flex items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium text-gray-900 hover:bg-slate-50 hover:text-[#074887]"
+              >
+                <span>More</span>
+                <span className="text-xs text-gray-400">{mobileMoreOpen ? '▲' : '▼'}</span>
+              </button>
+
+              {mobileMoreOpen && (
+                <div className="pl-4 pr-2 py-1 space-y-1.5 bg-slate-50/50 rounded-lg">
+                  <a href="/about" className="block px-3 py-2 text-xs text-gray-700 hover:text-[#074887]">About Us</a>
+                  <a href="/team" className="block px-3 py-2 text-xs text-gray-700 hover:text-[#074887]">Our Team</a>
+
+                  {/* Facilities Accordion */}
+                  <div>
+                    <button 
+                      onClick={() => setMobileFacOpen(!mobileFacOpen)}
+                      className="w-full flex items-center justify-between px-3 py-2 text-xs text-gray-700 hover:text-[#074887]"
+                    >
                       <span>Facilities</span>
-                      <span className="text-[8px] text-gray-400">◀</span>
-                    </div>
-                    {/* Flyout Submenu Panel */}
-                    <div className="invisible group-hover/fac:visible absolute right-full top-0 pr-2 w-52 z-50">
-                      <div className="rounded-xl border border-slate-100 bg-white p-2 shadow-xl flex flex-col">
-                        <a 
-                          href="/facilities/electronics-labs" 
-                          className="block rounded-lg px-4 py-2 text-xs font-normal text-black hover:bg-slate-50 hover:text-[#074887] transition-colors"
-                        >
-                          Electronics Labs
-                        </a>
-                        <a 
-                          href="/facilities/high-end-computers" 
-                          className="block rounded-lg px-4 py-2 text-xs font-normal text-black hover:bg-slate-50 hover:text-[#074887] transition-colors"
-                        >
-                          High End Computers
-                        </a>
-                        <a 
-                          href="/facilities/3d-printing" 
-                          className="block rounded-lg px-4 py-2 text-xs font-normal text-black hover:bg-slate-50 hover:text-[#074887] transition-colors"
-                        >
-                          3D Printing
-                        </a>
+                      <span className="text-[10px] text-gray-400">{mobileFacOpen ? '▲' : '▼'}</span>
+                    </button>
+                    {mobileFacOpen && (
+                      <div className="pl-4 py-1 space-y-1">
+                        <a href="/facilities/electronics-labs" className="block px-3 py-1.5 text-xs text-gray-600 hover:text-[#074887]">Electronics Labs</a>
+                        <a href="/facilities/high-end-computers" className="block px-3 py-1.5 text-xs text-gray-600 hover:text-[#074887]">High End Computers</a>
+                        <a href="/facilities/3d-printing" className="block px-3 py-1.5 text-xs text-gray-600 hover:text-[#074887]">3D Printing</a>
                       </div>
-                    </div>
+                    )}
                   </div>
 
-                  {/* Innovation Cell (Left Flyout on Hover) */}
-                  <div className="relative group/inn">
-                    <div className="flex items-center justify-between rounded-lg px-4 py-2 text-xs  text-black hover:bg-slate-50 hover:text-[#074887] cursor-pointer transition-colors">
+                  {/* Innovation Cell Accordion */}
+                  <div>
+                    <button 
+                      onClick={() => setMobileInnOpen(!mobileInnOpen)}
+                      className="w-full flex items-center justify-between px-3 py-2 text-xs text-gray-700 hover:text-[#074887]"
+                    >
                       <span>Innovation Cell</span>
-                      <span className="text-[8px] text-gray-400">◀</span>
-                    </div>
-                    {/* Flyout Submenu Panel */}
-                    <div className="invisible group-hover/inn:visible absolute right-full top-0 pr-2 w-52 z-50">
-                      <div className="rounded-xl border border-slate-100 bg-white p-2 shadow-xl flex flex-col">
-                        <a 
-                          href="/innovation-cell/iic-itsec" 
-                          className="block rounded-lg px-4 py-2 text-xs font-normal text-black hover:bg-slate-50 hover:text-[#074887] transition-colors"
-                        >
-                          IIC-ITSEC
-                        </a>
-                        <a 
-                          href="/facilities/fabrication-lab" 
-                          className="block rounded-lg px-4 py-2 text-xs font-normal text-black hover:bg-slate-50 hover:text-[#074887] transition-colors"
-                        >
-                          Fabrication Lab
-                        </a>
+                      <span className="text-[10px] text-gray-400">{mobileInnOpen ? '▲' : '▼'}</span>
+                    </button>
+                    {mobileInnOpen && (
+                      <div className="pl-4 py-1 space-y-1">
+                        <a href="/innovation-cell/iic-itsec" className="block px-3 py-1.5 text-xs text-gray-600 hover:text-[#074887]">IIC-ITSEC</a>
+                        <a href="/facilities/fabrication-lab" className="block px-3 py-1.5 text-xs text-gray-600 hover:text-[#074887]">Fabrication Lab</a>
                       </div>
-                    </div>
+                    )}
                   </div>
-
                 </div>
-              </div>
-            )}
-          </div>
+              )}
+            </div>
 
-          <a href="/contact" className="transition-colors hover:text-[#074887]">Contact Us</a>
-        </nav>
+            <a 
+              href="/contact" 
+              className="block rounded-lg px-3 py-2.5 text-sm font-medium text-gray-900 hover:bg-slate-50 hover:text-[#074887]"
+            >
+              Contact Us
+            </a>
+          </div>
+        )}
       </header>
     </>
   )
