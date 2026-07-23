@@ -97,20 +97,20 @@ const LEADERSHIP = [
 const CLIENTS = [
   { src: logoJagmag, name: "Jagmag Lights" },
   { src: logoNeurapex, name: "Neurapex AI" },
-  { src: logoIndusAi, name: "Indus AI" },
+  { src: logoIndusAi, name: "Indus AI Private Limited" },
   { src: logoDigieraD, name: "Digiera Private Limited" },
   { src: logoEpn, name: "ePN (Electro-Proton Network)" },
-  { src: logoMylyfcare, name: "MyLyfCare" },
-  { src: logoDoortodestination, name: "Door to Destination" },
+  { src: logoMylyfcare, name: "MyLyfCare Private Limited" },
+  { src: logoDoortodestination, name: "Door to Destination Private Limited" },
   { src: logoGreenstag, name: "Green Stag Technologies" },
   { src: logoAbrosaa, name: "Barren to Berland Abrosaa" },
   { src: logoCyberkida, name: "Cyberkida Digiera" },
   { src: logoSsb, name: "SSB Engineering" },
   { src: logoVnorganics, name: "VN Organics" },
-  { src: logoTriposaints, name: "TripoSaints" },
+  { src: logoTriposaints, name: "TripoSaints Private Limited" },
   { src: logoTrulyfresh, name: "TrulyFresh Hydroponics" },
   { src: logoNextorbit, name: "NextOrbit Innovations" },
-  { src: logoUnnatjivan, name: "Unnat Jivan (UJ)" },
+  { src: logoUnnatjivan, name: "Upright Care India Private Limited" },
   { src: logoBigblare, name: "BigBlare Innovations" },
   { src: logoAutoremov, name: "Autoremov" },
   { src: logoHomeservices, name: "Home Services Tech" },
@@ -119,8 +119,8 @@ const CLIENTS = [
   { src: logoUproi, name: "UPROI Digital" },
   { src: logoKineer, name: "Kineer Services" },
   { src: logoEvergreat, name: "Evergreat Clean Energy" },
-  { src: logoHexagontetch, name: "Hexagon Tech Systems" },
-  { src: logoRedspiral, name: "Red Turbine Systems" },
+  { src: logoHexagontetch, name: "HexPRS LLP" },
+  { src: logoRedspiral, name: "Orbitron Labs LLP" },
   { src: logoNutritown, name: "Nutri Town Superfoods" },
   { src: logoLaarsa, name: "Laarsa Organic" }
 ];
@@ -917,93 +917,204 @@ export function LandingPage() {
 
       {/* Our Facilities Section */}
       <section className="relative w-full bg-white py-10 lg:py-24 border-y border-[#013759]/30">
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-start gap-8 lg:gap-16">
-          {/* Left Column - Info & Action */}
-          <div className="w-full lg:w-[42%] flex flex-col items-start text-left lg:sticky lg:top-28">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-normal text-[#013759] tracking-tight leading-[1.15] mb-4 lg:mb-6">
-              Advanced Incubation <br /> & Prototyping <span className="inline-block"><span className="text-[#10b981]">F</span><span className="text-[#ec4899]">a</span><span className="text-[#3b82f6]">c</span><span className="text-[#f59e0b]">i</span><span className="text-[#ef4444]">l</span><span className="text-[#8b5cf6]">i</span><span className="text-[#06b6d4]">t</span><span className="text-[#3b82f6]">i</span><span className="text-[#ec4899]">e</span><span className="text-[#10b981]">s</span></span>
-            </h2>
-            <p className="text-gray-600 text-sm md:text-md leading-relaxed text-justify mb-6 lg:mb-8 font-normal">
-              We provide a well-equipped, engineering-grade workspace designed to accelerate hardware prototyping, deep tech computing, and startup scaling. Explore detailed specifications across all technical domains.
-            </p>
-            <button className="rounded-xl bg-black px-6 py-2.5 sm:px-8 sm:py-3.5 font-medium text-xs sm:text-base text-white shadow-lg hover:bg-gray-800 transition-all duration-300 active:scale-95 cursor-pointer">
-              Book a Lab Tour
-            </button>
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+          {/* Desktop 2-Column Split (Visible on lg screens) */}
+          <div className="hidden lg:grid lg:grid-cols-2 lg:gap-12 w-full items-start">
+            {/* Left Column - Info & First 5 Accordion Items */}
+            <div className="flex flex-col items-start text-left w-full">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-normal text-[#013759] tracking-tight leading-[1.15] mb-4 lg:mb-6">
+                Advanced Incubation <br /> & Prototyping <span className="inline-block"><span className="text-[#10b981]">F</span><span className="text-[#ec4899]">a</span><span className="text-[#3b82f6]">c</span><span className="text-[#f59e0b]">i</span><span className="text-[#ef4444]">l</span><span className="text-[#8b5cf6]">i</span><span className="text-[#06b6d4]">t</span><span className="text-[#3b82f6]">i</span><span className="text-[#ec4899]">e</span><span className="text-[#10b981]">s</span></span>
+              </h2>
+              <p className="text-gray-600 text-sm md:text-md leading-relaxed text-justify mb-6 lg:mb-8 font-normal">
+                We provide a well-equipped, engineering-grade workspace designed to accelerate hardware prototyping, deep tech computing, and startup scaling. Explore detailed specifications across all technical domains.
+              </p>
+              <button className="rounded-xl bg-black px-6 py-2.5 sm:px-8 sm:py-3.5 font-medium text-xs sm:text-base text-white shadow-lg hover:bg-gray-800 transition-all duration-300 active:scale-95 cursor-pointer mb-8">
+                Book a Lab Tour
+              </button>
+
+              {/* First 5 Facilities Accordion (0 to 4) */}
+              <div className="w-full space-y-3">
+                {FACILITIES_SPECS.slice(0, 5).map((spec, idx) => {
+                  const isOpen = activeFacility === idx;
+                  const details = [
+                    { icon: <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> },
+                    { icon: <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg> },
+                    { icon: <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg> },
+                    { icon: <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> }
+                  ];
+                  const detail = details[idx % details.length];
+
+                  return (
+                    <div key={idx} className="rounded-2xl border border-slate-200/80 bg-white shadow-xs overflow-hidden">
+                      <button
+                        onClick={() => setActiveFacility(isOpen ? -1 : idx)}
+                        className="w-full py-3 px-4 sm:py-3.5 sm:px-5 flex items-center justify-between gap-4 text-left cursor-pointer select-none"
+                      >
+                        <div className="flex items-center gap-3 sm:gap-3.5">
+                          <div className="h-9 w-9 sm:h-10 sm:w-10 rounded-lg bg-[#013759] text-white flex items-center justify-center shrink-0 shadow-xs">
+                            {detail.icon}
+                          </div>
+                          <div>
+                            <h3 className="text-sm sm:text-base font-normal text-[#013759] leading-tight">
+                              {spec.title}
+                            </h3>
+                            <span className="text-[11px] text-gray-500 font-normal">
+                              {spec.specs.length} key specifications
+                            </span>
+                          </div>
+                        </div>
+                        <div className={`h-7 w-7 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
+                          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                          </svg>
+                        </div>
+                      </button>
+
+                      {isOpen && (
+                        <div className="px-4 sm:px-5 pb-3.5 pt-2 border-t border-slate-100 bg-[#fafafa]">
+                          <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 pt-0.5">
+                            {spec.specs.map((item, i) => (
+                              <li key={i} className="flex items-start gap-2.5 py-2 px-3 rounded-lg bg-white border border-slate-200/80 text-xs sm:text-sm text-slate-700 font-normal leading-snug">
+                                <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[#074887] shrink-0" />
+                                <span>{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Right Column - Remaining 5 Accordion Items (5 to 9) */}
+            <div className="w-full space-y-3 pt-0">
+              {FACILITIES_SPECS.slice(5).map((spec, offsetIdx) => {
+                const idx = offsetIdx + 5;
+                const isOpen = activeFacility === idx;
+                const details = [
+                  { icon: <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> },
+                  { icon: <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg> },
+                  { icon: <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg> },
+                  { icon: <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> }
+                ];
+                const detail = details[idx % details.length];
+
+                return (
+                  <div key={idx} className="rounded-2xl border border-slate-200/80 bg-white shadow-xs overflow-hidden">
+                    <button
+                      onClick={() => setActiveFacility(isOpen ? -1 : idx)}
+                      className="w-full py-3 px-4 sm:py-3.5 sm:px-5 flex items-center justify-between gap-4 text-left cursor-pointer select-none"
+                    >
+                      <div className="flex items-center gap-3 sm:gap-3.5">
+                        <div className="h-9 w-9 sm:h-10 sm:w-10 rounded-lg bg-[#013759] text-white flex items-center justify-center shrink-0 shadow-xs">
+                          {detail.icon}
+                        </div>
+                        <div>
+                          <h3 className="text-sm sm:text-base font-normal text-[#013759] leading-tight">
+                            {spec.title}
+                          </h3>
+                          <span className="text-[11px] text-gray-500 font-normal">
+                            {spec.specs.length} key specifications
+                          </span>
+                        </div>
+                      </div>
+                      <div className={`h-7 w-7 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
+                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                        </svg>
+                      </div>
+                    </button>
+
+                    {isOpen && (
+                      <div className="px-4 sm:px-5 pb-3.5 pt-2 border-t border-slate-100 bg-[#fafafa]">
+                        <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 pt-0.5">
+                          {spec.specs.map((item, i) => (
+                            <li key={i} className="flex items-start gap-2.5 py-2 px-3 rounded-lg bg-white border border-slate-200/80 text-xs sm:text-sm text-slate-700 font-normal leading-snug">
+                              <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[#074887] shrink-0" />
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
           </div>
 
-          {/* Right Column - Accordion List */}
-          <div className="w-full lg:w-[58%] space-y-3">
-            {FACILITIES_SPECS.map((spec, idx) => {
-              const isOpen = activeFacility === idx;
-              const details = [
-                {
-                  icon: <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-                },
-                {
-                  icon: <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
-                },
-                {
-                  icon: <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
-                },
-                {
-                  icon: <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                }
-              ];
-              const detail = details[idx % details.length];
+          {/* Mobile Single Column Layout (Visible on screens < lg) */}
+          <div className="lg:hidden flex flex-col gap-8 w-full">
+            <div className="w-full flex flex-col items-start text-left">
+              <h2 className="text-2xl sm:text-3xl font-normal text-[#013759] tracking-tight leading-[1.15] mb-4">
+                Advanced Incubation <br /> & Prototyping <span className="inline-block"><span className="text-[#10b981]">F</span><span className="text-[#ec4899]">a</span><span className="text-[#3b82f6]">c</span><span className="text-[#f59e0b]">i</span><span className="text-[#ef4444]">l</span><span className="text-[#8b5cf6]">i</span><span className="text-[#06b6d4]">t</span><span className="text-[#3b82f6]">i</span><span className="text-[#ec4899]">e</span><span className="text-[#10b981]">s</span></span>
+              </h2>
+              <p className="text-gray-600 text-sm leading-relaxed text-justify mb-6 font-normal">
+                We provide a well-equipped, engineering-grade workspace designed to accelerate hardware prototyping, deep tech computing, and startup scaling. Explore detailed specifications across all technical domains.
+              </p>
+              <button className="rounded-xl bg-black px-6 py-2.5 font-medium text-xs text-white shadow-lg hover:bg-gray-800 transition-all duration-300 active:scale-95 cursor-pointer">
+                Book a Lab Tour
+              </button>
+            </div>
 
-              return (
-                <div 
-                  key={idx} 
-                  className="rounded-2xl border border-slate-200/80 bg-white shadow-xs overflow-hidden"
-                >
-                  {/* Accordion Trigger Header */}
-                  <button
-                    onClick={() => setActiveFacility(isOpen ? -1 : idx)}
-                    className="w-full py-3 px-4 sm:py-3.5 sm:px-5 flex items-center justify-between gap-4 text-left cursor-pointer select-none"
-                  >
-                    <div className="flex items-center gap-3 sm:gap-3.5">
-                      <div className="h-9 w-9 sm:h-10 sm:w-10 rounded-lg bg-[#013759] text-white flex items-center justify-center shrink-0 shadow-xs">
-                        {detail.icon}
+            <div className="w-full space-y-3">
+              {FACILITIES_SPECS.map((spec, idx) => {
+                const isOpen = activeFacility === idx;
+                const details = [
+                  { icon: <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> },
+                  { icon: <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg> },
+                  { icon: <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg> },
+                  { icon: <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> }
+                ];
+                const detail = details[idx % details.length];
+
+                return (
+                  <div key={idx} className="rounded-2xl border border-slate-200/80 bg-white shadow-xs overflow-hidden">
+                    <button
+                      onClick={() => setActiveFacility(isOpen ? -1 : idx)}
+                      className="w-full py-3 px-4 sm:py-3.5 sm:px-5 flex items-center justify-between gap-4 text-left cursor-pointer select-none"
+                    >
+                      <div className="flex items-center gap-3 sm:gap-3.5">
+                        <div className="h-9 w-9 sm:h-10 sm:w-10 rounded-lg bg-[#013759] text-white flex items-center justify-center shrink-0 shadow-xs">
+                          {detail.icon}
+                        </div>
+                        <div>
+                          <h3 className="text-sm sm:text-base font-normal text-[#013759] leading-tight">
+                            {spec.title}
+                          </h3>
+                          <span className="text-[11px] text-gray-500 font-normal">
+                            {spec.specs.length} key specifications
+                          </span>
+                        </div>
                       </div>
-                      <div>
-                        <h3 className="text-sm sm:text-base font-normal text-[#013759] leading-tight">
-                          {spec.title}
-                        </h3>
-                        <span className="text-[11px] text-gray-500 font-normal">
-                          {spec.specs.length} key specifications
-                        </span>
+                      <div className={`h-7 w-7 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
+                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                        </svg>
                       </div>
-                    </div>
+                    </button>
 
-                    <div className={`h-7 w-7 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center shrink-0 transition-transform duration-300 ${
-                      isOpen ? 'rotate-180' : ''
-                    }`}>
-                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                      </svg>
-                    </div>
-                  </button>
-
-                  {/* Accordion Content Body */}
-                  {isOpen && (
-                    <div className="px-4 sm:px-5 pb-3.5 pt-2 border-t border-slate-100 bg-[#fafafa]">
-                      <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 pt-0.5">
-                        {spec.specs.map((item, i) => (
-                          <li 
-                            key={i} 
-                            className="flex items-start gap-2.5 py-2 px-3 rounded-lg bg-white border border-slate-200/80 text-xs sm:text-sm text-slate-700 font-normal leading-snug"
-                          >
-                            <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[#074887] shrink-0" />
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                </div>
-              );
-            })}
+                    {isOpen && (
+                      <div className="px-4 sm:px-5 pb-3.5 pt-2 border-t border-slate-100 bg-[#fafafa]">
+                        <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 pt-0.5">
+                          {spec.specs.map((item, i) => (
+                            <li key={i} className="flex items-start gap-2.5 py-2 px-3 rounded-lg bg-white border border-slate-200/80 text-xs sm:text-sm text-slate-700 font-normal leading-snug">
+                              <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[#074887] shrink-0" />
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
           </div>
+
         </div>
       </section>
 
