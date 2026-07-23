@@ -471,6 +471,7 @@ export function LandingPage() {
   const [showAnnouncementsModal, setShowAnnouncementsModal] = useState(false);
   const [openFaq, setOpenFaq] = useState(null);
   const [activeFacility, setActiveFacility] = useState(0);
+  const [activeHubNode, setActiveHubNode] = useState(null);
   const scrollRef = useRef(null);
 
   const scroll = (direction) => {
@@ -1123,132 +1124,165 @@ export function LandingPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
           {/* Radial Graph Node Layout (Desktop >= 1024px) */}
-          <div className="hidden lg:flex flex-col items-center relative py-2 max-w-6xl mx-auto">
+          <div className="hidden lg:flex flex-col items-center relative py-2 max-w-6xl mx-auto select-none">
             <div className="relative w-[960px] h-[720px] flex items-center justify-center">
               
               {/* Outer Decorative Background Circles */}
-              <div className="absolute w-[680px] h-[680px] rounded-full border border-slate-200/80 pointer-events-none" />
-              <div className="absolute w-[480px] h-[480px] rounded-full border border-slate-200/60 bg-gradient-to-br from-slate-50/60 via-white/40 to-slate-100/30 shadow-inner pointer-events-none" />
+              <div className={`absolute w-[680px] h-[680px] rounded-full border transition-all duration-500 pointer-events-none ${activeHubNode ? 'border-sky-300/60 scale-105' : 'border-slate-200/80'}`} />
+              <div className={`absolute w-[480px] h-[480px] rounded-full border transition-all duration-500 bg-gradient-to-br from-slate-50/60 via-white/40 to-slate-100/30 shadow-inner pointer-events-none ${activeHubNode ? 'border-sky-200/80 scale-105' : 'border-slate-200/60'}`} />
 
               {/* Connecting Dotted Lines SVG Canvas */}
               <svg className="absolute inset-0 w-full h-full pointer-events-none z-0" viewBox="0 0 960 720">
                 {/* Center to 3 Hub Lines */}
-                <line x1="480" y1="360" x2="480" y2="160" stroke="#10b981" strokeWidth="2.5" strokeDasharray="6 4" />
-                <line x1="480" y1="360" x2="740" y2="510" stroke="#013759" strokeWidth="2.5" strokeDasharray="6 4" />
-                <line x1="480" y1="360" x2="220" y2="510" stroke="#d97706" strokeWidth="2.5" strokeDasharray="6 4" />
+                <line x1="480" y1="360" x2="480" y2="160" stroke="#10b981" strokeWidth={activeHubNode === 1 || activeHubNode === 'center' ? '4' : '2.5'} strokeDasharray={activeHubNode === 1 || activeHubNode === 'center' ? 'none' : '6 4'} opacity={activeHubNode && activeHubNode !== 1 && activeHubNode !== 'center' ? 0.3 : 1} className="transition-all duration-300" />
+                <line x1="480" y1="360" x2="740" y2="510" stroke="#013759" strokeWidth={activeHubNode === 2 || activeHubNode === 'center' ? '4' : '2.5'} strokeDasharray={activeHubNode === 2 || activeHubNode === 'center' ? 'none' : '6 4'} opacity={activeHubNode && activeHubNode !== 2 && activeHubNode !== 'center' ? 0.3 : 1} className="transition-all duration-300" />
+                <line x1="480" y1="360" x2="220" y2="510" stroke="#d97706" strokeWidth={activeHubNode === 3 || activeHubNode === 'center' ? '4' : '2.5'} strokeDasharray={activeHubNode === 3 || activeHubNode === 'center' ? 'none' : '6 4'} opacity={activeHubNode && activeHubNode !== 3 && activeHubNode !== 'center' ? 0.3 : 1} className="transition-all duration-300" />
 
                 {/* Hub 01 (Mentorship) to individual point lines */}
-                <line x1="480" y1="160" x2="160" y2="60" stroke="#10b981" strokeWidth="1.5" opacity="0.6" />
-                <line x1="480" y1="160" x2="350" y2="50" stroke="#10b981" strokeWidth="1.5" opacity="0.6" />
-                <line x1="480" y1="160" x2="610" y2="50" stroke="#10b981" strokeWidth="1.5" opacity="0.6" />
-                <line x1="480" y1="160" x2="800" y2="60" stroke="#10b981" strokeWidth="1.5" opacity="0.6" />
-                <line x1="480" y1="160" x2="230" y2="170" stroke="#10b981" strokeWidth="1.5" opacity="0.6" />
-                <line x1="480" y1="160" x2="730" y2="170" stroke="#10b981" strokeWidth="1.5" opacity="0.6" />
+                {[[160,60], [350,50], [610,50], [800,60], [230,170], [730,170]].map(([x, y], idx) => (
+                  <line key={`h1-${idx}`} x1="480" y1="160" x2={x} y2={y} stroke="#10b981" strokeWidth={activeHubNode === 1 || activeHubNode === 'center' ? '2.5' : '1.5'} strokeDasharray={activeHubNode === 1 || activeHubNode === 'center' ? 'none' : '4 3'} opacity={activeHubNode === 1 || activeHubNode === 'center' ? 1 : activeHubNode ? 0.2 : 0.6} className="transition-all duration-300" />
+                ))}
 
                 {/* Hub 02 (Infrastructure) to individual point lines */}
-                <line x1="740" y1="510" x2="600" y2="390" stroke="#013759" strokeWidth="1.5" opacity="0.6" />
-                <line x1="740" y1="510" x2="860" y2="390" stroke="#013759" strokeWidth="1.5" opacity="0.6" />
-                <line x1="740" y1="510" x2="600" y2="630" stroke="#013759" strokeWidth="1.5" opacity="0.6" />
-                <line x1="740" y1="510" x2="860" y2="630" stroke="#013759" strokeWidth="1.5" opacity="0.6" />
-                <line x1="740" y1="510" x2="740" y2="680" stroke="#013759" strokeWidth="1.5" opacity="0.6" />
+                {[[600,390], [860,390], [600,630], [860,630], [740,680]].map(([x, y], idx) => (
+                  <line key={`h2-${idx}`} x1="740" y1="510" x2={x} y2={y} stroke="#013759" strokeWidth={activeHubNode === 2 || activeHubNode === 'center' ? '2.5' : '1.5'} strokeDasharray={activeHubNode === 2 || activeHubNode === 'center' ? 'none' : '4 3'} opacity={activeHubNode === 2 || activeHubNode === 'center' ? 1 : activeHubNode ? 0.2 : 0.6} className="transition-all duration-300" />
+                ))}
 
                 {/* Hub 03 (Network) to individual point lines */}
-                <line x1="220" y1="510" x2="100" y2="390" stroke="#d97706" strokeWidth="1.5" opacity="0.6" />
-                <line x1="220" y1="510" x2="360" y2="390" stroke="#d97706" strokeWidth="1.5" opacity="0.6" />
-                <line x1="220" y1="510" x2="100" y2="630" stroke="#d97706" strokeWidth="1.5" opacity="0.6" />
-                <line x1="220" y1="510" x2="360" y2="630" stroke="#d97706" strokeWidth="1.5" opacity="0.6" />
-                <line x1="220" y1="510" x2="220" y2="680" stroke="#d97706" strokeWidth="1.5" opacity="0.6" />
+                {[[100,390], [360,390], [100,630], [360,630], [220,680]].map(([x, y], idx) => (
+                  <line key={`h3-${idx}`} x1="220" y1="510" x2={x} y2={y} stroke="#d97706" strokeWidth={activeHubNode === 3 || activeHubNode === 'center' ? '2.5' : '1.5'} strokeDasharray={activeHubNode === 3 || activeHubNode === 'center' ? 'none' : '4 3'} opacity={activeHubNode === 3 || activeHubNode === 'center' ? 1 : activeHubNode ? 0.2 : 0.6} className="transition-all duration-300" />
+                ))}
               </svg>
 
               {/* Central Core Hub Node */}
-              <div className="z-30 w-56 h-56 rounded-full bg-white border-4 border-slate-100 shadow-2xl flex flex-col items-center justify-center p-5 text-center group hover:scale-105 transition-all duration-300 relative">
-                <div className="h-10 w-10 rounded-2xl bg-[#013759]/10 text-[#013759] flex items-center justify-center mb-2 shadow-xs">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="10" />
-                    <path d="M12 2a10 10 0 0 1 10 10" />
-                  </svg>
-                </div>
+              <button 
+                onMouseEnter={() => setActiveHubNode('center')}
+                onMouseLeave={() => setActiveHubNode(null)}
+                onClick={() => setActiveHubNode(activeHubNode === 'center' ? null : 'center')}
+                className={`z-30 w-56 h-56 rounded-full bg-white border-4 border-slate-100 shadow-2xl flex flex-col items-center justify-center p-5 text-center cursor-pointer transition-all duration-300 relative ${activeHubNode === 'center' ? 'scale-110 shadow-sky-300/60 ring-8 ring-sky-100' : 'hover:scale-105'}`}
+              >
                 <h3 className="text-xl font-normal text-[#013759] tracking-tight leading-tight">
                   Why <span className="inline-block"><span className="text-[#10b981]">C</span><span className="text-[#ec4899]">h</span><span className="text-[#3b82f6]">o</span><span className="text-[#f59e0b]">o</span><span className="text-[#ef4444]">s</span><span className="text-[#8b5cf6]">e</span></span> Us
                 </h3>
-                <div className="flex gap-1.5 mt-2.5">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500" />
-                  <span className="w-2 h-2 rounded-full bg-[#013759]" />
-                  <span className="w-2 h-2 rounded-full bg-amber-500" />
-                </div>
-              </div>
+                <span className="mt-2 text-[10px] font-medium text-slate-400 tracking-wide">
+                  {activeHubNode ? 'Click to reset' : 'Hover / Click branches'}
+                </span>
+              </button>
 
               {/* Category Hub 01: Mentorship (Top Node) */}
-              <div className="absolute top-[125px] left-1/2 -translate-x-1/2 z-20 px-5 py-2.5 rounded-full bg-emerald-600 text-white shadow-lg flex items-center gap-2.5 font-semibold text-sm">
+              <button 
+                onMouseEnter={() => setActiveHubNode(1)}
+                onMouseLeave={() => setActiveHubNode(null)}
+                onClick={() => setActiveHubNode(activeHubNode === 1 ? null : 1)}
+                className={`absolute top-[125px] left-1/2 -translate-x-1/2 z-20 px-5 py-2.5 rounded-full text-white shadow-lg flex items-center gap-2.5 font-semibold text-sm cursor-pointer transition-all duration-300 ${activeHubNode === 1 || activeHubNode === 'center' ? 'scale-115 bg-emerald-700 shadow-emerald-500/40 ring-4 ring-emerald-300' : 'bg-emerald-600 hover:scale-105 hover:bg-emerald-700'}`}
+              >
                 <span className="h-6 w-6 rounded-full bg-white text-emerald-700 flex items-center justify-center text-xs font-bold">01</span>
                 <span>MENTORSHIP</span>
-              </div>
+              </button>
 
               {/* Mentorship Floating Point Nodes */}
-              <div className="absolute top-[35px] left-[70px] z-20 px-3.5 py-1.5 rounded-2xl bg-white border border-emerald-200 text-slate-700 text-xs font-medium shadow-md hover:scale-105 transition-all">
-                Business Mentorship
-              </div>
-              <div className="absolute top-[25px] left-[270px] z-20 px-3.5 py-1.5 rounded-2xl bg-white border border-emerald-200 text-slate-700 text-xs font-medium shadow-md hover:scale-105 transition-all">
-                Technical Mentorship
-              </div>
-              <div className="absolute top-[25px] right-[270px] z-20 px-3.5 py-1.5 rounded-2xl bg-white border border-emerald-200 text-slate-700 text-xs font-medium shadow-md hover:scale-105 transition-all">
-                Legal Assistance
-              </div>
-              <div className="absolute top-[35px] right-[70px] z-20 px-3.5 py-1.5 rounded-2xl bg-white border border-emerald-200 text-slate-700 text-xs font-medium shadow-md hover:scale-105 transition-all">
-                Pitch Preparation
-              </div>
-              <div className="absolute top-[145px] left-[120px] z-20 px-3.5 py-1.5 rounded-2xl bg-white border border-emerald-200 text-slate-700 text-xs font-medium shadow-md hover:scale-105 transition-all">
-                Patent & IP Support
-              </div>
-              <div className="absolute top-[145px] right-[100px] z-20 px-3.5 py-1.5 rounded-2xl bg-white border border-emerald-200 text-slate-700 text-xs font-medium shadow-md hover:scale-105 transition-all">
-                Event Participation Assistance
-              </div>
+              {[
+                { title: 'Business Mentorship', pos: 'top-[35px] left-[70px]' },
+                { title: 'Technical Mentorship', pos: 'top-[25px] left-[270px]' },
+                { title: 'Legal Assistance', pos: 'top-[25px] right-[270px]' },
+                { title: 'Pitch Preparation', pos: 'top-[35px] right-[70px]' },
+                { title: 'Patent & IP Support', pos: 'top-[145px] left-[120px]' },
+                { title: 'Event Participation Assistance', pos: 'top-[145px] right-[100px]' }
+              ].map((node, idx) => {
+                const isActive = activeHubNode === 1 || activeHubNode === 'center';
+                return (
+                  <div 
+                    key={`m-${idx}`}
+                    onMouseEnter={() => setActiveHubNode(1)}
+                    onMouseLeave={() => setActiveHubNode(null)}
+                    className={`absolute ${node.pos} z-20 px-4 py-2 rounded-2xl text-xs font-medium cursor-pointer transition-all duration-300 ${
+                      isActive 
+                        ? 'scale-110 bg-emerald-500 text-white font-semibold border-2 border-emerald-600 shadow-xl shadow-emerald-200/60 -translate-y-1' 
+                        : activeHubNode 
+                          ? 'opacity-30 scale-95 bg-white border border-slate-200 text-slate-400' 
+                          : 'bg-white border border-emerald-200 text-slate-700 shadow-md hover:scale-105 hover:border-emerald-400 hover:shadow-lg'
+                    }`}
+                  >
+                    {node.title}
+                  </div>
+                );
+              })}
 
               {/* Category Hub 02: Infrastructure Support (Bottom Right Node) */}
-              <div className="absolute top-[475px] right-[120px] z-20 px-5 py-2.5 rounded-full bg-[#013759] text-white shadow-lg flex items-center gap-2.5 font-semibold text-sm">
+              <button 
+                onMouseEnter={() => setActiveHubNode(2)}
+                onMouseLeave={() => setActiveHubNode(null)}
+                onClick={() => setActiveHubNode(activeHubNode === 2 ? null : 2)}
+                className={`absolute top-[475px] right-[120px] z-20 px-5 py-2.5 rounded-full text-white shadow-lg flex items-center gap-2.5 font-semibold text-sm cursor-pointer transition-all duration-300 ${activeHubNode === 2 || activeHubNode === 'center' ? 'scale-115 bg-[#01253d] shadow-sky-500/40 ring-4 ring-sky-300' : 'bg-[#013759] hover:scale-105 hover:bg-[#01253d]'}`}
+              >
                 <span className="h-6 w-6 rounded-full bg-white text-[#013759] flex items-center justify-center text-xs font-bold">02</span>
                 <span>INFRASTRUCTURE SUPPORT</span>
-              </div>
+              </button>
 
               {/* Infrastructure Floating Point Nodes */}
-              <div className="absolute top-[365px] right-[250px] z-20 px-3.5 py-1.5 rounded-2xl bg-white border border-sky-200 text-slate-700 text-xs font-medium shadow-md hover:scale-105 transition-all">
-                Co-Working Space
-              </div>
-              <div className="absolute top-[365px] right-[30px] z-20 px-3.5 py-1.5 rounded-2xl bg-white border border-sky-200 text-slate-700 text-xs font-medium shadow-md hover:scale-105 transition-all">
-                Dedicated Cabin Area
-              </div>
-              <div className="absolute top-[605px] right-[250px] z-20 px-3.5 py-1.5 rounded-2xl bg-white border border-sky-200 text-slate-700 text-xs font-medium shadow-md hover:scale-105 transition-all">
-                Meeting Rooms
-              </div>
-              <div className="absolute top-[605px] right-[30px] z-20 px-3.5 py-1.5 rounded-2xl bg-white border border-sky-200 text-slate-700 text-xs font-medium shadow-md hover:scale-105 transition-all">
-                Fabrication Lab
-              </div>
-              <div className="absolute top-[660px] right-[130px] z-20 px-3.5 py-1.5 rounded-2xl bg-white border border-sky-200 text-slate-700 text-xs font-medium shadow-md hover:scale-105 transition-all">
-                High End Precision Equipment & Grants
-              </div>
+              {[
+                { title: 'Co-Working Space', pos: 'top-[365px] right-[250px]' },
+                { title: 'Dedicated Cabin Area', pos: 'top-[365px] right-[30px]' },
+                { title: 'Meeting Rooms', pos: 'top-[605px] right-[250px]' },
+                { title: 'Fabrication Lab', pos: 'top-[605px] right-[30px]' },
+                { title: 'High End Precision Equipment & Grants', pos: 'top-[660px] right-[130px]' }
+              ].map((node, idx) => {
+                const isActive = activeHubNode === 2 || activeHubNode === 'center';
+                return (
+                  <div 
+                    key={`i-${idx}`}
+                    onMouseEnter={() => setActiveHubNode(2)}
+                    onMouseLeave={() => setActiveHubNode(null)}
+                    className={`absolute ${node.pos} z-20 px-4 py-2 rounded-2xl text-xs font-medium cursor-pointer transition-all duration-300 ${
+                      isActive 
+                        ? 'scale-110 bg-[#013759] text-white font-semibold border-2 border-slate-700 shadow-xl shadow-sky-200/60 translate-x-1' 
+                        : activeHubNode 
+                          ? 'opacity-30 scale-95 bg-white border border-slate-200 text-slate-400' 
+                          : 'bg-white border border-sky-200 text-slate-700 shadow-md hover:scale-105 hover:border-sky-400 hover:shadow-lg'
+                    }`}
+                  >
+                    {node.title}
+                  </div>
+                );
+              })}
 
               {/* Category Hub 03: Comprehensive Network (Bottom Left Node) */}
-              <div className="absolute top-[475px] left-[110px] z-20 px-5 py-2.5 rounded-full bg-amber-600 text-white shadow-lg flex items-center gap-2.5 font-semibold text-sm">
+              <button 
+                onMouseEnter={() => setActiveHubNode(3)}
+                onMouseLeave={() => setActiveHubNode(null)}
+                onClick={() => setActiveHubNode(activeHubNode === 3 ? null : 3)}
+                className={`absolute top-[475px] left-[110px] z-20 px-5 py-2.5 rounded-full text-white shadow-lg flex items-center gap-2.5 font-semibold text-sm cursor-pointer transition-all duration-300 ${activeHubNode === 3 || activeHubNode === 'center' ? 'scale-115 bg-amber-700 shadow-amber-500/40 ring-4 ring-amber-300' : 'bg-amber-600 hover:scale-105 hover:bg-amber-700'}`}
+              >
                 <span className="h-6 w-6 rounded-full bg-white text-amber-700 flex items-center justify-center text-xs font-bold">03</span>
                 <span>COMPREHENSIVE NETWORK</span>
-              </div>
+              </button>
 
               {/* Network Floating Point Nodes */}
-              <div className="absolute top-[365px] left-[30px] z-20 px-3.5 py-1.5 rounded-2xl bg-white border border-amber-200 text-slate-700 text-xs font-medium shadow-md hover:scale-105 transition-all">
-                Government Backed Schemes
-              </div>
-              <div className="absolute top-[365px] left-[250px] z-20 px-3.5 py-1.5 rounded-2xl bg-white border border-amber-200 text-slate-700 text-xs font-medium shadow-md hover:scale-105 transition-all">
-                Seasoned Mentors Network
-              </div>
-              <div className="absolute top-[605px] left-[30px] z-20 px-3.5 py-1.5 rounded-2xl bg-white border border-amber-200 text-slate-700 text-xs font-medium shadow-md hover:scale-105 transition-all">
-                Quality Investor Network
-              </div>
-              <div className="absolute top-[605px] left-[250px] z-20 px-3.5 py-1.5 rounded-2xl bg-white border border-amber-200 text-slate-700 text-xs font-medium shadow-md hover:scale-105 transition-all">
-                Corporate Networks
-              </div>
-              <div className="absolute top-[660px] left-[130px] z-20 px-3.5 py-1.5 rounded-2xl bg-white border border-amber-200 text-slate-700 text-xs font-medium shadow-md hover:scale-105 transition-all">
-                Interns, RND & Digital Support
-              </div>
+              {[
+                { title: 'Government Backed Schemes', pos: 'top-[365px] left-[30px]' },
+                { title: 'Seasoned Mentors Network', pos: 'top-[365px] left-[250px]' },
+                { title: 'Quality Investor Network', pos: 'top-[605px] left-[30px]' },
+                { title: 'Corporate Networks', pos: 'top-[605px] left-[250px]' },
+                { title: 'Interns, RND & Digital Support', pos: 'top-[660px] left-[130px]' }
+              ].map((node, idx) => {
+                const isActive = activeHubNode === 3 || activeHubNode === 'center';
+                return (
+                  <div 
+                    key={`n-${idx}`}
+                    onMouseEnter={() => setActiveHubNode(3)}
+                    onMouseLeave={() => setActiveHubNode(null)}
+                    className={`absolute ${node.pos} z-20 px-4 py-2 rounded-2xl text-xs font-medium cursor-pointer transition-all duration-300 ${
+                      isActive 
+                        ? 'scale-110 bg-amber-600 text-white font-semibold border-2 border-amber-700 shadow-xl shadow-amber-200/60 -translate-x-1' 
+                        : activeHubNode 
+                          ? 'opacity-30 scale-95 bg-white border border-slate-200 text-slate-400' 
+                          : 'bg-white border border-amber-200 text-slate-700 shadow-md hover:scale-105 hover:border-amber-400 hover:shadow-lg'
+                    }`}
+                  >
+                    {node.title}
+                  </div>
+                );
+              })}
 
             </div>
           </div>
