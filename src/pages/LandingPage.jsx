@@ -261,38 +261,43 @@ const FACILITIES_FEATURES = [
 
 const FACILITIES_SPECS = [
   {
-    title: "Fabrication Lab",
+    title: "Mechanical Fab Lab",
     specs: [
-      "20 Workstations",
-      "CNC Plasma Tooling",
-      "Non-Metallic CNC Laser",
-      "Manual Power Tools"
+      "3D Printers (SLA & PLA)",
+      "Laser CO2 Cutting Machine",
+      "Plasma Cutting Machine",
+      "MIG Welding Setup",
+      "TIG Welding Setup",
+      "Gas - Welding Setup",
+      "Vinyl Cutter",
+      "Chop Saw & Manual Prototyping Tools"
     ]
   },
   {
-    title: "3D Printers",
+    title: "Electronics Fab Lab",
     specs: [
-      "02 FDM Printers (PLA/ABS/TPU)",
-      "FormLabs SLA Printer (Form 3B+)",
-      "48 Advanced Resins Supported",
-      "Medical & Rigid Engineering Grade"
+      "CAD Designing & Simulation",
+      "PCB Prototyping & Soldering Bench",
+      "Digital Storage Oscilloscopes",
+      "Function Signal Generators & Testing Racks"
     ]
   },
   {
-    title: "High End Compute Systems",
+    title: "Center of Excellence Labs",
     specs: [
-      "02 Simulation Nodes (RTX 3060)",
-      "01 AI Superstation (RTX 3090 x2)",
-      "Intel i9-12th Gen Computing",
-      "128GB High-Speed DDR5 RAM"
+      "Advanced Prototyping & R&D Facilities",
+      "Deep-Tech & IoT Hardware Testing",
+      "High-End AI Compute & Simulation Grid",
+      "Industrial Design & Testing Assets"
     ]
   },
   {
-    title: "Co-Working Area",
+    title: "Co-Working Area & Infrastructure",
     specs: [
-      "23 Premium Co-Working Seats",
-      "06 Plug-n-Play ready Nodes",
-      "High-Speed Gigabit Internet"
+      "23 Premium Co-Working Founder Seats",
+      "06 Plug-n-Play Ready Nodes",
+      "Gigabit Fiber Backhaul Internet",
+      "24/7 Security & CCTV Monitoring"
     ]
   }
 ];
