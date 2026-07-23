@@ -366,48 +366,46 @@ export function LandingPage() {
     <div className="relative min-h-screen w-full bg-[#111111] overflow-x-hidden max-w-full">
 
       {/* Top Announcement Bar */}
-      <div className="relative z-40 flex min-h-[44px] sm:min-h-[40px] py-1 sm:py-0 w-full items-center border-b border-white/10 bg-[#111111] overflow-hidden">
-        <div className="flex items-center shrink-0 bg-[#074887] px-2.5 sm:px-6 py-2.5 text-[10px] sm:text-xs font-bold tracking-wider text-white uppercase">
+      <div className="relative z-40 flex min-h-[56px] sm:min-h-[52px] py-1.5 sm:py-0 w-full items-center border-b border-white/15 bg-[#0a192f] overflow-hidden shadow-md">
+        <div className="flex items-center shrink-0 bg-[#074887] px-3 sm:px-6 py-3 text-xs sm:text-sm font-bold tracking-widest text-white uppercase shadow-sm">
           <span className="hidden sm:inline">Announcements</span>
-          <span className="sm:hidden flex items-center">
-            <svg className="w-3.5 h-3.5 text-sky-300 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
-            </svg>
+          <span className="sm:hidden flex items-center gap-1">
+            📢
           </span>
         </div>
         <div 
           onClick={() => setShowAnnouncementsModal(true)}
-          className="relative flex flex-1 items-center overflow-hidden px-2 sm:px-4 min-h-[44px] sm:min-h-[40px] cursor-pointer hover:bg-white/5 transition-colors"
+          className="relative flex flex-1 items-center overflow-hidden px-3 sm:px-5 min-h-[56px] sm:min-h-[52px] cursor-pointer hover:bg-white/5 transition-colors"
           title="Click to view all announcements"
         >
           {UPDATES.map((update, index) => (
             <div
               key={index}
-              className={`absolute left-2 right-2 sm:left-4 sm:right-4 flex items-center transition-all duration-700 ease-in-out ${
+              className={`absolute left-3 right-3 sm:left-5 sm:right-5 flex items-center transition-all duration-700 ease-in-out ${
                 index === currentUpdate
                   ? 'translate-y-0 opacity-100 z-10'
                   : 'translate-y-4 opacity-0 z-0 pointer-events-none'
               }`}
             >
-              <div className="text-[11px] sm:text-sm font-normal text-white/90 leading-tight sm:leading-normal line-clamp-2 sm:truncate w-full">
-                <span className="inline-block text-sky-300 mr-1.5 font-normal text-[10px] sm:text-xs bg-sky-950/80 px-1.5 py-0.5 rounded border border-sky-500/30 shrink-0">
+              <div className="text-xs sm:text-base font-medium text-white leading-snug sm:leading-normal line-clamp-2 sm:truncate w-full flex items-center gap-2">
+                <span className="inline-block text-sky-300 font-semibold text-[11px] sm:text-xs bg-sky-950/90 px-2 py-0.5 rounded-md border border-sky-400/40 shrink-0">
                   {update.tag}
                 </span>
-                <span>{update.text}</span>
+                <span className="text-white/95">{update.text}</span>
               </div>
             </div>
           ))}
         </div>
         <button
           onClick={() => setShowAnnouncementsModal(true)}
-          className="relative shrink-0 mr-2 sm:mr-4 p-1.5 text-sky-200 hover:text-white hover:bg-white/10 rounded-full transition-all cursor-pointer flex items-center justify-center"
+          className="relative shrink-0 mr-2 sm:mr-4 p-2 text-sky-200 hover:text-white hover:bg-white/10 rounded-full transition-all cursor-pointer flex items-center justify-center"
           title="View all 4 announcements"
           aria-label="View announcements"
         >
-          <svg className="w-4 h-4 sm:w-5 sm:h-5 text-sky-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+          <svg className="w-5 h-5 sm:w-6 sm:h-6 text-sky-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
           </svg>
-          <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-[9px] font-bold text-white shadow-sm animate-pulse">
+          <span className="absolute -top-0.5 -right-0.5 flex h-4.5 w-4.5 items-center justify-center rounded-full bg-red-500 text-[10px] font-bold text-white shadow-md animate-pulse">
             4
           </span>
         </button>
