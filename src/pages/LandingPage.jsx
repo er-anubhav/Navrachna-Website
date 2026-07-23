@@ -470,7 +470,7 @@ export function LandingPage() {
   const [currentUpdate, setCurrentUpdate] = useState(0);
   const [showAnnouncementsModal, setShowAnnouncementsModal] = useState(false);
   const [openFaq, setOpenFaq] = useState(null);
-  const [activeFacility, setActiveFacility] = useState(0);
+  const [activeFacility, setActiveFacility] = useState(null);
   const [activeHubNode, setActiveHubNode] = useState(null);
   const scrollRef = useRef(null);
 
