@@ -1144,12 +1144,12 @@ export function LandingPage() {
                 ))}
 
                 {/* Hub 02 (Infrastructure) to individual point lines */}
-                {[[840,385], [640,445], [640,590], [840,590], [740,670]].map(([x, y], idx) => (
+                {[[840,375], [720,285], [630,590], [840,590], [740,670]].map(([x, y], idx) => (
                   <line key={`h2-${idx}`} x1="750" y1="490" x2={x} y2={y} stroke="#013759" strokeWidth={activeHubNode === 2 || activeHubNode === 'center' ? '2.5' : '1.5'} strokeDasharray={activeHubNode === 2 || activeHubNode === 'center' ? 'none' : '4 3'} opacity={activeHubNode === 2 || activeHubNode === 'center' ? 1 : activeHubNode ? 0.2 : 0.6} className="transition-all duration-300" />
                 ))}
 
                 {/* Hub 03 (Network) to individual point lines */}
-                {[[120,385], [320,445], [120,590], [320,590], [220,670]].map(([x, y], idx) => (
+                {[[120,375], [240,285], [120,590], [330,590], [220,670]].map(([x, y], idx) => (
                   <line key={`h3-${idx}`} x1="210" y1="490" x2={x} y2={y} stroke="#d97706" strokeWidth={activeHubNode === 3 || activeHubNode === 'center' ? '2.5' : '1.5'} strokeDasharray={activeHubNode === 3 || activeHubNode === 'center' ? 'none' : '4 3'} opacity={activeHubNode === 3 || activeHubNode === 'center' ? 1 : activeHubNode ? 0.2 : 0.6} className="transition-all duration-300" />
                 ))}
               </svg>
@@ -1221,8 +1221,8 @@ export function LandingPage() {
 
               {/* Infrastructure Floating Point Nodes */}
               {[
-                { title: 'Co-Working Space', pos: 'top-[370px] right-[40px]' },
-                { title: 'Dedicated Cabin Area', pos: 'top-[430px] right-[240px]' },
+                { title: 'Co-Working Space', pos: 'top-[360px] right-[30px]' },
+                { title: 'Dedicated Cabin Area', pos: 'top-[270px] right-[150px]' },
                 { title: 'Meeting Rooms', pos: 'top-[575px] right-[260px]' },
                 { title: 'Fabrication Lab', pos: 'top-[575px] right-[40px]' },
                 { title: 'High End Precision Equipment & Grants', pos: 'top-[655px] right-[100px]' }
@@ -1259,8 +1259,8 @@ export function LandingPage() {
 
               {/* Network Floating Point Nodes */}
               {[
-                { title: 'Government Backed Schemes', pos: 'top-[370px] left-[40px]' },
-                { title: 'Seasoned Mentors Network', pos: 'top-[430px] left-[240px]' },
+                { title: 'Government Backed Schemes', pos: 'top-[360px] left-[30px]' },
+                { title: 'Seasoned Mentors Network', pos: 'top-[270px] left-[150px]' },
                 { title: 'Quality Investor Network', pos: 'top-[575px] left-[40px]' },
                 { title: 'Corporate Networks', pos: 'top-[575px] left-[260px]' },
                 { title: 'Interns, RND & Digital Support', pos: 'top-[655px] left-[100px]' }
