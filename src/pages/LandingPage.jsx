@@ -32,6 +32,36 @@ import client8 from '../assets/navrachna_images/Weaclim-1.png'
 import client9 from '../assets/navrachna_images/indus-1.jpg'
 import client10 from '../assets/navrachna_images/intelliginetia-1.jpg'
 
+import logoJagmag from '../assets/navrachna_images/portfolio/logo_jagmag.png'
+import logoNeurapex from '../assets/navrachna_images/portfolio/logo_neurapex.png'
+import logoIndusAi from '../assets/navrachna_images/portfolio/logo_indus_ai.png'
+import logoDigieraD from '../assets/navrachna_images/portfolio/logo_digiera_d.png'
+import logoEpn from '../assets/navrachna_images/portfolio/logo_epn.png'
+import logoMylyfcare from '../assets/navrachna_images/portfolio/logo_mylyfcare.png'
+import logoDoortodestination from '../assets/navrachna_images/portfolio/logo_doortodestination.png'
+import logoGreenstag from '../assets/navrachna_images/portfolio/logo_greenstag.png'
+import logoAbrosaa from '../assets/navrachna_images/portfolio/logo_abrosaa.png'
+import logoCyberkida from '../assets/navrachna_images/portfolio/logo_cyberkida.png'
+import logoSsb from '../assets/navrachna_images/portfolio/logo_ssb.png'
+import logoVnorganics from '../assets/navrachna_images/portfolio/logo_vnorganics.png'
+import logoTriposaints from '../assets/navrachna_images/portfolio/logo_triposaints.png'
+import logoTrulyfresh from '../assets/navrachna_images/portfolio/logo_trulyfresh.png'
+
+import logoNextorbit from '../assets/navrachna_images/portfolio/logo_nextorbit.png'
+import logoUnnatjivan from '../assets/navrachna_images/portfolio/logo_unnatjivan.png'
+import logoBigblare from '../assets/navrachna_images/portfolio/logo_bigblare.png'
+import logoAutoremov from '../assets/navrachna_images/portfolio/logo_autoremov.png'
+import logoHomeservices from '../assets/navrachna_images/portfolio/logo_homeservices.png'
+import logoE4asolution from '../assets/navrachna_images/portfolio/logo_e4asolution.png'
+import logoIntelligentia from '../assets/navrachna_images/portfolio/logo_intelligentia.png'
+import logoUproi from '../assets/navrachna_images/portfolio/logo_uproi.png'
+import logoKineer from '../assets/navrachna_images/portfolio/logo_kineer.png'
+import logoEvergreat from '../assets/navrachna_images/portfolio/logo_evergreat.png'
+import logoHexagontetch from '../assets/navrachna_images/portfolio/logo_hexagontetch.png'
+import logoRedspiral from '../assets/navrachna_images/portfolio/logo_redspiral.png'
+import logoNutritown from '../assets/navrachna_images/portfolio/logo_nutritown.png'
+import logoLaarsa from '../assets/navrachna_images/portfolio/logo_laarsa.png'
+
 import leaderChairman from '../assets/navrachna_images/leader_chairman.png'
 import leaderViceChairman from '../assets/navrachna_images/leader_vicechairman.png'
 import leaderDirector from '../assets/navrachna_images/leader_director.png'
@@ -65,16 +95,34 @@ const LEADERSHIP = [
 ];
 
 const CLIENTS = [
-  { src: client1, name: "E4A Technologies", bgDark: true },
-  { src: client2, name: "Cyberkida Digiera Private Limited", bgDark: true },
-  { src: client3, name: "Jagmag Lights", bgDark: false },
-  { src: client4, name: "MyLyfCare", bgDark: false },
-  { src: client5, name: "TripoSaints", bgDark: false },
-  { src: client6, name: "UPROI", bgDark: false },
-  { src: client7, name: "Verdant Solutions", bgDark: false },
-  { src: client8, name: "Weaclim", bgDark: false },
-  { src: client9, name: "Indus AI", bgDark: false },
-  { src: client10, name: "Intelliginetia", bgDark: false },
+  { src: logoJagmag, name: "Jagmag Lights" },
+  { src: logoNeurapex, name: "Neurapex AI" },
+  { src: logoIndusAi, name: "Indus AI" },
+  { src: logoDigieraD, name: "Digiera Private Limited" },
+  { src: logoEpn, name: "ePN (Electro-Proton Network)" },
+  { src: logoMylyfcare, name: "MyLyfCare" },
+  { src: logoDoortodestination, name: "Door to Destination" },
+  { src: logoGreenstag, name: "Green Stag Technologies" },
+  { src: logoAbrosaa, name: "Barren to Berland Abrosaa" },
+  { src: logoCyberkida, name: "Cyberkida Digiera" },
+  { src: logoSsb, name: "SSB Engineering" },
+  { src: logoVnorganics, name: "VN Organics" },
+  { src: logoTriposaints, name: "TripoSaints" },
+  { src: logoTrulyfresh, name: "TrulyFresh Hydroponics" },
+  { src: logoNextorbit, name: "NextOrbit Innovations" },
+  { src: logoUnnatjivan, name: "Unnat Jivan (UJ)" },
+  { src: logoBigblare, name: "BigBlare Innovations" },
+  { src: logoAutoremov, name: "Autoremov" },
+  { src: logoHomeservices, name: "Home Services Tech" },
+  { src: logoE4asolution, name: "E4A Solution" },
+  { src: logoIntelligentia, name: "Intelligentia Labs" },
+  { src: logoUproi, name: "UPROI Digital" },
+  { src: logoKineer, name: "Kineer Services" },
+  { src: logoEvergreat, name: "Evergreat Clean Energy" },
+  { src: logoHexagontetch, name: "Hexagon Tech Systems" },
+  { src: logoRedspiral, name: "Red Turbine Systems" },
+  { src: logoNutritown, name: "Nutri Town Superfoods" },
+  { src: logoLaarsa, name: "Laarsa Organic" }
 ];
 
 const UPDATES = [
