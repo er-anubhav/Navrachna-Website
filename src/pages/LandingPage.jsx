@@ -556,26 +556,31 @@ export function LandingPage() {
       {/* Horizontal Values Strip */}
       <section className="relative w-full bg-white py-10 border-y border-[#013759]">
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center md:divide-x divide-[#074887]/10">
-            {/* Value 1 — PDF: 96+ Projects Developed */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 text-center lg:divide-x divide-[#074887]/10">
+            {/* Value 1 — Projects Developed */}
             <div className="flex flex-col items-center justify-center p-2">
-              <span className="text-4xl md:text-5xl font-normal tracking-tight text-[#013759]">96+</span>
-              <span className="text-xs font-normal text-[#074887] uppercase tracking-wider mt-2">Projects Developed</span>
+              <span className="text-3xl sm:text-4xl md:text-5xl font-normal tracking-tight text-[#013759]">96+</span>
+              <span className="text-[11px] sm:text-xs font-normal text-[#074887] uppercase tracking-wider mt-2">Projects Developed</span>
             </div>
-            {/* Value 2 — PDF: ₹2.87 Cr DST Grant */}
+            {/* Value 2 — DST Grant */}
             <div className="flex flex-col items-center justify-center p-2">
-              <span className="text-4xl md:text-5xl font-normal tracking-tight text-[#013759]">₹2.87 Cr</span>
-              <span className="text-xs font-normal text-[#074887] uppercase tracking-wider mt-2">DST Grant Received</span>
+              <span className="text-3xl sm:text-4xl md:text-5xl font-normal tracking-tight text-[#013759]">₹2.87 Cr</span>
+              <span className="text-[11px] sm:text-xs font-normal text-[#074887] uppercase tracking-wider mt-2">DST Grant Received</span>
             </div>
-            {/* Value 3 — PDF: ₹1.59 Cr MSME Grant */}
+            {/* Value 3 — StartIn UP Grant */}
             <div className="flex flex-col items-center justify-center p-2">
-              <span className="text-4xl md:text-5xl font-normal tracking-tight text-[#013759]">₹1.59 Cr</span>
-              <span className="text-xs font-normal text-[#074887] uppercase tracking-wider mt-2">MSME Grant Received</span>
+              <span className="text-3xl sm:text-4xl md:text-5xl font-normal tracking-tight text-[#013759]">₹2.5 Cr</span>
+              <span className="text-[11px] sm:text-xs font-normal text-[#074887] uppercase tracking-wider mt-2">StartIn UP Grant</span>
             </div>
-            {/* Value 4 — PDF: 66+ Patents Filed */}
+            {/* Value 4 — MSME Grant */}
             <div className="flex flex-col items-center justify-center p-2">
-              <span className="text-4xl md:text-5xl font-normal tracking-tight text-[#013759]">66+</span>
-              <span className="text-xs font-normal text-[#074887] uppercase tracking-wider mt-2">Patents Filed</span>
+              <span className="text-3xl sm:text-4xl md:text-5xl font-normal tracking-tight text-[#013759]">₹1.59 Cr</span>
+              <span className="text-[11px] sm:text-xs font-normal text-[#074887] uppercase tracking-wider mt-2">MSME Grant Received</span>
+            </div>
+            {/* Value 5 — Patents Filed */}
+            <div className="flex flex-col items-center justify-center p-2 col-span-2 sm:col-span-1">
+              <span className="text-3xl sm:text-4xl md:text-5xl font-normal tracking-tight text-[#013759]">66+</span>
+              <span className="text-[11px] sm:text-xs font-normal text-[#074887] uppercase tracking-wider mt-2">Patents Filed</span>
             </div>
           </div>
         </div>
