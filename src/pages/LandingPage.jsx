@@ -1144,29 +1144,28 @@ export function LandingPage() {
       </section>
 
       {/* Messages from Our Leaders */}
-      <section className="w-full py-8 sm:py-12 bg-[#f8fafc] border-t border-slate-200">
+      <section className="w-full py-8 sm:py-14 md:py-20 bg-[#f8fafc] border-t border-slate-200">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* Header - Left Aligned */}
-          <div className="mb-6 sm:mb-8 text-left">
-
-            <h2 className="text-2xl sm:text-3xl font-normal text-[#013759] tracking-tight">
+          <div className="mb-6 sm:mb-10 text-left">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-normal text-[#013759] tracking-tight">
               Messages from Our Leaders
             </h2>
-            <p className="mt-1 text-xs text-gray-500 leading-relaxed max-w-xl">
+            <p className="mt-1.5 sm:mt-2 text-xs sm:text-sm text-gray-500 leading-relaxed max-w-xl font-normal">
               Guiding the vision of NFED — insights from the leaders who inspire and drive the foundation.
             </p>
           </div>
 
-          {/* Leaders Grid - Compact Cards with Left Accent */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
+          {/* Leaders Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
             {LEADERSHIP.map((leader, idx) => (
               <div
                 key={idx}
-                className="bg-white rounded-xl border border-slate-200/80 shadow-xs p-4 sm:p-5 flex flex-col gap-3 hover:shadow-md transition-all duration-300"
+                className="bg-white rounded-2xl border border-slate-100 shadow-sm p-4 sm:p-6 md:p-8 flex flex-col gap-3.5 sm:gap-5 hover:shadow-lg transition-all duration-300"
               >
                 {/* Header row */}
-                <div className="flex items-center gap-3.5 sm:gap-4">
-                  <div className="shrink-0 h-12 w-12 sm:h-14 sm:w-14 rounded-full overflow-hidden border-2 border-[#013759]/15 bg-slate-50">
+                <div className="flex items-center gap-3.5 sm:gap-5">
+                  <div className="shrink-0 h-12 w-12 sm:h-16 sm:w-16 rounded-full overflow-hidden border-2 border-[#013759]/15 bg-slate-50">
                     <img
                       src={leader.photo}
                       alt={leader.title}
@@ -1177,16 +1176,26 @@ export function LandingPage() {
                     <div className="text-[9px] sm:text-[10px] tracking-widest text-[#074887] uppercase font-normal">
                       {leader.role}
                     </div>
-                    <h3 className="text-xs sm:text-sm font-normal text-[#013759] mt-0.5">
+                    <h3 className="text-xs sm:text-base font-normal text-[#013759] mt-0.5">
                       {leader.title}
                     </h3>
                   </div>
                 </div>
 
-                {/* Quote with Left Border Accent */}
-                <div className="border-l-2 border-[#074887]/30 pl-3 py-0.5">
-                  <p className="text-xs text-gray-600 leading-relaxed text-left">
-                    "{leader.message}"
+                {/* Divider */}
+                <div className="w-full h-px bg-slate-100" />
+
+                {/* Quote */}
+                <div className="relative">
+                  <span
+                    className="absolute -top-2 -left-1 text-3xl sm:text-5xl leading-none select-none pointer-events-none"
+                    style={{ color: '#013759', opacity: 0.08 }}
+                    aria-hidden="true"
+                  >
+                    "
+                  </span>
+                  <p className="text-xs sm:text-sm text-gray-600 leading-relaxed text-left md:text-justify pl-2 font-normal">
+                    {leader.message}
                   </p>
                 </div>
               </div>
