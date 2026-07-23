@@ -1119,19 +1119,11 @@ export function LandingPage() {
       </section>
 
       {/* Why Choose Us Section - Official ITSEC - NFED Support Mechanism */}
-      <section className="w-full bg-[#f8fafc] py-10 md:py-24 border-t border-slate-100/80">
+      <section className="w-full bg-[#f8fafc] py-10 md:py-16 border-t border-slate-100/80">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-left md:text-center mb-8 md:mb-16">
-            <h2 className="mb-2 md:mb-4 font-normal text-2xl sm:text-3xl md:text-4xl tracking-tight text-[#013759]">
-              Why <span className="inline-block"><span className="text-[#10b981]">C</span><span className="text-[#ec4899]">h</span><span className="text-[#3b82f6]">o</span><span className="text-[#f59e0b]">o</span><span className="text-[#ef4444]">s</span><span className="text-[#8b5cf6]">e</span></span> Us
-            </h2>
-            <p className="text-xs sm:text-sm font-normal text-gray-500 max-w-2xl mx-0 md:mx-auto">
-              Our comprehensive 3-pillar support framework designed to nurture early-stage startups from concept validation to market scaling.
-            </p>
-          </div>
 
           {/* Radial Graph Node Layout (Desktop >= 1024px) */}
-          <div className="hidden lg:flex flex-col items-center relative py-6 max-w-6xl mx-auto">
+          <div className="hidden lg:flex flex-col items-center relative py-2 max-w-6xl mx-auto">
             <div className="relative w-[960px] h-[720px] flex items-center justify-center">
               
               {/* Outer Decorative Background Circles */}
@@ -1170,19 +1162,16 @@ export function LandingPage() {
 
               {/* Central Core Hub Node */}
               <div className="z-30 w-56 h-56 rounded-full bg-white border-4 border-slate-100 shadow-2xl flex flex-col items-center justify-center p-5 text-center group hover:scale-105 transition-all duration-300 relative">
-                <div className="h-10 w-10 rounded-2xl bg-[#013759]/10 text-[#013759] flex items-center justify-center mb-1.5 shadow-xs">
+                <div className="h-10 w-10 rounded-2xl bg-[#013759]/10 text-[#013759] flex items-center justify-center mb-2 shadow-xs">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <circle cx="12" cy="12" r="10" />
                     <path d="M12 2a10 10 0 0 1 10 10" />
                   </svg>
                 </div>
-                <span className="text-[10px] font-bold uppercase tracking-widest text-[#074887]">
-                  ITSEC - NFED
-                </span>
-                <h3 className="text-base font-normal text-[#013759] leading-tight mt-0.5">
-                  Support<br/><span className="font-bold text-xl">Mechanism</span>
+                <h3 className="text-xl font-normal text-[#013759] tracking-tight leading-tight">
+                  Why <span className="inline-block"><span className="text-[#10b981]">C</span><span className="text-[#ec4899]">h</span><span className="text-[#3b82f6]">o</span><span className="text-[#f59e0b]">o</span><span className="text-[#ef4444]">s</span><span className="text-[#8b5cf6]">e</span></span> Us
                 </h3>
-                <div className="flex gap-1.5 mt-2">
+                <div className="flex gap-1.5 mt-2.5">
                   <span className="w-2 h-2 rounded-full bg-emerald-500" />
                   <span className="w-2 h-2 rounded-full bg-[#013759]" />
                   <span className="w-2 h-2 rounded-full bg-amber-500" />
