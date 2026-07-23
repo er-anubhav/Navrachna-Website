@@ -2,18 +2,20 @@ import { motion, useMotionValue, useTransform, animate } from 'motion/react';
 import { useState, useEffect } from 'react';
 import './Stack.css';
 
-function CardRotate({ children, onSendToBack, sensitivity, disableDrag = false, zIndex, isTop }) {
+function CardRotate({ children, onSendToBack, sensitivity, disableDrag = false, zIndex, isTop, isMobile }) {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const rotateX = useTransform(y, [-100, 100], [6, -6]);
-  const rotateY = useTransform(x, [-100, 100], [-6, 6]);
+  
+  // Disable 3D perspective transforms on mobile to ensure 60fps hardware performance
+  const rotateX = useTransform(y, [-100, 100], isMobile ? [0, 0] : [5, -5]);
+  const rotateY = useTransform(x, [-100, 100], isMobile ? [0, 0] : [-5, 5]);
 
   function handleDragEnd(_, info) {
     if (Math.abs(info.offset.x) > sensitivity || Math.abs(info.offset.y) > sensitivity) {
       onSendToBack();
     }
-    animate(x, 0, { type: 'spring', stiffness: 300, damping: 25 });
-    animate(y, 0, { type: 'spring', stiffness: 300, damping: 25 });
+    animate(x, 0, { type: 'spring', stiffness: 350, damping: 28 });
+    animate(y, 0, { type: 'spring', stiffness: 350, damping: 28 });
   }
 
   if (disableDrag) {
@@ -30,7 +32,7 @@ function CardRotate({ children, onSendToBack, sensitivity, disableDrag = false, 
       style={{ x, y, rotateX, rotateY, zIndex }}
       drag={isTop ? true : false}
       dragConstraints={{ top: 0, right: 0, bottom: 0, left: 0 }}
-      dragElastic={0.6}
+      dragElastic={0.5}
       whileTap={isTop ? { cursor: 'grabbing' } : {}}
       onDragEnd={handleDragEnd}
     >
@@ -41,9 +43,9 @@ function CardRotate({ children, onSendToBack, sensitivity, disableDrag = false, 
 
 export default function Stack({
   randomRotation = false,
-  sensitivity = 150,
+  sensitivity = 140,
   cards = [],
-  animationConfig = { stiffness: 220, damping: 22 },
+  animationConfig = { stiffness: 240, damping: 24 },
   sendToBackOnClick = true,
   autoplay = true,
   autoplayDelay = 3500,
@@ -113,6 +115,10 @@ export default function Stack({
     }
   }, [autoplay, autoplayDelay, stack.length, isPaused]);
 
+  // Render only top 4 cards in DOM to save GPU memory and prevent lag on mobile
+  const maxVisibleCards = 4;
+  const visibleCards = stack.slice(Math.max(0, stack.length - maxVisibleCards));
+
   return (
     <div
       className="stack-container"
@@ -121,19 +127,21 @@ export default function Stack({
       onTouchStart={() => pauseOnHover && setIsPaused(true)}
       onTouchEnd={() => pauseOnHover && setIsPaused(false)}
     >
-      {stack.map((card, index) => {
-        const isTop = index === stack.length - 1;
-        const depth = stack.length - 1 - index;
+      {visibleCards.map((card, visibleIndex) => {
+        // Compute overall index within full stack
+        const fullIndex = stack.length - visibleCards.length + visibleIndex;
+        const isTop = fullIndex === stack.length - 1;
+        const depth = stack.length - 1 - fullIndex;
         
         // Distinct, eye-catching tilt angle and side offset for back cards
         const sideMultiplier = card.id % 2 === 0 ? 1 : -1;
         const tiltAngle = isTop 
           ? 0 
-          : sideMultiplier * (4 + depth * 4 + ((card.id * 7) % 5));
+          : sideMultiplier * (4 + depth * 3.5 + ((card.id * 5) % 4));
         
         const offsetX = isTop 
           ? 0 
-          : sideMultiplier * (depth * 10);
+          : sideMultiplier * (depth * 9);
 
         return (
           <CardRotate
@@ -141,18 +149,19 @@ export default function Stack({
             onSendToBack={() => sendToBack(card.id)}
             sensitivity={sensitivity}
             disableDrag={shouldDisableDrag || !isTop}
-            zIndex={index + 1}
+            zIndex={fullIndex + 1}
             isTop={isTop}
+            isMobile={isMobile}
           >
             <motion.div
               className="card"
               onClick={() => shouldEnableClick && sendToBack(card.id)}
               animate={{
                 rotateZ: tiltAngle,
-                scale: 1 - depth * 0.05,
+                scale: 1 - depth * 0.045,
                 x: offsetX,
-                y: depth * 8,
-                opacity: depth > 3 ? 0 : 1 - depth * 0.08
+                y: depth * 7,
+                opacity: 1 - depth * 0.07
               }}
               initial={false}
               transition={{
