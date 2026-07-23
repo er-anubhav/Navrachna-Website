@@ -1130,122 +1130,135 @@ export function LandingPage() {
             </p>
           </div>
 
-          {/* Circular Wheel Diagram (Desktop >= 1024px) */}
-          <div className="hidden lg:flex flex-col items-center relative py-6 max-w-5xl mx-auto">
-            {/* Main Outer Wheel Canvas */}
-            <div className="relative w-[820px] h-[660px] flex items-center justify-center">
+          {/* Radial Graph Node Layout (Desktop >= 1024px) */}
+          <div className="hidden lg:flex flex-col items-center relative py-6 max-w-6xl mx-auto">
+            <div className="relative w-[960px] h-[720px] flex items-center justify-center">
               
-              {/* Outer Decorative Ring & Glow */}
-              <div className="absolute w-[560px] h-[560px] rounded-full border-2 border-dashed border-slate-200 pointer-events-none" />
-              <div className="absolute w-[440px] h-[440px] rounded-full border border-slate-200/60 bg-gradient-to-br from-slate-50/60 via-white/40 to-slate-100/30 shadow-inner pointer-events-none" />
+              {/* Outer Decorative Background Circles */}
+              <div className="absolute w-[680px] h-[680px] rounded-full border border-slate-200/80 pointer-events-none" />
+              <div className="absolute w-[480px] h-[480px] rounded-full border border-slate-200/60 bg-gradient-to-br from-slate-50/60 via-white/40 to-slate-100/30 shadow-inner pointer-events-none" />
 
-              {/* Connecting Dotted Lines SVG */}
-              <svg className="absolute inset-0 w-full h-full pointer-events-none z-0" viewBox="0 0 820 660">
-                {/* Line to Top (01 - Mentorship) */}
-                <line x1="410" y1="330" x2="410" y2="135" stroke="#10b981" strokeWidth="2.5" strokeDasharray="6 4" />
-                <circle cx="410" cy="135" r="5" fill="#10b981" />
-                
-                {/* Line to Bottom-Right (02 - Infrastructure) */}
-                <line x1="410" y1="330" x2="625" y2="455" stroke="#013759" strokeWidth="2.5" strokeDasharray="6 4" />
-                <circle cx="625" cy="455" r="5" fill="#013759" />
+              {/* Connecting Dotted Lines SVG Canvas */}
+              <svg className="absolute inset-0 w-full h-full pointer-events-none z-0" viewBox="0 0 960 720">
+                {/* Center to 3 Hub Lines */}
+                <line x1="480" y1="360" x2="480" y2="160" stroke="#10b981" strokeWidth="2.5" strokeDasharray="6 4" />
+                <line x1="480" y1="360" x2="740" y2="510" stroke="#013759" strokeWidth="2.5" strokeDasharray="6 4" />
+                <line x1="480" y1="360" x2="220" y2="510" stroke="#d97706" strokeWidth="2.5" strokeDasharray="6 4" />
 
-                {/* Line to Bottom-Left (03 - Network) */}
-                <line x1="410" y1="330" x2="195" y2="455" stroke="#d97706" strokeWidth="2.5" strokeDasharray="6 4" />
-                <circle cx="195" cy="455" r="5" fill="#d97706" />
+                {/* Hub 01 (Mentorship) to individual point lines */}
+                <line x1="480" y1="160" x2="160" y2="60" stroke="#10b981" strokeWidth="1.5" opacity="0.6" />
+                <line x1="480" y1="160" x2="350" y2="50" stroke="#10b981" strokeWidth="1.5" opacity="0.6" />
+                <line x1="480" y1="160" x2="610" y2="50" stroke="#10b981" strokeWidth="1.5" opacity="0.6" />
+                <line x1="480" y1="160" x2="800" y2="60" stroke="#10b981" strokeWidth="1.5" opacity="0.6" />
+                <line x1="480" y1="160" x2="230" y2="170" stroke="#10b981" strokeWidth="1.5" opacity="0.6" />
+                <line x1="480" y1="160" x2="730" y2="170" stroke="#10b981" strokeWidth="1.5" opacity="0.6" />
+
+                {/* Hub 02 (Infrastructure) to individual point lines */}
+                <line x1="740" y1="510" x2="600" y2="390" stroke="#013759" strokeWidth="1.5" opacity="0.6" />
+                <line x1="740" y1="510" x2="860" y2="390" stroke="#013759" strokeWidth="1.5" opacity="0.6" />
+                <line x1="740" y1="510" x2="600" y2="630" stroke="#013759" strokeWidth="1.5" opacity="0.6" />
+                <line x1="740" y1="510" x2="860" y2="630" stroke="#013759" strokeWidth="1.5" opacity="0.6" />
+                <line x1="740" y1="510" x2="740" y2="680" stroke="#013759" strokeWidth="1.5" opacity="0.6" />
+
+                {/* Hub 03 (Network) to individual point lines */}
+                <line x1="220" y1="510" x2="100" y2="390" stroke="#d97706" strokeWidth="1.5" opacity="0.6" />
+                <line x1="220" y1="510" x2="360" y2="390" stroke="#d97706" strokeWidth="1.5" opacity="0.6" />
+                <line x1="220" y1="510" x2="100" y2="630" stroke="#d97706" strokeWidth="1.5" opacity="0.6" />
+                <line x1="220" y1="510" x2="360" y2="630" stroke="#d97706" strokeWidth="1.5" opacity="0.6" />
+                <line x1="220" y1="510" x2="220" y2="680" stroke="#d97706" strokeWidth="1.5" opacity="0.6" />
               </svg>
 
-              {/* Center Hub Circle */}
-              <div className="z-20 w-64 h-64 rounded-full bg-white border-4 border-slate-100 shadow-2xl flex flex-col items-center justify-center p-6 text-center group hover:scale-105 transition-all duration-300 relative">
-                <div className="absolute inset-0 rounded-full border-2 border-slate-100 scale-105 pointer-events-none" />
-                <div className="h-11 w-11 rounded-2xl bg-[#013759]/10 text-[#013759] flex items-center justify-center mb-2 shadow-xs">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              {/* Central Core Hub Node */}
+              <div className="z-30 w-56 h-56 rounded-full bg-white border-4 border-slate-100 shadow-2xl flex flex-col items-center justify-center p-5 text-center group hover:scale-105 transition-all duration-300 relative">
+                <div className="h-10 w-10 rounded-2xl bg-[#013759]/10 text-[#013759] flex items-center justify-center mb-1.5 shadow-xs">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <circle cx="12" cy="12" r="10" />
                     <path d="M12 2a10 10 0 0 1 10 10" />
                   </svg>
                 </div>
-                <span className="text-[11px] font-bold uppercase tracking-widest text-[#074887]">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-[#074887]">
                   ITSEC - NFED
                 </span>
-                <h3 className="text-lg font-normal text-[#013759] leading-tight mt-0.5">
-                  Support<br/><span className="font-bold text-2xl">Mechanism</span>
+                <h3 className="text-base font-normal text-[#013759] leading-tight mt-0.5">
+                  Support<br/><span className="font-bold text-xl">Mechanism</span>
                 </h3>
-                <div className="flex gap-1.5 mt-3">
-                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#013759]" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-amber-500" />
+                <div className="flex gap-1.5 mt-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                  <span className="w-2 h-2 rounded-full bg-[#013759]" />
+                  <span className="w-2 h-2 rounded-full bg-amber-500" />
                 </div>
               </div>
 
-              {/* Point 01: Mentorship Support (Top Center) */}
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 z-10 w-[350px] bg-white rounded-3xl p-5 sm:p-6 border-2 border-emerald-100 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 group text-left">
-                <div className="flex items-center gap-3 mb-3.5 pb-3 border-b border-emerald-100/70">
-                  <div className="h-9 w-9 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold text-sm shrink-0 shadow-xs">
-                    01
-                  </div>
-                  <div className="flex items-center gap-2.5">
-                    <div className="h-9 w-9 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 border border-emerald-100">
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.9 1.2 1.5 1.5 2.5" />
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 18h6" />
-                      </svg>
-                    </div>
-                    <h4 className="text-base font-semibold text-[#013759]">Mentorship</h4>
-                  </div>
-                </div>
-                <ul className="space-y-2 text-xs text-slate-600 font-normal">
-                  <li className="flex items-start gap-2"><span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"/>Business & Technical Mentorship</li>
-                  <li className="flex items-start gap-2"><span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"/>Legal Assistance & Pitch Preparation</li>
-                  <li className="flex items-start gap-2"><span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"/>Patent & Intellectual Property Support</li>
-                  <li className="flex items-start gap-2"><span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"/>National & International Event Participation</li>
-                </ul>
+              {/* Category Hub 01: Mentorship (Top Node) */}
+              <div className="absolute top-[125px] left-1/2 -translate-x-1/2 z-20 px-5 py-2.5 rounded-full bg-emerald-600 text-white shadow-lg flex items-center gap-2.5 font-semibold text-sm">
+                <span className="h-6 w-6 rounded-full bg-white text-emerald-700 flex items-center justify-center text-xs font-bold">01</span>
+                <span>MENTORSHIP</span>
               </div>
 
-              {/* Point 02: Infrastructure Support (Bottom Right) */}
-              <div className="absolute bottom-0 right-0 z-10 w-[350px] bg-white rounded-3xl p-5 sm:p-6 border-2 border-sky-100 shadow-xl hover:shadow-2xl transition-all duration-300 hover:translate-x-1 group text-left">
-                <div className="flex items-center gap-3 mb-3.5 pb-3 border-b border-sky-100/70">
-                  <div className="h-9 w-9 rounded-full bg-[#013759] text-white flex items-center justify-center font-bold text-sm shrink-0 shadow-xs">
-                    02
-                  </div>
-                  <div className="flex items-center gap-2.5">
-                    <div className="h-9 w-9 rounded-xl bg-sky-50 text-[#013759] flex items-center justify-center shrink-0 border border-sky-100">
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                        <rect x="4" y="4" width="16" height="16" rx="2" ry="2" />
-                        <rect x="9" y="9" width="6" height="6" />
-                      </svg>
-                    </div>
-                    <h4 className="text-base font-semibold text-[#013759]">Infrastructure Support</h4>
-                  </div>
-                </div>
-                <ul className="space-y-2 text-xs text-slate-600 font-normal">
-                  <li className="flex items-start gap-2"><span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[#013759] shrink-0"/>Co-Working Space & Dedicated Cabin Area</li>
-                  <li className="flex items-start gap-2"><span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[#013759] shrink-0"/>Meeting Rooms & Fabrication Lab</li>
-                  <li className="flex items-start gap-2"><span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[#013759] shrink-0"/>High End Precision Equipment</li>
-                  <li className="flex items-start gap-2"><span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[#013759] shrink-0"/>Access to Current Schemes and Grants</li>
-                </ul>
+              {/* Mentorship Floating Point Nodes */}
+              <div className="absolute top-[35px] left-[70px] z-20 px-3.5 py-1.5 rounded-2xl bg-white border border-emerald-200 text-slate-700 text-xs font-medium shadow-md hover:scale-105 transition-all">
+                Business Mentorship
+              </div>
+              <div className="absolute top-[25px] left-[270px] z-20 px-3.5 py-1.5 rounded-2xl bg-white border border-emerald-200 text-slate-700 text-xs font-medium shadow-md hover:scale-105 transition-all">
+                Technical Mentorship
+              </div>
+              <div className="absolute top-[25px] right-[270px] z-20 px-3.5 py-1.5 rounded-2xl bg-white border border-emerald-200 text-slate-700 text-xs font-medium shadow-md hover:scale-105 transition-all">
+                Legal Assistance
+              </div>
+              <div className="absolute top-[35px] right-[70px] z-20 px-3.5 py-1.5 rounded-2xl bg-white border border-emerald-200 text-slate-700 text-xs font-medium shadow-md hover:scale-105 transition-all">
+                Pitch Preparation
+              </div>
+              <div className="absolute top-[145px] left-[120px] z-20 px-3.5 py-1.5 rounded-2xl bg-white border border-emerald-200 text-slate-700 text-xs font-medium shadow-md hover:scale-105 transition-all">
+                Patent & IP Support
+              </div>
+              <div className="absolute top-[145px] right-[100px] z-20 px-3.5 py-1.5 rounded-2xl bg-white border border-emerald-200 text-slate-700 text-xs font-medium shadow-md hover:scale-105 transition-all">
+                Event Participation Assistance
               </div>
 
-              {/* Point 03: Comprehensive Network (Bottom Left) */}
-              <div className="absolute bottom-0 left-0 z-10 w-[350px] bg-white rounded-3xl p-5 sm:p-6 border-2 border-amber-100 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-x-1 group text-left">
-                <div className="flex items-center gap-3 mb-3.5 pb-3 border-b border-amber-100/70">
-                  <div className="h-9 w-9 rounded-full bg-amber-600 text-white flex items-center justify-center font-bold text-sm shrink-0 shadow-xs">
-                    03
-                  </div>
-                  <div className="flex items-center gap-2.5">
-                    <div className="h-9 w-9 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center shrink-0 border border-amber-100">
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                        <circle cx="9" cy="7" r="4" />
-                      </svg>
-                    </div>
-                    <h4 className="text-base font-semibold text-[#013759]">Comprehensive Network</h4>
-                  </div>
-                </div>
-                <ul className="space-y-2 text-xs text-slate-600 font-normal">
-                  <li className="flex items-start gap-2"><span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-amber-500 shrink-0"/>Supporting in government backed startup schemes</li>
-                  <li className="flex items-start gap-2"><span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-amber-500 shrink-0"/>Wide Network of Seasoned Mentors & Investors</li>
-                  <li className="flex items-start gap-2"><span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-amber-500 shrink-0"/>Deep Corporate Networks for Brand Positioning</li>
-                  <li className="flex items-start gap-2"><span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-amber-500 shrink-0"/>Interns Support, RND & Digital Presence</li>
-                </ul>
+              {/* Category Hub 02: Infrastructure Support (Bottom Right Node) */}
+              <div className="absolute top-[475px] right-[120px] z-20 px-5 py-2.5 rounded-full bg-[#013759] text-white shadow-lg flex items-center gap-2.5 font-semibold text-sm">
+                <span className="h-6 w-6 rounded-full bg-white text-[#013759] flex items-center justify-center text-xs font-bold">02</span>
+                <span>INFRASTRUCTURE SUPPORT</span>
+              </div>
+
+              {/* Infrastructure Floating Point Nodes */}
+              <div className="absolute top-[365px] right-[250px] z-20 px-3.5 py-1.5 rounded-2xl bg-white border border-sky-200 text-slate-700 text-xs font-medium shadow-md hover:scale-105 transition-all">
+                Co-Working Space
+              </div>
+              <div className="absolute top-[365px] right-[30px] z-20 px-3.5 py-1.5 rounded-2xl bg-white border border-sky-200 text-slate-700 text-xs font-medium shadow-md hover:scale-105 transition-all">
+                Dedicated Cabin Area
+              </div>
+              <div className="absolute top-[605px] right-[250px] z-20 px-3.5 py-1.5 rounded-2xl bg-white border border-sky-200 text-slate-700 text-xs font-medium shadow-md hover:scale-105 transition-all">
+                Meeting Rooms
+              </div>
+              <div className="absolute top-[605px] right-[30px] z-20 px-3.5 py-1.5 rounded-2xl bg-white border border-sky-200 text-slate-700 text-xs font-medium shadow-md hover:scale-105 transition-all">
+                Fabrication Lab
+              </div>
+              <div className="absolute top-[660px] right-[130px] z-20 px-3.5 py-1.5 rounded-2xl bg-white border border-sky-200 text-slate-700 text-xs font-medium shadow-md hover:scale-105 transition-all">
+                High End Precision Equipment & Grants
+              </div>
+
+              {/* Category Hub 03: Comprehensive Network (Bottom Left Node) */}
+              <div className="absolute top-[475px] left-[110px] z-20 px-5 py-2.5 rounded-full bg-amber-600 text-white shadow-lg flex items-center gap-2.5 font-semibold text-sm">
+                <span className="h-6 w-6 rounded-full bg-white text-amber-700 flex items-center justify-center text-xs font-bold">03</span>
+                <span>COMPREHENSIVE NETWORK</span>
+              </div>
+
+              {/* Network Floating Point Nodes */}
+              <div className="absolute top-[365px] left-[30px] z-20 px-3.5 py-1.5 rounded-2xl bg-white border border-amber-200 text-slate-700 text-xs font-medium shadow-md hover:scale-105 transition-all">
+                Government Backed Schemes
+              </div>
+              <div className="absolute top-[365px] left-[250px] z-20 px-3.5 py-1.5 rounded-2xl bg-white border border-amber-200 text-slate-700 text-xs font-medium shadow-md hover:scale-105 transition-all">
+                Seasoned Mentors Network
+              </div>
+              <div className="absolute top-[605px] left-[30px] z-20 px-3.5 py-1.5 rounded-2xl bg-white border border-amber-200 text-slate-700 text-xs font-medium shadow-md hover:scale-105 transition-all">
+                Quality Investor Network
+              </div>
+              <div className="absolute top-[605px] left-[250px] z-20 px-3.5 py-1.5 rounded-2xl bg-white border border-amber-200 text-slate-700 text-xs font-medium shadow-md hover:scale-105 transition-all">
+                Corporate Networks
+              </div>
+              <div className="absolute top-[660px] left-[130px] z-20 px-3.5 py-1.5 rounded-2xl bg-white border border-amber-200 text-slate-700 text-xs font-medium shadow-md hover:scale-105 transition-all">
+                Interns, RND & Digital Support
               </div>
 
             </div>
