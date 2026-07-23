@@ -319,6 +319,13 @@ const SCHEMES = [
     title: "MSME-BI",
     description: "Participate in MSME Hackathons to solve real-world industry challenges and secure seed funding. A direct approach towards solving your startup problems with 1 to 1 mentorship.",
     gradient: "from-rose-950 via-red-800 to-orange-600"
+  },
+  {
+    code: "Kartavyam",
+    subCode: "School STEM Outreach",
+    title: "Kartavyam Initiative",
+    description: "Empowering 300+ school students across 40+ partner schools through early STEM innovation, social responsibility, and youth entrepreneurship development.",
+    gradient: "from-blue-950 via-cyan-800 to-teal-600"
   }
 ];
 
