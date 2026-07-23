@@ -78,6 +78,9 @@ export function HeaderV1() {
                 <span className="max-sm:hidden text-[10px] sm:text-[11px] font-medium text-gray-500 tracking-wide">
                   for Entrepreneurship Development
                 </span>
+                <span className="max-sm:hidden text-[9px] sm:text-[10px] font-normal text-gray-400 tracking-tight whitespace-nowrap">
+                  (A Section 8 Company of I.T.S Engineering College, Greater Noida)
+                </span>
               </div>
             </a>
           </div>
