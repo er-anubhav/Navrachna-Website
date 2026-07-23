@@ -1164,9 +1164,6 @@ export function LandingPage() {
                 <h3 className="text-xl font-normal text-[#013759] tracking-tight leading-tight">
                   Why <span className="inline-block"><span className="text-[#10b981]">C</span><span className="text-[#ec4899]">h</span><span className="text-[#3b82f6]">o</span><span className="text-[#f59e0b]">o</span><span className="text-[#ef4444]">s</span><span className="text-[#8b5cf6]">e</span></span> Us
                 </h3>
-                <span className="mt-2 text-[10px] font-medium text-slate-400 tracking-wide">
-                  {activeHubNode ? 'Click to reset' : 'Hover / Click branches'}
-                </span>
               </button>
 
               {/* Category Hub 01: Mentorship (Top Node) */}
@@ -1174,9 +1171,8 @@ export function LandingPage() {
                 onMouseEnter={() => setActiveHubNode(1)}
                 onMouseLeave={() => setActiveHubNode(null)}
                 onClick={() => setActiveHubNode(activeHubNode === 1 ? null : 1)}
-                className={`absolute top-[125px] left-1/2 -translate-x-1/2 z-20 px-5 py-2.5 rounded-full text-white shadow-lg flex items-center gap-2.5 font-semibold text-sm cursor-pointer transition-all duration-300 ${activeHubNode === 1 || activeHubNode === 'center' ? 'scale-115 bg-emerald-700 shadow-emerald-500/40 ring-4 ring-emerald-300' : 'bg-emerald-600 hover:scale-105 hover:bg-emerald-700'}`}
+                className={`absolute top-[125px] left-1/2 -translate-x-1/2 z-20 px-6 py-2.5 rounded-full text-white shadow-lg flex items-center font-semibold text-sm cursor-pointer transition-all duration-300 ${activeHubNode === 1 || activeHubNode === 'center' ? 'scale-115 bg-emerald-700 shadow-emerald-500/40 ring-4 ring-emerald-300' : 'bg-emerald-600 hover:scale-105 hover:bg-emerald-700'}`}
               >
-                <span className="h-6 w-6 rounded-full bg-white text-emerald-700 flex items-center justify-center text-xs font-bold">01</span>
                 <span>MENTORSHIP</span>
               </button>
 
@@ -1213,9 +1209,8 @@ export function LandingPage() {
                 onMouseEnter={() => setActiveHubNode(2)}
                 onMouseLeave={() => setActiveHubNode(null)}
                 onClick={() => setActiveHubNode(activeHubNode === 2 ? null : 2)}
-                className={`absolute top-[470px] right-[60px] z-20 px-5 py-2.5 rounded-full text-white shadow-lg flex items-center gap-2.5 font-semibold text-sm cursor-pointer transition-all duration-300 ${activeHubNode === 2 || activeHubNode === 'center' ? 'scale-115 bg-[#01253d] shadow-sky-500/40 ring-4 ring-sky-300' : 'bg-[#013759] hover:scale-105 hover:bg-[#01253d]'}`}
+                className={`absolute top-[470px] right-[60px] z-20 px-6 py-2.5 rounded-full text-white shadow-lg flex items-center font-semibold text-sm cursor-pointer transition-all duration-300 ${activeHubNode === 2 || activeHubNode === 'center' ? 'scale-115 bg-[#01253d] shadow-sky-500/40 ring-4 ring-sky-300' : 'bg-[#013759] hover:scale-105 hover:bg-[#01253d]'}`}
               >
-                <span className="h-6 w-6 rounded-full bg-white text-[#013759] flex items-center justify-center text-xs font-bold">02</span>
                 <span>INFRASTRUCTURE SUPPORT</span>
               </button>
 
@@ -1251,9 +1246,8 @@ export function LandingPage() {
                 onMouseEnter={() => setActiveHubNode(3)}
                 onMouseLeave={() => setActiveHubNode(null)}
                 onClick={() => setActiveHubNode(activeHubNode === 3 ? null : 3)}
-                className={`absolute top-[470px] left-[60px] z-20 px-5 py-2.5 rounded-full text-white shadow-lg flex items-center gap-2.5 font-semibold text-sm cursor-pointer transition-all duration-300 ${activeHubNode === 3 || activeHubNode === 'center' ? 'scale-115 bg-amber-700 shadow-amber-500/40 ring-4 ring-amber-300' : 'bg-amber-600 hover:scale-105 hover:bg-amber-700'}`}
+                className={`absolute top-[470px] left-[60px] z-20 px-6 py-2.5 rounded-full text-white shadow-lg flex items-center font-semibold text-sm cursor-pointer transition-all duration-300 ${activeHubNode === 3 || activeHubNode === 'center' ? 'scale-115 bg-amber-700 shadow-amber-500/40 ring-4 ring-amber-300' : 'bg-amber-600 hover:scale-105 hover:bg-amber-700'}`}
               >
-                <span className="h-6 w-6 rounded-full bg-white text-amber-700 flex items-center justify-center text-xs font-bold">03</span>
                 <span>COMPREHENSIVE NETWORK</span>
               </button>
 
