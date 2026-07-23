@@ -1105,7 +1105,7 @@ export function LandingPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
           {/* Radial Graph Node Layout (Desktop >= 1024px) */}
-          <div className="hidden lg:flex flex-col items-center relative py-4 max-w-6xl mx-auto select-none">
+          <div className="hidden lg:flex flex-col items-center relative py-1 max-w-6xl mx-auto select-none">
             <div className="relative w-[960px] h-[730px] flex items-center justify-center">
               
               {/* Outer Decorative Background Circles */}
