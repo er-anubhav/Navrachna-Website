@@ -1122,9 +1122,6 @@ export function LandingPage() {
       <section className="w-full bg-[#f8fafc] py-10 md:py-24 border-t border-slate-100/80">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-left md:text-center mb-8 md:mb-16">
-            <span className="inline-block rounded-full bg-[#013759]/10 px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-[#013759] border border-[#013759]/20 mb-3">
-              ITSEC - NFED Support Mechanism
-            </span>
             <h2 className="mb-2 md:mb-4 font-normal text-2xl sm:text-3xl md:text-4xl tracking-tight text-[#013759]">
               Why <span className="inline-block"><span className="text-[#10b981]">C</span><span className="text-[#ec4899]">h</span><span className="text-[#3b82f6]">o</span><span className="text-[#f59e0b]">o</span><span className="text-[#ef4444]">s</span><span className="text-[#8b5cf6]">e</span></span> Us
             </h2>
@@ -1133,23 +1130,147 @@ export function LandingPage() {
             </p>
           </div>
 
-          {/* 3 Core Support Mechanism Pillars Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          {/* Circular Wheel Diagram (Desktop >= 1024px) */}
+          <div className="hidden lg:flex flex-col items-center relative py-6 max-w-5xl mx-auto">
+            {/* Main Outer Wheel Canvas */}
+            <div className="relative w-[820px] h-[660px] flex items-center justify-center">
+              
+              {/* Outer Decorative Ring & Glow */}
+              <div className="absolute w-[560px] h-[560px] rounded-full border-2 border-dashed border-slate-200 pointer-events-none" />
+              <div className="absolute w-[440px] h-[440px] rounded-full border border-slate-200/60 bg-gradient-to-br from-slate-50/60 via-white/40 to-slate-100/30 shadow-inner pointer-events-none" />
+
+              {/* Connecting Dotted Lines SVG */}
+              <svg className="absolute inset-0 w-full h-full pointer-events-none z-0" viewBox="0 0 820 660">
+                {/* Line to Top (01 - Mentorship) */}
+                <line x1="410" y1="330" x2="410" y2="135" stroke="#10b981" strokeWidth="2.5" strokeDasharray="6 4" />
+                <circle cx="410" cy="135" r="5" fill="#10b981" />
+                
+                {/* Line to Bottom-Right (02 - Infrastructure) */}
+                <line x1="410" y1="330" x2="625" y2="455" stroke="#013759" strokeWidth="2.5" strokeDasharray="6 4" />
+                <circle cx="625" cy="455" r="5" fill="#013759" />
+
+                {/* Line to Bottom-Left (03 - Network) */}
+                <line x1="410" y1="330" x2="195" y2="455" stroke="#d97706" strokeWidth="2.5" strokeDasharray="6 4" />
+                <circle cx="195" cy="455" r="5" fill="#d97706" />
+              </svg>
+
+              {/* Center Hub Circle */}
+              <div className="z-20 w-64 h-64 rounded-full bg-white border-4 border-slate-100 shadow-2xl flex flex-col items-center justify-center p-6 text-center group hover:scale-105 transition-all duration-300 relative">
+                <div className="absolute inset-0 rounded-full border-2 border-slate-100 scale-105 pointer-events-none" />
+                <div className="h-11 w-11 rounded-2xl bg-[#013759]/10 text-[#013759] flex items-center justify-center mb-2 shadow-xs">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M12 2a10 10 0 0 1 10 10" />
+                  </svg>
+                </div>
+                <span className="text-[11px] font-bold uppercase tracking-widest text-[#074887]">
+                  ITSEC - NFED
+                </span>
+                <h3 className="text-lg font-normal text-[#013759] leading-tight mt-0.5">
+                  Support<br/><span className="font-bold text-2xl">Mechanism</span>
+                </h3>
+                <div className="flex gap-1.5 mt-3">
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#013759]" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-amber-500" />
+                </div>
+              </div>
+
+              {/* Point 01: Mentorship Support (Top Center) */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 z-10 w-[350px] bg-white rounded-3xl p-5 sm:p-6 border-2 border-emerald-100 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 group text-left">
+                <div className="flex items-center gap-3 mb-3.5 pb-3 border-b border-emerald-100/70">
+                  <div className="h-9 w-9 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold text-sm shrink-0 shadow-xs">
+                    01
+                  </div>
+                  <div className="flex items-center gap-2.5">
+                    <div className="h-9 w-9 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 border border-emerald-100">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.9 1.2 1.5 1.5 2.5" />
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 18h6" />
+                      </svg>
+                    </div>
+                    <h4 className="text-base font-semibold text-[#013759]">Mentorship</h4>
+                  </div>
+                </div>
+                <ul className="space-y-2 text-xs text-slate-600 font-normal">
+                  <li className="flex items-start gap-2"><span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"/>Business & Technical Mentorship</li>
+                  <li className="flex items-start gap-2"><span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"/>Legal Assistance & Pitch Preparation</li>
+                  <li className="flex items-start gap-2"><span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"/>Patent & Intellectual Property Support</li>
+                  <li className="flex items-start gap-2"><span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"/>National & International Event Participation</li>
+                </ul>
+              </div>
+
+              {/* Point 02: Infrastructure Support (Bottom Right) */}
+              <div className="absolute bottom-0 right-0 z-10 w-[350px] bg-white rounded-3xl p-5 sm:p-6 border-2 border-sky-100 shadow-xl hover:shadow-2xl transition-all duration-300 hover:translate-x-1 group text-left">
+                <div className="flex items-center gap-3 mb-3.5 pb-3 border-b border-sky-100/70">
+                  <div className="h-9 w-9 rounded-full bg-[#013759] text-white flex items-center justify-center font-bold text-sm shrink-0 shadow-xs">
+                    02
+                  </div>
+                  <div className="flex items-center gap-2.5">
+                    <div className="h-9 w-9 rounded-xl bg-sky-50 text-[#013759] flex items-center justify-center shrink-0 border border-sky-100">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                        <rect x="4" y="4" width="16" height="16" rx="2" ry="2" />
+                        <rect x="9" y="9" width="6" height="6" />
+                      </svg>
+                    </div>
+                    <h4 className="text-base font-semibold text-[#013759]">Infrastructure Support</h4>
+                  </div>
+                </div>
+                <ul className="space-y-2 text-xs text-slate-600 font-normal">
+                  <li className="flex items-start gap-2"><span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[#013759] shrink-0"/>Co-Working Space & Dedicated Cabin Area</li>
+                  <li className="flex items-start gap-2"><span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[#013759] shrink-0"/>Meeting Rooms & Fabrication Lab</li>
+                  <li className="flex items-start gap-2"><span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[#013759] shrink-0"/>High End Precision Equipment</li>
+                  <li className="flex items-start gap-2"><span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[#013759] shrink-0"/>Access to Current Schemes and Grants</li>
+                </ul>
+              </div>
+
+              {/* Point 03: Comprehensive Network (Bottom Left) */}
+              <div className="absolute bottom-0 left-0 z-10 w-[350px] bg-white rounded-3xl p-5 sm:p-6 border-2 border-amber-100 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-x-1 group text-left">
+                <div className="flex items-center gap-3 mb-3.5 pb-3 border-b border-amber-100/70">
+                  <div className="h-9 w-9 rounded-full bg-amber-600 text-white flex items-center justify-center font-bold text-sm shrink-0 shadow-xs">
+                    03
+                  </div>
+                  <div className="flex items-center gap-2.5">
+                    <div className="h-9 w-9 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center shrink-0 border border-amber-100">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                      </svg>
+                    </div>
+                    <h4 className="text-base font-semibold text-[#013759]">Comprehensive Network</h4>
+                  </div>
+                </div>
+                <ul className="space-y-2 text-xs text-slate-600 font-normal">
+                  <li className="flex items-start gap-2"><span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-amber-500 shrink-0"/>Supporting in government backed startup schemes</li>
+                  <li className="flex items-start gap-2"><span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-amber-500 shrink-0"/>Wide Network of Seasoned Mentors & Investors</li>
+                  <li className="flex items-start gap-2"><span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-amber-500 shrink-0"/>Deep Corporate Networks for Brand Positioning</li>
+                  <li className="flex items-start gap-2"><span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-amber-500 shrink-0"/>Interns Support, RND & Digital Presence</li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+
+          {/* 3 Core Support Mechanism Pillars Grid (Mobile/Tablet < 1024px) */}
+          <div className="lg:hidden grid grid-cols-1 md:grid-cols-3 gap-6">
             
             {/* Mentorship Support */}
-            <div className="rounded-3xl bg-white border border-slate-200/90 p-6 sm:p-8 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden">
-              <div className="absolute -top-12 -right-12 w-32 h-32 bg-emerald-50 rounded-full blur-2xl pointer-events-none group-hover:bg-emerald-100 transition-colors" />
+            <div className="rounded-3xl bg-white border border-slate-200/90 p-6 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group relative overflow-hidden text-left">
+              <div className="absolute -top-12 -right-12 w-32 h-32 bg-emerald-50 rounded-full blur-2xl pointer-events-none" />
               
               <div>
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="h-11 w-11 rounded-2xl bg-emerald-600/10 text-emerald-700 flex items-center justify-center shrink-0 border border-emerald-600/20 shadow-xs">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="h-8 w-8 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-xs">
+                    01
+                  </div>
+                  <div className="h-10 w-10 rounded-2xl bg-emerald-600/10 text-emerald-700 flex items-center justify-center shrink-0 border border-emerald-600/20 shadow-xs">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.9 1.2 1.5 1.5 2.5" />
                       <path strokeLinecap="round" strokeLinejoin="round" d="M9 18h6" />
                       <path strokeLinecap="round" strokeLinejoin="round" d="M10 22h4" />
                     </svg>
                   </div>
-                  <h3 className="text-lg sm:text-xl font-normal text-[#013759] tracking-tight leading-tight">
+                  <h3 className="text-lg font-normal text-[#013759] tracking-tight leading-tight">
                     Mentorship Support
                   </h3>
                 </div>
@@ -1184,22 +1305,21 @@ export function LandingPage() {
             </div>
 
             {/* Infrastructure Support */}
-            <div className="rounded-3xl bg-white border border-slate-200/90 p-6 sm:p-8 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden">
-              <div className="absolute -top-12 -right-12 w-32 h-32 bg-sky-50 rounded-full blur-2xl pointer-events-none group-hover:bg-sky-100 transition-colors" />
+            <div className="rounded-3xl bg-white border border-slate-200/90 p-6 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group relative overflow-hidden text-left">
+              <div className="absolute -top-12 -right-12 w-32 h-32 bg-sky-50 rounded-full blur-2xl pointer-events-none" />
 
               <div>
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="h-11 w-11 rounded-2xl bg-[#013759]/10 text-[#013759] flex items-center justify-center shrink-0 border border-[#013759]/20 shadow-xs">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="h-8 w-8 rounded-full bg-[#013759] text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-xs">
+                    02
+                  </div>
+                  <div className="h-10 w-10 rounded-2xl bg-[#013759]/10 text-[#013759] flex items-center justify-center shrink-0 border border-[#013759]/20 shadow-xs">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                       <rect x="4" y="4" width="16" height="16" rx="2" ry="2" />
                       <rect x="9" y="9" width="6" height="6" />
-                      <line x1="9" y1="1" x2="9" y2="4" />
-                      <line x1="15" y1="1" x2="15" y2="4" />
-                      <line x1="9" y1="20" x2="9" y2="23" />
-                      <line x1="15" y1="20" x2="15" y2="23" />
                     </svg>
                   </div>
-                  <h3 className="text-lg sm:text-xl font-normal text-[#013759] tracking-tight leading-tight">
+                  <h3 className="text-lg font-normal text-[#013759] tracking-tight leading-tight">
                     Infrastructure Support
                   </h3>
                 </div>
@@ -1234,19 +1354,21 @@ export function LandingPage() {
             </div>
 
             {/* Comprehensive Network */}
-            <div className="rounded-3xl bg-white border border-slate-200/90 p-6 sm:p-8 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden">
-              <div className="absolute -top-12 -right-12 w-32 h-32 bg-amber-50 rounded-full blur-2xl pointer-events-none group-hover:bg-amber-100 transition-colors" />
+            <div className="rounded-3xl bg-white border border-slate-200/90 p-6 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group relative overflow-hidden text-left">
+              <div className="absolute -top-12 -right-12 w-32 h-32 bg-amber-50 rounded-full blur-2xl pointer-events-none" />
 
               <div>
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="h-11 w-11 rounded-2xl bg-amber-600/10 text-amber-700 flex items-center justify-center shrink-0 border border-amber-600/20 shadow-xs">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="h-8 w-8 rounded-full bg-amber-600 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-xs">
+                    03
+                  </div>
+                  <div className="h-10 w-10 rounded-2xl bg-amber-600/10 text-amber-700 flex items-center justify-center shrink-0 border border-amber-600/20 shadow-xs">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
                       <circle cx="9" cy="7" r="4" />
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
                     </svg>
                   </div>
-                  <h3 className="text-lg sm:text-xl font-normal text-[#013759] tracking-tight leading-tight">
+                  <h3 className="text-lg font-normal text-[#013759] tracking-tight leading-tight">
                     Comprehensive Network
                   </h3>
                 </div>
