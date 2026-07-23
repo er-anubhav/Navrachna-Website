@@ -72,14 +72,9 @@ export function HeaderV1() {
               <div className="h-7 sm:h-9 w-px bg-slate-300 shrink-0"></div>
 
               <div className="flex flex-col justify-center leading-tight min-w-0">
-                <div className="flex items-center gap-1.5">
-                  <span className="text-xl sm:text-lg font-bold tracking-tight text-[#013759] uppercase group-hover:text-[#074887] transition-colors whitespace-nowrap">
-                    NAVRACHNA
-                  </span>
-                  <span className="inline-block rounded bg-[#074887]/10 px-1.5 py-0.5 text-[9px] sm:text-[10px] font-semibold text-[#074887] tracking-wider uppercase shrink-0">
-                    NFED
-                  </span>
-                </div>
+                <span className="text-xl sm:text-lg font-bold tracking-tight text-[#013759] uppercase group-hover:text-[#074887] transition-colors whitespace-nowrap">
+                  NAVRACHNA
+                </span>
                 <span className="max-sm:hidden text-[10px] sm:text-[11px] font-medium text-gray-500 tracking-wide">
                   Foundation for Entrepreneurship Development
                 </span>
