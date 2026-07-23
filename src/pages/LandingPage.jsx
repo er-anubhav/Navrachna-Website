@@ -357,10 +357,15 @@ const FACILITIES_SPECS = [
   {
     title: "Center of Excellence Labs",
     specs: [
-      "Advanced Multidisciplinary Innovation Hubs",
-      "Industry CoE Partner Collaborations",
-      "Deep Tech & IoT Prototype Validation",
-      "Specialized Research & Testing Equipment"
+      "MATLAB Simulation Lab",
+      "eYantra - IITB Lab",
+      "NI Lab (National Instruments)",
+      "AI - IoT Lab",
+      "Intel Unnati Lab",
+      "Apple - iOS Lab",
+      "Rockwell Automation Lab",
+      "SMC Lab",
+      "AWS Academy Lab"
     ]
   }
 ];
@@ -409,7 +414,7 @@ const SCHEMES = [
     description: "Empowering 300+ school students across 40+ partner schools through early STEM innovation, social responsibility, and youth entrepreneurship development.",
     gradient: "from-blue-950 via-cyan-800 to-teal-600",
     logo: logoKartavyam,
-    link: "/programs"
+    link: "#"
   }
 ];
 
