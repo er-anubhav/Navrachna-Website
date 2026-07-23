@@ -201,6 +201,38 @@ export function AboutPage() {
         </div>
       </section>
 
+      {/* ── Key Impact Metrics (Pitch Deck Verified) ──────────────────────── */}
+      <section className="w-full py-10 bg-[#013759] text-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 text-center">
+            <div className="flex flex-col items-center">
+              <span className="text-3xl sm:text-4xl font-normal text-white">1,276+</span>
+              <span className="text-[11px] font-normal text-sky-200 uppercase tracking-wider mt-1">Ideas Screened</span>
+            </div>
+            <div className="flex flex-col items-center">
+              <span className="text-3xl sm:text-4xl font-normal text-white">60+</span>
+              <span className="text-[11px] font-normal text-sky-200 uppercase tracking-wider mt-1">Startups Incubated</span>
+            </div>
+            <div className="flex flex-col items-center">
+              <span className="text-3xl sm:text-4xl font-normal text-white">110+</span>
+              <span className="text-[11px] font-normal text-sky-200 uppercase tracking-wider mt-1">Prototypes Built</span>
+            </div>
+            <div className="flex flex-col items-center">
+              <span className="text-3xl sm:text-4xl font-normal text-white">70+</span>
+              <span className="text-[11px] font-normal text-sky-200 uppercase tracking-wider mt-1">IPs Filed (10 Granted)</span>
+            </div>
+            <div className="flex flex-col items-center">
+              <span className="text-3xl sm:text-4xl font-normal text-white">45+</span>
+              <span className="text-[11px] font-normal text-sky-200 uppercase tracking-wider mt-1">Women Founders</span>
+            </div>
+            <div className="flex flex-col items-center">
+              <span className="text-3xl sm:text-4xl font-normal text-white">₹7 Cr+</span>
+              <span className="text-[11px] font-normal text-sky-200 uppercase tracking-wider mt-1">Grants Mobilized</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── Leadership Messages ────────────────────────────────────────────── */}
       <section className="w-full py-12 sm:py-20 bg-[#f8fafc] border-t border-slate-100">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

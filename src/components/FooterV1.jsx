@@ -19,9 +19,12 @@ export function FooterV1() {
           
           {/* Column 1: Brand & About */}
           <div className="flex flex-col lg:col-span-3">
-            <h3 className="mb-3 md:mb-6 text-xl sm:text-2xl font-normal tracking-normal text-white">Navrachna Foundation</h3>
+            <h3 className="mb-2 md:mb-4 text-xl sm:text-2xl font-normal tracking-normal text-white">Navrachna Foundation</h3>
+            <p className="text-[11px] text-sky-200/90 font-mono mb-2">
+              CIN: U73200UP2020NPL128831
+            </p>
             <p className="text-xs sm:text-sm leading-relaxed text-white/80">
-              The center provides a range of resources that empower students, faculty & staff to pursue entrepreneurial achievements.
+              A Section 8 Non-Profit Incubation Center empowering founders, faculty & student innovators under the aegis of I.T.S Engineering College, Greater Noida.
             </p>
           </div>
 
