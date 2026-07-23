@@ -125,8 +125,15 @@ export default function Stack({
         const isTop = index === stack.length - 1;
         const depth = stack.length - 1 - index;
         
-        // Deterministic rotation based on card ID so it doesn't jitter on re-renders
-        const cardRotation = randomRotation ? (((card.id * 17) % 9) - 4) : 0;
+        // Distinct, eye-catching tilt angle and side offset for back cards
+        const sideMultiplier = card.id % 2 === 0 ? 1 : -1;
+        const tiltAngle = isTop 
+          ? 0 
+          : sideMultiplier * (4 + depth * 4 + ((card.id * 7) % 5));
+        
+        const offsetX = isTop 
+          ? 0 
+          : sideMultiplier * (depth * 10);
 
         return (
           <CardRotate
@@ -139,12 +146,13 @@ export default function Stack({
           >
             <motion.div
               className="card"
-              onClick={() => shouldEnableClick && isTop && sendToBack(card.id)}
+              onClick={() => shouldEnableClick && sendToBack(card.id)}
               animate={{
-                rotateZ: depth * -3 + cardRotation,
-                scale: 1 - depth * 0.04,
-                y: depth * 10,
-                opacity: depth > 3 ? 0 : 1
+                rotateZ: tiltAngle,
+                scale: 1 - depth * 0.05,
+                x: offsetX,
+                y: depth * 8,
+                opacity: depth > 3 ? 0 : 1 - depth * 0.08
               }}
               initial={false}
               transition={{
