@@ -2,6 +2,8 @@
 
 > **Official Portal for NFED** — An autonomous, sector-agnostic startup incubator and premium co-working ecosystem operated under the aegis of **I.T.S. Engineering College**, Greater Noida.
 
+🌐 **Live Demo**: [https://navrachna.vercel.app](https://navrachna.vercel.app)
+
 ---
 
 ## 🚀 Overview
