@@ -29,19 +29,19 @@ import leaderAdvisor from '../assets/navrachna_images/leader_advisor.png'
 
 const LEADERSHIP = [
   {
-    role: "Chairman, I.T.S. The Education Group",
+    role: "Chairman, I.T.S The Education Group",
     title: "Shri B.L. Gupta",
     photo: leaderChairman,
     message: "Our vision at NFED is to foster an ecosystem where youthful ambition meets strategic support. We are committed to building an environment that transforms innovative student ideas into sustainable business models that drive economic progress."
   },
   {
-    role: "Vice Chairman, I.T.S. The Education Group",
+    role: "Vice Chairman, I.T.S The Education Group",
     title: "Shri Sohil Gupta",
     photo: leaderViceChairman,
     message: "At Navrachna Foundation, we bridge the gap between academic research and commercial reality. By pairing cutting-edge labs with seasoned industry leaders, we equip our founders with the execution speed needed to win."
   },
   {
-    role: "Director, I.T.S. Engineering College",
+    role: "Director, I.T.S Engineering College",
     title: "Dr. Manish Sharma",
     photo: leaderDirector,
     message: "Engineering excellence is the cornerstone of technical innovation. NFED provides the precise multidisciplinary platform, prototyping infrastructure, and technical mentorship needed to scale deep-tech ventures."
@@ -188,7 +188,7 @@ const BENEFITS_COL3 = [
 const FAQS = [
   {
     question: "What is Navrachna Foundation for Entrepreneurship Development?",
-    answer: "Navrachna Foundation for Entrepreneurship Development is a subsidiary of I.T.S. Engineering College that supports young entrepreneurs in commercializing their technologies and launching startups."
+    answer: "Navrachna Foundation for Entrepreneurship Development is a subsidiary of I.T.S Engineering College that supports young entrepreneurs in commercializing their technologies and launching startups."
   },
   {
     question: "Who can benefit from the foundation?",
@@ -536,10 +536,10 @@ export function LandingPage() {
 
             <div className="text-gray-600 text-xs sm:text-base font-normal leading-relaxed tracking-normal space-y-3 sm:space-y-5 text-left md:text-justify mb-4 sm:mb-8">
               <p>
-                Navrachna Foundation for Entrepreneurship Development (NFED) is an autonomous, sector-agnostic startup incubator and premium co-working ecosystem registered under the societies registration framework to empower founders with early-stage velocity and institutional support.
+                Navrachna Foundation for Entrepreneurship Development, a subsidiary of I.T.S. Engineering College, Greater Noida, is a dedicated platform committed to empowering the next generation of entrepreneurs. It enables students, faculty, and aspiring innovators to transform their ideas into impactful ventures by supporting the commercialization of technologies and fostering a strong startup culture.
               </p>
               <p>
-                NFED nurtures innovation-driven startups by providing seamless physical incubation infrastructure, high-fidelity mentoring channels, deep access to institutional and private seed funds, fabrication assets, and business matchmaking. Operated under the aegis of I.T.S. Engineering College, Greater Noida, NFED serves as the strategic regional node for transforming research and raw academic ideas into high-conversion, venture-backed startups.
+                As the driving force behind the Startup Incubation Center, the foundation collaborates with the Government of Uttar Pradesh and is supported under the UP Startup Policy 2020, along with associations with key national bodies like Department of Science & Technology (DST - GOI) and Ministry of Micro, Small and Medium Enterprises (MSME). At its core, Navrachna focuses on nurturing innovation, validating ideas, and bridging the gap between inventors and investors—creating startups that contribute meaningfully to society and economic growth.
               </p>
             </div>
 
@@ -598,7 +598,7 @@ export function LandingPage() {
                 Vision
               </h2>
               <p className="text-gray-600 text-sm sm:text-base md:text-md leading-tight sm:leading-relaxed text-justify font-normal">
-                To create an innovative workspace and sector-agnostic startup incubator that nurtures passionate entrepreneurs, fosters highly collaborative creativity, and accelerates early-stage startup success into prominent global market leaders.
+                To build a vibrant and inclusive incubation ecosystem where ideas evolve into impactful ventures, creativity is nurtured, and entrepreneurs are empowered to thrive. Our vision is to become a globally recognized and Asia’s leading hub of innovation and entrepreneurship, where education, research, and real-world problem-solving come together seamlessly. We strive to cultivate competent, forward-thinking, and socially responsible innovators by providing the right mentorship, infrastructure, and opportunities—enabling students and faculty alike to experiment, prototype, and transform their ideas into sustainable solutions that contribute meaningfully to society and the future.
               </p>
             </div>
 
@@ -612,7 +612,7 @@ export function LandingPage() {
                 Mission
               </h2>
               <p className="text-gray-600 text-sm sm:text-base md:text-md leading-tight sm:leading-relaxed text-justify font-normal">
-                To provide a dynamic, world-class collaborative workspace that empowers young founders and student innovators with seed prototype funding, high-fidelity mentoring frameworks, state-of-the-art labs, and a robust investor matchmaking pipeline.
+                To create a dynamic and collaborative incubation ecosystem that empowers entrepreneurs with the right resources, mentorship, and networks to grow. We aim to foster a student-first culture rooted in experiential learning, ethical innovation, and sustainability, while also supporting faculty through research and global collaboration. Our mission is to nurture socially responsible, future-ready innovators and build a self-sustaining platform that enables ideas of national and global importance to evolve into impactful startups.
               </p>
             </div>
 

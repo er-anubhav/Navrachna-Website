@@ -19,9 +19,9 @@ export function IicItsecPage() {
     "4Mangalmay Institutes of Management & Technology, Gr. Noida",
     "Dr. M.C. Saxena College of Engineering & Technology, Lucknow",
     "Institute of Management Studies Ghaziabad",
-    "I.T.S. College Of Pharmacy, Muradnagar",
+    "I.T.S College Of Pharmacy, Muradnagar",
     "Vishveshwarya Group of Institutions Dadari",
-    "I.T.S. Dental College Hospital & Research Centre Gr. Noida",
+    "I.T.S Dental College Hospital & Research Centre Gr. Noida",
     "Mangalmay Institute of Engineering and Technology"
   ]
 

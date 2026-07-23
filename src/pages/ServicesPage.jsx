@@ -78,7 +78,7 @@ const tools = [
 const faqs = [
   {
     q: 'What is Navrachna Foundation for Entrepreneurship Development?',
-    a: 'Navrachna Foundation for Entrepreneurship Development is a subsidiary of I.T.S. Engineering College that supports young entrepreneurs in commercializing their technologies and launching startups.',
+    a: 'Navrachna Foundation for Entrepreneurship Development is a subsidiary of I.T.S Engineering College that supports young entrepreneurs in commercializing their technologies and launching startups.',
   },
   {
     q: 'Who can benefit from the foundation?',

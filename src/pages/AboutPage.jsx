@@ -18,35 +18,35 @@ const defaultAboutData = {
     title: "Empowering the Next Generation of Innovators",
     titleSize: "text-2xl sm:text-4xl",
     paragraphs: [
-      "Navrachna Foundation for Entrepreneurship Development (NFED) is an autonomous, sector-agnostic startup incubator and premium co-working ecosystem registered under the societies registration framework to empower founders with early-stage velocity and institutional support.",
-      "NFED nurtures innovation-driven startups by providing seamless physical incubation infrastructure, high-fidelity mentoring channels, deep access to institutional and private seed funds, fabrication assets, and business matchmaking. Operated under the aegis of I.T.S. Engineering College, Greater Noida, NFED serves as the strategic regional node for transforming research and raw academic ideas into high-conversion, venture-backed startups."
+      "Navrachna Foundation for Entrepreneurship Development, a subsidiary of I.T.S. Engineering College, Greater Noida, is a dedicated platform committed to empowering the next generation of entrepreneurs. It enables students, faculty, and aspiring innovators to transform their ideas into impactful ventures by supporting the commercialization of technologies and fostering a strong startup culture.",
+      "As the driving force behind the Startup Incubation Center, the foundation collaborates with the Government of Uttar Pradesh and is supported under the UP Startup Policy 2020, along with associations with key national bodies like Department of Science & Technology (DST - GOI) and Ministry of Micro, Small and Medium Enterprises (MSME). At its core, Navrachna focuses on nurturing innovation, validating ideas, and bridging the gap between inventors and investors—creating startups that contribute meaningfully to society and economic growth."
     ]
   },
   visionMission: {
     vision: {
       title: "Our Vision",
-      description: "To become Northern India's leading innovation catalyst, converting academic research and entrepreneurial ambition into scalable, globally competitive enterprises."
+      description: "To build a vibrant and inclusive incubation ecosystem where ideas evolve into impactful ventures, creativity is nurtured, and entrepreneurs are empowered to thrive. Our vision is to become a globally recognized and Asia’s leading hub of innovation and entrepreneurship, where education, research, and real-world problem-solving come together seamlessly. We strive to cultivate competent, forward-thinking, and socially responsible innovators by providing the right mentorship, infrastructure, and opportunities—enabling students and faculty alike to experiment, prototype, and transform their ideas into sustainable solutions that contribute meaningfully to society and the future."
     },
     mission: {
       title: "Our Mission",
-      description: "To provide early-stage founders with frictionless access to state-of-the-art incubation, fabrication labs, government grants, industry mentorship, and institutional seed funding."
+      description: "To create a dynamic and collaborative incubation ecosystem that empowers entrepreneurs with the right resources, mentorship, and networks to grow. We aim to foster a student-first culture rooted in experiential learning, ethical innovation, and sustainability, while also supporting faculty through research and global collaboration. Our mission is to nurture socially responsible, future-ready innovators and build a self-sustaining platform that enables ideas of national and global importance to evolve into impactful startups."
     }
   },
   leadership: [
     {
-      role: "Chairman, I.T.S. The Education Group",
+      role: "Chairman, I.T.S The Education Group",
       title: "Shri B.L. Gupta",
       photo: leaderChairman,
       message: "Our vision at NFED is to foster an ecosystem where youthful ambition meets strategic support. We are committed to building an environment that transforms innovative student ideas into sustainable business models that drive economic progress."
     },
     {
-      role: "Vice Chairman, I.T.S. The Education Group",
+      role: "Vice Chairman, I.T.S The Education Group",
       title: "Shri Sohil Gupta",
       photo: leaderViceChairman,
       message: "At Navrachna Foundation, we bridge the gap between academic research and commercial reality. By pairing cutting-edge labs with seasoned industry leaders, we equip our founders with the execution speed needed to win."
     },
     {
-      role: "Director, I.T.S. Engineering College",
+      role: "Director, I.T.S Engineering College",
       title: "Dr. Manish Sharma",
       photo: leaderDirector,
       message: "Engineering excellence is the cornerstone of technical innovation. NFED provides the precise multidisciplinary platform, prototyping infrastructure, and technical mentorship needed to scale deep-tech ventures."
