@@ -274,38 +274,93 @@ const FACILITIES_FEATURES = [
 
 const FACILITIES_SPECS = [
   {
-    title: "Fabrication Lab",
+    title: "Mechanical Fab Lab",
     specs: [
-      "20 Workstations",
-      "CNC Plasma Tooling",
-      "Non-Metallic CNC Laser",
-      "Manual Power Tools"
+      "20 Concurrent Prototyping Workstations",
+      "CNC Plasma & CNC Laser Cutting Machines",
+      "Pillar Drilling & Chop Saw Cutting Stations",
+      "Heavy Structural Fabrication & Tooling"
     ]
   },
   {
-    title: "3D Printers",
+    title: "3D Printers (SLA & PLA)",
     specs: [
-      "02 FDM Printers (PLA/ABS/TPU)",
-      "FormLabs SLA Printer (Form 3B+)",
-      "48 Advanced Resins Supported",
-      "Medical & Rigid Engineering Grade"
+      "FormLabs SLA High-Precision Resin 3D Printers",
+      "Dual Extruder PLA/ABS/TPU FDM Printers",
+      "48+ Medical & Industrial Grade Filaments",
+      "Rapid Prototype Post-Processing Oven"
     ]
   },
   {
-    title: "High End Compute Systems",
+    title: "Laser CO2 Cutting Machine",
     specs: [
-      "02 Simulation Nodes (RTX 3060)",
-      "01 AI Superstation (RTX 3090 x2)",
-      "Intel i9-12th Gen Computing",
-      "128GB High-Speed DDR5 RAM"
+      "Non-Metallic CNC CO2 Laser Cutter & Engraver",
+      "High-Precision Acrylic & Wood Prototyping",
+      "Computerized Vector Design Integration",
+      "Fume Extraction & Air Assistance System"
     ]
   },
   {
-    title: "Co-Working Area",
+    title: "Plasma Cutting Machine",
     specs: [
-      "23 Premium Co-Working Seats",
-      "06 Plug-n-Play ready Nodes",
-      "High-Speed Gigabit Internet"
+      "Automated Heavy-Duty Metal Plasma Cutting",
+      "Sheet Metal & Steel Structural Shaping",
+      "CNC Motion Control & Digital Torch Height",
+      "Industrial Heavy Fabrication Grade"
+    ]
+  },
+  {
+    title: "MIG & TIG Welding Setup",
+    specs: [
+      "Industrial MIG Welding Power Source",
+      "Precision TIG Welding for Alloy Metals",
+      "Protective Arc Shielding & Exhaust Hoods",
+      "Metal Joining & Structural Prototyping"
+    ]
+  },
+  {
+    title: "Gas-Welding Setup",
+    specs: [
+      "Oxy-Acetylene Gas Welding & Cutting Rig",
+      "High-Temperature Brazing & Soldering",
+      "Gas Regulator Safety Stations",
+      "Precision Thermal Fabrication"
+    ]
+  },
+  {
+    title: "Electronics Fab Lab",
+    specs: [
+      "Digital Storage Oscilloscopes (DSO)",
+      "Arbitrary Function Generators & DC Power Supplies",
+      "SMD Soldering & Rework Stations",
+      "PCB Prototyping & Testing Benches"
+    ]
+  },
+  {
+    title: "Vinyl Cutter & Plotter",
+    specs: [
+      "High-Precision Vinyl Cutting Plotter",
+      "Flexible Masking & Stencil Creation",
+      "Circuit Film & Decal Fabrication",
+      "Digital Design Vector Interface"
+    ]
+  },
+  {
+    title: "CAD Designing & Simulation",
+    specs: [
+      "High-Performance Intel i9 / Ryzen 9 Nodes",
+      "NVIDIA RTX 3090 x2 GPU Simulation Rig",
+      "128GB High-Speed DDR5 Memory",
+      "SolidWorks, ANSYS & MATLAB Licenses"
+    ]
+  },
+  {
+    title: "Center of Excellence Labs",
+    specs: [
+      "Advanced Multidisciplinary Innovation Hubs",
+      "Industry CoE Partner Collaborations",
+      "Deep Tech & IoT Prototype Validation",
+      "Specialized Research & Testing Equipment"
     ]
   }
 ];
