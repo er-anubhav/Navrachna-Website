@@ -1387,48 +1387,38 @@ export function LandingPage() {
           </div>
         </div>
 
-        {/* Mobile View: 3 Stacked Horizontal Scrollable Rows (Visible on Mobile < 768px) */}
-        <div className="md:hidden w-full px-4 space-y-3.5">
-          {[
-            CLIENTS.slice(0, 10),
-            CLIENTS.slice(10, 19),
-            CLIENTS.slice(19)
-          ].map((rowItems, rowIdx) => (
-            <div 
-              key={rowIdx} 
-              className="flex overflow-x-auto snap-x snap-mandatory gap-3 pb-1 scroll-smooth custom-scrollbar"
-            >
-              {rowItems.map((item, itemIdx) => {
-                const globalIdx = rowIdx * 10 + itemIdx;
-                const borderColors = [
-                  'border-sky-100/90',
-                  'border-orange-100/90',
-                  'border-lime-100/90',
-                  'border-rose-100/90',
-                  'border-teal-100/90',
-                  'border-purple-100/90'
-                ];
-                const borderClass = borderColors[globalIdx % borderColors.length];
-                const cardStyle = item.bgDark 
-                  ? 'bg-black border-slate-800' 
-                  : `bg-white ${borderClass}`;
-                return (
-                  <div key={itemIdx} className="w-[135px] shrink-0 snap-start flex flex-col items-center">
-                    <div className={`w-full h-20 rounded-xl flex items-center justify-center p-2.5 shadow-xs border-2 ${cardStyle}`}>
-                      <img 
-                        src={item.src} 
-                        alt={item.name} 
-                        className="max-h-full max-w-full object-contain" 
-                      />
-                    </div>
-                    <span className="mt-1.5 text-[10px] font-medium tracking-wide text-slate-600 text-center truncate max-w-full">
-                      {item.name}
-                    </span>
+        {/* Mobile View: Single Unified Horizontal Scroll Container with 3 Stacked Rows (Visible on Mobile < 768px) */}
+        <div className="md:hidden w-full px-4">
+          <div className="grid grid-rows-3 grid-flow-col gap-3 overflow-x-auto snap-x snap-mandatory pb-4 scroll-smooth custom-scrollbar">
+            {CLIENTS.map((item, idx) => {
+              const borderColors = [
+                'border-sky-100/90',
+                'border-orange-100/90',
+                'border-lime-100/90',
+                'border-rose-100/90',
+                'border-teal-100/90',
+                'border-purple-100/90'
+              ];
+              const borderClass = borderColors[idx % borderColors.length];
+              const cardStyle = item.bgDark 
+                ? 'bg-black border-slate-800' 
+                : `bg-white ${borderClass}`;
+              return (
+                <div key={idx} className="w-[135px] shrink-0 snap-start flex flex-col items-center">
+                  <div className={`w-full h-20 rounded-xl flex items-center justify-center p-2.5 shadow-xs border-2 ${cardStyle}`}>
+                    <img 
+                      src={item.src} 
+                      alt={item.name} 
+                      className="max-h-full max-w-full object-contain" 
+                    />
                   </div>
-                );
-              })}
-            </div>
-          ))}
+                  <span className="mt-1.5 text-[10px] font-medium tracking-wide text-slate-600 text-center truncate max-w-full">
+                    {item.name}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </section>
 
