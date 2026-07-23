@@ -13,6 +13,7 @@ import logoStartinUp from '../assets/navrachna_images/program_logos/official_sta
 import logoNewGen from '../assets/navrachna_images/program_logos/official_newgen.png'
 import logoMsme from '../assets/navrachna_images/program_logos/official_msme.png'
 import logoKartavyam from '../assets/navrachna_images/program_logos/official_kartavyam.png'
+import logoIic from '../assets/navrachna_images/program_logos/official_iic.png'
 
 import { HeaderV1 } from '../components/HeaderV1'
 import { FooterV1 } from '../components/FooterV1'
@@ -137,6 +138,11 @@ const PROGRAMS = [
     title: "MSME-BI",
     description: "Participate in MSME Hackathons to solve real-world industry challenges and secure seed funding. A direct approach towards solving your startup problems with 1 to 1 mentorship.",
     link: "/msme-bi"
+  },
+  {
+    title: "Institution's Innovation Council (IIC)",
+    description: "Fostering campus innovation, startup hackathons, and IP development under Ministry of Education (MoE) Innovation Cell.",
+    link: "#"
   },
   {
     title: "Kartavyam Initiative",
@@ -328,6 +334,14 @@ const SCHEMES = [
     description: "Participate in MSME Hackathons to solve real-world industry challenges and secure seed funding. A direct approach towards solving your startup problems with 1 to 1 mentorship.",
     gradient: "from-rose-950 via-red-800 to-orange-600",
     logo: logoMsme
+  },
+  {
+    code: "IIC",
+    subCode: "MoE Innovation Cell",
+    title: "Institution's Innovation Council (IIC)",
+    description: "Fostering campus innovation, startup hackathons, and IP development under Ministry of Education (MoE) Innovation Cell (Consistently rated top star performer).",
+    gradient: "from-purple-950 via-violet-800 to-indigo-600",
+    logo: logoIic
   },
   {
     code: "Kartavyam",

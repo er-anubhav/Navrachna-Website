@@ -36,6 +36,7 @@ export function FooterV1() {
               <li><a href="/startin-up" className="hover:text-[#fbbf24] transition-colors flex items-center gap-2"><span className="text-[#fbbf24] text-xs">▶</span> StartinUP</a></li>
               <li><a href="/programs/newgen-iedc" className="hover:text-[#fbbf24] transition-colors flex items-center gap-2"><span className="text-[#fbbf24] text-xs">▶</span> NewGen-IEDC</a></li>
               <li><a href="/msme-bi" className="hover:text-[#fbbf24] transition-colors flex items-center gap-2"><span className="text-[#fbbf24] text-xs">▶</span> MSME-BI</a></li>
+              <li><a href="#" className="hover:text-[#fbbf24] transition-colors flex items-center gap-2"><span className="text-[#fbbf24] text-xs">▶</span> IIC (Ministry of Education)</a></li>
               <li><a href="#" className="hover:text-[#fbbf24] transition-colors flex items-center gap-2"><span className="text-[#fbbf24] text-xs">▶</span> Kartavyam Initiative</a></li>
             </ul>
           </div>
