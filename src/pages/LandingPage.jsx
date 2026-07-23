@@ -1141,22 +1141,23 @@ export function LandingPage() {
               <div className="absolute -top-12 -right-12 w-32 h-32 bg-emerald-50 rounded-full blur-2xl pointer-events-none group-hover:bg-emerald-100 transition-colors" />
               
               <div>
-                <div className="flex items-center justify-between mb-6">
-                  <div className="h-12 w-12 rounded-2xl bg-emerald-600/10 text-emerald-700 flex items-center justify-center shrink-0 border border-emerald-600/20 shadow-xs">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.9 1.2 1.5 1.5 2.5" />
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 18h6" />
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M10 22h4" />
-                    </svg>
+                <div className="flex items-center justify-between gap-3 mb-6">
+                  <div className="flex items-center gap-3">
+                    <div className="h-11 w-11 rounded-2xl bg-emerald-600/10 text-emerald-700 flex items-center justify-center shrink-0 border border-emerald-600/20 shadow-xs">
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.9 1.2 1.5 1.5 2.5" />
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 18h6" />
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M10 22h4" />
+                      </svg>
+                    </div>
+                    <h3 className="text-lg sm:text-xl font-normal text-[#013759] tracking-tight leading-tight">
+                      Mentorship Support
+                    </h3>
                   </div>
-                  <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
+                  <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200 shrink-0">
                     Pillar 01
                   </span>
                 </div>
-
-                <h3 className="text-xl font-normal text-[#013759] tracking-tight mb-4">
-                  Mentorship Support
-                </h3>
 
                 <ul className="space-y-2.5 text-xs sm:text-sm text-slate-600 font-normal">
                   <li className="flex items-start gap-2.5">
@@ -1197,25 +1198,26 @@ export function LandingPage() {
               <div className="absolute -top-12 -right-12 w-32 h-32 bg-sky-50 rounded-full blur-2xl pointer-events-none group-hover:bg-sky-100 transition-colors" />
 
               <div>
-                <div className="flex items-center justify-between mb-6">
-                  <div className="h-12 w-12 rounded-2xl bg-[#013759]/10 text-[#013759] flex items-center justify-center shrink-0 border border-[#013759]/20 shadow-xs">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                      <rect x="4" y="4" width="16" height="16" rx="2" ry="2" />
-                      <rect x="9" y="9" width="6" height="6" />
-                      <line x1="9" y1="1" x2="9" y2="4" />
-                      <line x1="15" y1="1" x2="15" y2="4" />
-                      <line x1="9" y1="20" x2="9" y2="23" />
-                      <line x1="15" y1="20" x2="15" y2="23" />
-                    </svg>
+                <div className="flex items-center justify-between gap-3 mb-6">
+                  <div className="flex items-center gap-3">
+                    <div className="h-11 w-11 rounded-2xl bg-[#013759]/10 text-[#013759] flex items-center justify-center shrink-0 border border-[#013759]/20 shadow-xs">
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                        <rect x="4" y="4" width="16" height="16" rx="2" ry="2" />
+                        <rect x="9" y="9" width="6" height="6" />
+                        <line x1="9" y1="1" x2="9" y2="4" />
+                        <line x1="15" y1="1" x2="15" y2="4" />
+                        <line x1="9" y1="20" x2="9" y2="23" />
+                        <line x1="15" y1="20" x2="15" y2="23" />
+                      </svg>
+                    </div>
+                    <h3 className="text-lg sm:text-xl font-normal text-[#013759] tracking-tight leading-tight">
+                      Infrastructure Support
+                    </h3>
                   </div>
-                  <span className="text-xs font-bold text-[#013759] bg-sky-50 px-3 py-1 rounded-full border border-sky-200">
+                  <span className="text-xs font-bold text-[#013759] bg-sky-50 px-2.5 py-1 rounded-full border border-sky-200 shrink-0">
                     Pillar 02
                   </span>
                 </div>
-
-                <h3 className="text-xl font-normal text-[#013759] tracking-tight mb-4">
-                  Infrastructure Support
-                </h3>
 
                 <ul className="space-y-2.5 text-xs sm:text-sm text-slate-600 font-normal">
                   <li className="flex items-start gap-2.5">
@@ -1256,22 +1258,23 @@ export function LandingPage() {
               <div className="absolute -top-12 -right-12 w-32 h-32 bg-amber-50 rounded-full blur-2xl pointer-events-none group-hover:bg-amber-100 transition-colors" />
 
               <div>
-                <div className="flex items-center justify-between mb-6">
-                  <div className="h-12 w-12 rounded-2xl bg-amber-600/10 text-amber-700 flex items-center justify-center shrink-0 border border-amber-600/20 shadow-xs">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                      <circle cx="9" cy="7" r="4" />
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
-                    </svg>
+                <div className="flex items-center justify-between gap-3 mb-6">
+                  <div className="flex items-center gap-3">
+                    <div className="h-11 w-11 rounded-2xl bg-amber-600/10 text-amber-700 flex items-center justify-center shrink-0 border border-amber-600/20 shadow-xs">
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+                      </svg>
+                    </div>
+                    <h3 className="text-lg sm:text-xl font-normal text-[#013759] tracking-tight leading-tight">
+                      Comprehensive Network
+                    </h3>
                   </div>
-                  <span className="text-xs font-bold text-amber-700 bg-amber-50 px-3 py-1 rounded-full border border-amber-200">
+                  <span className="text-xs font-bold text-amber-700 bg-amber-50 px-2.5 py-1 rounded-full border border-amber-200 shrink-0">
                     Pillar 03
                   </span>
                 </div>
-
-                <h3 className="text-xl font-normal text-[#013759] tracking-tight mb-4">
-                  Comprehensive Network
-                </h3>
 
                 <ul className="space-y-2.5 text-xs sm:text-sm text-slate-600 font-normal">
                   <li className="flex items-start gap-2.5">
