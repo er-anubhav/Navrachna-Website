@@ -545,7 +545,7 @@ export function LandingPage() {
 
             <a 
               href="/about" 
-              className="rounded-lg bg-black px-5 py-2 sm:px-8 sm:py-3.5 text-xs sm:text-base font-bold text-white shadow-lg hover:bg-[#074887] hover:shadow-2xl hover:-translate-y-0.5 transition-all duration-300 inline-block cursor-pointer"
+              className="rounded-lg bg-white border border-slate-200 px-5 py-2 sm:px-8 sm:py-3.5 text-xs sm:text-base font-semibold text-[#013759] shadow-md hover:bg-[#074887] hover:text-white hover:border-[#074887] hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 inline-block cursor-pointer"
             >
               Read More
             </a>
