@@ -933,9 +933,9 @@ export function LandingPage() {
                 Book a Lab Tour
               </button>
 
-              {/* First 5 Facilities Accordion (0 to 4) */}
+              {/* First 3 Facilities Accordion (0 to 2) */}
               <div className="w-full space-y-3">
-                {FACILITIES_SPECS.slice(0, 5).map((spec, idx) => {
+                {FACILITIES_SPECS.slice(0, 3).map((spec, idx) => {
                   const isOpen = activeFacility === idx;
                   const details = [
                     { icon: <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> },
@@ -989,10 +989,10 @@ export function LandingPage() {
               </div>
             </div>
 
-            {/* Right Column - Remaining 5 Accordion Items (5 to 9) */}
+            {/* Right Column - Remaining 7 Accordion Items (3 to 9) */}
             <div className="w-full space-y-3 pt-0">
-              {FACILITIES_SPECS.slice(5).map((spec, offsetIdx) => {
-                const idx = offsetIdx + 5;
+              {FACILITIES_SPECS.slice(3).map((spec, offsetIdx) => {
+                const idx = offsetIdx + 3;
                 const isOpen = activeFacility === idx;
                 const details = [
                   { icon: <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> },
