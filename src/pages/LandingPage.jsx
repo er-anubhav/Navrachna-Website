@@ -1146,12 +1146,12 @@ export function LandingPage() {
       {/* Messages from Our Leaders */}
       <section className="w-full py-8 sm:py-14 md:py-20 bg-[#f8fafc] border-t border-slate-200">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          {/* Header - Left Aligned */}
-          <div className="mb-6 sm:mb-10 text-left">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-normal text-[#013759] tracking-tight">
-              Messages from Our Leaders
+          {/* Header - Left Aligned on Mobile, Centered on Desktop */}
+          <div className="mb-6 sm:mb-12 text-left md:text-center">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-normal text-[#013759] tracking-tight mb-2 sm:mb-3">
+              Messages from Our <span className="inline-block"><span className="text-[#10b981]">L</span><span className="text-[#ec4899]">e</span><span className="text-[#3b82f6]">a</span><span className="text-[#f59e0b]">d</span><span className="text-[#ef4444]">e</span><span className="text-[#8b5cf6]">r</span><span className="text-[#06b6d4]">s</span></span>
             </h2>
-            <p className="mt-1.5 sm:mt-2 text-xs sm:text-sm text-gray-500 leading-relaxed max-w-xl font-normal">
+            <p className="text-xs sm:text-sm text-gray-500 leading-relaxed max-w-xl mx-0 md:mx-auto font-normal">
               Guiding the vision of NFED — insights from the leaders who inspire and drive the foundation.
             </p>
           </div>
