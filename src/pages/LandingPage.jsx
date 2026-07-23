@@ -82,7 +82,7 @@ const LEADERSHIP = [
   },
   {
     role: "Director, I.T.S Engineering College",
-    title: "Dr. Manish Sharma",
+    title: "Dr. Mayank garg",
     photo: leaderDirector,
     message: "Engineering excellence is the cornerstone of technical innovation. Navrachna Foundation provides the precise multidisciplinary platform, prototyping infrastructure, and technical mentorship needed to scale deep-tech ventures."
   },
@@ -1387,34 +1387,77 @@ export function LandingPage() {
           </div>
         </div>
 
-        {/* Mobile Grid Layout (Visible on Mobile < 768px) */}
-        <div className="md:hidden mx-auto max-w-7xl px-4 sm:px-6">
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-            {CLIENTS.map((item, idx) => {
-              const borderColors = [
-                'border-sky-100/90',
-                'border-orange-100/90',
-                'border-lime-100/90',
-                'border-rose-100/90',
-                'border-teal-100/90',
-                'border-purple-100/90'
+        {/* Mobile Horizontal Swipeable Sections (Visible on Mobile < 768px) */}
+        <div className="md:hidden w-full px-4 sm:px-6">
+          <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 scroll-smooth custom-scrollbar">
+            {Array.from({ length: Math.ceil(CLIENTS.length / 6) }).map((_, slideIdx) => {
+              const slideItems = CLIENTS.slice(slideIdx * 6, (slideIdx + 1) * 6);
+              const slideTitles = [
+                "Women-Centric Startups (Part 1)",
+                "Women-Centric Startups (Part 2)",
+                "Prominent Startups (Part 1)",
+                "Prominent Startups (Part 2)",
+                "Deep-Tech & CleanTech Ventures"
               ];
-              const borderClass = borderColors[idx % borderColors.length];
-              const cardStyle = item.bgDark 
-                ? 'bg-black border-slate-800' 
-                : `bg-white ${borderClass}`;
+
               return (
-                <div key={idx} className="flex flex-col items-center w-full">
-                  <div className={`w-full h-24 rounded-2xl flex items-center justify-center p-3 shadow-xs border-2 ${cardStyle}`}>
-                    <img 
-                      src={item.src} 
-                      alt={item.name} 
-                      className="max-h-full max-w-full object-contain" 
-                    />
+                <div 
+                  key={slideIdx}
+                  className="w-[86vw] sm:w-[340px] shrink-0 snap-start rounded-2xl border border-slate-200/90 bg-white p-4 shadow-sm flex flex-col justify-between"
+                >
+                  <div>
+                    {/* Slide Header Tag */}
+                    <div className="flex items-center justify-between gap-2 mb-3 pb-2 border-b border-slate-100">
+                      <span className="text-[11px] font-semibold uppercase tracking-wider text-[#013759]">
+                        {slideTitles[slideIdx] || `Section ${slideIdx + 1}`}
+                      </span>
+                      <span className="text-[10px] font-medium text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full border border-slate-200">
+                        {slideIdx + 1} of {Math.ceil(CLIENTS.length / 6)}
+                      </span>
+                    </div>
+
+                    {/* 2-Column Grid of 6 Startups */}
+                    <div className="grid grid-cols-2 gap-2.5">
+                      {slideItems.map((item, itemIdx) => {
+                        const globalIdx = slideIdx * 6 + itemIdx;
+                        const borderColors = [
+                          'border-sky-100/90',
+                          'border-orange-100/90',
+                          'border-lime-100/90',
+                          'border-rose-100/90',
+                          'border-teal-100/90',
+                          'border-purple-100/90'
+                        ];
+                        const borderClass = borderColors[globalIdx % borderColors.length];
+                        const cardStyle = item.bgDark 
+                          ? 'bg-black border-slate-800' 
+                          : `bg-white ${borderClass}`;
+
+                        return (
+                          <div 
+                            key={itemIdx} 
+                            className="flex flex-col items-center justify-between p-2 rounded-xl border bg-slate-50/50 hover:bg-white transition-colors h-28"
+                          >
+                            <div className={`w-full h-16 rounded-lg flex items-center justify-center p-2 border ${cardStyle}`}>
+                              <img 
+                                src={item.src} 
+                                alt={item.name} 
+                                className="max-h-full max-w-full object-contain"
+                              />
+                            </div>
+                            <span className="mt-1 text-[10px] font-medium text-slate-700 text-center truncate max-w-full leading-tight">
+                              {item.name}
+                            </span>
+                          </div>
+                        );
+                      })}
+                    </div>
                   </div>
-                  <span className="mt-2 text-[11px] font-medium tracking-wide text-slate-600 text-center truncate max-w-full">
-                    {item.name}
-                  </span>
+
+                  <div className="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] text-slate-400">
+                    <span>Swipe left for next section &rarr;</span>
+                    <span className="font-medium text-[#074887]">{slideItems.length} Startups</span>
+                  </div>
                 </div>
               );
             })}
