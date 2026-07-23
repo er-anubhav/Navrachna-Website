@@ -9,10 +9,10 @@ import space3DPrinting from '../assets/navrachna_images/spaces/3d_printing.jpg'
 import spaceDesignSystem from '../assets/navrachna_images/spaces/design_system.jpg'
 import spaceReception from '../assets/navrachna_images/spaces/reception.jpg'
 
-import logoStartinUp from '../assets/navrachna_images/program_logos/badge_startinup.png'
-import logoNewGen from '../assets/navrachna_images/program_logos/badge_newgen.png'
-import logoMsme from '../assets/navrachna_images/program_logos/badge_msme.png'
-import logoKartavyam from '../assets/navrachna_images/program_logos/badge_kartavyam.png'
+import logoStartinUp from '../assets/navrachna_images/program_logos/official_startinup.png'
+import logoNewGen from '../assets/navrachna_images/program_logos/official_newgen.png'
+import logoMsme from '../assets/navrachna_images/program_logos/official_msme.png'
+import logoKartavyam from '../assets/navrachna_images/program_logos/official_kartavyam.png'
 
 import { HeaderV1 } from '../components/HeaderV1'
 import { FooterV1 } from '../components/FooterV1'
@@ -759,15 +759,8 @@ export function LandingPage() {
                   className="shrink-0 w-[82vw] sm:w-[340px] lg:w-full snap-start flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 p-4 sm:p-5 rounded-2xl border border-sky-100/40 bg-[#f0f9ff] shadow-sm hover:shadow-md transition-all duration-300"
                 >
                   {/* Left Side Graphic Badge */}
-                  <div className={`w-full sm:w-[180px] h-[100px] sm:h-[110px] rounded-xl overflow-hidden shrink-0 relative bg-gradient-to-br ${scheme.gradient} shadow-md p-3 flex flex-col items-center justify-center text-center group-hover:scale-[1.02] transition-transform duration-300`}>
-                    <div className="w-full h-full rounded-lg bg-white/10 backdrop-blur-md border border-white/20 flex flex-col items-center justify-center p-2 shadow-inner">
-                      <span className="text-sm sm:text-base font-bold tracking-wider text-white uppercase block leading-tight drop-shadow-sm">
-                        {scheme.code}
-                      </span>
-                      <span className="text-[9.5px] text-amber-200 block uppercase tracking-wide font-medium mt-1.5 leading-none">
-                        {scheme.subCode}
-                      </span>
-                    </div>
+                  <div className="w-full sm:w-[180px] h-[100px] sm:h-[110px] rounded-xl overflow-hidden shrink-0 relative bg-white border border-slate-200 shadow-sm p-3 flex items-center justify-center group-hover:scale-[1.02] transition-transform duration-300">
+                    <img src={scheme.logo} alt={scheme.title} className="max-w-full max-h-full object-contain" />
                   </div>
 
                   {/* Right Side Text Contents */}
