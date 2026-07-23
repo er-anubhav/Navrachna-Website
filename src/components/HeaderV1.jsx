@@ -88,8 +88,8 @@ export function HeaderV1() {
           {/* Desktop Navigation (max-lg:hidden flex) */}
           <nav className="max-lg:hidden flex items-center justify-end gap-x-4 xl:gap-x-7 text-xs xl:text-sm font-medium tracking-wide text-[#013759] shrink-0">
             <a href="/" className="text-[#013759] transition-colors hover:text-[#074887]">Home</a>
-            <a href="/startin-up" className="text-[#013759] transition-colors hover:text-[#074887]">Startin-up</a>
-            <a href="/programs/newgen-iedc" className="text-[#013759] transition-colors hover:text-[#074887]">Newgen-IEDC</a>
+            <a href="/startin-up" className="text-[#013759] transition-colors hover:text-[#074887]">StartIn-UP</a>
+            <a href="/programs/newgen-iedc" className="text-[#013759] transition-colors hover:text-[#074887]">NewGen-IEDC</a>
             
             {/* MSME-BI Dropdown */}
             <div 

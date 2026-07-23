@@ -9,7 +9,7 @@ const defaultAboutData = {
   hero: {
     eyebrow: "ABOUT NAVRACHNA FOUNDATION",
     title: "Nurturing Ideas into Market-Ready Startups",
-    description: "Navrachna Foundation for Entrepreneurship Development (NFED) is an autonomous incubator empowering visionaries with mentorship, seed capital, and world-class infrastructure.",
+    description: "Navrachna Foundation for Entrepreneurship Development is an autonomous incubator empowering visionaries with mentorship, seed capital, and world-class infrastructure.",
     titleSize: "text-3xl sm:text-5xl",
     descSize: "text-xs sm:text-sm"
   },
@@ -37,7 +37,7 @@ const defaultAboutData = {
       role: "Chairman, I.T.S The Education Group",
       title: "Shri B.L. Gupta",
       photo: leaderChairman,
-      message: "Our vision at NFED is to foster an ecosystem where youthful ambition meets strategic support. We are committed to building an environment that transforms innovative student ideas into sustainable business models that drive economic progress."
+      message: "Our vision at Navrachna Foundation is to foster an ecosystem where youthful ambition meets strategic support. We are committed to building an environment that transforms innovative student ideas into sustainable business models that drive economic progress."
     },
     {
       role: "Vice Chairman, I.T.S The Education Group",
@@ -49,13 +49,13 @@ const defaultAboutData = {
       role: "Director, I.T.S Engineering College",
       title: "Dr. Manish Sharma",
       photo: leaderDirector,
-      message: "Engineering excellence is the cornerstone of technical innovation. NFED provides the precise multidisciplinary platform, prototyping infrastructure, and technical mentorship needed to scale deep-tech ventures."
+      message: "Engineering excellence is the cornerstone of technical innovation. Navrachna Foundation provides the precise multidisciplinary platform, prototyping infrastructure, and technical mentorship needed to scale deep-tech ventures."
     },
     {
-      role: "Advisor / In-Charge, NFED",
+      role: "Advisor / In-Charge, Navrachna Foundation",
       title: "Prof. (Dr.) Sanjay Yadav",
       photo: leaderAdvisor,
-      message: "NFED is built ground-up to serve founders. From government grant assistance to fabrication support, our hands-on incubation framework ensures that no promising idea fails for lack of guidance or capital."
+      message: "Navrachna Foundation is built ground-up to serve founders. From government grant assistance to fabrication support, our hands-on incubation framework ensures that no promising idea fails for lack of guidance or capital."
     }
   ],
   offers: [
@@ -145,7 +145,7 @@ export function AboutPage() {
         </div>
       </section>
 
-      {/* ── About NFED ────────────────────────────────────────────────────── */}
+      {/* ── About Navrachna Foundation ────────────────────────────────────────────────────── */}
       <section className="w-full py-12 sm:py-20 bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
@@ -214,7 +214,7 @@ export function AboutPage() {
               Messages from Our Leaders
             </h2>
             <p className="mt-2 sm:mt-3 max-w-xl mx-auto text-xs text-gray-500 leading-relaxed">
-              Guiding the vision of NFED — insights from the leaders who inspire and drive the foundation.
+              Guiding the vision of Navrachna Foundation — insights from the leaders who inspire and drive the foundation.
             </p>
           </div>
 

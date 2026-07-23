@@ -58,7 +58,7 @@ export function OurPoliciesPage() {
             Our Core Policies
           </h1>
           <p className="mt-4 max-w-4xl mx-auto text-base text-white/80 leading-relaxed">
-            NFED is committed to safeguarding personal information, supporting IP creation, and maintaining compliance across all incubation, purchase, and procurement stages.
+            Navrachna Foundation is committed to safeguarding personal information, supporting IP creation, and maintaining compliance across all incubation, purchase, and procurement stages.
           </p>
         </div>
       </section>

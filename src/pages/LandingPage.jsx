@@ -5,6 +5,13 @@ import spaceImg1 from '../assets/navrachna_images/image-RHC5QKD-e1734675533295.j
 import spaceImg2 from '../assets/navrachna_images/image-JJL9YTX-e1734675480258.jpg'
 import spaceImg3 from '../assets/navrachna_images/image-KJ66VQB-e1734675565430.jpg'
 import spaceImg4 from '../assets/navrachna_images/image-A2SAUCS-e1734675593163.jpg'
+import realSpaceCoworking from '../assets/navrachna_images/spaces/coworking.jpg'
+import realSpaceBoardroom from '../assets/navrachna_images/spaces/boardroom.jpg'
+import realSpaceLaserCutting from '../assets/navrachna_images/spaces/laser_cutting.jpg'
+import realSpacePlasmaCutting from '../assets/navrachna_images/spaces/plasma_cutting.jpg'
+import realSpace3DPrinting from '../assets/navrachna_images/spaces/3d_printing.jpg'
+import realSpaceDesignSystem from '../assets/navrachna_images/spaces/design_system.jpg'
+import realSpaceReception from '../assets/navrachna_images/spaces/reception.jpg'
 import { HeaderV1 } from '../components/HeaderV1'
 import { FooterV1 } from '../components/FooterV1'
 import CircularGallery from '../components/CircularGallery'
@@ -32,7 +39,7 @@ const LEADERSHIP = [
     role: "Chairman, I.T.S The Education Group",
     title: "Shri B.L. Gupta",
     photo: leaderChairman,
-    message: "Our vision at NFED is to foster an ecosystem where youthful ambition meets strategic support. We are committed to building an environment that transforms innovative student ideas into sustainable business models that drive economic progress."
+    message: "Our vision at Navrachna Foundation is to foster an ecosystem where youthful ambition meets strategic support. We are committed to building an environment that transforms innovative student ideas into sustainable business models that drive economic progress."
   },
   {
     role: "Vice Chairman, I.T.S The Education Group",
@@ -44,13 +51,13 @@ const LEADERSHIP = [
     role: "Director, I.T.S Engineering College",
     title: "Dr. Manish Sharma",
     photo: leaderDirector,
-    message: "Engineering excellence is the cornerstone of technical innovation. NFED provides the precise multidisciplinary platform, prototyping infrastructure, and technical mentorship needed to scale deep-tech ventures."
+    message: "Engineering excellence is the cornerstone of technical innovation. Navrachna Foundation provides the precise multidisciplinary platform, prototyping infrastructure, and technical mentorship needed to scale deep-tech ventures."
   },
   {
-    role: "Advisor / In-Charge, NFED",
+    role: "Advisor / In-Charge, Navrachna Foundation",
     title: "Prof. (Dr.) Sanjay Yadav",
     photo: leaderAdvisor,
-    message: "NFED is built ground-up to serve founders. From government grant assistance to fabrication support, our hands-on incubation framework ensures that no promising idea fails for lack of guidance or capital."
+    message: "Navrachna Foundation is built ground-up to serve founders. From government grant assistance to fabrication support, our hands-on incubation framework ensures that no promising idea fails for lack of guidance or capital."
   }
 ];
 
@@ -206,39 +213,39 @@ const FAQS = [
 
 const OUR_SPACES = [
   {
-    title: "Acceleration Programs",
-    description: "Access tailored incubation modules, prototype funding, venture mentorship, and investor matchmaking pipelines to scale your early-stage startup.",
-    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80"
-  },
-  {
-    title: "Mentorship & Expert Guidance",
-    description: "Work shoulder-to-shoulder with veteran entrepreneurs, technology experts, and IP advisors to accelerate product-market fit.",
-    image: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=800&q=80"
-  },
-  {
     title: "Co-working Space & Infrastructure",
-    description: "Scale in our premium co-working facility, featuring plug-and-play seating, smart meeting rooms, high-end compute systems, and prototyping labs.",
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80"
+    description: "Scale in our premium co-working facility, featuring plug-and-play seating, smart meeting rooms, high-end compute systems, and dedicated founder desks.",
+    image: realSpaceCoworking
   },
   {
-    title: "Fabrication & Tool Room",
-    description: "Build deep prototypes using precision machinery, including CNC CO2 Laser Cutters, Plasma Cutters, and advanced manual prototyping tools.",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80"
+    title: "Premium Board & Pitch Rooms",
+    description: "Host executive presentations, investor pitch panels, and board reviews in our modern boardroom equipped with integrated AV gear.",
+    image: realSpaceBoardroom
   },
   {
-    title: "3D Printing Facility",
-    description: "Bring design concepts to life with professional FDM, SLA, and resin 3D printers, supporting over 40 types of specialized engineering filaments.",
-    image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80"
+    title: "CNC Laser Cutting Facility",
+    description: "Build precision physical prototypes using high-precision CNC CO2 Laser Cutters and acrylic/wood fabrication tools.",
+    image: realSpaceLaserCutting
   },
   {
-    title: "AI & Simulations Grid",
-    description: "Leverage state-of-the-art compute hardware on a flexible compute-rental basis for intensive AI model training and engineering simulations.",
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80"
+    title: "Heavy Metal Fabrication & Plasma Cutting",
+    description: "Execute heavy prototyping and structural fabrication using automated CNC Plasma Cutters and welding stations.",
+    image: realSpacePlasmaCutting
   },
   {
-    title: "Premium Meeting Rooms",
-    description: "Host presentations, pitch panels, and board reviews in modern rooms featuring integrated AV gear, screen casting, and high-speed Wi-Fi.",
-    image: "https://images.unsplash.com/photo-1431540015161-0bf868a2d407?auto=format&fit=crop&w=800&q=80"
+    title: "3D Printing & Additive Manufacturing",
+    description: "Rapidly prototype complex CAD models using high-grade FDM and SLA resin 3D printers with industrial filament support.",
+    image: realSpace3DPrinting
+  },
+  {
+    title: "CAD & High-Performance Design Systems",
+    description: "Workstations optimized for 3D modeling, computer-aided design, electrical simulation, and high-performance computing.",
+    image: realSpaceDesignSystem
+  },
+  {
+    title: "Incubation Reception & Welcome Desk",
+    description: "Professional reception area welcoming mentors, investors, corporate partners, and prospective founders to Navrachna Foundation.",
+    image: realSpaceReception
   }
 ];
 
@@ -502,7 +509,7 @@ export function LandingPage() {
         </div>
       </section>
 
-      {/* NFED Section */}
+      {/* Navrachna Foundation Section */}
       <section id="about" className="relative w-full bg-white py-10 sm:py-24 overflow-hidden border-b border-gray-100">
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-6 lg:gap-16">
           
@@ -683,10 +690,10 @@ export function LandingPage() {
           {/* Left Column - Info & Action */}
           <div className="w-full lg:w-[42%] flex flex-col items-start text-left">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-normal text-[#013759] tracking-tight leading-[1.15] mb-4 lg:mb-6">
-              Explore Our <span className="inline-block"><span className="text-[#10b981]">F</span><span className="text-[#ec4899]">l</span><span className="text-[#3b82f6]">a</span><span className="text-[#f59e0b]">g</span><span className="text-[#ef4444]">s</span><span className="text-[#8b5cf6]">h</span><span className="text-[#06b6d4]">i</span><span className="text-[#3b82f6]">p</span></span> <br /> Schemes and Programmes
+              Explore Our Schemes and <br /> <span className="inline-block"><span className="text-[#10b981]">F</span><span className="text-[#ec4899]">l</span><span className="text-[#3b82f6]">a</span><span className="text-[#f59e0b]">g</span><span className="text-[#ef4444]">s</span><span className="text-[#8b5cf6]">h</span><span className="text-[#06b6d4]">i</span><span className="text-[#3b82f6]">p</span></span>  Programmes
             </h2>
             <p className="text-gray-600 text-sm md:text-md leading-relaxed text-justify mb-6 lg:mb-8 font-normal">
-              At Navrachna Foundation (NFED), we coordinate flagship incubation schemes that nurture entrepreneurs across every stage of their startup journey. These structured programs combine equity-free prototype grants, monthly fellowship stipends, intensive commercial scaling pipelines, and institutional resources to ensure early-stage ventures gain the right strategic assets to succeed.
+              At Navrachna Foundation (Navrachna Foundation), we coordinate incubation schemes that nurture entrepreneurs across every stage of their startup journey. These structured programs combine equity-free prototype grants, monthly fellowship stipends, intensive commercial scaling pipelines, and institutional resources to ensure early-stage ventures gain the right strategic assets to succeed.
             </p>
             <button className="rounded-xl bg-black px-6 py-2.5 sm:px-8 sm:py-3.5 font-medium text-xs sm:text-base text-white shadow-lg hover:bg-gray-800 transition-all duration-300 active:scale-95 cursor-pointer">
               View all Program
@@ -1164,7 +1171,7 @@ export function LandingPage() {
               Messages from Our <span className="inline-block"><span className="text-[#10b981]">L</span><span className="text-[#ec4899]">e</span><span className="text-[#3b82f6]">a</span><span className="text-[#f59e0b]">d</span><span className="text-[#ef4444]">e</span><span className="text-[#8b5cf6]">r</span><span className="text-[#06b6d4]">s</span></span>
             </h2>
             <p className="text-xs sm:text-sm text-gray-500 leading-relaxed max-w-xl mx-0 md:mx-auto font-normal">
-              Guiding the vision of NFED — insights from the leaders who inspire and drive the foundation.
+              Guiding the vision of Navrachna Foundation — insights from the leaders who inspire and drive the foundation.
             </p>
           </div>
 

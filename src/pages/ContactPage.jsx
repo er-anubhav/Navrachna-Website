@@ -4,19 +4,19 @@ import heroImage from '../assets/co-working-area-in-greater-noida-12-scaled.webp
 const faqs = [
   {
     q: 'What is Navrachna Foundation for Entrepreneurship Development?',
-    a: 'Navrachna Foundation for Entrepreneurship Development (NFED) is an initiative by ITS Engineering College, Greater Noida, dedicated to nurturing innovation and entrepreneurship among students, faculty, and industry professionals. It provides mentoring, funding support, incubation facilities, and access to a wide network of experts and investors.',
+    a: 'Navrachna Foundation for Entrepreneurship Development is an initiative by ITS Engineering College, Greater Noida, dedicated to nurturing innovation and entrepreneurship among students, faculty, and industry professionals. It provides mentoring, funding support, incubation facilities, and access to a wide network of experts and investors.',
   },
   {
     q: 'Who can benefit from the foundation?',
-    a: 'Students, faculty members, researchers, and early-stage entrepreneurs associated with ITS Engineering College or the broader innovation ecosystem can benefit from NFED. The foundation supports individuals and teams at various stages of their entrepreneurial journey.',
+    a: 'Students, faculty members, researchers, and early-stage entrepreneurs associated with ITS Engineering College or the broader innovation ecosystem can benefit from Navrachna Foundation. The foundation supports individuals and teams at various stages of their entrepreneurial journey.',
   },
   {
     q: 'What resources does the foundation provide?',
-    a: 'NFED offers a range of resources including co-working spaces, fabrication labs, electronics labs, 3D printing facilities, high-end computing systems, seed funding, mentorship programs, and connections to government schemes like NewGen-IEDC, MSME-BI, and StartinUP.',
+    a: 'Navrachna Foundation offers a range of resources including co-working spaces, fabrication labs, electronics labs, 3D printing facilities, high-end computing systems, seed funding, mentorship programs, and connections to government schemes like NewGen-IEDC, MSME-BI, and StartinUP.',
   },
   {
     q: 'How does the foundation help bridge the gap between inventors and venture capitalists?',
-    a: 'NFED organizes pitch events, hackathons, and networking sessions that connect innovators with potential investors and industry partners. Through structured incubation programs and mentoring, it helps startups refine their ideas and become investment-ready.',
+    a: 'Navrachna Foundation organizes pitch events, hackathons, and networking sessions that connect innovators with potential investors and industry partners. Through structured incubation programs and mentoring, it helps startups refine their ideas and become investment-ready.',
   },
 ]
 
@@ -102,9 +102,9 @@ export function ContactPage() {
               </svg>
             </div>
             <h3 className="text-base  text-gray-800">Email</h3>
-            <p className="mt-1 text-sm text-gray-500">head.nfed@its.edu.in</p>
+            <p className="mt-1 text-sm text-gray-500">head.Navrachna Foundation@its.edu.in</p>
             <a
-              href="mailto:head.nfed@its.edu.in"
+              href="mailto:head.Navrachna Foundation@its.edu.in"
               className="mt-4 text-xs  uppercase tracking-widest text-[#074887] hover:underline"
             >
               Email Us →
@@ -138,7 +138,7 @@ export function ContactPage() {
       <section className="px-4 py-10">
         <div className="mx-auto max-w-5xl overflow-hidden rounded-2xl border border-gray-200 shadow-sm">
           <iframe
-            title="NFED Location"
+            title="Navrachna Foundation Location"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.9!2d77.4889497!3d28.467642!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ceb349db39cc1%3A0xf825746415c807d6!2sNewGen%20IEDC%20ITS!5e0!3m2!1sen!2sin!4v1717050000000!5m2!1sen!2sin"
             width="100%"
             height="380"
