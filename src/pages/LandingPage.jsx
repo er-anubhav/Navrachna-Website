@@ -1118,218 +1118,194 @@ export function LandingPage() {
         </div>
       </section>
 
-      {/* Why Choose Us Section */}
-      <section className="w-full bg-[#f8fafc] py-8 md:py-24 border-t border-slate-100/80">
+      {/* Why Choose Us Section - Official ITSEC - NFED Support Mechanism */}
+      <section className="w-full bg-[#f8fafc] py-10 md:py-24 border-t border-slate-100/80">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-left md:text-center mb-6 md:mb-16">
-
+          <div className="text-left md:text-center mb-8 md:mb-16">
+            <span className="inline-block rounded-full bg-[#013759]/10 px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-[#013759] border border-[#013759]/20 mb-3">
+              ITSEC - NFED Support Mechanism
+            </span>
             <h2 className="mb-2 md:mb-4 font-normal text-2xl sm:text-3xl md:text-4xl tracking-tight text-[#013759]">
               Why <span className="inline-block"><span className="text-[#10b981]">C</span><span className="text-[#ec4899]">h</span><span className="text-[#3b82f6]">o</span><span className="text-[#f59e0b]">o</span><span className="text-[#ef4444]">s</span><span className="text-[#8b5cf6]">e</span></span> Us
             </h2>
             <p className="text-xs sm:text-sm font-normal text-gray-500 max-w-2xl mx-0 md:mx-auto">
-              Discover the exclusive benefits, technical facilities, and robust investment opportunities that make Navrachna Foundation the elite partner for modern startups.
+              Our comprehensive 3-pillar support framework designed to nurture early-stage startups from concept validation to market scaling.
             </p>
           </div>
 
-          {/* Modern Bento Grid Layout */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 md:gap-5 lg:gap-6">
+          {/* 3 Core Support Mechanism Pillars Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
             
-            {/* Hero Bento Card 1: Funding & Capital (Spans 2 columns on desktop) */}
-            <div className="md:col-span-2 rounded-3xl bg-gradient-to-br from-[#013759] to-[#074887] p-5 sm:p-8 text-left text-white shadow-md relative overflow-hidden flex flex-col justify-between group">
-              <div className="absolute right-0 top-0 w-64 h-64 bg-sky-400/10 rounded-full blur-3xl pointer-events-none" />
+            {/* Pillar 01: Mentorship Support */}
+            <div className="rounded-3xl bg-white border border-slate-200/90 p-6 sm:p-8 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden">
+              <div className="absolute -top-12 -right-12 w-32 h-32 bg-emerald-50 rounded-full blur-2xl pointer-events-none group-hover:bg-emerald-100 transition-colors" />
               
               <div>
-                <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
-                  <div className="flex items-center gap-3">
-                    <div className="h-11 w-11 shrink-0 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-sky-300 flex items-center justify-center shadow-inner">
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-                    </div>
-                    <h3 className="text-lg sm:text-xl font-normal tracking-tight text-white leading-snug">
-                      Access to Funding & Investment Opportunities
-                    </h3>
+                <div className="flex items-center justify-between mb-6">
+                  <div className="h-12 w-12 rounded-2xl bg-emerald-600/10 text-emerald-700 flex items-center justify-center shrink-0 border border-emerald-600/20 shadow-xs">
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.9 1.2 1.5 1.5 2.5" />
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 18h6" />
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M10 22h4" />
+                    </svg>
                   </div>
-                  <span className="text-[11px] font-normal tracking-wider text-sky-200 uppercase bg-white/10 px-3 py-1 rounded-full border border-white/15 backdrop-blur-md shrink-0">
-                    Capital & Seed Grants
+                  <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
+                    Pillar 01
                   </span>
                 </div>
 
-                <p className="text-xs sm:text-sm text-sky-100/90 leading-relaxed font-normal max-w-xl">
-                  We connect incubated ventures directly with government seed grants, equity/non-equity funding schemes, angel networks, and venture capital partners to secure early velocity.
-                </p>
+                <h3 className="text-xl font-normal text-[#013759] tracking-tight mb-4">
+                  Mentorship Support
+                </h3>
+
+                <ul className="space-y-2.5 text-xs sm:text-sm text-slate-600 font-normal">
+                  <li className="flex items-start gap-2.5">
+                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0" />
+                    <span>Business Mentorship & Strategy</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0" />
+                    <span>Technical & Domain Engineering Mentorship</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0" />
+                    <span>Legal Assistance & Regulatory Guidance</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0" />
+                    <span>Pitch Preparation & Investor Readiness</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0" />
+                    <span>Patent & Intellectual Property (IP) Support</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0" />
+                    <span>National & International Event Participation Assistance</span>
+                  </li>
+                </ul>
               </div>
 
-              <div className="mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-sky-200">
-                <span>Government Grants & VC Network</span>
-                <a href="#contact" className="text-white font-medium group-hover:translate-x-1 transition-transform inline-flex items-center gap-1 shrink-0">
-                  Apply for Funding &rarr;
-                </a>
-              </div>
-            </div>
-
-            {/* Standard Bento Card: Direct Mentorship */}
-            <div className="col-span-1 rounded-3xl bg-white border border-slate-200/80 p-4 sm:p-6 text-left shadow-xs hover:shadow-md hover:border-slate-300 transition-all duration-300 flex flex-col justify-between">
-              <div>
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="h-10 w-10 shrink-0 rounded-xl bg-[#013759]/5 text-[#013759] flex items-center justify-center">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.9 1.2 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
-                  </div>
-                  <h3 className="text-base sm:text-lg font-normal tracking-tight text-[#013759] leading-snug">
-                    Direct Mentorship
-                  </h3>
-                </div>
-                <p className="text-xs text-slate-600 leading-relaxed font-normal">
-                  1-on-1 strategic guidance from industry veterans, successful founders, and technical advisors to solve critical startup challenges.
-                </p>
-              </div>
-            </div>
-
-            {/* Standard Bento Card: Lab Support */}
-            <div className="col-span-1 rounded-3xl bg-white border border-slate-200/80 p-4 sm:p-6 text-left shadow-xs hover:shadow-md hover:border-slate-300 transition-all duration-300 flex flex-col justify-between">
-              <div>
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="h-10 w-10 shrink-0 rounded-xl bg-[#013759]/5 text-[#013759] flex items-center justify-center">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                  </div>
-                  <h3 className="text-base sm:text-lg font-normal tracking-tight text-[#013759] leading-snug">
-                    Lab Support
-                  </h3>
-                </div>
-                <p className="text-xs text-slate-600 leading-relaxed font-normal">
-                  Comprehensive prototyping equipment, 3D printing facilities, CNC tooling, and fabrication labs to build hardware prototypes.
-                </p>
+              <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-emerald-700 font-medium">
+                <span>1-on-1 Advisory & IP Filing</span>
+                <span>6 Key Services</span>
               </div>
             </div>
 
-            {/* Hero Bento Card 2: High-Speed Internet & IT Support (Spans 2 columns on desktop) */}
-            <div className="md:col-span-2 rounded-3xl bg-gradient-to-br from-[#013759] to-[#074887] p-5 sm:p-8 text-left text-white shadow-md relative overflow-hidden flex flex-col justify-between group">
-              <div className="absolute right-0 bottom-0 w-64 h-64 bg-sky-400/10 rounded-full blur-3xl pointer-events-none" />
+            {/* Pillar 02: Infrastructure Support */}
+            <div className="rounded-3xl bg-white border border-slate-200/90 p-6 sm:p-8 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden">
+              <div className="absolute -top-12 -right-12 w-32 h-32 bg-sky-50 rounded-full blur-2xl pointer-events-none group-hover:bg-sky-100 transition-colors" />
 
               <div>
-                <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
-                  <div className="flex items-center gap-3">
-                    <div className="h-11 w-11 shrink-0 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-sky-300 flex items-center justify-center shadow-inner">
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
-                    </div>
-                    <h3 className="text-lg sm:text-xl font-normal tracking-tight text-white leading-snug">
-                      High-Speed Internet, IT & Cloud Support
-                    </h3>
+                <div className="flex items-center justify-between mb-6">
+                  <div className="h-12 w-12 rounded-2xl bg-[#013759]/10 text-[#013759] flex items-center justify-center shrink-0 border border-[#013759]/20 shadow-xs">
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                      <rect x="4" y="4" width="16" height="16" rx="2" ry="2" />
+                      <rect x="9" y="9" width="6" height="6" />
+                      <line x1="9" y1="1" x2="9" y2="4" />
+                      <line x1="15" y1="1" x2="15" y2="4" />
+                      <line x1="9" y1="20" x2="9" y2="23" />
+                      <line x1="15" y1="20" x2="15" y2="23" />
+                    </svg>
                   </div>
-                  <span className="text-[11px] font-normal tracking-wider text-sky-200 uppercase bg-white/10 px-3 py-1 rounded-full border border-white/15 backdrop-blur-md shrink-0">
-                    Gigabit Infrastructure & IT Services
+                  <span className="text-xs font-bold text-[#013759] bg-sky-50 px-3 py-1 rounded-full border border-sky-200">
+                    Pillar 02
                   </span>
                 </div>
 
-                <p className="text-xs sm:text-sm text-sky-100/90 leading-relaxed font-normal max-w-xl">
-                  Stay connected with ultra-reliable 1 Gbps gigabit Wi-Fi and ethernet connectivity. Includes dedicated IT helpdesk support, cloud infrastructure credits, server rack hosting, and cybersecurity guidance.
-                </p>
+                <h3 className="text-xl font-normal text-[#013759] tracking-tight mb-4">
+                  Infrastructure Support
+                </h3>
+
+                <ul className="space-y-2.5 text-xs sm:text-sm text-slate-600 font-normal">
+                  <li className="flex items-start gap-2.5">
+                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[#074887] shrink-0" />
+                    <span>Plug-and-Play Co-Working Space</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[#074887] shrink-0" />
+                    <span>Dedicated Private Cabin Area</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[#074887] shrink-0" />
+                    <span>Fully Equipped Meeting Rooms & AV Facilities</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[#074887] shrink-0" />
+                    <span>Mechanical & Electronics Fabrication Labs</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[#074887] shrink-0" />
+                    <span>High End Precision & Computing Equipment</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[#074887] shrink-0" />
+                    <span>Direct Access to Schemes and Grants</span>
+                  </li>
+                </ul>
               </div>
 
-              <div className="mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-sky-200">
-                <span>1 Gbps Fiber Backhaul & IT Support</span>
-                <a href="#services" className="text-white font-medium group-hover:translate-x-1 transition-transform inline-flex items-center gap-1 shrink-0">
-                  View IT Specs &rarr;
-                </a>
+              <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-[#074887] font-medium">
+                <span>24/7 Workspace Access</span>
+                <span>6 Infrastructure Services</span>
               </div>
             </div>
 
-            {/* Hero Bento Card 3: Rich Ecosystem (Spans 2 columns on desktop) */}
-            <div className="md:col-span-2 rounded-3xl bg-gradient-to-br from-[#013759] to-[#074887] p-5 sm:p-8 text-left text-white shadow-md relative overflow-hidden flex flex-col justify-between group">
-              <div className="absolute left-0 bottom-0 w-64 h-64 bg-sky-400/10 rounded-full blur-3xl pointer-events-none" />
+            {/* Pillar 03: Comprehensive Network */}
+            <div className="rounded-3xl bg-white border border-slate-200/90 p-6 sm:p-8 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden">
+              <div className="absolute -top-12 -right-12 w-32 h-32 bg-amber-50 rounded-full blur-2xl pointer-events-none group-hover:bg-amber-100 transition-colors" />
 
               <div>
-                <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
-                  <div className="flex items-center gap-3">
-                    <div className="h-11 w-11 shrink-0 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-sky-300 flex items-center justify-center shadow-inner">
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                    </div>
-                    <h3 className="text-lg sm:text-xl font-normal tracking-tight text-white leading-snug">
-                      Rich Ecosystem & Corporate Network
-                    </h3>
+                <div className="flex items-center justify-between mb-6">
+                  <div className="h-12 w-12 rounded-2xl bg-amber-600/10 text-amber-700 flex items-center justify-center shrink-0 border border-amber-600/20 shadow-xs">
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                      <circle cx="9" cy="7" r="4" />
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+                    </svg>
                   </div>
-                  <span className="text-[11px] font-normal tracking-wider text-sky-200 uppercase bg-white/10 px-3 py-1 rounded-full border border-white/15 backdrop-blur-md shrink-0">
-                    Collaborative Hub
+                  <span className="text-xs font-bold text-amber-700 bg-amber-50 px-3 py-1 rounded-full border border-amber-200">
+                    Pillar 03
                   </span>
                 </div>
 
-                <p className="text-xs sm:text-sm text-sky-100/90 leading-relaxed font-normal max-w-xl">
-                  Immerse your venture in a thriving culture of shared success. Gain corporate matchmaking, market access channels, and continuous capacity building.
-                </p>
+                <h3 className="text-xl font-normal text-[#013759] tracking-tight mb-4">
+                  Comprehensive Network
+                </h3>
+
+                <ul className="space-y-2.5 text-xs sm:text-sm text-slate-600 font-normal">
+                  <li className="flex items-start gap-2.5">
+                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-amber-500 shrink-0" />
+                    <span>Supporting in Government Backed Startup Schemes</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-amber-500 shrink-0" />
+                    <span>Wide Network of Seasoned Mentors</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-amber-500 shrink-0" />
+                    <span>Quality Investor & VC Partner Network</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-amber-500 shrink-0" />
+                    <span>Deep Corporate Networks for Brand Positioning</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-amber-500 shrink-0" />
+                    <span>Interns Support & Student Talent Matching</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-amber-500 shrink-0" />
+                    <span>RND Support & Digital Presence Acceleration</span>
+                  </li>
+                </ul>
               </div>
 
-              <div className="mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-sky-200">
-                <span>10+ Incubated Ventures & Industry Partners</span>
-                <a href="#about" className="text-white font-medium group-hover:translate-x-1 transition-transform inline-flex items-center gap-1 shrink-0">
-                  Explore Ecosystem &rarr;
-                </a>
-              </div>
-            </div>
-
-            {/* Standard Bento Card: Flexible Solutions (Placed beside Rich Ecosystem) */}
-            <div className="col-span-1 rounded-3xl bg-white border border-slate-200/80 p-4 sm:p-6 text-left shadow-xs hover:shadow-md hover:border-slate-300 transition-all duration-300 flex flex-col justify-between">
-              <div>
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="h-10 w-10 shrink-0 rounded-xl bg-[#013759]/5 text-[#013759] flex items-center justify-center">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M21.21 15.89A10 10 0 1 1 8 2.83M22 12A10 10 0 0 0 12 2v10z"/></svg>
-                  </div>
-                  <h3 className="text-base sm:text-lg font-normal tracking-tight text-[#013759] leading-snug">
-                    Flexible Solutions
-                  </h3>
-                </div>
-                <p className="text-xs text-slate-600 leading-relaxed font-normal">
-                  Customized workspace arrangements tailored to single founders and expanding startup teams with scalable desk options.
-                </p>
-              </div>
-            </div>
-
-            {/* Standard Bento Card: Strategic Location */}
-            <div className="col-span-1 rounded-3xl bg-white border border-slate-200/80 p-4 sm:p-6 text-left shadow-xs hover:shadow-md hover:border-slate-300 transition-all duration-300 flex flex-col justify-between">
-              <div>
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="h-10 w-10 shrink-0 rounded-xl bg-[#013759]/5 text-[#013759] flex items-center justify-center">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                  </div>
-                  <h3 className="text-base sm:text-lg font-normal tracking-tight text-[#013759] leading-snug">
-                    Strategic Location
-                  </h3>
-                </div>
-                <p className="text-xs text-slate-600 leading-relaxed font-normal">
-                  Prime location in Knowledge Park 3, Greater Noida with seamless NCR transport accessibility and connectivity.
-                </p>
+              <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-amber-800 font-medium">
+                <span>Ecosystem Connections</span>
+                <span>6 Network Services</span>
               </div>
             </div>
-
-            {/* Hero Bento Card 4: Most Affordable & Cost Effective (Spans 2 columns on desktop) */}
-            <div className="md:col-span-2 rounded-3xl bg-gradient-to-br from-[#013759] to-[#074887] p-5 sm:p-8 text-left text-white shadow-md relative overflow-hidden flex flex-col justify-between group">
-              <div className="absolute right-0 top-0 w-64 h-64 bg-sky-400/10 rounded-full blur-3xl pointer-events-none" />
-
-              <div>
-                <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
-                  <div className="flex items-center gap-3">
-                    <div className="h-11 w-11 shrink-0 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-sky-300 flex items-center justify-center shadow-inner">
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-                    </div>
-                    <h3 className="text-lg sm:text-xl font-normal tracking-tight text-white leading-snug">
-                      Most Affordable Incubation & Co-Working
-                    </h3>
-                  </div>
-                  <span className="text-[11px] font-normal tracking-wider text-sky-200 uppercase bg-white/10 px-3 py-1 rounded-full border border-white/15 backdrop-blur-md shrink-0">
-                    Founder-Friendly Rates
-                  </span>
-                </div>
-
-                <p className="text-xs sm:text-sm text-sky-100/90 leading-relaxed font-normal max-w-xl">
-                  We offer highly cost-effective seat plans, subsidized lab credits, and zero hidden overhead costs—ensuring early-stage founders maximize their financial runway.
-                </p>
-              </div>
-
-              <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-sky-200">
-                <span>Subsidized Seats & Lab Access</span>
-                <a href="#contact" className="text-white font-medium group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
-                  View Pricing Plans &rarr;
-                </a>
-              </div>
-            </div>
-
 
           </div>
         </div>
