@@ -3,6 +3,7 @@
   width: 100%;
   height: 100%;
   perspective: 1200px;
+  touch-action: pan-y;
 }
 
 .card-rotate {
@@ -11,6 +12,7 @@
   height: 100%;
   cursor: grab;
   will-change: transform;
+  touch-action: none;
 }
 
 .card-rotate-disabled {
@@ -34,6 +36,7 @@
   will-change: transform;
   backface-visibility: hidden;
   transform: translateZ(0);
+  user-select: none;
 }
 
 .card img {

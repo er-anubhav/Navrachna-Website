@@ -1,20 +1,19 @@
-import { motion, useMotionValue, useTransform } from 'motion/react';
+import { motion, useMotionValue, useTransform, animate } from 'motion/react';
 import { useState, useEffect } from 'react';
 import './Stack.css';
 
-function CardRotate({ children, onSendToBack, sensitivity, disableDrag = false, zIndex }) {
+function CardRotate({ children, onSendToBack, sensitivity, disableDrag = false, zIndex, isTop }) {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const rotateX = useTransform(y, [-100, 100], [8, -8]);
-  const rotateY = useTransform(x, [-100, 100], [-8, 8]);
+  const rotateX = useTransform(y, [-100, 100], [6, -6]);
+  const rotateY = useTransform(x, [-100, 100], [-6, 6]);
 
   function handleDragEnd(_, info) {
     if (Math.abs(info.offset.x) > sensitivity || Math.abs(info.offset.y) > sensitivity) {
       onSendToBack();
-    } else {
-      x.set(0);
-      y.set(0);
     }
+    animate(x, 0, { type: 'spring', stiffness: 300, damping: 25 });
+    animate(y, 0, { type: 'spring', stiffness: 300, damping: 25 });
   }
 
   if (disableDrag) {
@@ -29,11 +28,10 @@ function CardRotate({ children, onSendToBack, sensitivity, disableDrag = false, 
     <motion.div
       className="card-rotate"
       style={{ x, y, rotateX, rotateY, zIndex }}
-      drag
+      drag={isTop ? true : false}
       dragConstraints={{ top: 0, right: 0, bottom: 0, left: 0 }}
       dragElastic={0.6}
-      whileTap={{ cursor: 'grabbing', zIndex: 999 }}
-      whileDrag={{ zIndex: 999 }}
+      whileTap={isTop ? { cursor: 'grabbing' } : {}}
       onDragEnd={handleDragEnd}
     >
       {children}
@@ -43,13 +41,13 @@ function CardRotate({ children, onSendToBack, sensitivity, disableDrag = false, 
 
 export default function Stack({
   randomRotation = false,
-  sensitivity = 200,
+  sensitivity = 150,
   cards = [],
-  animationConfig = { stiffness: 180, damping: 24 },
-  sendToBackOnClick = false,
-  autoplay = false,
-  autoplayDelay = 3000,
-  pauseOnHover = false,
+  animationConfig = { stiffness: 220, damping: 22 },
+  sendToBackOnClick = true,
+  autoplay = true,
+  autoplayDelay = 3500,
+  pauseOnHover = true,
   mobileClickOnly = false,
   mobileBreakpoint = 768
 }) {
@@ -72,50 +70,8 @@ export default function Stack({
   const [stack, setStack] = useState(() => {
     if (cards.length) {
       return cards.map((content, index) => ({ id: index + 1, content }));
-    } else {
-      return [
-        {
-          id: 1,
-          content: (
-            <img
-              src="https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?q=80&w=500&auto=format"
-              alt="card-1"
-              className="card-image"
-            />
-          )
-        },
-        {
-          id: 2,
-          content: (
-            <img
-              src="https://images.unsplash.com/photo-1449844908441-8829872d2607?q=80&w=500&auto=format"
-              alt="card-2"
-              className="card-image"
-            />
-          )
-        },
-        {
-          id: 3,
-          content: (
-            <img
-              src="https://images.unsplash.com/photo-1452626212852-811d58933cae?q=80&w=500&auto=format"
-              alt="card-3"
-              className="card-image"
-            />
-          )
-        },
-        {
-          id: 4,
-          content: (
-            <img
-              src="https://images.unsplash.com/photo-1572120360610-d971b9d7767c?q=80&w=500&auto=format"
-              alt="card-4"
-              className="card-image"
-            />
-          )
-        }
-      ];
     }
+    return [];
   });
 
   useEffect(() => {
@@ -127,12 +83,14 @@ export default function Stack({
         return prev;
       });
     }
-  }, [cards.length]);
+  }, [cards]);
 
-  const sendToBack = id => {
+  const sendToBack = (id) => {
     setStack(prev => {
+      if (prev.length < 2) return prev;
       const newStack = [...prev];
       const index = newStack.findIndex(card => card.id === id);
+      if (index === -1) return prev;
       const [card] = newStack.splice(index, 1);
       newStack.unshift(card);
       return newStack;
@@ -142,37 +100,51 @@ export default function Stack({
   useEffect(() => {
     if (autoplay && stack.length > 1 && !isPaused) {
       const interval = setInterval(() => {
-        const topCardId = stack[stack.length - 1].id;
-        sendToBack(topCardId);
+        setStack(prev => {
+          if (prev.length < 2) return prev;
+          const newStack = [...prev];
+          const topCard = newStack.pop();
+          newStack.unshift(topCard);
+          return newStack;
+        });
       }, autoplayDelay);
 
       return () => clearInterval(interval);
     }
-  }, [autoplay, autoplayDelay, stack, isPaused]);
+  }, [autoplay, autoplayDelay, stack.length, isPaused]);
 
   return (
     <div
       className="stack-container"
       onMouseEnter={() => pauseOnHover && setIsPaused(true)}
       onMouseLeave={() => pauseOnHover && setIsPaused(false)}
+      onTouchStart={() => pauseOnHover && setIsPaused(true)}
+      onTouchEnd={() => pauseOnHover && setIsPaused(false)}
     >
       {stack.map((card, index) => {
-        const randomRotate = randomRotation ? Math.random() * 10 - 5 : 0;
+        const isTop = index === stack.length - 1;
+        const depth = stack.length - 1 - index;
+        
+        // Deterministic rotation based on card ID so it doesn't jitter on re-renders
+        const cardRotation = randomRotation ? (((card.id * 17) % 9) - 4) : 0;
+
         return (
           <CardRotate
             key={card.id}
             onSendToBack={() => sendToBack(card.id)}
             sensitivity={sensitivity}
-            disableDrag={shouldDisableDrag}
+            disableDrag={shouldDisableDrag || !isTop}
             zIndex={index + 1}
+            isTop={isTop}
           >
             <motion.div
               className="card"
-              onClick={() => shouldEnableClick && sendToBack(card.id)}
+              onClick={() => shouldEnableClick && isTop && sendToBack(card.id)}
               animate={{
-                rotateZ: (stack.length - index - 1) * 4 + randomRotate,
-                scale: 1 + index * 0.06 - stack.length * 0.06,
-                transformOrigin: '90% 90%'
+                rotateZ: depth * -3 + cardRotation,
+                scale: 1 - depth * 0.04,
+                y: depth * 10,
+                opacity: depth > 3 ? 0 : 1
               }}
               initial={false}
               transition={{
