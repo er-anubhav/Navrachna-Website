@@ -120,16 +120,21 @@ const PROGRAMS = [
   {
     title: "Startin-Up",
     description: "Discover funding and incubation opportunities through our specialized Startin-Up program, designed to assist and enable young entrepreneurs to initiate commercial exploitation of their technologies.",
-    link: "#"
+    link: "/startin-up"
   },
   {
     title: "NewGen-IEDC",
     description: "The NewGen IEDC program helps students develop entrepreneurial skills, test startup ideas, and connect with investors. We provide a dynamic and collaborative workspace that empowers you.",
-    link: "#"
+    link: "/programs/newgen-iedc"
   },
   {
     title: "MSME-BI",
     description: "Participate in MSME Hackathons to solve real-world industry challenges and secure seed funding. A direct approach towards solving your startup problems with 1 to 1 mentorship.",
+    link: "/msme-bi"
+  },
+  {
+    title: "Kartavyam Initiative",
+    description: "Empowering 300+ school students across 40+ partner schools through early STEM innovation, social responsibility, and youth entrepreneurship development.",
     link: "#"
   }
 ];

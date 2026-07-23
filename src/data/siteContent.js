@@ -69,6 +69,13 @@ export const programs = [
     accent: 'from-orange-100 to-amber-50',
     bullets: ['Research support', 'IP awareness', 'Innovation pathways'],
   },
+  {
+    slug: 'kartavyam',
+    title: 'Kartavyam Initiative',
+    summary: 'School-level STEM innovation and youth entrepreneurship outreach impacting 300+ students across 40+ partner schools.',
+    accent: 'from-amber-100 to-yellow-50',
+    bullets: ['School Outreach', 'Youth STEM Innovation', 'Early Entrepreneurship'],
+  },
 ]
 
 export const facilities = [

@@ -33,10 +33,10 @@ export function FooterV1() {
             <h4 className="mb-3 md:mb-6 text-lg sm:text-xl font-normal text-white">Quick Link</h4>
             <ul className="flex flex-col space-y-2 md:space-y-3 text-xs sm:text-sm text-white/80">
               <li><a href="#" className="hover:text-[#fbbf24] transition-colors flex items-center gap-2"><span className="text-[#fbbf24] text-xs">▶</span> About Navrachna Foundation</a></li>
-              <li><a href="#" className="hover:text-[#fbbf24] transition-colors flex items-center gap-2"><span className="text-[#fbbf24] text-xs">▶</span> NewGen-IEDC</a></li>
               <li><a href="/startin-up" className="hover:text-[#fbbf24] transition-colors flex items-center gap-2"><span className="text-[#fbbf24] text-xs">▶</span> StartinUP</a></li>
-              <li><a href="#" className="hover:text-[#fbbf24] transition-colors flex items-center gap-2"><span className="text-[#fbbf24] text-xs">▶</span> MSME-BI</a></li>
-              <li><a href="#" className="hover:text-[#fbbf24] transition-colors flex items-center gap-2"><span className="text-[#fbbf24] text-xs">▶</span> Our Programs</a></li>
+              <li><a href="/programs/newgen-iedc" className="hover:text-[#fbbf24] transition-colors flex items-center gap-2"><span className="text-[#fbbf24] text-xs">▶</span> NewGen-IEDC</a></li>
+              <li><a href="/msme-bi" className="hover:text-[#fbbf24] transition-colors flex items-center gap-2"><span className="text-[#fbbf24] text-xs">▶</span> MSME-BI</a></li>
+              <li><a href="#" className="hover:text-[#fbbf24] transition-colors flex items-center gap-2"><span className="text-[#fbbf24] text-xs">▶</span> Kartavyam Initiative</a></li>
             </ul>
           </div>
 
