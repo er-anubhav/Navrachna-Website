@@ -317,7 +317,8 @@ const SCHEMES = [
     title: "Startin-Up",
     description: "Discover funding and incubation opportunities through our specialized Startin-Up program, designed to assist and enable young entrepreneurs to initiate commercial exploitation of their technologies.",
     gradient: "from-indigo-950 via-purple-900 to-fuchsia-800",
-    logo: logoStartinUp
+    logo: logoStartinUp,
+    link: "/startin-up"
   },
   {
     code: "NewGen IEDC",
@@ -325,7 +326,8 @@ const SCHEMES = [
     title: "NewGen-IEDC",
     description: "The NewGen IEDC program helps students develop entrepreneurial skills, test startup ideas, and connect with investors. We provide a dynamic and collaborative workspace that empowers you.",
     gradient: "from-emerald-950 via-green-800 to-yellow-600",
-    logo: logoNewGen
+    logo: logoNewGen,
+    link: "/programs/newgen-iedc"
   },
   {
     code: "MSME-BI",
@@ -333,7 +335,8 @@ const SCHEMES = [
     title: "MSME-BI",
     description: "Participate in MSME Hackathons to solve real-world industry challenges and secure seed funding. A direct approach towards solving your startup problems with 1 to 1 mentorship.",
     gradient: "from-rose-950 via-red-800 to-orange-600",
-    logo: logoMsme
+    logo: logoMsme,
+    link: "/msme-bi"
   },
   {
     code: "IIC",
@@ -341,7 +344,8 @@ const SCHEMES = [
     title: "Institution's Innovation Council (IIC)",
     description: "Fostering campus innovation, startup hackathons, and IP development under Ministry of Education (MoE) Innovation Cell (Consistently rated top star performer).",
     gradient: "from-purple-950 via-violet-800 to-indigo-600",
-    logo: logoIic
+    logo: logoIic,
+    link: "/innovation-cell/iic-itsec"
   },
   {
     code: "Kartavyam",
@@ -349,7 +353,8 @@ const SCHEMES = [
     title: "Kartavyam Initiative",
     description: "Empowering 300+ school students across 40+ partner schools through early STEM innovation, social responsibility, and youth entrepreneurship development.",
     gradient: "from-blue-950 via-cyan-800 to-teal-600",
-    logo: logoKartavyam
+    logo: logoKartavyam,
+    link: "/programs"
   }
 ];
 
@@ -786,7 +791,7 @@ export function LandingPage() {
                       {scheme.description}
                     </p>
                     <a 
-                      href="#contact" 
+                      href={scheme.link} 
                       className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-[#074887] hover:text-[#fbbf24] transition-colors duration-300 mt-3 sm:mt-4 group/link"
                     >
                       Read More
