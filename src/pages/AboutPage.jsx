@@ -34,25 +34,25 @@ const defaultAboutData = {
   },
   leadership: [
     {
-      role: "CHAIRMAN, I.T.S THE EDUCATION GROUP",
+      role: "Chairman, I.T.S. The Education Group",
       title: "Shri B.L. Gupta",
       photo: leaderChairman,
       message: "Our vision at NFED is to foster an ecosystem where youthful ambition meets strategic support. We are committed to building an environment that transforms innovative student ideas into sustainable business models that drive economic progress."
     },
     {
-      role: "VICE CHAIRMAN, I.T.S THE EDUCATION GROUP",
+      role: "Vice Chairman, I.T.S. The Education Group",
       title: "Shri Sohil Gupta",
       photo: leaderViceChairman,
       message: "At Navrachna Foundation, we bridge the gap between academic research and commercial reality. By pairing cutting-edge labs with seasoned industry leaders, we equip our founders with the execution speed needed to win."
     },
     {
-      role: "DIRECTOR, I.T.S ENGINEERING COLLEGE",
+      role: "Director, I.T.S. Engineering College",
       title: "Dr. Manish Sharma",
       photo: leaderDirector,
       message: "Engineering excellence is the cornerstone of technical innovation. NFED provides the precise multidisciplinary platform, prototyping infrastructure, and technical mentorship needed to scale deep-tech ventures."
     },
     {
-      role: "ADVISOR / IN-CHARGE, NFED",
+      role: "Advisor / In-Charge, NFED",
       title: "Prof. (Dr.) Sanjay Yadav",
       photo: leaderAdvisor,
       message: "NFED is built ground-up to serve founders. From government grant assistance to fabrication support, our hands-on incubation framework ensures that no promising idea fails for lack of guidance or capital."
@@ -235,7 +235,7 @@ export function AboutPage() {
                     />
                   </div>
                   <div>
-                    <div className="text-[9px] sm:text-[10px] tracking-widest text-[#074887] uppercase font-normal">
+                    <div className="text-[10px] sm:text-xs tracking-wider text-[#074887] font-normal">
                       {leader.role}
                     </div>
                     <h3 className="text-sm sm:text-base font-normal text-[#013759] mt-0.5">
