@@ -209,37 +209,37 @@ const FAQS = [
 
 const OUR_SPACES = [
   {
-    title: "Co-working Space & Infrastructure",
+    title: "Co-Working Space",
     description: "Scale in our premium co-working facility, featuring plug-and-play seating, smart meeting rooms, high-end compute systems, and prototyping labs.",
     image: spaceCoworking
   },
   {
-    title: "Premium Board & Pitch Rooms",
+    title: "NewGen Board Room",
     description: "Host pitch presentations, investor panels, and executive reviews in our high-tech boardrooms equipped with smart displays and AV suites.",
     image: spaceBoardroom
   },
   {
-    title: "CNC Laser Cutting Facility",
+    title: "Laser Cutting Machine",
     description: "High-precision CO2 CNC laser cutting & engraving for acrylic, wood, sheet metals, and complex industrial components.",
     image: spaceLaserCutting
   },
   {
-    title: "Heavy Metal Fabrication & Plasma",
+    title: "Plasma Cutting Machine",
     description: "Heavy-duty metal cutting and structural fabrication powered by automated CNC Plasma cutting machinery.",
     image: spacePlasmaCutting
   },
   {
-    title: "3D Printing & Additive Mfg",
+    title: "PLA & SLA 3D Printing Machines",
     description: "Bring hardware concepts to life with professional FDM & SLA 3D printers supporting over 40 technical materials.",
     image: space3DPrinting
   },
   {
-    title: "CAD & High-Performance Design",
+    title: "Designing System (CAD & Simulation)",
     description: "High-end compute systems dedicated to CAD designing, 3D modeling, finite element analysis, and structural simulations.",
     image: spaceDesignSystem
   },
   {
-    title: "Incubation Reception & Lounge",
+    title: "Reception Area",
     description: "Modern welcome desk and startup lounge providing a professional front for visiting founders, investors, and mentors.",
     image: spaceReception
   }
