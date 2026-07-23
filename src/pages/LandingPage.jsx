@@ -400,10 +400,16 @@ export function LandingPage() {
         </div>
         <button
           onClick={() => setShowAnnouncementsModal(true)}
-          className="shrink-0 mr-2 text-[8px] font-bold text-sky-200 hover:text-white bg-sky-500/20 hover:bg-sky-500/40 border border-sky-400/30 px-1.5 py-0.2 rounded-full transition-colors cursor-pointer leading-none"
+          className="relative shrink-0 mr-2 sm:mr-4 p-1.5 text-sky-200 hover:text-white hover:bg-white/10 rounded-full transition-all cursor-pointer flex items-center justify-center"
           title="View all 4 announcements"
+          aria-label="View announcements"
         >
-          4
+          <svg className="w-4 h-4 sm:w-5 sm:h-5 text-sky-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+          </svg>
+          <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-[9px] font-bold text-white shadow-sm animate-pulse">
+            4
+          </span>
         </button>
       </div>
 

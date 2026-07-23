@@ -73,10 +73,10 @@ export function HeaderV1() {
 
               <div className="flex flex-col justify-center leading-tight min-w-0">
                 <span className="text-xl sm:text-lg font-bold tracking-tight text-[#013759] uppercase group-hover:text-[#074887] transition-colors whitespace-nowrap">
-                  NAVRACHNA
+                  NAVRACHNA FOUNDATION 
                 </span>
                 <span className="max-sm:hidden text-[10px] sm:text-[11px] font-medium text-gray-500 tracking-wide">
-                  Foundation for Entrepreneurship Development
+                  for Entrepreneurship Development
                 </span>
               </div>
             </a>
