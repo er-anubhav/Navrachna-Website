@@ -234,13 +234,13 @@ export function AboutPage() {
                       className="w-full h-full object-cover object-top"
                     />
                   </div>
-                  <div>
-                    <div className="text-[10px] sm:text-xs tracking-wider text-[#074887] font-normal">
-                      {leader.role}
-                    </div>
-                    <h3 className="text-sm sm:text-base font-normal text-[#013759] mt-0.5">
+                  <div className="text-left">
+                    <h3 className="text-sm sm:text-base font-normal text-[#013759]">
                       {leader.title}
                     </h3>
+                    <div className="text-[10px] sm:text-xs tracking-wide text-gray-500 font-normal mt-0.5">
+                      {leader.role}
+                    </div>
                   </div>
                 </div>
 

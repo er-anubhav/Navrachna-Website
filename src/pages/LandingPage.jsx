@@ -1173,12 +1173,12 @@ export function LandingPage() {
                     />
                   </div>
                   <div className="text-left">
-                    <div className="text-[10px] sm:text-xs tracking-wider text-[#074887] font-normal">
-                      {leader.role}
-                    </div>
-                    <h3 className="text-xs sm:text-base font-normal text-[#013759] mt-0.5">
+                    <h3 className="text-xs sm:text-base font-normal text-[#013759]">
                       {leader.title}
                     </h3>
+                    <div className="text-[10px] sm:text-xs tracking-wide text-gray-500 font-normal mt-0.5">
+                      {leader.role}
+                    </div>
                   </div>
                 </div>
 
