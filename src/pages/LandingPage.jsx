@@ -1387,53 +1387,34 @@ export function LandingPage() {
           </div>
         </div>
 
-        {/* Mobile Horizontal Swipeable Sections (Visible on Mobile < 768px) */}
+        {/* Mobile View: Continuous Horizontal Scrollable Row (Visible on Mobile < 768px) */}
         <div className="md:hidden w-full px-4 sm:px-6">
-          <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 scroll-smooth custom-scrollbar">
-            {Array.from({ length: Math.ceil(CLIENTS.length / 6) }).map((_, slideIdx) => {
-              const slideItems = CLIENTS.slice(slideIdx * 6, (slideIdx + 1) * 6);
-
+          <div className="flex overflow-x-auto snap-x snap-mandatory gap-3.5 pb-4 scroll-smooth custom-scrollbar">
+            {CLIENTS.map((item, idx) => {
+              const borderColors = [
+                'border-sky-100/90',
+                'border-orange-100/90',
+                'border-lime-100/90',
+                'border-rose-100/90',
+                'border-teal-100/90',
+                'border-purple-100/90'
+              ];
+              const borderClass = borderColors[idx % borderColors.length];
+              const cardStyle = item.bgDark 
+                ? 'bg-black border-slate-800' 
+                : `bg-white ${borderClass}`;
               return (
-                <div 
-                  key={slideIdx}
-                  className="w-[86vw] sm:w-[340px] shrink-0 snap-start rounded-2xl border border-slate-200/90 bg-white p-4 shadow-sm flex flex-col justify-between"
-                >
-                  {/* 2-Column Grid of 6 Startups */}
-                  <div className="grid grid-cols-2 gap-2.5">
-                    {slideItems.map((item, itemIdx) => {
-                      const globalIdx = slideIdx * 6 + itemIdx;
-                      const borderColors = [
-                        'border-sky-100/90',
-                        'border-orange-100/90',
-                        'border-lime-100/90',
-                        'border-rose-100/90',
-                        'border-teal-100/90',
-                        'border-purple-100/90'
-                      ];
-                      const borderClass = borderColors[globalIdx % borderColors.length];
-                      const cardStyle = item.bgDark 
-                        ? 'bg-black border-slate-800' 
-                        : `bg-white ${borderClass}`;
-
-                      return (
-                        <div 
-                          key={itemIdx} 
-                          className="flex flex-col items-center justify-between p-2 rounded-xl border bg-slate-50/50 hover:bg-white transition-colors h-28"
-                        >
-                          <div className={`w-full h-16 rounded-lg flex items-center justify-center p-2 border ${cardStyle}`}>
-                            <img 
-                              src={item.src} 
-                              alt={item.name} 
-                              className="max-h-full max-w-full object-contain"
-                            />
-                          </div>
-                          <span className="mt-1 text-[10px] font-medium text-slate-700 text-center truncate max-w-full leading-tight">
-                            {item.name}
-                          </span>
-                        </div>
-                      );
-                    })}
+                <div key={idx} className="w-[145px] shrink-0 snap-start flex flex-col items-center">
+                  <div className={`w-full h-24 rounded-2xl flex items-center justify-center p-3 shadow-xs border-2 ${cardStyle}`}>
+                    <img 
+                      src={item.src} 
+                      alt={item.name} 
+                      className="max-h-full max-w-full object-contain" 
+                    />
                   </div>
+                  <span className="mt-2 text-[11px] font-medium tracking-wide text-slate-600 text-center truncate max-w-full">
+                    {item.name}
+                  </span>
                 </div>
               );
             })}
