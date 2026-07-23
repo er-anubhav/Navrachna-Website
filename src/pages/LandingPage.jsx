@@ -879,9 +879,9 @@ export function LandingPage() {
                 </p>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-sky-200">
+              <div className="mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-sky-200">
                 <span>Government Grants & VC Network</span>
-                <a href="#contact" className="text-white font-medium group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+                <a href="#contact" className="text-white font-medium group-hover:translate-x-1 transition-transform inline-flex items-center gap-1 shrink-0">
                   Apply for Funding &rarr;
                 </a>
               </div>
@@ -945,9 +945,9 @@ export function LandingPage() {
                 </p>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-sky-200">
-                <span>1 Gbps Fiber Backhaul & Dedicated IT Support</span>
-                <a href="#services" className="text-white font-medium group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+              <div className="mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-sky-200">
+                <span>1 Gbps Fiber Backhaul & IT Support</span>
+                <a href="#services" className="text-white font-medium group-hover:translate-x-1 transition-transform inline-flex items-center gap-1 shrink-0">
                   View IT Specs &rarr;
                 </a>
               </div>
@@ -977,9 +977,9 @@ export function LandingPage() {
                 </p>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-sky-200">
+              <div className="mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-sky-200">
                 <span>10+ Incubated Ventures & Industry Partners</span>
-                <a href="#about" className="text-white font-medium group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+                <a href="#about" className="text-white font-medium group-hover:translate-x-1 transition-transform inline-flex items-center gap-1 shrink-0">
                   Explore Ecosystem &rarr;
                 </a>
               </div>
