@@ -17,7 +17,7 @@ export function HeaderV1() {
   return (
     <>
       {/* Top Info Contact Bar */}
-      <div className="relative z-50 w-full bg-[#074887] text-white text-[11px] sm:text-xs border-b border-white/10 py-2 font-sans">
+      <div className="relative z-50 w-full bg-[#074887] text-white text-[11px] sm:text-xs border-b border-white/20 py-1 sm:py-2 font-sans">
         <div className="w-full px-3 sm:px-8 lg:px-12 flex flex-row items-center justify-between gap-2">
           {/* Left: Contact Info */}
           <div className="flex items-center gap-2.5 sm:gap-5 min-w-0">
@@ -62,14 +62,14 @@ export function HeaderV1() {
       </div>
 
       {/* Main Header Container */}
-      <header className="relative z-50 bg-white border-b border-slate-100 shadow-xs">
-        <div className="flex items-center justify-between px-4 sm:px-8 py-4 lg:py-5">
+      <header className="relative z-50 bg-white border-b-2 border-slate-300 shadow-sm">
+        <div className="flex items-center justify-between px-4 sm:px-8 py-1.5 sm:py-4 lg:py-5">
           {/* Logo & Brand Name */}
           <div className="flex items-center">
             <a href="/" className="flex items-center gap-2 sm:gap-3 group">
-              <img src={logo} alt="Navrachna Logo" className="h-9 sm:h-10 w-auto object-contain shrink-0 transition-transform duration-300 group-hover:scale-[1.02]" />
+              <img src={logo} alt="Navrachna Logo" className="h-8 sm:h-10 w-auto object-contain shrink-0 transition-transform duration-300 group-hover:scale-[1.02]" />
               
-              <div className="h-8 sm:h-9 w-px bg-slate-200 shrink-0"></div>
+              <div className="h-7 sm:h-9 w-px bg-slate-300 shrink-0"></div>
 
               <div className="flex flex-col justify-center leading-tight min-w-0">
                 <div className="flex items-center gap-1.5">
@@ -238,89 +238,89 @@ export function HeaderV1() {
 
         {/* Mobile Navigation Drawer Panel */}
         {mobileMenuOpen && (
-          <div className="lg:hidden border-t border-slate-100 bg-white px-4 pt-3 pb-6 space-y-1 shadow-lg max-h-[85vh] overflow-y-auto">
+          <div className="lg:hidden border-t-2 border-slate-200 bg-white px-3 pt-1 pb-3 divide-y divide-slate-100 shadow-xl max-h-[80vh] overflow-y-auto">
             <a 
               href="/" 
-              className="block rounded-lg px-3 py-2.5 text-sm font-medium text-gray-900 hover:bg-slate-50 hover:text-[#074887]"
+              className="block rounded-lg px-3 py-2 text-sm font-medium text-gray-900 hover:bg-slate-50 hover:text-[#074887]"
             >
               Home
             </a>
             
             <a 
               href="/startin-up" 
-              className="block rounded-lg px-3 py-2.5 text-sm font-medium text-gray-900 hover:bg-slate-50 hover:text-[#074887]"
+              className="block rounded-lg px-3 py-2 text-sm font-medium text-gray-900 hover:bg-slate-50 hover:text-[#074887]"
             >
               Startin-up
             </a>
 
             <a 
               href="/programs/newgen-iedc" 
-              className="block rounded-lg px-3 py-2.5 text-sm font-medium text-gray-900 hover:bg-slate-50 hover:text-[#074887]"
+              className="block rounded-lg px-3 py-2 text-sm font-medium text-gray-900 hover:bg-slate-50 hover:text-[#074887]"
             >
               Newgen-IEDC
             </a>
 
             {/* MSME-BI Mobile Accordion */}
-            <div>
+            <div className="py-1">
               <button 
                 onClick={() => setMobileMsmeOpen(!mobileMsmeOpen)}
-                className="w-full flex items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium text-gray-900 hover:bg-slate-50 hover:text-[#074887]"
+                className="w-full flex items-center justify-between rounded-lg px-3 py-1.5 text-sm font-medium text-gray-900 hover:bg-slate-50 hover:text-[#074887]"
               >
                 <span>MSME-BI</span>
                 <span className="text-xs text-gray-400">{mobileMsmeOpen ? '▲' : '▼'}</span>
               </button>
               {mobileMsmeOpen && (
-                <div className="pl-4 pr-2 py-1 space-y-1 bg-slate-50/50 rounded-lg">
-                  <a href="/msme-bi" className="block px-3 py-2 text-xs text-gray-700 hover:text-[#074887]">Overview</a>
-                  <a href="/msme-yearly-activities" className="block px-3 py-2 text-xs text-gray-700 hover:text-[#074887]">MSME Yearly Activities</a>
-                  <a href="/msme-hackathons" className="block px-3 py-2 text-xs text-gray-700 hover:text-[#074887]">MSME Hackathons</a>
+                <div className="pl-4 pr-2 py-1 space-y-0.5 bg-slate-50/70 rounded-lg my-1 border-l-2 border-[#074887]/20">
+                  <a href="/msme-bi" className="block px-3 py-1 text-sm font-medium text-gray-800 hover:text-[#074887]">Overview</a>
+                  <a href="/msme-yearly-activities" className="block px-3 py-1 text-sm font-medium text-gray-800 hover:text-[#074887]">MSME Yearly Activities</a>
+                  <a href="/msme-hackathons" className="block px-3 py-1 text-sm font-medium text-gray-800 hover:text-[#074887]">MSME Hackathons</a>
                 </div>
               )}
             </div>
 
             <a 
               href="/policies" 
-              className="block rounded-lg px-3 py-2.5 text-sm font-medium text-gray-900 hover:bg-slate-50 hover:text-[#074887]"
+              className="block rounded-lg px-3 py-2 text-sm font-medium text-gray-900 hover:bg-slate-50 hover:text-[#074887]"
             >
               Our Policies
             </a>
 
             <a 
               href="/portfolio" 
-              className="block rounded-lg px-3 py-2.5 text-sm font-medium text-gray-900 hover:bg-slate-50 hover:text-[#074887]"
+              className="block rounded-lg px-3 py-2 text-sm font-medium text-gray-900 hover:bg-slate-50 hover:text-[#074887]"
             >
               Portfolio
             </a>
 
             {/* More Mobile Accordion */}
-            <div>
+            <div className="py-1">
               <button 
                 onClick={() => setMobileMoreOpen(!mobileMoreOpen)}
-                className="w-full flex items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium text-gray-900 hover:bg-slate-50 hover:text-[#074887]"
+                className="w-full flex items-center justify-between rounded-lg px-3 py-1.5 text-sm font-medium text-gray-900 hover:bg-slate-50 hover:text-[#074887]"
               >
                 <span>More</span>
                 <span className="text-xs text-gray-400">{mobileMoreOpen ? '▲' : '▼'}</span>
               </button>
 
               {mobileMoreOpen && (
-                <div className="pl-4 pr-2 py-1 space-y-1.5 bg-slate-50/50 rounded-lg">
-                  <a href="/about" className="block px-3 py-2 text-xs text-gray-700 hover:text-[#074887]">About Us</a>
-                  <a href="/team" className="block px-3 py-2 text-xs text-gray-700 hover:text-[#074887]">Our Team</a>
+                <div className="pl-4 pr-2 py-1 space-y-1 bg-slate-50/70 rounded-lg my-1 border-l-2 border-[#074887]/20">
+                  <a href="/about" className="block px-3 py-1 text-sm font-medium text-gray-800 hover:text-[#074887]">About Us</a>
+                  <a href="/team" className="block px-3 py-1 text-sm font-medium text-gray-800 hover:text-[#074887]">Our Team</a>
 
                   {/* Facilities Accordion */}
                   <div>
                     <button 
                       onClick={() => setMobileFacOpen(!mobileFacOpen)}
-                      className="w-full flex items-center justify-between px-3 py-2 text-xs text-gray-700 hover:text-[#074887]"
+                      className="w-full flex items-center justify-between px-3 py-1 text-sm font-medium text-gray-800 hover:text-[#074887]"
                     >
                       <span>Facilities</span>
-                      <span className="text-[10px] text-gray-400">{mobileFacOpen ? '▲' : '▼'}</span>
+                      <span className="text-xs text-gray-400">{mobileFacOpen ? '▲' : '▼'}</span>
                     </button>
                     {mobileFacOpen && (
-                      <div className="pl-4 py-1 space-y-1">
-                        <a href="/facilities/electronics-labs" className="block px-3 py-1.5 text-xs text-gray-600 hover:text-[#074887]">Electronics Labs</a>
-                        <a href="/facilities/high-end-computers" className="block px-3 py-1.5 text-xs text-gray-600 hover:text-[#074887]">High End Computers</a>
-                        <a href="/facilities/3d-printing" className="block px-3 py-1.5 text-xs text-gray-600 hover:text-[#074887]">3D Printing</a>
+                      <div className="pl-4 py-0.5 space-y-0.5 border-l border-slate-200 ml-3 my-0.5">
+                        <a href="/facilities/electronics-labs" className="block px-3 py-1 text-xs font-normal text-gray-600 hover:text-[#074887] transition-colors">Electronics Labs</a>
+                        <a href="/facilities/high-end-computers" className="block px-3 py-1 text-xs font-normal text-gray-600 hover:text-[#074887] transition-colors">High End Computers</a>
+                        <a href="/facilities/3d-printing" className="block px-3 py-1 text-xs font-normal text-gray-600 hover:text-[#074887] transition-colors">3D Printing</a>
                       </div>
                     )}
                   </div>
@@ -329,15 +329,15 @@ export function HeaderV1() {
                   <div>
                     <button 
                       onClick={() => setMobileInnOpen(!mobileInnOpen)}
-                      className="w-full flex items-center justify-between px-3 py-2 text-xs text-gray-700 hover:text-[#074887]"
+                      className="w-full flex items-center justify-between px-3 py-1 text-sm font-medium text-gray-800 hover:text-[#074887]"
                     >
                       <span>Innovation Cell</span>
-                      <span className="text-[10px] text-gray-400">{mobileInnOpen ? '▲' : '▼'}</span>
+                      <span className="text-xs text-gray-400">{mobileInnOpen ? '▲' : '▼'}</span>
                     </button>
                     {mobileInnOpen && (
-                      <div className="pl-4 py-1 space-y-1">
-                        <a href="/innovation-cell/iic-itsec" className="block px-3 py-1.5 text-xs text-gray-600 hover:text-[#074887]">IIC-ITSEC</a>
-                        <a href="/facilities/fabrication-lab" className="block px-3 py-1.5 text-xs text-gray-600 hover:text-[#074887]">Fabrication Lab</a>
+                      <div className="pl-4 py-0.5 space-y-0.5 border-l border-slate-200 ml-3 my-0.5">
+                        <a href="/innovation-cell/iic-itsec" className="block px-3 py-1 text-xs font-normal text-gray-600 hover:text-[#074887] transition-colors">IIC-ITSEC</a>
+                        <a href="/facilities/fabrication-lab" className="block px-3 py-1 text-xs font-normal text-gray-600 hover:text-[#074887] transition-colors">Fabrication Lab</a>
                       </div>
                     )}
                   </div>
@@ -347,7 +347,7 @@ export function HeaderV1() {
 
             <a 
               href="/contact" 
-              className="block rounded-lg px-3 py-2.5 text-sm font-medium text-gray-900 hover:bg-slate-50 hover:text-[#074887]"
+              className="block rounded-lg px-3 py-2 text-sm font-medium text-gray-900 hover:bg-slate-50 hover:text-[#074887]"
             >
               Contact Us
             </a>

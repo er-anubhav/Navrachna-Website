@@ -7,6 +7,9 @@ import spaceImg3 from '../assets/navrachna_images/image-KJ66VQB-e1734675565430.j
 import spaceImg4 from '../assets/navrachna_images/image-A2SAUCS-e1734675593163.jpg'
 import { HeaderV1 } from '../components/HeaderV1'
 import { FooterV1 } from '../components/FooterV1'
+import CircularGallery from '../components/CircularGallery'
+import Stack from '../components/Stack'
+import BorderGlow from '../components/BorderGlow'
 
 import client1 from '../assets/navrachna_images/ArunChaudhary-1.png'
 import client2 from '../assets/navrachna_images/DIGIERA-PRIVATE-LIMITED.png'
@@ -19,7 +22,50 @@ import client8 from '../assets/navrachna_images/Weaclim-1.png'
 import client9 from '../assets/navrachna_images/indus-1.jpg'
 import client10 from '../assets/navrachna_images/intelliginetia-1.jpg'
 
-const CLIENTS = [client1, client2, client3, client4, client5, client6, client7, client8, client9, client10];
+import leaderChairman from '../assets/navrachna_images/leader_chairman.png'
+import leaderViceChairman from '../assets/navrachna_images/leader_vicechairman.png'
+import leaderDirector from '../assets/navrachna_images/leader_director.png'
+import leaderAdvisor from '../assets/navrachna_images/leader_advisor.png'
+
+const LEADERSHIP = [
+  {
+    role: "CHAIRMAN, I.T.S THE EDUCATION GROUP",
+    title: "Shri B.L. Gupta",
+    photo: leaderChairman,
+    message: "Our vision at NFED is to foster an ecosystem where youthful ambition meets strategic support. We are committed to building an environment that transforms innovative student ideas into sustainable business models that drive economic progress."
+  },
+  {
+    role: "VICE CHAIRMAN, I.T.S THE EDUCATION GROUP",
+    title: "Shri Sohil Gupta",
+    photo: leaderViceChairman,
+    message: "At Navrachna Foundation, we bridge the gap between academic research and commercial reality. By pairing cutting-edge labs with seasoned industry leaders, we equip our founders with the execution speed needed to win."
+  },
+  {
+    role: "DIRECTOR, I.T.S ENGINEERING COLLEGE",
+    title: "Dr. Manish Sharma",
+    photo: leaderDirector,
+    message: "Engineering excellence is the cornerstone of technical innovation. NFED provides the precise multidisciplinary platform, prototyping infrastructure, and technical mentorship needed to scale deep-tech ventures."
+  },
+  {
+    role: "ADVISOR / IN-CHARGE, NFED",
+    title: "Prof. (Dr.) Sanjay Yadav",
+    photo: leaderAdvisor,
+    message: "NFED is built ground-up to serve founders. From government grant assistance to fabrication support, our hands-on incubation framework ensures that no promising idea fails for lack of guidance or capital."
+  }
+];
+
+const CLIENTS = [
+  { src: client1, name: "E4A Technologies", bgDark: true },
+  { src: client2, name: "Cyberkida Digiera Private Limited", bgDark: true },
+  { src: client3, name: "Jagmag Lights", bgDark: false },
+  { src: client4, name: "MyLyfCare", bgDark: false },
+  { src: client5, name: "TripoSaints", bgDark: false },
+  { src: client6, name: "UPROI", bgDark: false },
+  { src: client7, name: "Verdant Solutions", bgDark: false },
+  { src: client8, name: "Weaclim", bgDark: false },
+  { src: client9, name: "Indus AI", bgDark: false },
+  { src: client10, name: "Intelliginetia", bgDark: false },
+];
 
 const UPDATES = [
   {
@@ -317,7 +363,7 @@ export function LandingPage() {
   }, []);
 
   return (
-    <div className="relative min-h-screen w-full bg-[#111111]">
+    <div className="relative min-h-screen w-full bg-[#111111] overflow-x-hidden max-w-full">
 
       {/* Top Announcement Bar */}
       <div className="relative z-40 flex min-h-[44px] sm:min-h-[40px] py-1 sm:py-0 w-full items-center border-b border-white/10 bg-[#111111] overflow-hidden">
@@ -343,8 +389,8 @@ export function LandingPage() {
                   : 'translate-y-4 opacity-0 z-0 pointer-events-none'
               }`}
             >
-              <div className="text-[11px] sm:text-sm font-medium text-white/90 leading-tight sm:leading-normal line-clamp-2 sm:truncate w-full">
-                <span className="inline-block text-sky-300 mr-1.5 font-semibold text-[10px] sm:text-xs bg-sky-950/80 px-1.5 py-0.5 rounded border border-sky-500/30 shrink-0">
+              <div className="text-[11px] sm:text-sm font-normal text-white/90 leading-tight sm:leading-normal line-clamp-2 sm:truncate w-full">
+                <span className="inline-block text-sky-300 mr-1.5 font-normal text-[10px] sm:text-xs bg-sky-950/80 px-1.5 py-0.5 rounded border border-sky-500/30 shrink-0">
                   {update.tag}
                 </span>
                 <span>{update.text}</span>
@@ -364,53 +410,43 @@ export function LandingPage() {
       {/* All Announcements Modal */}
       {showAnnouncementsModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm">
-          <div className="relative w-full max-w-xl rounded-2xl bg-white p-5 sm:p-6 shadow-2xl border border-slate-100 max-h-[85vh] flex flex-col animate-in fade-in zoom-in-95 duration-200">
+          <div className="relative w-full max-w-lg rounded-2xl bg-white p-4 sm:p-5 shadow-2xl border border-slate-100 max-h-[85vh] flex flex-col">
             {/* Modal Header */}
-            <div className="flex items-center justify-between border-b border-slate-100 pb-3.5 mb-4">
-              <div>
-                <h3 className="text-base sm:text-lg font-bold text-[#013759] flex items-center gap-2">
-                  <span>📢</span> All Announcements & Updates
-                </h3>
-                <p className="text-xs text-slate-500 mt-0.5">Read all active announcements line-by-line</p>
-              </div>
+            <div className="flex items-center justify-between border-b border-slate-100 pb-3 mb-3">
+              <h3 className="text-sm sm:text-base font-normal text-[#013759] flex items-center gap-2">
+                <span>📢</span> Announcements & Updates
+              </h3>
               <button 
                 onClick={() => setShowAnnouncementsModal(false)}
-                className="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition-colors cursor-pointer text-sm font-bold"
+                className="w-7 h-7 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 flex items-center justify-center transition-colors cursor-pointer text-xs"
                 aria-label="Close modal"
               >
                 ✕
               </button>
             </div>
 
-            {/* Announcements List */}
-            <div className="overflow-y-auto space-y-3 pr-1 flex-1">
+            {/* Announcements List — compact horizontal layout */}
+            <div className="overflow-y-auto space-y-2 flex-1">
               {UPDATES.map((item, idx) => (
                 <div 
                   key={idx}
-                  className="flex items-start gap-3 p-3.5 rounded-xl bg-slate-50 border border-slate-100 hover:border-[#074887]/30 transition-all"
+                  className="flex items-start gap-2.5 py-2.5 px-3 rounded-xl bg-slate-50 border border-slate-100 hover:border-[#074887]/20 transition-all"
                 >
-                  <div className="shrink-0 w-7 h-7 rounded-full bg-[#074887] text-white flex items-center justify-center text-xs font-bold shadow-sm mt-0.5">
-                    {idx + 1}
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-[#074887] bg-[#074887]/10 px-2 py-0.5 rounded-full">
-                        {item.tag}
-                      </span>
-                    </div>
-                    <p className="text-xs sm:text-sm font-medium text-slate-800 leading-relaxed">
-                      {item.text}
-                    </p>
-                  </div>
+                  <span className="shrink-0 text-[9px] sm:text-[10px] font-normal uppercase tracking-wider text-[#074887] bg-[#074887]/10 px-2 py-1 rounded mt-0.5 whitespace-nowrap">
+                    {item.tag}
+                  </span>
+                  <p className="text-xs text-slate-700 leading-relaxed font-normal">
+                    {item.text}
+                  </p>
                 </div>
               ))}
             </div>
 
             {/* Modal Footer */}
-            <div className="mt-4 pt-3 border-t border-slate-100 flex justify-end">
+            <div className="mt-3 pt-3 border-t border-slate-100 flex justify-end">
               <button
                 onClick={() => setShowAnnouncementsModal(false)}
-                className="px-4 py-2 bg-[#074887] text-white text-xs font-medium rounded-lg hover:bg-[#013759] transition-colors cursor-pointer"
+                className="px-4 py-1.5 bg-[#074887] text-white text-xs font-normal rounded-lg hover:bg-[#013759] transition-colors cursor-pointer"
               >
                 Close
               </button>
@@ -432,27 +468,39 @@ export function LandingPage() {
           <h1 className="mt-2 sm:mt-4 font-serif text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-normal tracking-tight text-white leading-tight drop-shadow-lg">
             Where Ideas, Take Flight
           </h1>
-          <p className="mt-3 sm:mt-5 max-w-2xl text-xs sm:text-base md:text-lg text-white/90 leading-relaxed">
-            A premium co-working and incubation experience <br className="hidden sm:inline" /> designed for clarity, momentum, and exceptional founder conversion.
+          <p className="mt-3 sm:mt-5 max-w-2xl text-xs sm:text-base md:text-lg text-white leading-relaxed font-normal">
+            Empowering visionary founders with world-class incubation, <br className="hidden sm:inline" /> state-of-the-art labs, and direct capital access.
           </p>
-          <span className="mt-5 sm:mt-6 mb-2 rounded-full border border-white/20 px-3.5 py-1 sm:px-5 sm:py-1.5 text-xs sm:text-sm tracking-wider text-white/90 backdrop-blur-md">
+          <span className="mt-5 sm:mt-6 mb-2 inline-block rounded-full border border-white/30 px-2.5 py-0.5 sm:px-5 sm:py-1.5 text-[10px] sm:text-sm tracking-wider text-white backdrop-blur-md max-w-full text-center font-medium">
             Navrachna Foundation for Entrepreneurship Development
           </span>
           
           <div className="mt-4 sm:mt-6 flex flex-row flex-wrap items-center justify-center gap-2.5 sm:gap-4">
-            <button className="rounded-lg bg-[#074887] px-3.5 py-1.5 text-[11px] sm:px-6 sm:py-3 sm:text-sm font-medium text-white shadow-md transition-all hover:bg-[#013759] hover:shadow-lg hover:-translate-y-0.5 cursor-pointer">
-              Join the Workspace
-            </button>
-            <button className="rounded-lg border border-white/30 bg-white/10 px-3.5 py-1.5 text-[11px] sm:px-6 sm:py-3 sm:text-sm font-medium text-white backdrop-blur-md transition-all hover:bg-white/20 hover:-translate-y-0.5 cursor-pointer">
-              Explore Programs
-            </button>
+            <a 
+              href="/contact" 
+              className="group rounded-xl bg-[#074887] px-4 py-2 sm:px-7 sm:py-3.5 text-[12px] sm:text-sm font-semibold text-white shadow-lg shadow-[#074887]/30 transition-all duration-300 hover:bg-[#013759] hover:shadow-xl hover:-translate-y-0.5 flex items-center gap-2 cursor-pointer"
+            >
+              <span className="text-white">Launch your startup</span>
+              <svg className="w-4 h-4 text-white transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+              </svg>
+            </a>
+            <a 
+              href="/services" 
+              className="group rounded-xl border border-white/35 bg-white/10 px-4 py-2 sm:px-7 sm:py-3.5 text-[12px] sm:text-sm font-semibold text-white backdrop-blur-md transition-all duration-300 hover:bg-white/20 hover:border-white/50 hover:-translate-y-0.5 flex items-center gap-2 cursor-pointer"
+            >
+              <span className="text-white">Explore ecosystem</span>
+              <svg className="w-4 h-4 text-white opacity-90 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
           </div>
         </div>
       </section>
 
       {/* NFED Section */}
-      <section id="about" className="relative w-full bg-white py-24 overflow-hidden border-b border-gray-100">
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-16">
+      <section id="about" className="relative w-full bg-white py-10 sm:py-24 overflow-hidden border-b border-gray-100">
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-6 lg:gap-16">
           
           {/* Left Column: Image Layout */}
           <div className="w-full lg:w-[48%] flex sm:block flex-row items-center justify-center gap-3 sm:gap-0 h-[220px] sm:h-[450px] lg:h-[520px] relative">
@@ -462,7 +510,7 @@ export function LandingPage() {
                 src={heroImage} 
                 alt="Navrachna Incubator Facility" 
                 className="w-full h-full object-cover object-center"
-              />
+                />
             </div>
             {/* Second Card */}
             <div className="w-1/2 sm:w-[46%] h-full sm:h-[350px] lg:h-[400px] rounded-2xl sm:rounded-[2.5rem] overflow-hidden shadow-xl sm:shadow-2xl sm:border-4 sm:border-white sm:absolute sm:right-4 sm:bottom-8 lg:bottom-4 transform sm:translate-y-6 lg:translate-y-8 sm:hover:translate-y-4 lg:hover:translate-y-6 transition-all duration-500 ease-out hover:scale-[1.02] bg-[#074887]">
@@ -476,13 +524,11 @@ export function LandingPage() {
 
           {/* Right Column: Informational Content */}
           <div className="flex-1 flex flex-col items-start text-left">
-            <h2 className="mb-6 text-4xl md:text-5xl tracking-tight text-[#013759] leading-tight">
-              Navrachna Foundation for
-              Entrepreneurship 
-              Development
+            <h2 className="mb-3 sm:mb-6 text-xl sm:text-3xl md:text-4xl font-normal tracking-tight text-[#013759] leading-snug sm:leading-tight">
+              Navrachna Foundation for Entrepreneurship Development
             </h2>
 
-            <div className="text-gray-600 text-md font-normal leading-relaxed space-y-6 text-justify mb-8">
+            <div className="text-gray-600 text-xs sm:text-base font-normal leading-relaxed tracking-normal space-y-3 sm:space-y-5 text-left md:text-justify mb-4 sm:mb-8">
               <p>
                 Navrachna Foundation for Entrepreneurship Development (NFED) is an autonomous, sector-agnostic startup incubator and premium co-working ecosystem registered under the societies registration framework to empower founders with early-stage velocity and institutional support.
               </p>
@@ -491,7 +537,7 @@ export function LandingPage() {
               </p>
             </div>
 
-            <button className="rounded-lg bg-black px-8 py-3.5 font-bold text-white shadow-lg hover:bg-[#074887] hover:shadow-2xl hover:-translate-y-0.5 transition-all duration-300">
+            <button className="rounded-lg bg-black px-5 py-2 sm:px-8 sm:py-3.5 text-xs sm:text-base font-bold text-white shadow-lg hover:bg-[#074887] hover:shadow-2xl hover:-translate-y-0.5 transition-all duration-300">
               Read More
             </button>
           </div>
@@ -499,26 +545,26 @@ export function LandingPage() {
       </section>
 
       {/* Horizontal Values Strip */}
-      <section className="relative w-full bg-white py-10 border-y border-[#074887]/10">
+      <section className="relative w-full bg-white py-10 border-y border-[#013759]">
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-[#074887]/10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center md:divide-x divide-[#074887]/10">
             {/* Value 1 — PDF: 96+ Projects Developed */}
             <div className="flex flex-col items-center justify-center p-2">
               <span className="text-4xl md:text-5xl font-normal tracking-tight text-[#013759]">96+</span>
               <span className="text-xs font-normal text-[#074887] uppercase tracking-wider mt-2">Projects Developed</span>
             </div>
             {/* Value 2 — PDF: ₹2.87 Cr DST Grant */}
-            <div className="flex flex-col items-center justify-center p-2 pt-6 md:pt-2">
+            <div className="flex flex-col items-center justify-center p-2">
               <span className="text-4xl md:text-5xl font-normal tracking-tight text-[#013759]">₹2.87 Cr</span>
               <span className="text-xs font-normal text-[#074887] uppercase tracking-wider mt-2">DST Grant Received</span>
             </div>
             {/* Value 3 — PDF: ₹1.59 Cr MSME Grant */}
-            <div className="flex flex-col items-center justify-center p-2 pt-6 md:pt-2">
+            <div className="flex flex-col items-center justify-center p-2">
               <span className="text-4xl md:text-5xl font-normal tracking-tight text-[#013759]">₹1.59 Cr</span>
               <span className="text-xs font-normal text-[#074887] uppercase tracking-wider mt-2">MSME Grant Received</span>
             </div>
             {/* Value 4 — PDF: 66+ Patents Filed */}
-            <div className="flex flex-col items-center justify-center p-2 pt-6 md:pt-2">
+            <div className="flex flex-col items-center justify-center p-2">
               <span className="text-4xl md:text-5xl font-normal tracking-tight text-[#013759]">66+</span>
               <span className="text-xs font-normal text-[#074887] uppercase tracking-wider mt-2">Patents Filed</span>
             </div>
@@ -527,35 +573,31 @@ export function LandingPage() {
       </section>
 
       {/* Vision & Mission Section */}
-      <section className="relative w-full bg-[#f8fafc] py-20 border-b border-gray-100">
+      <section className="relative w-full bg-[#f8fafc] py-8 sm:py-20 border-b border-[#013759]">
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row items-stretch justify-between gap-12 lg:gap-16">
+          <div className="flex flex-col md:flex-row items-stretch justify-between gap-6 md:gap-12 lg:gap-16">
             
             {/* Vision - Left Side */}
             <div className="flex-1 flex flex-col items-start text-left">
-              <span className="mb-4 inline-block whitespace-nowrap rounded-full bg-[#10b981]/10 px-4 py-1.5 text-xs font-normal tracking-widest text-[#10b981] uppercase">
-                Our Vision
-              </span>
-              <h2 className="mb-6 text-3xl md:text-4xl font-normal tracking-tight text-[#013759]">
+
+              <h2 className="mb-2 sm:mb-4 text-2xl sm:text-3xl md:text-4xl font-normal tracking-tight text-[#013759]">
                 Vision
               </h2>
-              <p className="text-gray-600 text-base md:text-md leading-relaxed text-justify font-normal">
+              <p className="text-gray-600 text-sm sm:text-base md:text-md leading-tight sm:leading-relaxed text-justify font-normal">
                 To create an innovative workspace and sector-agnostic startup incubator that nurtures passionate entrepreneurs, fosters highly collaborative creativity, and accelerates early-stage startup success into prominent global market leaders.
               </p>
             </div>
 
-            {/* Vertical Divider Line */}
-            <div className="hidden md:block w-px bg-gray-250 self-stretch my-2 shrink-0"></div>
+            {/* Divider Line (Horizontal on Mobile, Vertical on Desktop) */}
+            <div className="w-full md:w-px h-px md:h-auto bg-gray-200 self-stretch my-2 shrink-0"></div>
 
             {/* Mission - Right Side */}
             <div className="flex-1 flex flex-col items-start text-left">
-              <span className="mb-4 inline-block whitespace-nowrap rounded-full bg-[#3b82f6]/10 px-4 py-1.5 text-xs font-normal tracking-widest text-[#3b82f6] uppercase">
-                Our Purpose
-              </span>
-              <h2 className="mb-6 text-3xl md:text-4xl font-normal tracking-tight text-[#013759]">
+
+              <h2 className="mb-2 sm:mb-4 text-2xl sm:text-3xl md:text-4xl font-normal tracking-tight text-[#013759]">
                 Mission
               </h2>
-              <p className="text-gray-600 text-base md:text-md leading-relaxed text-justify font-normal">
+              <p className="text-gray-600 text-sm sm:text-base md:text-md leading-tight sm:leading-relaxed text-justify font-normal">
                 To provide a dynamic, world-class collaborative workspace that empowers young founders and student innovators with seed prototype funding, high-fidelity mentoring frameworks, state-of-the-art labs, and a robust investor matchmaking pipeline.
               </p>
             </div>
@@ -563,6 +605,8 @@ export function LandingPage() {
           </div>
         </div>
       </section>
+
+
 
 
 
@@ -586,153 +630,89 @@ export function LandingPage() {
       </div>
 
       {/* Our Spaces Section */}
-      <section className="relative w-full bg-white py-24 border-t border-gray-100">
+      <section className="relative w-full bg-white py-8 sm:py-24 border-b border-[#013759]">
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <span className="mb-4 inline-block whitespace-nowrap rounded-full bg-[#074887]/10 px-4 py-1.5 text-xs font-normal tracking-widest text-[#074887] uppercase">
-              Services Offered
-            </span>
-            <h2 className="mb-6 font-normal text-3xl md:text-5xl tracking-tight text-[#013759]">
+          <div className="text-left md:text-center mb-4 md:mb-12">
+
+            <h2 className="mb-2 sm:mb-6 font-normal text-2xl sm:text-3xl md:text-4xl tracking-tight text-[#013759]">
               Our <span className="inline-block"><span className="text-[#10b981]">S</span><span className="text-[#ec4899]">p</span><span className="text-[#3b82f6]">a</span><span className="text-[#f59e0b]">c</span><span className="text-[#ef4444]">e</span><span className="text-[#8b5cf6]">s</span></span>
             </h2>
-            <p className="mx-auto max-w-3xl text-gray-600 text-base md:text-lg leading-relaxed mb-8">
+            <p className="md:mx-auto max-w-3xl text-gray-600 text-sm sm:text-base md:text-lg leading-snug sm:leading-relaxed mb-4 md:mb-8">
               We provide dynamic workspaces, expert mentorship, networking opportunities, and business support services to help startups and entrepreneurs thrive.
             </p>
-            {/* Scroll Navigation Controls */}
-            <div className="flex justify-center gap-4">
-              <button 
-                onClick={() => scroll('left')}
-                className="flex h-12 w-12 items-center justify-center rounded-full bg-[#074887]/5 border border-[#074887]/10 text-[#013759] hover:bg-[#074887] hover:text-white hover:border-[#074887] transition-all duration-300 active:scale-95 shadow-md cursor-pointer"
-                aria-label="Scroll Left"
-              >
-                <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-                </svg>
-              </button>
-              <button 
-                onClick={() => scroll('right')}
-                className="flex h-12 w-12 items-center justify-center rounded-full bg-[#074887]/5 border border-[#074887]/10 text-[#013759] hover:bg-[#074887] hover:text-white hover:border-[#074887] transition-all duration-300 active:scale-95 shadow-md cursor-pointer"
-                aria-label="Scroll Right"
-              >
-                <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                </svg>
-              </button>
-            </div>
           </div>
 
-          {/* Custom style to completely hide the scrollbar dynamically */}
-          <style dangerouslySetInnerHTML={{__html: `
-            .no-scrollbar::-webkit-scrollbar {
-              display: none;
-            }
-            .no-scrollbar {
-              -ms-overflow-style: none;  /* IE and Edge */
-              scrollbar-width: none;  /* Firefox */
-            }
-          `}} />
-
-          <div 
-            ref={scrollRef}
-            className="flex gap-8 overflow-x-auto pb-8 no-scrollbar flex-nowrap w-full lg:justify-start snap-x snap-mandatory -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8"
-          >
-            {OUR_SPACES.map((space, idx) => (
-              <div 
-                key={idx} 
-                className="w-[320px] sm:w-[360px] md:w-[380px] h-[450px] shrink-0 snap-start relative overflow-hidden rounded-[2rem] group shadow-md hover:shadow-xl border border-gray-100/30 transition-all duration-500 ease-out hover:-translate-y-2"
-              >
-                {/* Background Image */}
-                <img 
-                  src={space.image} 
-                  alt={space.title} 
-                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-                />
-
-                {/* Dark Vignette Overlay for initial view readability */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent z-10"></div>
-
-                {/* Top Right Action Arrow Link */}
-                <div className="absolute top-6 right-6 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-black/40 backdrop-blur-md border border-white/15 text-white transition-all duration-300 group-hover:bg-[#fbbf24] group-hover:text-[#013759] group-hover:rotate-45">
-                  <svg className="h-4.5 w-4.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
-                  </svg>
+          {/* Interactive Card Stack for Desktop & Mobile */}
+          <div className="w-[280px] sm:w-[380px] md:w-[480px] lg:w-[540px] h-[360px] sm:h-[460px] md:h-[540px] ml-0 md:mx-auto my-4 md:my-8 relative">
+            <Stack
+              randomRotation={true}
+              sensitivity={160}
+              sendToBackOnClick={true}
+              autoplay={true}
+              autoplayDelay={3000}
+              pauseOnHover={true}
+              cards={OUR_SPACES.map((space, idx) => (
+                <div key={idx} className="relative w-full h-full rounded-2xl md:rounded-3xl overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.45)] border border-white/20 bg-[#013759] group">
+                  <img src={space.image} alt={space.title} className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-4 md:p-8 flex flex-col justify-end text-left">
+                    <h3 className="text-lg md:text-2xl font-semibold text-white leading-snug">{space.title}</h3>
+                    <p className="text-xs md:text-sm text-white/85 line-clamp-2 md:line-clamp-3 mt-1 md:mt-2 font-normal leading-tight md:leading-relaxed">{space.description}</p>
+                  </div>
                 </div>
-
-                {/* Bottom Left Title (Initial State - hides on hover) */}
-                <div className="absolute bottom-8 left-8 right-8 z-20 text-left transition-all duration-300 ease-out group-hover:opacity-0 group-hover:translate-y-4">
-                  <h3 className="text-2xl font-normal tracking-tight text-white leading-snug">
-                    {space.title}
-                  </h3>
-                </div>
-
-                {/* Hover Details Panel (Slides up and fades in on hover) */}
-                <div className="absolute inset-0 bg-gradient-to-b from-[#013759]/95 to-[#074887]/95 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out z-30 flex flex-col justify-end p-8 text-left">
-                  {/* Detailed Title inside Hover State */}
-                  <h3 className="text-2xl font-normal tracking-tight text-white mb-4 leading-snug">
-                    {space.title}
-                  </h3>
-                  {/* Description */}
-                  <p className="text-sm font-normal text-white/90 leading-relaxed mb-8">
-                    {space.description}
-                  </p>
-                  {/* Action Call to Action Button */}
-                  <button className="w-full py-3.5 rounded-xl bg-[#fbbf24] hover:bg-yellow-400 text-[#013759] font-semibold text-sm transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 duration-500 delay-100 shadow-lg">
-                    Explore Program
-                  </button>
-                </div>
-              </div>
-            ))}
+              ))}
+            />
           </div>
         </div>
       </section>
 
       {/* Schemes & Programs Section */}
-      <section className="relative w-full bg-white py-24 border-t border-gray-100">
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-16">
+      <section className="relative w-full bg-white py-10 lg:py-24 border-t border-gray-100">
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
           {/* Left Column - Info & Action */}
           <div className="w-full lg:w-[42%] flex flex-col items-start text-left">
-            <h2 className="text-4xl md:text-5xl font-normal text-[#013759] tracking-tight leading-[1.15] mb-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-normal text-[#013759] tracking-tight leading-[1.15] mb-4 lg:mb-6">
               Explore Our <span className="inline-block"><span className="text-[#10b981]">F</span><span className="text-[#ec4899]">l</span><span className="text-[#3b82f6]">a</span><span className="text-[#f59e0b]">g</span><span className="text-[#ef4444]">s</span><span className="text-[#8b5cf6]">h</span><span className="text-[#06b6d4]">i</span><span className="text-[#3b82f6]">p</span></span> <br /> Schemes and Programmes
             </h2>
-            <p className="text-gray-600 text-base md:text-md leading-relaxed text-justify mb-8 font-normal">
+            <p className="text-gray-600 text-sm md:text-md leading-relaxed text-justify mb-6 lg:mb-8 font-normal">
               At Navrachna Foundation (NFED), we coordinate flagship incubation schemes that nurture entrepreneurs across every stage of their startup journey. These structured programs combine equity-free prototype grants, monthly fellowship stipends, intensive commercial scaling pipelines, and institutional resources to ensure early-stage ventures gain the right strategic assets to succeed.
             </p>
-            <button className="rounded-xl bg-black px-8 py-3.5 font-medium text-white shadow-lg hover:bg-gray-800 transition-all duration-300 active:scale-95 cursor-pointer">
+            <button className="rounded-xl bg-black px-6 py-2.5 sm:px-8 sm:py-3.5 font-medium text-xs sm:text-base text-white shadow-lg hover:bg-gray-800 transition-all duration-300 active:scale-95 cursor-pointer">
               View all Program
             </button>
           </div>
 
-          {/* Right Column - Scrollable Cards */}
-          <div className="w-full lg:w-[58%]">
-            {/* Custom Vertical Scrollbar Styling */}
+          {/* Right Column - Horizontal Scroll on Mobile / Vertical Scroll on Desktop */}
+          <div className="w-full lg:w-[58%] overflow-hidden">
+            {/* Custom Scrollbar Styling */}
             <style dangerouslySetInnerHTML={{__html: `
-              .custom-v-scrollbar::-webkit-scrollbar {
+              .custom-scrollbar::-webkit-scrollbar {
                 width: 8px;
+                height: 6px;
               }
-              .custom-v-scrollbar::-webkit-scrollbar-track {
+              .custom-scrollbar::-webkit-scrollbar-track {
                 background: #f1f5f9;
                 border-radius: 9999px;
               }
-              .custom-v-scrollbar::-webkit-scrollbar-thumb {
+              .custom-scrollbar::-webkit-scrollbar-thumb {
                 background: #cbd5e1;
                 border-radius: 9999px;
               }
-              .custom-v-scrollbar::-webkit-scrollbar-thumb:hover {
+              .custom-scrollbar::-webkit-scrollbar-thumb:hover {
                 background: #94a3b8;
               }
             `}} />
 
-            <div className="h-[480px] overflow-y-auto pr-3 space-y-4 custom-v-scrollbar scroll-smooth">
+            <div className="flex lg:flex-col overflow-x-auto lg:overflow-y-auto snap-x snap-mandatory gap-4 lg:gap-0 lg:space-y-4 pb-4 lg:pb-0 h-auto lg:h-[480px] pr-0 lg:pr-3 custom-scrollbar scroll-smooth">
               {SCHEMES.map((scheme, idx) => (
                 <div 
                   key={idx} 
-                  className="flex flex-col sm:flex-row items-center gap-6 p-5 rounded-2xl border border-sky-100/40 bg-[#f0f9ff] shadow-sm hover:shadow-md transition-all duration-300"
+                  className="shrink-0 w-[82vw] sm:w-[340px] lg:w-full snap-start flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 p-4 sm:p-5 rounded-2xl border border-sky-100/40 bg-[#f0f9ff] shadow-sm hover:shadow-md transition-all duration-300"
                 >
                   {/* Left Side Graphic Badge */}
-                  <div className={`w-full sm:w-[180px] h-[110px] rounded-xl overflow-hidden shrink-0 relative bg-gradient-to-br ${scheme.gradient} shadow-md`}>
+                  <div className={`w-full sm:w-[180px] h-[100px] sm:h-[110px] rounded-xl overflow-hidden shrink-0 relative bg-gradient-to-br ${scheme.gradient} shadow-md`}>
                     <div className="absolute inset-0 flex items-center justify-center p-3">
                       <div className="w-full py-2 px-2.5 rounded-lg bg-white/10 backdrop-blur-md border border-white/20 text-center shadow-inner">
-                        <span className="text-sm font-semibold tracking-wide text-white uppercase block leading-tight">
+                        <span className="text-xs sm:text-sm font-semibold tracking-wide text-white uppercase block leading-tight">
                           {scheme.code}
                         </span>
                         <span className="text-[7.5px] text-white/80 block uppercase tracking-normal font-normal mt-0.5 leading-none">
@@ -744,15 +724,15 @@ export function LandingPage() {
 
                   {/* Right Side Text Contents */}
                   <div className="flex-1 text-left flex flex-col items-start justify-center">
-                    <h3 className="text-xl font-normal tracking-tight text-[#013759]">
+                    <h3 className="text-lg sm:text-xl font-normal tracking-tight text-[#013759]">
                       {scheme.title}
                     </h3>
-                    <p className="text-sm font-normal text-gray-600 leading-relaxed mt-2 text-justify">
+                    <p className="text-xs sm:text-sm font-normal text-gray-600 leading-relaxed mt-1.5 sm:mt-2 text-justify">
                       {scheme.description}
                     </p>
                     <a 
                       href="#contact" 
-                      className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[#074887] hover:text-[#fbbf24] transition-colors duration-300 mt-4 group/link"
+                      className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-[#074887] hover:text-[#fbbf24] transition-colors duration-300 mt-3 sm:mt-4 group/link"
                     >
                       Read More
                       <svg className="h-3.5 w-3.5 transform transition-transform duration-300 group-hover/link:translate-x-1" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
@@ -768,304 +748,335 @@ export function LandingPage() {
       </section>
 
       {/* Our Facilities Section */}
-      <section className="relative w-full bg-white py-20 border-t border-gray-100">
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          
-          {/* Header row with punchy h2 and discover more button */}
-          <div className="mb-12 flex flex-col md:flex-row items-start md:items-end justify-between gap-8">
-            <div className="max-w-2xl">
-              <span className="mb-4 inline-block whitespace-nowrap rounded-full bg-[#074887]/10 px-4 py-1.5 text-xs font-normal tracking-widest text-[#074887] uppercase">
-                Top-Notch Setup
-              </span>
-              <h2 className="mb-4 font-normal text-3xl md:text-5xl tracking-tight text-[#013759]">
-                Our <span className="inline-block"><span className="text-[#10b981]">F</span><span className="text-[#ec4899]">a</span><span className="text-[#3b82f6]">c</span><span className="text-[#f59e0b]">i</span><span className="text-[#ef4444]">l</span><span className="text-[#8b5cf6]">i</span><span className="text-[#06b6d4]">t</span><span className="text-[#3b82f6]">i</span><span className="text-[#ec4899]">e</span><span className="text-[#10b981]">s</span></span>
-              </h2>
-              <p className="text-gray-600 text-sm md:text-base leading-relaxed text-justify font-normal">
-                We provide a well-equipped, elite workspace designed to boost productivity and rapid prototyping. Select a workspace tab below to view our advanced specifications.
-              </p>
-            </div>
+      <section className="relative w-full bg-white py-10 lg:py-24 border-y border-[#013759]/30">
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-start gap-8 lg:gap-16">
+          {/* Left Column - Info & Action */}
+          <div className="w-full lg:w-[42%] flex flex-col items-start text-left lg:sticky lg:top-28">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-normal text-[#013759] tracking-tight leading-[1.15] mb-4 lg:mb-6">
+              Advanced Incubation <br /> & Prototyping <span className="inline-block"><span className="text-[#10b981]">F</span><span className="text-[#ec4899]">a</span><span className="text-[#3b82f6]">c</span><span className="text-[#f59e0b]">i</span><span className="text-[#ef4444]">l</span><span className="text-[#8b5cf6]">i</span><span className="text-[#06b6d4]">t</span><span className="text-[#3b82f6]">i</span><span className="text-[#ec4899]">e</span><span className="text-[#10b981]">s</span></span>
+            </h2>
+            <p className="text-gray-600 text-sm md:text-md leading-relaxed text-justify mb-6 lg:mb-8 font-normal">
+              We provide a well-equipped, engineering-grade workspace designed to accelerate hardware prototyping, deep tech computing, and startup scaling. Explore detailed specifications across all technical domains.
+            </p>
+            <button className="rounded-xl bg-black px-6 py-2.5 sm:px-8 sm:py-3.5 font-medium text-xs sm:text-base text-white shadow-lg hover:bg-gray-800 transition-all duration-300 active:scale-95 cursor-pointer">
+              Book a Lab Tour
+            </button>
           </div>
 
-          {/* Interactive Tab Switcher Bar */}
-          <div className="flex flex-wrap justify-center gap-3 mb-10">
+          {/* Right Column - Accordion List */}
+          <div className="w-full lg:w-[58%] space-y-3">
             {FACILITIES_SPECS.map((spec, idx) => {
-              const isActive = activeFacility === idx;
+              const isOpen = activeFacility === idx;
+              const details = [
+                {
+                  icon: <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                },
+                {
+                  icon: <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                },
+                {
+                  icon: <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+                },
+                {
+                  icon: <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                }
+              ];
+              const detail = details[idx % details.length];
+
               return (
-                <button
-                  key={idx}
-                  onClick={() => setActiveFacility(idx)}
-                  className={`px-5 py-2.5 rounded-full text-xs tracking-wide transition-all duration-300 ${
-                    isActive 
-                      ? 'bg-[#000000] text-white shadow-md shadow-sky-900/20 scale-[1.02]' 
-                      : 'bg-slate-100 text-gray-600 hover:bg-slate-200 hover:text-[#013759]'
-                  }`}
+                <div 
+                  key={idx} 
+                  className="rounded-2xl border border-slate-200/80 bg-white shadow-xs overflow-hidden"
                 >
-                  {spec.title}
-                </button>
+                  {/* Accordion Trigger Header */}
+                  <button
+                    onClick={() => setActiveFacility(isOpen ? -1 : idx)}
+                    className="w-full py-3 px-4 sm:py-3.5 sm:px-5 flex items-center justify-between gap-4 text-left cursor-pointer select-none"
+                  >
+                    <div className="flex items-center gap-3 sm:gap-3.5">
+                      <div className="h-9 w-9 sm:h-10 sm:w-10 rounded-lg bg-[#013759] text-white flex items-center justify-center shrink-0 shadow-xs">
+                        {detail.icon}
+                      </div>
+                      <div>
+                        <h3 className="text-sm sm:text-base font-normal text-[#013759] leading-tight">
+                          {spec.title}
+                        </h3>
+                        <span className="text-[11px] text-gray-500 font-normal">
+                          {spec.specs.length} key specifications
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className={`h-7 w-7 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center shrink-0 transition-transform duration-300 ${
+                      isOpen ? 'rotate-180' : ''
+                    }`}>
+                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                      </svg>
+                    </div>
+                  </button>
+
+                  {/* Accordion Content Body */}
+                  {isOpen && (
+                    <div className="px-4 sm:px-5 pb-3.5 pt-2 border-t border-slate-100 bg-[#fafafa]">
+                      <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 pt-0.5">
+                        {spec.specs.map((item, i) => (
+                          <li 
+                            key={i} 
+                            className="flex items-start gap-2.5 py-2 px-3 rounded-lg bg-white border border-slate-200/80 text-xs sm:text-sm text-slate-700 font-normal leading-snug"
+                          >
+                            <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[#074887] shrink-0" />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
               );
             })}
           </div>
-
-          {/* Active Facility Content Display */}
-          {(() => {
-            const spec = FACILITIES_SPECS[activeFacility];
-            // Consistent, premium icons & subtitles for each facility tab
-            const details = [
-              {
-                subtitle: 'Advanced Prototyping & Fabrication Assets',
-                icon: <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-              },
-              {
-                subtitle: 'High-Fidelity SLA & FDM Materials Systems',
-                icon: <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
-              },
-              {
-                subtitle: 'High-Performance AI & Machine Learning Nodes',
-                icon: <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
-              },
-              {
-                subtitle: 'Premium Collaboration Desks & Plug-n-Play Stations',
-                icon: <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-              }
-            ];
-            const activeDetail = details[activeFacility % details.length];
-
-            return (
-              <div className="w-full flex flex-col lg:flex-row gap-0 overflow-hidden rounded-[2rem] border border-slate-100 shadow-sm">
-
-                {/* Left: dark identity panel */}
-                <div className="bg-[#013759] px-8 py-10 flex flex-col justify-between lg:w-64 shrink-0">
-                  <div>
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-sky-300/70 mb-3">
-                      {activeDetail.subtitle}
-                    </p>
-                    <h3 className="text-2xl font-normal tracking-tight text-white leading-snug">{spec.title}</h3>
-                  </div>
-                  <div className="mt-10 flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 text-sky-300 border border-white/10">
-                    {activeDetail.icon}
-                  </div>
-                </div>
-
-                {/* Right: plain spec list with dividers */}
-                <div className="flex-1 bg-white px-8 py-6">
-                  <ul className="divide-y divide-slate-100">
-                    {spec.specs.map((item, i) => (
-                      <li key={i} className="flex items-start gap-5 py-4">
-                        <span className="mt-0.5 text-[10px] font-bold text-[#013759]/40 w-5 shrink-0 text-right">
-                          {String(i + 1).padStart(2, '0')}
-                        </span>
-                        <span className="text-sm text-gray-700 leading-relaxed">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="mt-4 border-t border-slate-100 pt-4">
-                    <a href="/facilities" className="text-xs font-semibold text-[#013759] hover:underline">
-                      Explore all facilities →
-                    </a>
-                  </div>
-                </div>
-
-              </div>
-            );
-          })()}
-
         </div>
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="w-full bg-[#f8fafc] py-24 border-t border-slate-100/80">
+      <section className="w-full bg-[#f8fafc] py-8 md:py-24 border-t border-slate-100/80">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="mb-4 inline-block whitespace-nowrap rounded-full bg-[#074887]/10 px-4 py-1.5 text-xs font-normal tracking-widest text-[#074887] uppercase">
-              FOUNDATION ADVANTAGE
-            </span>
-            <h2 className="mb-4 font-normal text-3xl md:text-5xl font-normal tracking-tight text-[#013759] sm:text-5xl">
+          <div className="text-left md:text-center mb-6 md:mb-16">
+
+            <h2 className="mb-2 md:mb-4 font-normal text-2xl sm:text-3xl md:text-4xl tracking-tight text-[#013759]">
               Why <span className="inline-block"><span className="text-[#10b981]">C</span><span className="text-[#ec4899]">h</span><span className="text-[#3b82f6]">o</span><span className="text-[#f59e0b]">o</span><span className="text-[#ef4444]">s</span><span className="text-[#8b5cf6]">e</span></span> Us
             </h2>
-            <p className="text-sm font-normal text-gray-500 max-w-2xl mx-auto">
+            <p className="text-xs sm:text-sm font-normal text-gray-500 max-w-2xl mx-0 md:mx-auto">
               Discover the exclusive benefits, technical facilities, and robust investment opportunities that make Navrachna Foundation the elite partner for modern startups.
             </p>
           </div>
 
-          <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {[...BENEFITS_COL1, ...BENEFITS_COL2, ...BENEFITS_COL3].map((item, idx) => (
-              <div 
-                key={idx} 
-                className="group relative rounded-[2rem] border border-slate-100 bg-white p-6 sm:p-8 text-left shadow-sm transition-all duration-300 hover:border-slate-200 hover:shadow-md"
-              >
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-black/5 text-[#013759] shadow-inner mb-6 transition-all duration-300 group-hover:bg-[#013759]/5">
-                  {React.cloneElement(item.icon, { className: 'text-[#013759] w-6 h-6', strokeWidth: 2 })}
-                </div>
-                <div className="flex flex-col items-start">
-                  <h3 className="mb-2 text-lg font-normal tracking-tight text-[#013759] transition-colors duration-300 group-hover:text-black">
-                    {item.title}
-                  </h3>
-                  <p className="text-xs text-gray-500 leading-relaxed">
-                    {item.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-
-      {/* ── E-Cell ITSEC Initiative Section ── */}
-      <section className="w-full bg-[#f8fafc] py-24 border-t border-slate-100">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-
-          {/* Section eyebrow */}
-          <div className="text-center mb-16">
-            <span className="inline-block rounded-full bg-[#074887]/10 px-4 py-1.5 text-xs font-normal tracking-widest text-[#074887] uppercase mb-4">
-              Initiative by Navrachna
-            </span>
-            <h2 className="text-3xl md:text-5xl font-normal text-[#013759] tracking-tight">
-              <span className="inline-block"><span className="text-[#10b981]">E</span><span className="text-[#ec4899]">-</span><span className="text-[#3b82f6]">C</span><span className="text-[#f59e0b]">e</span><span className="text-[#ef4444]">l</span><span className="text-[#8b5cf6]">l</span></span> I.T.S Engineering College
-            </h2>
-            <p className="mt-4 mx-auto max-w-6xl text-sm text-gray-500 leading-relaxed">
-              An active student-run entrepreneurship cell powered, mentored, and supported by the{' '}
-              <span className="font-medium text-[#074887]">Navrachna Foundation for Entrepreneurship Development</span>.
-            </p>
-          </div>
-
-          {/* Hero card */}
-          <div className="relative overflow-hidden px-8 py-12 md:px-16 mb-16 text-black">
-            {/* bg grid */}
-            <div className="absolute inset-0 opacity-10"
-              style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.2) 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
-            <div className="relative z-10 flex flex-col lg:flex-row items-center gap-10">
-              <div className="flex-1 text-center lg:text-left">
-                <h3 className="text-2xl md:text-4xl font-normal tracking-tight leading-snug">
-                  Navrachna Powers Student Innovation.
-                  <span className="text-[#013759]"> Turning Ideas Into Scalable Ventures.</span>
-                </h3>
-                <p className="mt-5 max-w-xl text-sm text-[#013759]/80 leading-relaxed">
-                  With the active sponsorship, infrastructure, and strategic direction of Navrachna Foundation, E-Cell helps students transition from academic projects to registered entities. Navrachna supports student-led workshops, provides seed capital resources, and coordinates high-impact programs like the flagship initiative <strong className="text-[#013759]">Kartavyam</strong>.
-                </p>
-                <div className="mt-8 flex flex-wrap gap-3 justify-center lg:justify-start">
-                  <a href="mailto:ecell@its.edu.in" className="rounded-xl bg-white border border-black px-6 py-3 text-sm font-normal !text-black shadow hover:-translate-y-0.5 transition-all duration-300">
-                    Get Started
-                  </a>
-                  <a href="#ecell-what-we-do" className="rounded-xl border border-black bg-white/10 px-6 py-3 text-sm font-normal text-black backdrop-blur-md hover:-translate-y-0.5 transition-all duration-300">
-                    Learn More
-                  </a>
-                </div>
-              </div>
-              {/* Stats */}
-              <div className="grid grid-cols-2 gap-4 shrink-0 w-full lg:w-auto">
-                {[
-                  { value: '200+', label: 'Active Student Entrepreneurs' },
-                  { value: '10+', label: 'Navrachna-Backed Ventures' },
-                  { value: '25+', label: 'Ecosystem & Funding Partners' },
-                  { value: '100%', label: 'Hands-on Incubation Support' },
-                ].map((s) => (
-                  <div key={s.label} className="rounded-2xl bg-white border border-black px-6 py-5 text-center">
-                    <div className="text-2xl font-normal text-black">{s.value}</div>
-                    <div className="mt-1 text-xs text-black/60 leading-snug">{s.label}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* What We Do */}
-          <div id="ecell-what-we-do">
-            <div className="text-center mb-10">
-              <h3 className="text-2xl md:text-3xl font-normal text-[#013759] tracking-tight">How Navrachna Supports E-Cell</h3>
-              <p className="mt-2 text-sm text-gray-500">Creating custom resources and structured incubation pathways for student success.</p>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-              {[
-                { title: 'Startup Incubation Programs', desc: 'Navrachna provides workspace, cloud credits, and government registration handholding to E-Cell members.', icon: '🚀' },
-                { title: 'Co-Organized Workshops', desc: 'Jointly structured bootcamps on product building, IP filing, and commercial pitch preparation.', icon: '🛠️' },
-                { title: '1-to-1 Mentor Connections', desc: 'Linking student innovators directly with industry veterans, angel investors, and seasoned academic advisors.', icon: '🤝' },
-                { title: 'Ecosystem & Corporate Visits', desc: 'Navrachna facilitates and funds student exposure trips to corporate innovation centers and technology hubs.', icon: '🏢' },
-                { title: 'Alumni & Funding Mixers', desc: 'Organizing exclusive networking sessions connecting promising student projects with early-stage venture funding.', icon: '🌐' },
-              ].map((item) => (
-                <div key={item.title} className="rounded-2xl border border-slate-100 bg-white p-7 hover:shadow-md hover:border-slate-200 transition-all duration-300">
-                  <div className="text-2xl mb-3">{item.icon}</div>
-                  <h4 className="text-base font-normal text-[#013759] mb-2">{item.title}</h4>
-                  <p className="text-xs text-gray-500 leading-relaxed">{item.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* TECHTRIX 2026 Teaser */}
-          <div className="rounded-[2rem] border border-slate-100 bg-white overflow-hidden">
-            <div className="flex flex-col lg:flex-row">
-              {/* Left */}
-              <div className="flex-1 px-8 py-10 lg:px-12">
-                <span className="inline-block rounded-full bg-amber-50 px-3 py-1 text-xs font-normal tracking-widest text-amber-600 uppercase mb-4">
-                  Navrachna Co-Organized Flagship Event
-                </span>
-                <h3 className="text-3xl font-normal text-[#013759] tracking-tight">TECHTRIX 2026</h3>
-                <p className="mt-2 text-sm text-gray-500">The Ultimate Innovation & Tech Challenge Returns!</p>
-                <p className="mt-4 text-sm text-gray-600 leading-relaxed max-w-md">
-                  Co-organized and hosted by Navrachna Foundation & E-Cell, TECHTRIX 2026 returns with cutting-edge engineering tracks, enhanced prize pools, and direct path to incubation funding.
-                </p>
-                <div className="mt-8 grid grid-cols-3 gap-4">
-                  {[
-                    { label: 'Date', value: 'October 2026' },
-                    { label: 'Venue', value: 'I.T.S Engg. College' },
-                    { label: 'Organizers', value: 'Navrachna & E-Cell' },
-                  ].map((d) => (
-                    <div key={d.label} className="text-center rounded-2xl bg-slate-50 px-4 py-4 border border-slate-100">
-                      <div className="text-xs text-gray-400 mb-1">{d.label}</div>
-                      <div className="text-sm font-normal text-[#013759]">{d.value}</div>
+          {/* Modern Bento Grid Layout */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 md:gap-5 lg:gap-6">
+            
+            {/* Hero Bento Card 1: Funding & Capital (Spans 2 columns on desktop) */}
+            <div className="md:col-span-2 rounded-3xl bg-gradient-to-br from-[#013759] to-[#074887] p-5 sm:p-8 text-left text-white shadow-md relative overflow-hidden flex flex-col justify-between group">
+              <div className="absolute right-0 top-0 w-64 h-64 bg-sky-400/10 rounded-full blur-3xl pointer-events-none" />
+              
+              <div>
+                <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
+                  <div className="flex items-center gap-3">
+                    <div className="h-11 w-11 shrink-0 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-sky-300 flex items-center justify-center shadow-inner">
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
                     </div>
-                  ))}
+                    <h3 className="text-lg sm:text-xl font-normal tracking-tight text-white leading-snug">
+                      Access to Funding & Investment Opportunities
+                    </h3>
+                  </div>
+                  <span className="text-[11px] font-normal tracking-wider text-sky-200 uppercase bg-white/10 px-3 py-1 rounded-full border border-white/15 backdrop-blur-md shrink-0">
+                    Capital & Seed Grants
+                  </span>
                 </div>
-                <a href="mailto:ecell@its.edu.in?subject=TECHTRIX 2026 Notification"
-                  className="mt-8 inline-flex rounded-xl bg-[#013759] px-6 py-3 text-sm font-normal !text-white hover:-translate-y-0.5 transition-all duration-300 shadow-sm">
-                  Get Notified →
+
+                <p className="text-xs sm:text-sm text-sky-100/90 leading-relaxed font-normal max-w-xl">
+                  We connect incubated ventures directly with government seed grants, equity/non-equity funding schemes, angel networks, and venture capital partners to secure early velocity.
+                </p>
+              </div>
+
+              <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-sky-200">
+                <span>Government Grants & VC Network</span>
+                <a href="#contact" className="text-white font-medium group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+                  Apply for Funding &rarr;
                 </a>
               </div>
-              {/* Right: event categories */}
-              <div className="lg:w-80 bg-[#013759] px-8 py-10 shrink-0">
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky-300/70 mb-4">Event Categories</p>
-                <ul className="space-y-2">
-                  {['Junior Ideathon', 'Project Exhibition', 'Hack the Issue', 'Business Plan / Mentoring Meet',
-                    'Crack-o-Code', 'Hack The Box Challenge', 'Drone Race', 'Robo Race & War',
-                    'Gaming Tournament - LAN', 'Robo Football', 'Quick Challenge', '+ 5 more'].map((cat, i) => (
-                    <li key={cat} className="flex items-center gap-3 text-xs text-white/75">
-                      <span className="text-[10px] text-sky-400/70 w-4 shrink-0">{String(i + 1).padStart(2, '0')}</span>
-                      {cat}
-                    </li>
-                  ))}
-                </ul>
+            </div>
+
+            {/* Standard Bento Card: Direct Mentorship */}
+            <div className="col-span-1 rounded-3xl bg-white border border-slate-200/80 p-4 sm:p-6 text-left shadow-xs hover:shadow-md hover:border-slate-300 transition-all duration-300 flex flex-col justify-between">
+              <div>
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="h-10 w-10 shrink-0 rounded-xl bg-[#013759]/5 text-[#013759] flex items-center justify-center">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.9 1.2 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
+                  </div>
+                  <h3 className="text-base sm:text-lg font-normal tracking-tight text-[#013759] leading-snug">
+                    Direct Mentorship
+                  </h3>
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed font-normal">
+                  1-on-1 strategic guidance from industry veterans, successful founders, and technical advisors to solve critical startup challenges.
+                </p>
               </div>
             </div>
-          </div>
 
-          {/* CTA strip */}
-          <div className="mt-8 text-center">
-            <a href="mailto:ecell@its.edu.in" className="text-sm font-normal text-[#074887] hover:underline">
-              Contact E-Cell Team: ecell@its.edu.in →
-            </a>
-          </div>
+            {/* Standard Bento Card: Lab Support */}
+            <div className="col-span-1 rounded-3xl bg-white border border-slate-200/80 p-4 sm:p-6 text-left shadow-xs hover:shadow-md hover:border-slate-300 transition-all duration-300 flex flex-col justify-between">
+              <div>
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="h-10 w-10 shrink-0 rounded-xl bg-[#013759]/5 text-[#013759] flex items-center justify-center">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                  </div>
+                  <h3 className="text-base sm:text-lg font-normal tracking-tight text-[#013759] leading-snug">
+                    Lab Support
+                  </h3>
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed font-normal">
+                  Comprehensive prototyping equipment, 3D printing facilities, CNC tooling, and fabrication labs to build hardware prototypes.
+                </p>
+              </div>
+            </div>
 
+            {/* Hero Bento Card 2: High-Speed Internet & IT Support (Spans 2 columns on desktop) */}
+            <div className="md:col-span-2 rounded-3xl bg-gradient-to-br from-[#013759] to-[#074887] p-5 sm:p-8 text-left text-white shadow-md relative overflow-hidden flex flex-col justify-between group">
+              <div className="absolute right-0 bottom-0 w-64 h-64 bg-sky-400/10 rounded-full blur-3xl pointer-events-none" />
+
+              <div>
+                <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
+                  <div className="flex items-center gap-3">
+                    <div className="h-11 w-11 shrink-0 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-sky-300 flex items-center justify-center shadow-inner">
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+                    </div>
+                    <h3 className="text-lg sm:text-xl font-normal tracking-tight text-white leading-snug">
+                      High-Speed Internet, IT & Cloud Support
+                    </h3>
+                  </div>
+                  <span className="text-[11px] font-normal tracking-wider text-sky-200 uppercase bg-white/10 px-3 py-1 rounded-full border border-white/15 backdrop-blur-md shrink-0">
+                    Gigabit Infrastructure & IT Services
+                  </span>
+                </div>
+
+                <p className="text-xs sm:text-sm text-sky-100/90 leading-relaxed font-normal max-w-xl">
+                  Stay connected with ultra-reliable 1 Gbps gigabit Wi-Fi and ethernet connectivity. Includes dedicated IT helpdesk support, cloud infrastructure credits, server rack hosting, and cybersecurity guidance.
+                </p>
+              </div>
+
+              <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-sky-200">
+                <span>1 Gbps Fiber Backhaul & Dedicated IT Support</span>
+                <a href="#services" className="text-white font-medium group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+                  View IT Specs &rarr;
+                </a>
+              </div>
+            </div>
+
+            {/* Hero Bento Card 3: Rich Ecosystem (Spans 2 columns on desktop) */}
+            <div className="md:col-span-2 rounded-3xl bg-gradient-to-br from-[#013759] to-[#074887] p-5 sm:p-8 text-left text-white shadow-md relative overflow-hidden flex flex-col justify-between group">
+              <div className="absolute left-0 bottom-0 w-64 h-64 bg-sky-400/10 rounded-full blur-3xl pointer-events-none" />
+
+              <div>
+                <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
+                  <div className="flex items-center gap-3">
+                    <div className="h-11 w-11 shrink-0 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-sky-300 flex items-center justify-center shadow-inner">
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <h3 className="text-lg sm:text-xl font-normal tracking-tight text-white leading-snug">
+                      Rich Ecosystem & Corporate Network
+                    </h3>
+                  </div>
+                  <span className="text-[11px] font-normal tracking-wider text-sky-200 uppercase bg-white/10 px-3 py-1 rounded-full border border-white/15 backdrop-blur-md shrink-0">
+                    Collaborative Hub
+                  </span>
+                </div>
+
+                <p className="text-xs sm:text-sm text-sky-100/90 leading-relaxed font-normal max-w-xl">
+                  Immerse your venture in a thriving culture of shared success. Gain corporate matchmaking, market access channels, and continuous capacity building.
+                </p>
+              </div>
+
+              <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-sky-200">
+                <span>10+ Incubated Ventures & Industry Partners</span>
+                <a href="#about" className="text-white font-medium group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+                  Explore Ecosystem &rarr;
+                </a>
+              </div>
+            </div>
+
+            {/* Standard Bento Card: Flexible Solutions (Placed beside Rich Ecosystem) */}
+            <div className="col-span-1 rounded-3xl bg-white border border-slate-200/80 p-4 sm:p-6 text-left shadow-xs hover:shadow-md hover:border-slate-300 transition-all duration-300 flex flex-col justify-between">
+              <div>
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="h-10 w-10 shrink-0 rounded-xl bg-[#013759]/5 text-[#013759] flex items-center justify-center">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M21.21 15.89A10 10 0 1 1 8 2.83M22 12A10 10 0 0 0 12 2v10z"/></svg>
+                  </div>
+                  <h3 className="text-base sm:text-lg font-normal tracking-tight text-[#013759] leading-snug">
+                    Flexible Solutions
+                  </h3>
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed font-normal">
+                  Customized workspace arrangements tailored to single founders and expanding startup teams with scalable desk options.
+                </p>
+              </div>
+            </div>
+
+            {/* Standard Bento Card: Strategic Location */}
+            <div className="col-span-1 rounded-3xl bg-white border border-slate-200/80 p-4 sm:p-6 text-left shadow-xs hover:shadow-md hover:border-slate-300 transition-all duration-300 flex flex-col justify-between">
+              <div>
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="h-10 w-10 shrink-0 rounded-xl bg-[#013759]/5 text-[#013759] flex items-center justify-center">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  </div>
+                  <h3 className="text-base sm:text-lg font-normal tracking-tight text-[#013759] leading-snug">
+                    Strategic Location
+                  </h3>
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed font-normal">
+                  Prime location in Knowledge Park 3, Greater Noida with seamless NCR transport accessibility and connectivity.
+                </p>
+              </div>
+            </div>
+
+            {/* Hero Bento Card 4: Most Affordable & Cost Effective (Spans 2 columns on desktop) */}
+            <div className="md:col-span-2 rounded-3xl bg-gradient-to-br from-[#013759] to-[#074887] p-5 sm:p-8 text-left text-white shadow-md relative overflow-hidden flex flex-col justify-between group">
+              <div className="absolute right-0 top-0 w-64 h-64 bg-sky-400/10 rounded-full blur-3xl pointer-events-none" />
+
+              <div>
+                <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
+                  <div className="flex items-center gap-3">
+                    <div className="h-11 w-11 shrink-0 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-sky-300 flex items-center justify-center shadow-inner">
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    </div>
+                    <h3 className="text-lg sm:text-xl font-normal tracking-tight text-white leading-snug">
+                      Most Affordable Incubation & Co-Working
+                    </h3>
+                  </div>
+                  <span className="text-[11px] font-normal tracking-wider text-sky-200 uppercase bg-white/10 px-3 py-1 rounded-full border border-white/15 backdrop-blur-md shrink-0">
+                    Founder-Friendly Rates
+                  </span>
+                </div>
+
+                <p className="text-xs sm:text-sm text-sky-100/90 leading-relaxed font-normal max-w-xl">
+                  We offer highly cost-effective seat plans, subsidized lab credits, and zero hidden overhead costs—ensuring early-stage founders maximize their financial runway.
+                </p>
+              </div>
+
+              <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-sky-200">
+                <span>Subsidized Seats & Lab Access</span>
+                <a href="#contact" className="text-white font-medium group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+                  View Pricing Plans &rarr;
+                </a>
+              </div>
+            </div>
+
+
+          </div>
         </div>
       </section>
+
+
+
 
 
       {/* Clients Carousel Section */}
-      <section className="w-full bg-white py-24 border-t border-slate-100 overflow-hidden">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-16 text-center">
-          <span className="text-xs font-normal tracking-widest text-[#074887] mb-4 block">OUR ECOSYSTEM</span>
-          <h2 className="text-3xl md:text-5xl font-normal text-black tracking-tight">
+      <section className="w-full bg-white py-8 md:py-24 border-t border-slate-100 overflow-hidden">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-6 md:mb-16 text-left md:text-center">
+
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-normal text-black tracking-tight">
             Our Portfolio <span className="inline-block"><span className="text-[#10b981]">S</span><span className="text-[#ec4899]">t</span><span className="text-[#3b82f6]">a</span><span className="text-[#f59e0b]">r</span><span className="text-[#ef4444]">t</span><span className="text-[#8b5cf6]">u</span><span className="text-[#06b6d4]">p</span><span className="text-[#3b82f6]">s</span></span>
           </h2>
         </div>
         
-        <div className="relative w-full overflow-hidden">
+        {/* Desktop Marquee Carousel (Visible on Desktop >= 768px) */}
+        <div className="max-md:hidden relative w-full overflow-hidden py-2">
           {/* Left and Right Fade Overlays */}
           <div className="absolute top-0 left-0 h-full w-24 sm:w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
           <div className="absolute top-0 right-0 h-full w-24 sm:w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
 
           <div className="flex w-max animate-marquee-infinite">
-            {[...CLIENTS, ...CLIENTS, ...CLIENTS, ...CLIENTS].map((logo, idx) => {
+            {[...CLIENTS, ...CLIENTS, ...CLIENTS, ...CLIENTS].map((item, idx) => {
               const borderColors = [
                 'border-sky-100/90 hover:border-sky-200',      // Light blue
                 'border-orange-100/90 hover:border-orange-200',  // Light orange/peach
@@ -1076,15 +1087,55 @@ export function LandingPage() {
               ];
               const logoIndex = idx % CLIENTS.length;
               const borderClass = borderColors[logoIndex % borderColors.length];
+              const cardStyle = item.bgDark 
+                ? 'bg-black border-slate-800 hover:border-slate-700' 
+                : `bg-white ${borderClass}`;
               return (
-                <div key={idx} className="flex h-36 w-64 shrink-0 items-center justify-center px-4">
-                  <div className={`w-full h-full bg-white rounded-[2rem] flex items-center justify-center p-6 shadow-sm border-4 ${borderClass} transition-all duration-300 hover:-translate-y-1 hover:shadow-md`}>
+                <div key={idx} className="flex flex-col items-center justify-center w-64 shrink-0 px-4 group">
+                  <div className={`w-full h-32 rounded-[2rem] flex items-center justify-center p-5 shadow-sm border-4 ${cardStyle} transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-md`}>
                     <img 
-                      src={logo} 
-                      alt={`Portfolio Startup Logo ${logoIndex + 1}`} 
+                      src={item.src} 
+                      alt={item.name} 
                       className="max-h-full max-w-full object-contain transition-all duration-300" 
                     />
                   </div>
+                  <span className="mt-2.5 text-xs font-medium tracking-wide text-slate-600 text-center truncate max-w-full">
+                    {item.name}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Mobile Grid Layout (Visible on Mobile < 768px) */}
+        <div className="md:hidden mx-auto max-w-7xl px-4 sm:px-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+            {CLIENTS.map((item, idx) => {
+              const borderColors = [
+                'border-sky-100/90',
+                'border-orange-100/90',
+                'border-lime-100/90',
+                'border-rose-100/90',
+                'border-teal-100/90',
+                'border-purple-100/90'
+              ];
+              const borderClass = borderColors[idx % borderColors.length];
+              const cardStyle = item.bgDark 
+                ? 'bg-black border-slate-800' 
+                : `bg-white ${borderClass}`;
+              return (
+                <div key={idx} className="flex flex-col items-center w-full">
+                  <div className={`w-full h-24 rounded-2xl flex items-center justify-center p-3 shadow-xs border-2 ${cardStyle}`}>
+                    <img 
+                      src={item.src} 
+                      alt={item.name} 
+                      className="max-h-full max-w-full object-contain" 
+                    />
+                  </div>
+                  <span className="mt-2 text-[11px] font-medium tracking-wide text-slate-600 text-center truncate max-w-full">
+                    {item.name}
+                  </span>
                 </div>
               );
             })}
@@ -1092,22 +1143,72 @@ export function LandingPage() {
         </div>
       </section>
 
+      {/* Messages from Our Leaders */}
+      <section className="w-full py-8 sm:py-12 bg-[#f8fafc] border-t border-slate-200">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          {/* Header - Left Aligned */}
+          <div className="mb-6 sm:mb-8 text-left">
+
+            <h2 className="text-2xl sm:text-3xl font-normal text-[#013759] tracking-tight">
+              Messages from Our Leaders
+            </h2>
+            <p className="mt-1 text-xs text-gray-500 leading-relaxed max-w-xl">
+              Guiding the vision of NFED — insights from the leaders who inspire and drive the foundation.
+            </p>
+          </div>
+
+          {/* Leaders Grid - Compact Cards with Left Accent */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
+            {LEADERSHIP.map((leader, idx) => (
+              <div
+                key={idx}
+                className="bg-white rounded-xl border border-slate-200/80 shadow-xs p-4 sm:p-5 flex flex-col gap-3 hover:shadow-md transition-all duration-300"
+              >
+                {/* Header row */}
+                <div className="flex items-center gap-3.5 sm:gap-4">
+                  <div className="shrink-0 h-12 w-12 sm:h-14 sm:w-14 rounded-full overflow-hidden border-2 border-[#013759]/15 bg-slate-50">
+                    <img
+                      src={leader.photo}
+                      alt={leader.title}
+                      className="w-full h-full object-cover object-top"
+                    />
+                  </div>
+                  <div className="text-left">
+                    <div className="text-[9px] sm:text-[10px] tracking-widest text-[#074887] uppercase font-normal">
+                      {leader.role}
+                    </div>
+                    <h3 className="text-xs sm:text-sm font-normal text-[#013759] mt-0.5">
+                      {leader.title}
+                    </h3>
+                  </div>
+                </div>
+
+                {/* Quote with Left Border Accent */}
+                <div className="border-l-2 border-[#074887]/30 pl-3 py-0.5">
+                  <p className="text-xs text-gray-600 leading-relaxed text-left">
+                    "{leader.message}"
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* FAQ Section */}
-      <section className="w-full bg-white py-24 border-t border-slate-100">
+      <section className="w-full bg-white py-8 md:py-24 border-t border-slate-100">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="mb-4 inline-block whitespace-nowrap rounded-full bg-[#074887]/10 px-4 py-1.5 text-xs font-normal tracking-widest text-[#074887] uppercase">
-              COMMON QUERIES
-            </span>
-            <h2 className="mb-4 font-normal text-3xl md:text-5xl font-normal tracking-tight text-[#013759] sm:text-5xl">
+          <div className="text-left md:text-center mb-6 md:mb-16">
+
+            <h2 className="mb-2 md:mb-4 font-normal text-2xl sm:text-3xl md:text-4xl tracking-tight text-[#013759]">
               Frequently Asked <span className="inline-block"><span className="text-[#10b981]">Q</span><span className="text-[#ec4899]">u</span><span className="text-[#3b82f6]">e</span><span className="text-[#f59e0b]">s</span><span className="text-[#ef4444]">t</span><span className="text-[#8b5cf6]">i</span><span className="text-[#06b6d4]">o</span><span className="text-[#3b82f6]">n</span><span className="text-[#ec4899]">s</span></span>
             </h2>
-            <p className="text-sm font-normal text-gray-500 max-w-2xl mx-auto">
+            <p className="text-xs sm:text-sm font-normal text-gray-500 max-w-2xl mx-0 md:mx-auto">
               Find clear, simple answers to common questions about the Navrachna Foundation setup and application process.
             </p>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
             {FAQS.map((faq, idx) => (
               <div 
                 key={idx} 
@@ -1119,19 +1220,19 @@ export function LandingPage() {
               >
                 <button 
                   onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                  className="w-full text-left px-6 py-5 flex items-center justify-between focus:outline-none"
+                  className="w-full text-left px-4 py-3.5 sm:px-6 sm:py-5 flex items-center justify-between gap-3 sm:gap-4 focus:outline-none"
                 >
-                  <span className={`text-base md:text-lg tracking-tight transition-colors duration-300 ${openFaq === idx ? 'text-[#013759]' : 'text-gray-700'}`}>
+                  <span className={`text-sm sm:text-base md:text-lg tracking-tight leading-snug transition-colors duration-300 pr-2 ${openFaq === idx ? 'text-[#013759]' : 'text-gray-700'}`}>
                     {faq.question}
                   </span>
-                  <span className={`shrink-0 transition-transform duration-300 flex h-8 w-8 items-center justify-center rounded-full bg-black/5 text-[#013759] shadow-inner ${openFaq === idx ? 'rotate-180 text-emerald-600' : 'text-[#013759]'}`}>
+                  <span className={`shrink-0 transition-transform duration-300 flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-full bg-black/5 text-[#013759] shadow-inner ${openFaq === idx ? 'rotate-180 text-emerald-600' : 'text-[#013759]'}`}>
                     <svg width="12" height="12" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
                   </span>
                 </button>
                 <div 
                   className={`overflow-hidden transition-all duration-300 ease-in-out ${openFaq === idx ? 'max-h-60 opacity-100' : 'max-h-0 opacity-0'}`}
                 >
-                  <p className="px-6 pb-6 text-sm font-normal text-gray-500 leading-relaxed pt-2">
+                  <p className="px-4 pb-4 sm:px-6 sm:pb-6 text-xs sm:text-sm font-normal text-gray-500 leading-relaxed pt-1 sm:pt-2">
                     {faq.answer}
                   </p>
                 </div>
