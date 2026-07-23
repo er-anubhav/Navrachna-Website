@@ -1263,126 +1263,129 @@ export function LandingPage() {
           </div>
 
           {/* 3 Core Support Mechanism Pillars Grid (Mobile/Tablet < 1024px) */}
-          <div className="lg:hidden grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="lg:hidden flex flex-col gap-6">
             
-            {/* Mentorship Support */}
-            <div className="rounded-3xl bg-white border border-slate-200/90 p-6 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group relative overflow-hidden text-left">
-              <div className="absolute -top-12 -right-12 w-32 h-32 bg-emerald-50 rounded-full blur-2xl pointer-events-none" />
+            {/* Mobile Section Heading & Content */}
+            <div className="text-left md:text-center mb-2">
+              <h2 className="mb-2 font-normal text-2xl sm:text-3xl tracking-tight text-[#013759]">
+                Why <span className="inline-block"><span className="text-[#10b981]">C</span><span className="text-[#ec4899]">h</span><span className="text-[#3b82f6]">o</span><span className="text-[#f59e0b]">o</span><span className="text-[#ef4444]">s</span><span className="text-[#8b5cf6]">e</span></span> Us
+              </h2>
+              <p className="text-xs sm:text-sm font-normal text-gray-500 max-w-2xl mx-0 md:mx-auto leading-relaxed">
+                Our comprehensive 3-pillar support framework designed to nurture early-stage startups from concept validation to market scaling.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               
-              <div>
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="h-8 w-8 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-xs">
-                    01
+              {/* Mentorship Support */}
+              <div className="rounded-3xl bg-white border border-slate-200/90 p-6 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group relative overflow-hidden text-left">
+                <div className="absolute -top-12 -right-12 w-32 h-32 bg-emerald-50 rounded-full blur-2xl pointer-events-none" />
+                
+                <div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="h-10 w-10 rounded-2xl bg-emerald-600/10 text-emerald-700 flex items-center justify-center shrink-0 border border-emerald-600/20 shadow-xs">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.9 1.2 1.5 1.5 2.5" />
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 18h6" />
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M10 22h4" />
+                      </svg>
+                    </div>
+                    <h3 className="text-lg font-normal text-[#013759] tracking-tight leading-tight">
+                      Mentorship Support
+                    </h3>
                   </div>
-                  <div className="h-10 w-10 rounded-2xl bg-emerald-600/10 text-emerald-700 flex items-center justify-center shrink-0 border border-emerald-600/20 shadow-xs">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.9 1.2 1.5 1.5 2.5" />
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 18h6" />
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M10 22h4" />
-                    </svg>
-                  </div>
-                  <h3 className="text-lg font-normal text-[#013759] tracking-tight leading-tight">
-                    Mentorship Support
-                  </h3>
-                </div>
 
-                <ul className="space-y-2.5 text-xs sm:text-sm text-slate-600 font-normal">
-                  <li className="flex items-start gap-2.5">
-                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0" />
-                    <span>Business Mentorship & Strategy</span>
-                  </li>
-                  <li className="flex items-start gap-2.5">
-                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0" />
-                    <span>Technical & Domain Engineering Mentorship</span>
-                  </li>
-                  <li className="flex items-start gap-2.5">
-                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0" />
-                    <span>Legal Assistance & Regulatory Guidance</span>
-                  </li>
-                  <li className="flex items-start gap-2.5">
-                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0" />
-                    <span>Pitch Preparation & Investor Readiness</span>
-                  </li>
-                  <li className="flex items-start gap-2.5">
-                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0" />
-                    <span>Patent & Intellectual Property (IP) Support</span>
-                  </li>
-                  <li className="flex items-start gap-2.5">
-                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0" />
-                    <span>National & International Event Participation Assistance</span>
-                  </li>
-                </ul>
+                  <ul className="space-y-2.5 text-xs sm:text-sm text-slate-600 font-normal">
+                    <li className="flex items-start gap-2.5">
+                      <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0" />
+                      <span>Business Mentorship & Strategy</span>
+                    </li>
+                    <li className="flex items-start gap-2.5">
+                      <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0" />
+                      <span>Technical & Domain Engineering Mentorship</span>
+                    </li>
+                    <li className="flex items-start gap-2.5">
+                      <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0" />
+                      <span>Legal Assistance & Regulatory Guidance</span>
+                    </li>
+                    <li className="flex items-start gap-2.5">
+                      <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0" />
+                      <span>Pitch Preparation & Investor Readiness</span>
+                    </li>
+                    <li className="flex items-start gap-2.5">
+                      <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0" />
+                      <span>Patent & Intellectual Property (IP) Support</span>
+                    </li>
+                    <li className="flex items-start gap-2.5">
+                      <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0" />
+                      <span>National & International Event Participation Assistance</span>
+                    </li>
+                  </ul>
+                </div>
               </div>
-            </div>
 
-            {/* Infrastructure Support */}
-            <div className="rounded-3xl bg-white border border-slate-200/90 p-6 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group relative overflow-hidden text-left">
-              <div className="absolute -top-12 -right-12 w-32 h-32 bg-sky-50 rounded-full blur-2xl pointer-events-none" />
+              {/* Infrastructure Support */}
+              <div className="rounded-3xl bg-white border border-slate-200/90 p-6 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group relative overflow-hidden text-left">
+                <div className="absolute -top-12 -right-12 w-32 h-32 bg-sky-50 rounded-full blur-2xl pointer-events-none" />
 
-              <div>
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="h-8 w-8 rounded-full bg-[#013759] text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-xs">
-                    02
+                <div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="h-10 w-10 rounded-2xl bg-[#013759]/10 text-[#013759] flex items-center justify-center shrink-0 border border-[#013759]/20 shadow-xs">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                        <rect x="4" y="4" width="16" height="16" rx="2" ry="2" />
+                        <rect x="9" y="9" width="6" height="6" />
+                      </svg>
+                    </div>
+                    <h3 className="text-lg font-normal text-[#013759] tracking-tight leading-tight">
+                      Infrastructure Support
+                    </h3>
                   </div>
-                  <div className="h-10 w-10 rounded-2xl bg-[#013759]/10 text-[#013759] flex items-center justify-center shrink-0 border border-[#013759]/20 shadow-xs">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                      <rect x="4" y="4" width="16" height="16" rx="2" ry="2" />
-                      <rect x="9" y="9" width="6" height="6" />
-                    </svg>
-                  </div>
-                  <h3 className="text-lg font-normal text-[#013759] tracking-tight leading-tight">
-                    Infrastructure Support
-                  </h3>
+
+                  <ul className="space-y-2.5 text-xs sm:text-sm text-slate-600 font-normal">
+                    <li className="flex items-start gap-2.5">
+                      <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[#074887] shrink-0" />
+                      <span>Plug-and-Play Co-Working Space</span>
+                    </li>
+                    <li className="flex items-start gap-2.5">
+                      <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[#074887] shrink-0" />
+                      <span>Dedicated Private Cabin Area</span>
+                    </li>
+                    <li className="flex items-start gap-2.5">
+                      <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[#074887] shrink-0" />
+                      <span>Fully Equipped Meeting Rooms & AV Facilities</span>
+                    </li>
+                    <li className="flex items-start gap-2.5">
+                      <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[#074887] shrink-0" />
+                      <span>Mechanical & Electronics Fabrication Labs</span>
+                    </li>
+                    <li className="flex items-start gap-2.5">
+                      <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[#074887] shrink-0" />
+                      <span>High End Precision & Computing Equipment</span>
+                    </li>
+                    <li className="flex items-start gap-2.5">
+                      <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[#074887] shrink-0" />
+                      <span>Direct Access to Schemes and Grants</span>
+                    </li>
+                  </ul>
                 </div>
-
-                <ul className="space-y-2.5 text-xs sm:text-sm text-slate-600 font-normal">
-                  <li className="flex items-start gap-2.5">
-                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[#074887] shrink-0" />
-                    <span>Plug-and-Play Co-Working Space</span>
-                  </li>
-                  <li className="flex items-start gap-2.5">
-                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[#074887] shrink-0" />
-                    <span>Dedicated Private Cabin Area</span>
-                  </li>
-                  <li className="flex items-start gap-2.5">
-                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[#074887] shrink-0" />
-                    <span>Fully Equipped Meeting Rooms & AV Facilities</span>
-                  </li>
-                  <li className="flex items-start gap-2.5">
-                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[#074887] shrink-0" />
-                    <span>Mechanical & Electronics Fabrication Labs</span>
-                  </li>
-                  <li className="flex items-start gap-2.5">
-                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[#074887] shrink-0" />
-                    <span>High End Precision & Computing Equipment</span>
-                  </li>
-                  <li className="flex items-start gap-2.5">
-                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[#074887] shrink-0" />
-                    <span>Direct Access to Schemes and Grants</span>
-                  </li>
-                </ul>
               </div>
-            </div>
 
-            {/* Comprehensive Network */}
-            <div className="rounded-3xl bg-white border border-slate-200/90 p-6 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group relative overflow-hidden text-left">
-              <div className="absolute -top-12 -right-12 w-32 h-32 bg-amber-50 rounded-full blur-2xl pointer-events-none" />
+              {/* Comprehensive Network */}
+              <div className="rounded-3xl bg-white border border-slate-200/90 p-6 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group relative overflow-hidden text-left">
+                <div className="absolute -top-12 -right-12 w-32 h-32 bg-amber-50 rounded-full blur-2xl pointer-events-none" />
 
-              <div>
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="h-8 w-8 rounded-full bg-amber-600 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-xs">
-                    03
+                <div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="h-10 w-10 rounded-2xl bg-amber-600/10 text-amber-700 flex items-center justify-center shrink-0 border border-amber-600/20 shadow-xs">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                      </svg>
+                    </div>
+                    <h3 className="text-lg font-normal text-[#013759] tracking-tight leading-tight">
+                      Comprehensive Network
+                    </h3>
                   </div>
-                  <div className="h-10 w-10 rounded-2xl bg-amber-600/10 text-amber-700 flex items-center justify-center shrink-0 border border-amber-600/20 shadow-xs">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                      <circle cx="9" cy="7" r="4" />
-                    </svg>
-                  </div>
-                  <h3 className="text-lg font-normal text-[#013759] tracking-tight leading-tight">
-                    Comprehensive Network
-                  </h3>
-                </div>
 
                 <ul className="space-y-2.5 text-xs sm:text-sm text-slate-600 font-normal">
                   <li className="flex items-start gap-2.5">
@@ -1412,10 +1415,10 @@ export function LandingPage() {
                 </ul>
               </div>
             </div>
-
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
 
 
