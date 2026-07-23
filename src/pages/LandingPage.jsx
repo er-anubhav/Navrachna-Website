@@ -1,10 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react'
 import heroImage from '../assets/co-working-area-in-greater-noida-12-scaled.webp'
 import programsBg from '../assets/navrachna_images/co-working-area-in-greater-noida-13-scaled.webp'
-import spaceImg1 from '../assets/navrachna_images/image-RHC5QKD-e1734675533295.jpg'
-import spaceImg2 from '../assets/navrachna_images/image-JJL9YTX-e1734675480258.jpg'
-import spaceImg3 from '../assets/navrachna_images/image-KJ66VQB-e1734675565430.jpg'
-import spaceImg4 from '../assets/navrachna_images/image-A2SAUCS-e1734675593163.jpg'
+import spaceCoworking from '../assets/navrachna_images/spaces/coworking.jpg'
+import spaceBoardroom from '../assets/navrachna_images/spaces/boardroom.jpg'
+import spaceLaserCutting from '../assets/navrachna_images/spaces/laser_cutting.jpg'
+import spacePlasmaCutting from '../assets/navrachna_images/spaces/plasma_cutting.jpg'
+import space3DPrinting from '../assets/navrachna_images/spaces/3d_printing.jpg'
+import spaceDesignSystem from '../assets/navrachna_images/spaces/design_system.jpg'
+import spaceReception from '../assets/navrachna_images/spaces/reception.jpg'
 import { HeaderV1 } from '../components/HeaderV1'
 import { FooterV1 } from '../components/FooterV1'
 import CircularGallery from '../components/CircularGallery'
@@ -206,39 +209,39 @@ const FAQS = [
 
 const OUR_SPACES = [
   {
-    title: "Acceleration Programs",
-    description: "Access tailored incubation modules, prototype funding, venture mentorship, and investor matchmaking pipelines to scale your early-stage startup.",
-    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80"
-  },
-  {
-    title: "Mentorship & Expert Guidance",
-    description: "Work shoulder-to-shoulder with veteran entrepreneurs, technology experts, and IP advisors to accelerate product-market fit.",
-    image: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=800&q=80"
-  },
-  {
     title: "Co-working Space & Infrastructure",
     description: "Scale in our premium co-working facility, featuring plug-and-play seating, smart meeting rooms, high-end compute systems, and prototyping labs.",
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80"
+    image: spaceCoworking
   },
   {
-    title: "Fabrication & Tool Room",
-    description: "Build deep prototypes using precision machinery, including CNC CO2 Laser Cutters, Plasma Cutters, and advanced manual prototyping tools.",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80"
+    title: "Premium Board & Pitch Rooms",
+    description: "Host pitch presentations, investor panels, and executive reviews in our high-tech boardrooms equipped with smart displays and AV suites.",
+    image: spaceBoardroom
   },
   {
-    title: "3D Printing Facility",
-    description: "Bring design concepts to life with professional FDM, SLA, and resin 3D printers, supporting over 40 types of specialized engineering filaments.",
-    image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80"
+    title: "CNC Laser Cutting Facility",
+    description: "High-precision CO2 CNC laser cutting & engraving for acrylic, wood, sheet metals, and complex industrial components.",
+    image: spaceLaserCutting
   },
   {
-    title: "AI & Simulations Grid",
-    description: "Leverage state-of-the-art compute hardware on a flexible compute-rental basis for intensive AI model training and engineering simulations.",
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80"
+    title: "Heavy Metal Fabrication & Plasma",
+    description: "Heavy-duty metal cutting and structural fabrication powered by automated CNC Plasma cutting machinery.",
+    image: spacePlasmaCutting
   },
   {
-    title: "Premium Meeting Rooms",
-    description: "Host presentations, pitch panels, and board reviews in modern rooms featuring integrated AV gear, screen casting, and high-speed Wi-Fi.",
-    image: "https://images.unsplash.com/photo-1431540015161-0bf868a2d407?auto=format&fit=crop&w=800&q=80"
+    title: "3D Printing & Additive Mfg",
+    description: "Bring hardware concepts to life with professional FDM & SLA 3D printers supporting over 40 technical materials.",
+    image: space3DPrinting
+  },
+  {
+    title: "CAD & High-Performance Design",
+    description: "High-end compute systems dedicated to CAD designing, 3D modeling, finite element analysis, and structural simulations.",
+    image: spaceDesignSystem
+  },
+  {
+    title: "Incubation Reception & Lounge",
+    description: "Modern welcome desk and startup lounge providing a professional front for visiting founders, investors, and mentors.",
+    image: spaceReception
   }
 ];
 
