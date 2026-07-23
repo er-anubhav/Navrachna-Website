@@ -516,7 +516,7 @@ export function LandingPage() {
   }, []);
 
   return (
-    <div className="relative min-h-screen w-full bg-[#111111] overflow-x-hidden max-w-full">
+    <div className="relative min-h-screen w-full bg-white overflow-x-hidden max-w-full">
 
       {/* Top Announcement Bar */}
       <div className="relative z-40 flex min-h-[56px] sm:min-h-[52px] py-1.5 sm:py-0 w-full items-center border-b border-white/15 bg-[#0a192f] overflow-hidden shadow-md">
@@ -751,7 +751,7 @@ export function LandingPage() {
       </section>
 
       {/* Vision & Mission Section */}
-      <section className="relative w-full bg-[#f8fafc] py-8 sm:py-20 border-b border-[#013759]">
+      <section className="relative w-full bg-white py-8 sm:py-20 border-b border-[#013759]">
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-stretch justify-between gap-6 md:gap-12 lg:gap-16">
             
@@ -884,7 +884,7 @@ export function LandingPage() {
               {SCHEMES.map((scheme, idx) => (
                 <div 
                   key={idx} 
-                  className="shrink-0 w-[82vw] sm:w-[340px] lg:w-full snap-start flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 p-4 sm:p-5 rounded-2xl border border-sky-100/40 bg-[#f0f9ff] shadow-sm hover:shadow-md transition-all duration-300"
+                  className="shrink-0 w-[82vw] sm:w-[340px] lg:w-full snap-start flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 p-4 sm:p-5 rounded-2xl border border-sky-100 bg-white shadow-sm hover:shadow-md transition-all duration-300"
                 >
                   {/* Left Side Graphic Badge */}
                   <div className="w-full sm:w-[180px] h-[100px] sm:h-[110px] rounded-xl overflow-hidden shrink-0 relative bg-white border border-slate-200 shadow-sm p-3 flex items-center justify-center group-hover:scale-[1.02] transition-transform duration-300">
@@ -973,7 +973,7 @@ export function LandingPage() {
                       </button>
 
                       {isOpen && (
-                        <div className="px-4 sm:px-5 pb-3.5 pt-2 border-t border-slate-100 bg-[#fafafa]">
+                        <div className="px-4 sm:px-5 pb-3.5 pt-2 border-t border-slate-100 bg-white">
                           <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 pt-0.5">
                             {spec.specs.map((item, i) => (
                               <li key={i} className="flex items-start gap-2.5 py-2 px-3 rounded-lg bg-white border border-slate-200/80 text-xs sm:text-sm text-slate-700 font-normal leading-snug">
@@ -1030,7 +1030,7 @@ export function LandingPage() {
                     </button>
 
                     {isOpen && (
-                      <div className="px-4 sm:px-5 pb-3.5 pt-2 border-t border-slate-100 bg-[#fafafa]">
+                      <div className="px-4 sm:px-5 pb-3.5 pt-2 border-t border-slate-100 bg-white">
                         <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 pt-0.5">
                           {spec.specs.map((item, i) => (
                             <li key={i} className="flex items-start gap-2.5 py-2 px-3 rounded-lg bg-white border border-slate-200/80 text-xs sm:text-sm text-slate-700 font-normal leading-snug">
@@ -1099,7 +1099,7 @@ export function LandingPage() {
                     </button>
 
                     {isOpen && (
-                      <div className="px-4 sm:px-5 pb-3.5 pt-2 border-t border-slate-100 bg-[#fafafa]">
+                      <div className="px-4 sm:px-5 pb-3.5 pt-2 border-t border-slate-100 bg-white">
                         <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 pt-0.5">
                           {spec.specs.map((item, i) => (
                             <li key={i} className="flex items-start gap-2.5 py-2 px-3 rounded-lg bg-white border border-slate-200/80 text-xs sm:text-sm text-slate-700 font-normal leading-snug">
@@ -1120,7 +1120,7 @@ export function LandingPage() {
       </section>
 
       {/* Why Choose Us Section - Official ITSEC - NFED Support Mechanism */}
-      <section className="w-full bg-[#f8fafc] py-10 md:py-16 border-t border-slate-100/80">
+      <section className="w-full bg-white py-10 md:py-16 border-t border-slate-100/80">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
           {/* Radial Graph Node Layout (Desktop >= 1024px) */}
