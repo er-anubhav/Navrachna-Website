@@ -1124,33 +1124,33 @@ export function LandingPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
           {/* Radial Graph Node Layout (Desktop >= 1024px) */}
-          <div className="hidden lg:flex flex-col items-center relative py-2 max-w-6xl mx-auto select-none">
-            <div className="relative w-[960px] h-[720px] flex items-center justify-center">
+          <div className="hidden lg:flex flex-col items-center relative py-4 max-w-6xl mx-auto select-none">
+            <div className="relative w-[960px] h-[730px] flex items-center justify-center">
               
               {/* Outer Decorative Background Circles */}
               <div className={`absolute w-[680px] h-[680px] rounded-full border transition-all duration-500 pointer-events-none ${activeHubNode ? 'border-sky-300/60 scale-105' : 'border-slate-200/80'}`} />
               <div className={`absolute w-[480px] h-[480px] rounded-full border transition-all duration-500 bg-gradient-to-br from-slate-50/60 via-white/40 to-slate-100/30 shadow-inner pointer-events-none ${activeHubNode ? 'border-sky-200/80 scale-105' : 'border-slate-200/60'}`} />
 
               {/* Connecting Dotted Lines SVG Canvas */}
-              <svg className="absolute inset-0 w-full h-full pointer-events-none z-0" viewBox="0 0 960 720">
+              <svg className="absolute inset-0 w-full h-full pointer-events-none z-0" viewBox="0 0 960 730">
                 {/* Center to 3 Hub Lines */}
-                <line x1="480" y1="360" x2="480" y2="160" stroke="#10b981" strokeWidth={activeHubNode === 1 || activeHubNode === 'center' ? '4' : '2.5'} strokeDasharray={activeHubNode === 1 || activeHubNode === 'center' ? 'none' : '6 4'} opacity={activeHubNode && activeHubNode !== 1 && activeHubNode !== 'center' ? 0.3 : 1} className="transition-all duration-300" />
-                <line x1="480" y1="360" x2="740" y2="510" stroke="#013759" strokeWidth={activeHubNode === 2 || activeHubNode === 'center' ? '4' : '2.5'} strokeDasharray={activeHubNode === 2 || activeHubNode === 'center' ? 'none' : '6 4'} opacity={activeHubNode && activeHubNode !== 2 && activeHubNode !== 'center' ? 0.3 : 1} className="transition-all duration-300" />
-                <line x1="480" y1="360" x2="220" y2="510" stroke="#d97706" strokeWidth={activeHubNode === 3 || activeHubNode === 'center' ? '4' : '2.5'} strokeDasharray={activeHubNode === 3 || activeHubNode === 'center' ? 'none' : '6 4'} opacity={activeHubNode && activeHubNode !== 3 && activeHubNode !== 'center' ? 0.3 : 1} className="transition-all duration-300" />
+                <line x1="480" y1="360" x2="480" y2="150" stroke="#10b981" strokeWidth={activeHubNode === 1 || activeHubNode === 'center' ? '4' : '2.5'} strokeDasharray={activeHubNode === 1 || activeHubNode === 'center' ? 'none' : '6 4'} opacity={activeHubNode && activeHubNode !== 1 && activeHubNode !== 'center' ? 0.3 : 1} className="transition-all duration-300" />
+                <line x1="480" y1="360" x2="750" y2="490" stroke="#013759" strokeWidth={activeHubNode === 2 || activeHubNode === 'center' ? '4' : '2.5'} strokeDasharray={activeHubNode === 2 || activeHubNode === 'center' ? 'none' : '6 4'} opacity={activeHubNode && activeHubNode !== 2 && activeHubNode !== 'center' ? 0.3 : 1} className="transition-all duration-300" />
+                <line x1="480" y1="360" x2="210" y2="490" stroke="#d97706" strokeWidth={activeHubNode === 3 || activeHubNode === 'center' ? '4' : '2.5'} strokeDasharray={activeHubNode === 3 || activeHubNode === 'center' ? 'none' : '6 4'} opacity={activeHubNode && activeHubNode !== 3 && activeHubNode !== 'center' ? 0.3 : 1} className="transition-all duration-300" />
 
                 {/* Hub 01 (Mentorship) to individual point lines */}
-                {[[160,60], [350,50], [610,50], [800,60], [230,170], [730,170]].map(([x, y], idx) => (
-                  <line key={`h1-${idx}`} x1="480" y1="160" x2={x} y2={y} stroke="#10b981" strokeWidth={activeHubNode === 1 || activeHubNode === 'center' ? '2.5' : '1.5'} strokeDasharray={activeHubNode === 1 || activeHubNode === 'center' ? 'none' : '4 3'} opacity={activeHubNode === 1 || activeHubNode === 'center' ? 1 : activeHubNode ? 0.2 : 0.6} className="transition-all duration-300" />
+                {[[130,45], [320,35], [640,35], [830,45], [175,145], [765,145]].map(([x, y], idx) => (
+                  <line key={`h1-${idx}`} x1="480" y1="150" x2={x} y2={y} stroke="#10b981" strokeWidth={activeHubNode === 1 || activeHubNode === 'center' ? '2.5' : '1.5'} strokeDasharray={activeHubNode === 1 || activeHubNode === 'center' ? 'none' : '4 3'} opacity={activeHubNode === 1 || activeHubNode === 'center' ? 1 : activeHubNode ? 0.2 : 0.6} className="transition-all duration-300" />
                 ))}
 
                 {/* Hub 02 (Infrastructure) to individual point lines */}
-                {[[600,390], [860,390], [600,630], [860,630], [740,680]].map(([x, y], idx) => (
-                  <line key={`h2-${idx}`} x1="740" y1="510" x2={x} y2={y} stroke="#013759" strokeWidth={activeHubNode === 2 || activeHubNode === 'center' ? '2.5' : '1.5'} strokeDasharray={activeHubNode === 2 || activeHubNode === 'center' ? 'none' : '4 3'} opacity={activeHubNode === 2 || activeHubNode === 'center' ? 1 : activeHubNode ? 0.2 : 0.6} className="transition-all duration-300" />
+                {[[840,385], [640,445], [640,590], [840,590], [740,670]].map(([x, y], idx) => (
+                  <line key={`h2-${idx}`} x1="750" y1="490" x2={x} y2={y} stroke="#013759" strokeWidth={activeHubNode === 2 || activeHubNode === 'center' ? '2.5' : '1.5'} strokeDasharray={activeHubNode === 2 || activeHubNode === 'center' ? 'none' : '4 3'} opacity={activeHubNode === 2 || activeHubNode === 'center' ? 1 : activeHubNode ? 0.2 : 0.6} className="transition-all duration-300" />
                 ))}
 
                 {/* Hub 03 (Network) to individual point lines */}
-                {[[100,390], [360,390], [100,630], [360,630], [220,680]].map(([x, y], idx) => (
-                  <line key={`h3-${idx}`} x1="220" y1="510" x2={x} y2={y} stroke="#d97706" strokeWidth={activeHubNode === 3 || activeHubNode === 'center' ? '2.5' : '1.5'} strokeDasharray={activeHubNode === 3 || activeHubNode === 'center' ? 'none' : '4 3'} opacity={activeHubNode === 3 || activeHubNode === 'center' ? 1 : activeHubNode ? 0.2 : 0.6} className="transition-all duration-300" />
+                {[[120,385], [320,445], [120,590], [320,590], [220,670]].map(([x, y], idx) => (
+                  <line key={`h3-${idx}`} x1="210" y1="490" x2={x} y2={y} stroke="#d97706" strokeWidth={activeHubNode === 3 || activeHubNode === 'center' ? '2.5' : '1.5'} strokeDasharray={activeHubNode === 3 || activeHubNode === 'center' ? 'none' : '4 3'} opacity={activeHubNode === 3 || activeHubNode === 'center' ? 1 : activeHubNode ? 0.2 : 0.6} className="transition-all duration-300" />
                 ))}
               </svg>
 
@@ -1159,7 +1159,7 @@ export function LandingPage() {
                 onMouseEnter={() => setActiveHubNode('center')}
                 onMouseLeave={() => setActiveHubNode(null)}
                 onClick={() => setActiveHubNode(activeHubNode === 'center' ? null : 'center')}
-                className={`z-30 w-56 h-56 rounded-full bg-white border-4 border-slate-100 shadow-2xl flex flex-col items-center justify-center p-5 text-center cursor-pointer transition-all duration-300 relative ${activeHubNode === 'center' ? 'scale-110 shadow-sky-300/60 ring-8 ring-sky-100' : 'hover:scale-105'}`}
+                className={`z-30 w-52 h-52 rounded-full bg-white border-4 border-slate-100 shadow-2xl flex flex-col items-center justify-center p-5 text-center cursor-pointer transition-all duration-300 relative ${activeHubNode === 'center' ? 'scale-110 shadow-sky-300/60 ring-8 ring-sky-100' : 'hover:scale-105'}`}
               >
                 <h3 className="text-xl font-normal text-[#013759] tracking-tight leading-tight">
                   Why <span className="inline-block"><span className="text-[#10b981]">C</span><span className="text-[#ec4899]">h</span><span className="text-[#3b82f6]">o</span><span className="text-[#f59e0b]">o</span><span className="text-[#ef4444]">s</span><span className="text-[#8b5cf6]">e</span></span> Us
@@ -1182,12 +1182,12 @@ export function LandingPage() {
 
               {/* Mentorship Floating Point Nodes */}
               {[
-                { title: 'Business Mentorship', pos: 'top-[35px] left-[70px]' },
-                { title: 'Technical Mentorship', pos: 'top-[25px] left-[270px]' },
-                { title: 'Legal Assistance', pos: 'top-[25px] right-[270px]' },
-                { title: 'Pitch Preparation', pos: 'top-[35px] right-[70px]' },
-                { title: 'Patent & IP Support', pos: 'top-[145px] left-[120px]' },
-                { title: 'Event Participation Assistance', pos: 'top-[145px] right-[100px]' }
+                { title: 'Business Mentorship', pos: 'top-[30px] left-[40px]' },
+                { title: 'Technical Mentorship', pos: 'top-[20px] left-[240px]' },
+                { title: 'Legal Assistance', pos: 'top-[20px] right-[240px]' },
+                { title: 'Pitch Preparation', pos: 'top-[30px] right-[40px]' },
+                { title: 'Patent & IP Support', pos: 'top-[130px] left-[100px]' },
+                { title: 'Event Participation Assistance', pos: 'top-[130px] right-[70px]' }
               ].map((node, idx) => {
                 const isActive = activeHubNode === 1 || activeHubNode === 'center';
                 return (
@@ -1213,7 +1213,7 @@ export function LandingPage() {
                 onMouseEnter={() => setActiveHubNode(2)}
                 onMouseLeave={() => setActiveHubNode(null)}
                 onClick={() => setActiveHubNode(activeHubNode === 2 ? null : 2)}
-                className={`absolute top-[475px] right-[120px] z-20 px-5 py-2.5 rounded-full text-white shadow-lg flex items-center gap-2.5 font-semibold text-sm cursor-pointer transition-all duration-300 ${activeHubNode === 2 || activeHubNode === 'center' ? 'scale-115 bg-[#01253d] shadow-sky-500/40 ring-4 ring-sky-300' : 'bg-[#013759] hover:scale-105 hover:bg-[#01253d]'}`}
+                className={`absolute top-[470px] right-[60px] z-20 px-5 py-2.5 rounded-full text-white shadow-lg flex items-center gap-2.5 font-semibold text-sm cursor-pointer transition-all duration-300 ${activeHubNode === 2 || activeHubNode === 'center' ? 'scale-115 bg-[#01253d] shadow-sky-500/40 ring-4 ring-sky-300' : 'bg-[#013759] hover:scale-105 hover:bg-[#01253d]'}`}
               >
                 <span className="h-6 w-6 rounded-full bg-white text-[#013759] flex items-center justify-center text-xs font-bold">02</span>
                 <span>INFRASTRUCTURE SUPPORT</span>
@@ -1221,11 +1221,11 @@ export function LandingPage() {
 
               {/* Infrastructure Floating Point Nodes */}
               {[
-                { title: 'Co-Working Space', pos: 'top-[365px] right-[250px]' },
-                { title: 'Dedicated Cabin Area', pos: 'top-[365px] right-[30px]' },
-                { title: 'Meeting Rooms', pos: 'top-[605px] right-[250px]' },
-                { title: 'Fabrication Lab', pos: 'top-[605px] right-[30px]' },
-                { title: 'High End Precision Equipment & Grants', pos: 'top-[660px] right-[130px]' }
+                { title: 'Co-Working Space', pos: 'top-[370px] right-[40px]' },
+                { title: 'Dedicated Cabin Area', pos: 'top-[430px] right-[240px]' },
+                { title: 'Meeting Rooms', pos: 'top-[575px] right-[260px]' },
+                { title: 'Fabrication Lab', pos: 'top-[575px] right-[40px]' },
+                { title: 'High End Precision Equipment & Grants', pos: 'top-[655px] right-[100px]' }
               ].map((node, idx) => {
                 const isActive = activeHubNode === 2 || activeHubNode === 'center';
                 return (
@@ -1251,7 +1251,7 @@ export function LandingPage() {
                 onMouseEnter={() => setActiveHubNode(3)}
                 onMouseLeave={() => setActiveHubNode(null)}
                 onClick={() => setActiveHubNode(activeHubNode === 3 ? null : 3)}
-                className={`absolute top-[475px] left-[110px] z-20 px-5 py-2.5 rounded-full text-white shadow-lg flex items-center gap-2.5 font-semibold text-sm cursor-pointer transition-all duration-300 ${activeHubNode === 3 || activeHubNode === 'center' ? 'scale-115 bg-amber-700 shadow-amber-500/40 ring-4 ring-amber-300' : 'bg-amber-600 hover:scale-105 hover:bg-amber-700'}`}
+                className={`absolute top-[470px] left-[60px] z-20 px-5 py-2.5 rounded-full text-white shadow-lg flex items-center gap-2.5 font-semibold text-sm cursor-pointer transition-all duration-300 ${activeHubNode === 3 || activeHubNode === 'center' ? 'scale-115 bg-amber-700 shadow-amber-500/40 ring-4 ring-amber-300' : 'bg-amber-600 hover:scale-105 hover:bg-amber-700'}`}
               >
                 <span className="h-6 w-6 rounded-full bg-white text-amber-700 flex items-center justify-center text-xs font-bold">03</span>
                 <span>COMPREHENSIVE NETWORK</span>
@@ -1259,11 +1259,11 @@ export function LandingPage() {
 
               {/* Network Floating Point Nodes */}
               {[
-                { title: 'Government Backed Schemes', pos: 'top-[365px] left-[30px]' },
-                { title: 'Seasoned Mentors Network', pos: 'top-[365px] left-[250px]' },
-                { title: 'Quality Investor Network', pos: 'top-[605px] left-[30px]' },
-                { title: 'Corporate Networks', pos: 'top-[605px] left-[250px]' },
-                { title: 'Interns, RND & Digital Support', pos: 'top-[660px] left-[130px]' }
+                { title: 'Government Backed Schemes', pos: 'top-[370px] left-[40px]' },
+                { title: 'Seasoned Mentors Network', pos: 'top-[430px] left-[240px]' },
+                { title: 'Quality Investor Network', pos: 'top-[575px] left-[40px]' },
+                { title: 'Corporate Networks', pos: 'top-[575px] left-[260px]' },
+                { title: 'Interns, RND & Digital Support', pos: 'top-[655px] left-[100px]' }
               ].map((node, idx) => {
                 const isActive = activeHubNode === 3 || activeHubNode === 'center';
                 return (
