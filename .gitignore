@@ -23,3 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 .vercel
+
+# Archives & Large Assets
+*.zip
+Newgen_Video's & Photo's/
+image copy*.png
