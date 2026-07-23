@@ -8,6 +8,12 @@ import spacePlasmaCutting from '../assets/navrachna_images/spaces/plasma_cutting
 import space3DPrinting from '../assets/navrachna_images/spaces/3d_printing.jpg'
 import spaceDesignSystem from '../assets/navrachna_images/spaces/design_system.jpg'
 import spaceReception from '../assets/navrachna_images/spaces/reception.jpg'
+
+import logoStartinUp from '../assets/navrachna_images/program_logos/badge_startinup.png'
+import logoNewGen from '../assets/navrachna_images/program_logos/badge_newgen.png'
+import logoMsme from '../assets/navrachna_images/program_logos/badge_msme.png'
+import logoKartavyam from '../assets/navrachna_images/program_logos/badge_kartavyam.png'
+
 import { HeaderV1 } from '../components/HeaderV1'
 import { FooterV1 } from '../components/FooterV1'
 import CircularGallery from '../components/CircularGallery'
@@ -300,32 +306,36 @@ const FACILITIES_SPECS = [
 
 const SCHEMES = [
   {
-    code: "Startin-Up",
+    code: "StartIn-UP",
     subCode: "Commercial exploitation",
     title: "Startin-Up",
     description: "Discover funding and incubation opportunities through our specialized Startin-Up program, designed to assist and enable young entrepreneurs to initiate commercial exploitation of their technologies.",
-    gradient: "from-indigo-950 via-purple-900 to-fuchsia-800"
+    gradient: "from-indigo-950 via-purple-900 to-fuchsia-800",
+    logo: logoStartinUp
   },
   {
     code: "NewGen IEDC",
     subCode: "Entrepreneurial skills",
     title: "NewGen-IEDC",
     description: "The NewGen IEDC program helps students develop entrepreneurial skills, test startup ideas, and connect with investors. We provide a dynamic and collaborative workspace that empowers you.",
-    gradient: "from-emerald-950 via-green-800 to-yellow-600"
+    gradient: "from-emerald-950 via-green-800 to-yellow-600",
+    logo: logoNewGen
   },
   {
     code: "MSME-BI",
     subCode: "Hackathon & Mentorship",
     title: "MSME-BI",
     description: "Participate in MSME Hackathons to solve real-world industry challenges and secure seed funding. A direct approach towards solving your startup problems with 1 to 1 mentorship.",
-    gradient: "from-rose-950 via-red-800 to-orange-600"
+    gradient: "from-rose-950 via-red-800 to-orange-600",
+    logo: logoMsme
   },
   {
     code: "Kartavyam",
     subCode: "School STEM Outreach",
     title: "Kartavyam Initiative",
     description: "Empowering 300+ school students across 40+ partner schools through early STEM innovation, social responsibility, and youth entrepreneurship development.",
-    gradient: "from-blue-950 via-cyan-800 to-teal-600"
+    gradient: "from-blue-950 via-cyan-800 to-teal-600",
+    logo: logoKartavyam
   }
 ];
 
@@ -749,9 +759,11 @@ export function LandingPage() {
                   className="shrink-0 w-[82vw] sm:w-[340px] lg:w-full snap-start flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 p-4 sm:p-5 rounded-2xl border border-sky-100/40 bg-[#f0f9ff] shadow-sm hover:shadow-md transition-all duration-300"
                 >
                   {/* Left Side Graphic Badge */}
-                  <div className={`w-full sm:w-[180px] h-[100px] sm:h-[110px] rounded-xl overflow-hidden shrink-0 relative bg-gradient-to-br ${scheme.gradient} shadow-md`}>
-                    <div className="absolute inset-0 flex items-center justify-center p-3">
-                      <div className="w-full py-2 px-2.5 rounded-lg bg-white/10 backdrop-blur-md border border-white/20 text-center shadow-inner">
+                  <div className="w-full sm:w-[180px] h-[100px] sm:h-[110px] rounded-xl overflow-hidden shrink-0 relative bg-white border border-slate-200/80 shadow-sm p-2 flex items-center justify-center group-hover:scale-[1.02] transition-transform duration-300">
+                    {scheme.logo ? (
+                      <img src={scheme.logo} alt={scheme.title} className="w-full h-full object-contain" />
+                    ) : (
+                      <div className={`w-full h-full rounded-lg bg-gradient-to-br ${scheme.gradient} flex flex-col items-center justify-center p-2 text-center`}>
                         <span className="text-xs sm:text-sm font-semibold tracking-wide text-white uppercase block leading-tight">
                           {scheme.code}
                         </span>
@@ -759,7 +771,7 @@ export function LandingPage() {
                           {scheme.subCode}
                         </span>
                       </div>
-                    </div>
+                    )}
                   </div>
 
                   {/* Right Side Text Contents */}
