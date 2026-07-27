@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { useQuery } from '@tanstack/react-query'
+import { fetchStats, fetchAnnouncements } from '../lib/api'
 import heroImage from '../assets/co-working-area-in-greater-noida-12-scaled.webp'
 import programsBg from '../assets/navrachna_images/co-working-area-in-greater-noida-13-scaled.webp'
 import spaceCoworking from '../assets/navrachna_images/spaces/coworking.jpg'
@@ -466,6 +468,51 @@ const SCHEMES = [
   }
 ];
 
+// ── Lightweight animated counter (no extra library) ──
+function StatCounter({ end, suffix = '', label }) {
+  const [count, setCount] = useState(0)
+  const ref = useRef(null)
+  const started = useRef(false)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !started.current) {
+        started.current = true
+        const duration = 2000
+        const startTime = performance.now()
+        const tick = (now) => {
+          const progress = Math.min((now - startTime) / duration, 1)
+          const eased = 1 - Math.pow(1 - progress, 3)
+          setCount(Math.round(eased * end))
+          if (progress < 1) requestAnimationFrame(tick)
+        }
+        requestAnimationFrame(tick)
+        observer.unobserve(el)
+      }
+    }, { threshold: 0.3 })
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [end])
+
+  return (
+    <div ref={ref} style={{
+      background: 'rgba(255,255,255,0.10)',
+      backdropFilter: 'blur(16px)',
+      border: '1px solid rgba(255,255,255,0.18)',
+      borderRadius: '16px',
+      padding: '1rem 0.75rem',
+      textAlign: 'center',
+    }}>
+      <div style={{ fontSize: 'clamp(1.4rem, 4vw, 2rem)', fontWeight: 800, color: '#fbbf24', fontFamily: "'Sora', sans-serif", lineHeight: 1 }}>
+        {count}{suffix}
+      </div>
+      <div style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.72)', marginTop: '0.35rem', fontWeight: 500, letterSpacing: '0.04em', textTransform: 'uppercase' }}>{label}</div>
+    </div>
+  )
+}
+
 export function LandingPage() {
   const [currentUpdate, setCurrentUpdate] = useState(0);
   const [showAnnouncementsModal, setShowAnnouncementsModal] = useState(false);
@@ -473,6 +520,11 @@ export function LandingPage() {
   const [activeFacility, setActiveFacility] = useState(null);
   const [activeHubNode, setActiveHubNode] = useState(null);
   const scrollRef = useRef(null);
+
+  // Live data from FastAPI backend (fallback to static data if API unavailable)
+  const { data: apiStats } = useQuery({ queryKey: ['stats'], queryFn: fetchStats, retry: false });
+  const { data: apiAnnouncements } = useQuery({ queryKey: ['announcements'], queryFn: fetchAnnouncements, retry: false });
+  const liveUpdates = (apiAnnouncements && apiAnnouncements.length > 0) ? apiAnnouncements : UPDATES;
 
   const scroll = (direction) => {
     if (scrollRef.current) {
@@ -510,7 +562,7 @@ export function LandingPage() {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentUpdate((prev) => (prev + 1) % UPDATES.length);
+      setCurrentUpdate((prev) => (prev + 1) % liveUpdates.length);
     }, 4000);
     return () => clearInterval(timer);
   }, []);
@@ -531,7 +583,7 @@ export function LandingPage() {
           className="relative flex flex-1 items-center overflow-hidden px-3 sm:px-5 min-h-[56px] sm:min-h-[52px] cursor-pointer hover:bg-white/5 transition-colors"
           title="Click to view all announcements"
         >
-          {UPDATES.map((update, index) => (
+          {liveUpdates.map((update, index) => (
             <div
               key={index}
               className={`absolute left-3 right-3 sm:left-5 sm:right-5 flex items-center transition-all duration-700 ease-in-out ${
@@ -612,45 +664,88 @@ export function LandingPage() {
         </div>
       )}
 
-      <section className="relative flex min-h-[50vh] md:min-h-[70vh] lg:min-h-[85vh] xl:min-h-[90vh] py-12 md:py-20 lg:py-28 w-full items-center justify-center overflow-hidden">
+      <section className="relative flex min-h-[50vh] md:min-h-[70vh] lg:min-h-[90vh] py-12 md:py-20 lg:py-28 w-full items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <div 
-            className="absolute inset-0 bg-cover bg-center bg-scroll md:bg-fixed opacity-70"
-            style={{ backgroundImage: `url(${heroImage})` }}
-          ></div>
-          <div className="absolute inset-0 bg-black/65 pointer-events-none"></div>
+            className="absolute inset-0 bg-cover bg-center bg-scroll md:bg-fixed"
+            style={{ backgroundImage: `url(${heroImage})`, opacity: 0.6 }}
+          />
+          <div className="absolute inset-0 pointer-events-none"
+            style={{ background: 'linear-gradient(135deg, rgba(1,55,89,0.88) 0%, rgba(7,72,135,0.80) 60%, rgba(10,93,166,0.70) 100%)' }}
+          />
+          {/* Floating particles */}
+          {[...Array(12)].map((_, i) => (
+            <div key={i} className="particle" style={{
+              left: `${8 + i * 7.5}%`,
+              bottom: `${10 + (i % 4) * 12}%`,
+              width: `${4 + (i % 3) * 3}px`,
+              height: `${4 + (i % 3) * 3}px`,
+              background: i % 3 === 0 ? 'rgba(251,191,36,0.6)' : i % 3 === 1 ? 'rgba(230,118,20,0.5)' : 'rgba(255,255,255,0.35)',
+              animationDuration: `${4 + i * 0.8}s`,
+              animationDelay: `${i * 0.4}s`,
+            }} />
+          ))}
         </div>
 
         <div className="relative z-10 flex max-w-5xl flex-col items-center px-4 text-center sm:px-6 lg:px-8">
-          <h1 className="mt-2 sm:mt-4 font-serif text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-normal tracking-tight text-white leading-tight drop-shadow-lg">
-            Where Ideas, Take Flight
-          </h1>
-          <p className="mt-3 sm:mt-5 max-w-2xl text-xs sm:text-base md:text-lg text-white leading-relaxed font-normal">
-            Empowering visionary founders with world-class incubation, <br className="hidden sm:inline" /> state-of-the-art labs, and direct capital access.
-          </p>
-          <span className="mt-5 sm:mt-6 mb-2 inline-block rounded-full border border-white/30 px-2.5 py-0.5 sm:px-5 sm:py-1.5 text-[10px] sm:text-sm tracking-wider text-white backdrop-blur-md max-w-full text-center font-medium">
+          <span className="mb-4 inline-block rounded-full px-4 py-1.5 text-xs font-bold tracking-widest text-white uppercase"
+            style={{ background: 'rgba(251,191,36,0.18)', border: '1px solid rgba(251,191,36,0.35)', backdropFilter: 'blur(10px)' }}>
             Navrachna Foundation for Entrepreneurship Development
           </span>
-          
-          <div className="mt-4 sm:mt-6 flex flex-row flex-wrap items-center justify-center gap-2.5 sm:gap-4">
-            <a 
-              href="/contact" 
-              className="group rounded-xl bg-[#074887] px-4 py-2 sm:px-7 sm:py-3.5 text-[12px] sm:text-sm font-semibold text-white shadow-lg shadow-[#074887]/30 transition-all duration-300 hover:bg-[#013759] hover:shadow-xl hover:-translate-y-0.5 flex items-center gap-2 cursor-pointer"
-            >
-              <span className="text-white">Launch your startup</span>
-              <svg className="w-4 h-4 text-white transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+          <h1 style={{
+            marginTop: '0.5rem',
+            fontFamily: "'Sora', sans-serif",
+            fontSize: 'clamp(2rem, 6vw, 5rem)',
+            fontWeight: 800,
+            lineHeight: 1.08,
+            letterSpacing: '-0.03em',
+            color: '#fff',
+            textShadow: '0 4px 40px rgba(0,0,0,0.3)',
+          }}>
+            Where Ideas,{' '}
+            <span style={{
+              background: 'linear-gradient(135deg, #e67614 0%, #fbbf24 60%, #fff 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+            }}>Take Flight</span>
+          </h1>
+          <p className="mt-3 sm:mt-5 max-w-2xl text-xs sm:text-base md:text-lg leading-relaxed font-normal"
+            style={{ color: 'rgba(255,255,255,0.82)' }}>
+            Empowering visionary founders with world-class incubation,{' '}
+            <br className="hidden sm:inline" />
+            state-of-the-art labs, and direct capital access.
+          </p>
+
+          <div className="mt-6 sm:mt-8 flex flex-row flex-wrap items-center justify-center gap-3 sm:gap-4">
+            <a href="/contact"
+              className="shimmer group rounded-xl px-5 py-2.5 sm:px-8 sm:py-3.5 text-sm font-bold text-white shadow-lg flex items-center gap-2 cursor-pointer transition-all duration-300 hover:-translate-y-1"
+              style={{ background: 'linear-gradient(135deg, #074887, #0a5da6)', boxShadow: '0 6px 24px rgba(7,72,135,0.45)' }}>
+              Launch Your Startup
+              <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
               </svg>
             </a>
-            <a 
-              href="/services" 
-              className="group rounded-xl border border-white/35 bg-white/10 px-4 py-2 sm:px-7 sm:py-3.5 text-[12px] sm:text-sm font-semibold text-white backdrop-blur-md transition-all duration-300 hover:bg-white/20 hover:border-white/50 hover:-translate-y-0.5 flex items-center gap-2 cursor-pointer"
-            >
-              <span className="text-white">Explore ecosystem</span>
-              <svg className="w-4 h-4 text-white opacity-90 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+            <a href="/services"
+              className="group rounded-xl border px-5 py-2.5 sm:px-8 sm:py-3.5 text-sm font-bold text-white flex items-center gap-2 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:bg-white/20"
+              style={{ borderColor: 'rgba(255,255,255,0.35)', background: 'rgba(255,255,255,0.10)', backdropFilter: 'blur(12px)' }}>
+              Explore Ecosystem
+              <svg className="w-4 h-4 opacity-90 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
               </svg>
             </a>
+          </div>
+
+          {/* Live Stats Strip */}
+          <div className="mt-10 sm:mt-14 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-5 w-full max-w-3xl">
+            {[
+              { end: apiStats?.startups_incubated ?? 60, suffix: '+', label: 'Startups Incubated' },
+              { end: apiStats?.mentors_connected ?? 120, suffix: '+', label: 'Mentors Connected' },
+              { end: apiStats?.programs_active ?? 5, suffix: '', label: 'Active Programs' },
+              { end: apiStats?.students_impacted ?? 300, suffix: '+', label: 'Students Impacted' },
+            ].map((stat, i) => (
+              <StatCounter key={i} end={stat.end} suffix={stat.suffix} label={stat.label} />
+            ))}
           </div>
         </div>
       </section>
@@ -794,7 +889,7 @@ export function LandingPage() {
           <div className="text-left md:text-center mb-4 md:mb-12">
 
             <h2 className="mb-2 sm:mb-6 font-normal text-2xl sm:text-3xl md:text-4xl tracking-tight text-[#013759]">
-              Our <span className="inline-block"><span className="text-[#10b981]">S</span><span className="text-[#ec4899]">p</span><span className="text-[#3b82f6]">a</span><span className="text-[#f59e0b]">c</span><span className="text-[#ef4444]">e</span><span className="text-[#8b5cf6]">s</span></span>
+              <span className="text-black">Our</span> <span className="text-[#013759]">Spaces</span>
             </h2>
             <p className="md:mx-auto max-w-3xl text-gray-600 text-sm sm:text-base md:text-lg leading-snug sm:leading-relaxed mb-4 md:mb-8">
               We provide dynamic workspaces, expert mentorship, networking opportunities, and business support services to help startups and entrepreneurs thrive.

@@ -76,58 +76,60 @@ export function StartinUpPage() {
 
   const TIMELINE = [
     {
+      step: "STEP 00",
+      title: "Pre-Scouting",
+      desc: "Navrachna Foundation proactively scouts promising ideas and innovations from campuses, events, and networks before formal applications open.",
+      color: "#6366f1",
+      icon: (<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>)
+    },
+    {
       step: "STEP 01",
-      title: "Fill the form",
-      desc: "Fill the attached form at the bottom of the page with correct startup details and idea briefs to help our screening committee understand your technology commercialization roadmap.",
-      color: "#10b981", // Green
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-          <polyline points="14 2 14 8 20 8" />
-          <line x1="16" y1="13" x2="8" y2="13" />
-          <line x1="16" y1="17" x2="8" y2="17" />
-          <polyline points="10 9 9 9 8 9" />
-        </svg>
-      )
+      title: "Online Form Submission",
+      desc: "Fill the online application form with correct startup details, idea briefs, and your technology commercialization roadmap to help our screening committee evaluate your proposal.",
+      color: "#10b981",
+      icon: (<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>)
     },
     {
       step: "STEP 02",
-      title: "Wait for a Response",
-      desc: "The screening team at Navrachna Foundation will evaluate your pitch. We will reach back to you within 48 hours to schedule a diagnostic online or offline presentation meet.",
-      color: "#3b82f6", // Blue
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M12 19l7-7 3 3-7 7-3-3z" />
-          <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" />
-          <path d="M2 2l7.5 1.5" />
-          <path d="M14 11l-3.5-3.5" />
-        </svg>
-      )
+      title: "Preliminary Screening",
+      desc: "The screening team at Navrachna Foundation evaluates your submission based on innovation, feasibility, and market potential. We will respond within 48 hours.",
+      color: "#3b82f6",
+      icon: (<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>)
     },
     {
       step: "STEP 03",
-      title: "Discuss & Align",
-      desc: "Meet our incubation board to discuss incubation goals, technical scope, and prototype objectives. Finalize official registrations to lock in your commercial UP state support incentives.",
-      color: "#8b5cf6", // Purple
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
-          <path d="M13.73 21a2 2 0 0 1-3.46 0" />
-        </svg>
-      )
+      title: "Shortlisting of Startup",
+      desc: "Based on preliminary screening results, selected startups are shortlisted and notified to proceed to the next stage of the incubation process.",
+      color: "#f59e0b",
+      icon: (<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>)
     },
     {
       step: "STEP 04",
-      title: "Regular Meets & Updates",
-      desc: "Formally launch in our state-of-the-art incubation spaces! Comply with the progress milestones, participate in training cohorts, and submit monthly updates while we link your startup to premium UP venture networks.",
-      color: "#ec4899", // Pink
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <line x1="18" y1="20" x2="18" y2="10" />
-          <line x1="12" y1="20" x2="12" y2="4" />
-          <line x1="6" y1="20" x2="6" y2="14" />
-        </svg>
-      )
+      title: "Final Pitch Presentation",
+      desc: "Shortlisted startups present their ideas before an expert panel comprising the incubation team and industry mentors in a structured pitch session.",
+      color: "#ec4899",
+      icon: (<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>)
+    },
+    {
+      step: "STEP 05",
+      title: "Evaluation & Selection",
+      desc: "The expert panel evaluates pitches on innovation, technical feasibility, commercial potential, and team strength. Final selections are communicated officially.",
+      color: "#8b5cf6",
+      icon: (<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>)
+    },
+    {
+      step: "STEP 06",
+      title: "Induction & Agreement Signing",
+      desc: "Selected startups are formally inducted into the Incubation Program. Agreements are signed covering incubation terms, IP rights, milestones, and support provisions.",
+      color: "#ef4444",
+      icon: (<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>)
+    },
+    {
+      step: "STEP 07",
+      title: "Growth, Monitoring & Graduation",
+      desc: "Startups are actively supported through regular mentorship meets, progress tracking, milestone reviews, and networking — culminating in a formal graduation from the incubation program.",
+      color: "#06b6d4",
+      icon: (<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>)
     }
   ]
 
@@ -152,7 +154,7 @@ export function StartinUpPage() {
               Build, Validate, and Scale <br /> With <span className="inline-block"><span className="text-[#10b981]">S</span><span className="text-[#ec4899]">t</span><span className="text-[#3b82f6]">a</span><span className="text-[#f59e0b]">r</span><span className="text-[#ef4444]">t</span><span className="text-[#8b5cf6]">i</span><span className="text-[#06b6d4]">n</span><span className="text-[#ec4899]">U</span><span className="text-[#10b981]">P</span></span>
             </h1>
             <p className="mt-6 max-w-2xl mx-auto text-base sm:text-lg text-white/80 leading-relaxed">
-              A structured, supportive ecosystem to turn disruptive technology concepts into high-impact, scalable ventures. Anchored at the ITS Incubation Center Navrachna Foundation.
+              A structured, supportive ecosystem to turn disruptive technology concepts into high-impact, scalable ventures. Anchored at the I.T.S Incubation Center Navrachna Foundation.
             </p>
             <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
               <a href="#incubation-form" className="rounded-xl bg-[#ffffff] px-8 py-4 font-normal text-[#013759] shadow-lg hover:-translate-y-1 transition-all duration-300">

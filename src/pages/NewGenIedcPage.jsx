@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import heroImage from '../assets/co-working-area-in-greater-noida-12-scaled.webp'
+import heroImage from '../assets/navrachna_images/newgen_projects_banner.png'
 import { newgenProjects } from '../data/newgenProjects'
 import { slugify } from './NewGenProjectDetailPage'
 
@@ -62,7 +62,7 @@ export function NewGenIedcPage() {
                 The New Generation Innovation and Entrepreneurship Development Centre (NewGen IEDC) is a programme launched by the Department of Science & Technology (DST) under the National Science & Technology Entrepreneurship Development Board (NSTEDB), Government of India, in 2018 for a tenure of five years. It is implemented through EDII, Ahmedabad and aims to promote knowledge-based and technology-driven startups by nurturing young innovators within an academic environment.
               </p>
               <p>
-                Established within academic institutions, NewGen IEDCs provide mentorship, guidance, and resources to help students transform ideas into startups. The programme provides grant support of up to INR 2.5 Lakhs per project for prototype development. At ITS Engineering College, a total grant of <span className="text-[#013759]">₹2.87 Crore</span> has been sanctioned under this programme.
+                Established within academic institutions, NewGen IEDCs provide mentorship, guidance, and resources to help students transform ideas into startups. The programme provides grant support of up to INR 2.5 Lakhs per project for prototype development. At I.T.S Engineering College, a total grant of <span className="text-[#013759]">₹2.87 Crore</span> has been sanctioned under this programme.
               </p>
             </div>
           </div>
@@ -136,145 +136,22 @@ export function NewGenIedcPage() {
             </div>
           </div>
 
-          {/* Objective & Mentoring & Incubation */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div className="flex flex-col gap-3">
-              <h4 className="text-xs text-[#013759] uppercase tracking-widest font-normal">Objective</h4>
-              <p className="text-xs sm:text-sm text-gray-500 leading-relaxed text-justify font-normal">
-                To empower student-led innovation by providing financial support of up to Rs.2.5 lakh per project for Proof-of-Concept (PoC) or prototype development, while also fostering entrepreneurship through mentorship, capacity building, and commercialization pathways.
-              </p>
-            </div>
-
-            <div className="flex flex-col gap-3">
-              <h4 className="text-xs text-[#013759] uppercase tracking-widest font-normal">Mentoring & Incubation</h4>
-              <p className="text-xs sm:text-sm text-gray-500 leading-relaxed text-justify font-normal">
-                Access to workshops, mentorship, and startup advisory under our entrepreneurship ecosystem.
-              </p>
-            </div>
-          </div>
-
-          {/* Additional Funding, Evaluation & Eligibility */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 border-t border-slate-100 pt-12">
-            
-            {/* Additional Funding */}
-            <div className="flex flex-col gap-3">
-              <h3 className="text-xs text-[#013759] font-normal uppercase tracking-wider">Additional Funding Opportunities</h3>
-              <p className="text-xs text-gray-400 font-normal">Top-performing teams may qualify for:</p>
-              <ul className="flex flex-col gap-3 text-xs text-gray-500 font-normal">
-                <li className="flex gap-2"><span>—</span> <span>Follow-on grants in the upcoming MSME Hackathons chapter</span></li>
-                <li className="flex gap-2"><span>—</span> <span>Incentives under StartinUP initiative</span></li>
-              </ul>
-            </div>
-
-            {/* Evaluation & Selection Process */}
-            <div className="flex flex-col gap-3">
-              <h3 className="text-xs text-[#013759] font-normal uppercase tracking-wider">Evaluation & Selection Process</h3>
-              <ul className="flex flex-col gap-3 text-xs text-gray-500 font-normal">
-                <li>
-                  <span className="text-[#074887]">Initial Shortlisting:</span> Based on innovation, feasibility, and social/commercial potential.
-                </li>
-                <li>
-                  <span className="text-[#074887]">Final Pitch:</span> Presentation In front of expert panel (Incubation team + industry mentors).
-                </li>
-                <li>
-                  <span className="text-[#074887]">Grant Approved:</span> Once the project gets technical approval and the budget is verified.
-                </li>
-              </ul>
-            </div>
-
-            {/* Eligibility Criteria */}
-            <div className="flex flex-col gap-3">
-              <h3 className="text-xs text-[#013759] font-normal uppercase tracking-wider">Eligibility Criteria</h3>
-              <ul className="flex flex-col gap-3 text-xs text-gray-500 text-justify font-normal">
-                <li className="flex gap-2"><span>—</span> <span>The proposed project should belong to the domain of science, engineering, technology, or allied fields.</span></li>
-                <li className="flex gap-2"><span>—</span> <span>The project must be either hardware-based or a hardware-software integrated solution.</span></li>
-                <li className="flex gap-2"><span>—</span> <span>This grant is applicable only to those startups or students who have not received funding exceeding ₹2.5 lakhs from any government or private sector organization for their idea.</span></li>
-                <li className="flex gap-2"><span>—</span> <span>A maximum of 4 team members is allowed per project, with at least one member being a student of I.T.S Engineering College, Greater Noida.</span></li>
-              </ul>
-            </div>
-
-          </div>
-
-        </div>
-
-        {/* Section 3: Important Guidelines */}
-        <div className="flex flex-col gap-6">
-          <h2 className="text-xl text-[#013759] font-normal">Important Notes for All Selected Ideas</h2>
-          <ol className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 text-xs sm:text-sm text-gray-500 text-justify font-normal">
-            <li className="flex gap-3">
-              <span className="text-[#074887]">1.</span>
-              <span>Each selected idea must include one mentor and one mentee from I.T.S Engineering College.</span>
-            </li>
-            <li className="flex gap-3">
-              <span className="text-[#074887]">2.</span>
-              <span>Mentees are required to register their company using the company registration support provided under the project.</span>
-            </li>
-            <li className="flex gap-3">
-              <span className="text-[#074887]">3.</span>
-              <span>If the mentee’s company is already registered within 1 year, valid bills/invoices related to the company formation must be submitted.</span>
-            </li>
-            <li className="flex gap-3">
-              <span className="text-[#074887]">4.</span>
-              <span>Upon verification of documents, a reimbursement of up to ₹25,000 will be provided against company incorporation.</span>
-            </li>
-            <li className="flex gap-3">
-              <span className="text-[#074887]">5.</span>
-              <span>The prototype must be completed & should be working, within 6 months after receiving the required materials, & must be duly submitted to Host Institute.</span>
-            </li>
-            <li className="flex gap-3">
-              <span className="text-[#074887]">6.</span>
-              <span>A short delay may be accommodated, but only after committee approval.</span>
-            </li>
-            <li className="flex gap-3">
-              <span className="text-[#074887]">7.</span>
-              <span>Any machinery or non-consumable item purchased under the project must be duly submitted at the time of final project submission.</span>
-            </li>
-            <li className="flex gap-3">
-              <span className="text-[#074887]">8.</span>
-              <span>Monthly progress reports must be submitted in the prescribed format.</span>
-            </li>
-          </ol>
-        </div>
-
-        {/* Section 4: Timeline & Post-Grant Requirements */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 bg-white border border-slate p-8 rounded-md">
-          
-          {/* Timeline */}
+          {/* Objective */}
           <div className="flex flex-col gap-3">
-            <h3 className="text-sm text-[#013759] uppercase tracking-wider font-normal">Application Timeline</h3>
-            <div className="flex flex-col gap-1 mt-2">
-              <span className="text-[10px] text-gray-400 uppercase tracking-widest">Submission Deadline</span>
-              <span className="text-base text-[#074887] font-normal">10 Aug 2025</span>
-            </div>
-          </div>
-
-          {/* Post Grant Requirements */}
-          <div className="flex flex-col gap-3">
-            <h3 className="text-sm text-[#013759] uppercase tracking-wider font-normal">Post-Grant Requirements</h3>
-            <ul className="flex flex-col gap-2 text-xs text-gray-500 font-normal mt-2">
-              <li className="flex gap-2"><span>—</span> <span>Final working prototype submission & demonstration.</span></li>
-              <li className="flex gap-2"><span>—</span> <span>Next Stage of Project/Commercialization planning.</span></li>
-            </ul>
-          </div>
-
-          {/* Download & Presentation info */}
-          <div className="flex flex-col gap-3">
-            <h3 className="text-sm text-[#013759] uppercase tracking-wider font-normal">Download Proposal Format</h3>
-            <p className="text-xs text-gray-500 font-normal text-justify leading-relaxed">
-              Be ready with your presentation in the given format. It will be held the next day after the last date, and the schedule will be emailed to you.
+            <h4 className="text-xs text-[#013759] uppercase tracking-widest font-normal">Objective</h4>
+            <p className="text-xs sm:text-sm text-gray-500 leading-relaxed text-justify font-normal">
+              To empower student-led innovation by providing financial support of up to Rs.2.5 lakh per project for Proof-of-Concept (PoC) or prototype development, while also fostering entrepreneurship through mentorship, capacity building, and commercialization pathways.
             </p>
-            <div className="mt-3">
-              <a
-                href="#"
-                onClick={(e) => {
-                  e.preventDefault()
-                  alert('Proposal format download link.')
-                }}
-                className="inline-flex px-4 py-2 border border-[#013759] text-[#013759] hover:bg-[#013759] hover:text-white rounded-lg text-xs transition-all duration-200 cursor-pointer"
-              >
-                Download Proposal Format
-              </a>
-            </div>
+          </div>
+
+          {/* Additional Funding */}
+          <div className="flex flex-col gap-3 border-t border-slate-100 pt-12">
+            <h3 className="text-xs text-[#013759] font-normal uppercase tracking-wider">Additional Funding Opportunities</h3>
+            <p className="text-xs text-gray-400 font-normal">Top-performing teams may qualify for:</p>
+            <ul className="flex flex-col gap-3 text-xs text-gray-500 font-normal">
+              <li className="flex gap-2"><span>—</span> <span>Follow-on grants in the upcoming MSME Hackathons chapter</span></li>
+              <li className="flex gap-2"><span>—</span> <span>Incentives under StartinUP initiative</span></li>
+            </ul>
           </div>
 
         </div>
@@ -325,49 +202,39 @@ export function NewGenIedcPage() {
 
           </div>
 
-          {/* Typographic Table Directory List */}
-          <div className="flex flex-col divide-y divide-slate-100">
+          {/* Card Grid Layout */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
             {filteredProjects.map((project, idx) => (
-              <div 
+              <Link
                 key={idx}
-                className="py-6 flex flex-col sm:flex-row sm:items-center justify-between gap-6 hover:bg-slate-50/50 transition-colors duration-200 px-4 rounded-xl"
+                to={`/programs/newgen-iedc/project/${slugify(project.title)}`}
+                className="group flex flex-col rounded-2xl overflow-hidden border border-slate-100 hover:shadow-lg transition-shadow duration-300 bg-white"
               >
-                {/* Left side: Preview & Info */}
-                <div className="flex items-center gap-6 flex-1 min-w-0">
-                  {project.image && (
-                    <div className="h-16 w-16 rounded-xl bg-slate-50 border border-slate-100 overflow-hidden shrink-0">
-                      <img 
-                        src={project.image} 
-                        alt={project.title} 
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
+                <div className="h-52 w-full bg-slate-100 overflow-hidden">
+                  {project.image ? (
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-slate-200" />
                   )}
-                  
-                  <div className="min-w-0 flex-1">
-                    <h3 className="text-sm sm:text-base text-[#013759] font-normal leading-snug truncate">
-                      {project.title}
-                    </h3>
-                    <p className="text-xs text-gray-400 mt-1 line-clamp-1">
-                      {project.description}
-                    </p>
-                  </div>
                 </div>
-
-                {/* Right side: Editorial text Link */}
-                <div className="shrink-0 flex items-center justify-start sm:justify-end">
-                  <Link 
-                    to={`/programs/newgen-iedc/project/${slugify(project.title)}`}
-                    className="text-xs text-[#074887] hover:underline flex items-center gap-1.5"
-                  >
-                    About Project <span>→</span>
-                  </Link>
+                <div className="p-4 flex flex-col gap-1">
+                  <h3 className="text-sm text-[#013759] font-medium leading-snug line-clamp-2">
+                    {project.title}
+                  </h3>
+                  <p className="text-xs text-gray-400 line-clamp-2 mt-0.5">
+                    {project.description}
+                  </p>
+                  <span className="mt-2 text-xs text-[#074887] group-hover:underline">About Project →</span>
                 </div>
-              </div>
+              </Link>
             ))}
 
             {filteredProjects.length === 0 && (
-              <div className="py-16 text-center text-xs text-gray-400">
+              <div className="col-span-3 py-16 text-center text-xs text-gray-400">
                 No funded projects match your search query.
               </div>
             )}

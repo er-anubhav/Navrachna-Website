@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import logo from '../assets/navrachna_images/nfed_logo.png'
 
 export function HeaderV1() {
@@ -13,6 +13,13 @@ export function HeaderV1() {
   const [mobileMoreOpen, setMobileMoreOpen] = useState(false)
   const [mobileFacOpen, setMobileFacOpen] = useState(false)
   const [mobileInnOpen, setMobileInnOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 60)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   return (
     <>
@@ -73,7 +80,20 @@ export function HeaderV1() {
       </div>
 
       {/* Main Header Container */}
-      <header className="relative z-50 bg-white border-b-2 border-slate-300 shadow-sm">
+      <header
+        className="relative z-50 border-b-2 transition-all duration-300"
+        style={scrolled ? {
+          background: 'rgba(255,252,247,0.90)',
+          backdropFilter: 'blur(20px) saturate(1.6)',
+          WebkitBackdropFilter: 'blur(20px) saturate(1.6)',
+          borderColor: 'rgba(7,72,135,0.12)',
+          boxShadow: '0 4px 30px rgba(7,72,135,0.10)',
+        } : {
+          background: '#ffffff',
+          borderColor: '#cbd5e1',
+          boxShadow: '0 1px 3px rgba(0,0,0,0.06)',
+        }}
+      >
         <div className="flex items-center justify-between px-4 sm:px-8 py-1.5 sm:py-4 lg:py-5">
           {/* Logo & Brand Name */}
           <div className="flex items-center">
@@ -204,12 +224,6 @@ export function HeaderV1() {
                             className="block rounded-lg px-4 py-2 text-xs font-normal text-black hover:bg-slate-50 hover:text-[#074887] transition-colors"
                           >
                             IIC-ITSEC
-                          </a>
-                          <a 
-                            href="/facilities/fabrication-lab" 
-                            className="block rounded-lg px-4 py-2 text-xs font-normal text-black hover:bg-slate-50 hover:text-[#074887] transition-colors"
-                          >
-                            Fabrication Lab
                           </a>
                         </div>
                       </div>
@@ -346,7 +360,6 @@ export function HeaderV1() {
                     {mobileInnOpen && (
                       <div className="pl-4 py-0.5 space-y-0.5 border-l border-slate-200 ml-3 my-0.5">
                         <a href="/innovation-cell/iic-itsec" className="block px-3 py-1 text-xs font-normal text-gray-600 hover:text-[#074887] transition-colors">IIC-ITSEC</a>
-                        <a href="/facilities/fabrication-lab" className="block px-3 py-1 text-xs font-normal text-gray-600 hover:text-[#074887] transition-colors">Fabrication Lab</a>
                       </div>
                     )}
                   </div>

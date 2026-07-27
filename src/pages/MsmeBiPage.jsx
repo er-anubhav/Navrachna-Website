@@ -1,16 +1,40 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import heroImage from '../assets/co-working-area-in-greater-noida-12-scaled.webp'
 import msmeBiHero from '../assets/navrachna_images/msme_bi_hero.jpeg'
 
+import slide1 from '../assets/navrachna_images/msme_slide_1.jpg'
+import slide2 from '../assets/navrachna_images/msme_slide_2.jpg'
+import slide3 from '../assets/navrachna_images/msme_slide_3.jpg'
+import slide4 from '../assets/navrachna_images/msme_slide_4.jpg'
+import slide5 from '../assets/navrachna_images/msme_slide_5.jpg'
+import slide6 from '../assets/navrachna_images/msme_slide_6.jpg'
+import slide7 from '../assets/navrachna_images/msme_slide_7.jpg'
+import slide8 from '../assets/navrachna_images/msme_slide_8.jpg'
+import slide9 from '../assets/navrachna_images/msme_slide_9.jpg'
+import slide10 from '../assets/navrachna_images/msme_slide_10.jpg'
+import slide11 from '../assets/navrachna_images/msme_slide_11.jpg'
+
 export function MsmeBiPage() {
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const slides = [slide1, slide2, slide3, slide4, slide5, slide6, slide7, slide8, slide9, slide10, slide11]
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length)
+    }, 4000)
+    return () => clearInterval(timer)
+  }, [slides.length])
+
+  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % slides.length)
+  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)
   const incubatorObjectives = [
     "Assist prospective entrepreneurs in nurturing their technology ideas and promote successful corporate entities at pre-startup and startup stages.",
     "Promote innovation among budding engineers trained by the institution.",
     "Organize workshops participating successful entrepreneurs.",
-    "Commercialize the ongoing research undertaken by various departments of ITS Engineering College.",
-    "Spot and nurture entrepreneurial talents from among the students of ITS Engineering College.",
+    "Commercialize the ongoing research undertaken by various departments of I.T.S Engineering College.",
+    "Spot and nurture entrepreneurial talents from among the students of I.T.S Engineering College.",
     "Catalyze and promote the development of S&T based Enterprises and promote employment opportunities.",
-    "Act as a forum for industries and organizations to discuss, plan, develop and execute projects benefiting from the intellectual, instructional and hi-tech infrastructure of ITS Engineering College."
+    "Act as a forum for industries and organizations to discuss, plan, develop and execute projects benefiting from the intellectual, instructional and hi-tech infrastructure of I.T.S Engineering College."
   ]
 
   const facilitatedEvents = [
@@ -42,7 +66,7 @@ export function MsmeBiPage() {
     {
       step: "04",
       title: "Identify a Faculty Mentor",
-      desc: "Partner with an experienced academic mentor inside the ITS campus to guide your prototyping cycle."
+      desc: "Partner with an experienced academic mentor inside the I.T.S campus to guide your prototyping cycle."
     },
     {
       step: "05",
@@ -74,7 +98,7 @@ export function MsmeBiPage() {
             MSME Business Incubator (MSME-BI)
           </h1>
           <p className="mt-4 max-w-4xl mx-auto text-base text-white/80 leading-relaxed">
-            Technology Business Incubation at ITS Engineering College, empowering next-gen builders.
+            Technology Business Incubation at I.T.S Engineering College, empowering next-gen builders.
           </p>
         </div>
       </section>
@@ -93,7 +117,7 @@ export function MsmeBiPage() {
                 Empowering Students, Faculty & Staff to Pursue Entrepreneurial Achievements
               </h2>
               <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-6 text-justify">
-                The MSME- Business Incubation Centre of ITS Engineering College was initiated to provide a platform to assist and enable young entrepreneurs to initiate technology start-up companies for commercial exploitation of technologies developed by them. The MSME BI of ITS Engineering College also enables the budding entrepreneurs to showcase and test their abilities to run a start-up business.
+                The MSME- Business Incubation Centre of I.T.S Engineering College was initiated to provide a platform to assist and enable young entrepreneurs to initiate technology start-up companies for commercial exploitation of technologies developed by them. The MSME BI of I.T.S Engineering College also enables the budding entrepreneurs to showcase and test their abilities to run a start-up business.
               </p>
               <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-6 text-justify">
                 In view of the worldwide shortage of jobs leading to unemployment problems, the cell strives to identify talented youth to entrepreneurial works. The center provides a range of resources empowering innovators to bridge the gap between inventors and venture capitalists.
@@ -111,15 +135,48 @@ export function MsmeBiPage() {
               </div>
             </div>
 
-            {/* Right: Local Downloaded Photo Block */}
-            <div className="lg:col-span-6">
-              <div className="relative overflow-hidden rounded-3xl border border-slate-100 shadow-xl bg-slate-50">
-                <img 
-                  src={msmeBiHero} 
-                  alt="MSME BI Incubation Activity" 
-                  className="w-full h-auto object-cover rounded-3xl transition-transform duration-500 hover:scale-[1.02]"
-                />
+            {/* Right: Carousel Block */}
+            <div className="lg:col-span-6 relative">
+              <div className="relative overflow-hidden rounded-3xl border border-slate-100 shadow-xl bg-slate-50 aspect-square md:aspect-auto md:h-[600px] flex items-center justify-center">
+                {slides.map((src, idx) => (
+                  <img
+                    key={idx}
+                    src={src}
+                    alt={`MSME BI Slide ${idx + 1}`}
+                    className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-700 ${idx === currentSlide ? 'opacity-100' : 'opacity-0'}`}
+                  />
+                ))}
+                
+                {/* Overlay for subtle dark edges */}
                 <div className="absolute inset-0 bg-[#013759]/5 pointer-events-none"></div>
+
+                {/* Left/Right Controls */}
+                <button 
+                  onClick={prevSlide}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-white text-[#013759] p-3 rounded-full shadow-lg backdrop-blur-sm transition-all"
+                  aria-label="Previous Slide"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                <button 
+                  onClick={nextSlide}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-white text-[#013759] p-3 rounded-full shadow-lg backdrop-blur-sm transition-all"
+                  aria-label="Next Slide"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
+
+                {/* Dots indicator */}
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 bg-black/20 p-2 rounded-full backdrop-blur-sm">
+                  {slides.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setCurrentSlide(idx)}
+                      className={`w-2.5 h-2.5 rounded-full transition-all ${idx === currentSlide ? 'bg-white scale-125' : 'bg-white/50 hover:bg-white/80'}`}
+                      aria-label={`Go to slide ${idx + 1}`}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
 

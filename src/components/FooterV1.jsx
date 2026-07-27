@@ -1,8 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import toast from 'react-hot-toast';
 import bgImage from '../assets/co-working-area-in-greater-noida-12-scaled.webp';
+import { subscribeNewsletter } from '../lib/api';
 
 export function FooterV1() {
+  const [email, setEmail] = useState('')
+  const [loading, setLoading] = useState(false)
+
+  const handleSubscribe = async (e) => {
+    e.preventDefault()
+    if (!email) return
+    setLoading(true)
+    try {
+      await subscribeNewsletter(email)
+      toast.success('Subscribed! Welcome to NFED updates.')
+      setEmail('')
+    } catch (err) {
+      const msg = err?.response?.data?.detail
+      if (msg?.includes('already')) toast('Already subscribed! 🎉', { icon: '✅' })
+      else toast.error('Subscription failed. Please try again.')
+    } finally {
+      setLoading(false)
+    }
+  }
   return (
     <footer className="relative w-full overflow-hidden text-white mt-auto border-t border-white/10">
       {/* Background Image matching other sections */}
@@ -47,7 +68,6 @@ export function FooterV1() {
             <ul className="flex flex-col space-y-2 md:space-y-3 text-xs sm:text-sm text-white/80">
               <li><a href="#" className="hover:text-[#fbbf24] transition-colors flex items-center gap-2"><span className="text-[#fbbf24] text-xs">▶</span> Innovation Cell</a></li>
               <li><a href="#" className="hover:text-[#fbbf24] transition-colors flex items-center gap-2"><span className="text-[#fbbf24] text-xs">▶</span> About IIC-ITSEC</a></li>
-              <li><a href="#" className="hover:text-[#fbbf24] transition-colors flex items-center gap-2"><span className="text-[#fbbf24] text-xs">▶</span> Fabrication Lab</a></li>
               <li><Link to="/services" className="hover:text-[#fbbf24] transition-colors flex items-center gap-2"><span className="text-[#fbbf24] text-xs">▶</span> What We Offers</Link></li>
               <li><a href="#" className="hover:text-[#fbbf24] transition-colors flex items-center gap-2"><span className="text-[#fbbf24] text-xs">▶</span> Electronics Labs</a></li>
               <li><a href="#" className="hover:text-[#fbbf24] transition-colors flex items-center gap-2"><span className="text-[#fbbf24] text-xs">▶</span> High End Computers</a></li>
@@ -88,8 +108,34 @@ export function FooterV1() {
           </div>
         </div>
 
+        {/* Newsletter Strip */}
+        <div className="mt-8 md:mt-12 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-5 md:p-8 flex flex-col md:flex-row items-center gap-4 md:gap-8">
+          <div className="flex-1 min-w-0">
+            <h4 className="text-white font-semibold text-base md:text-lg mb-1" style={{ fontFamily: "'Sora', sans-serif" }}>Stay in the Loop</h4>
+            <p className="text-white/60 text-xs md:text-sm">Hackathons, grants & startup stories — curated monthly.</p>
+          </div>
+          <form onSubmit={handleSubscribe} className="flex gap-2 w-full md:w-auto">
+            <input
+              type="email"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              placeholder="your@email.com"
+              required
+              className="flex-1 px-4 py-2.5 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-white/40 text-sm outline-none focus:border-[#fbbf24] transition-colors"
+            />
+            <button
+              type="submit"
+              disabled={loading}
+              className="shrink-0 px-5 py-2.5 rounded-xl font-semibold text-sm transition-all"
+              style={{ background: 'linear-gradient(135deg, #e67614, #fbbf24)', color: '#fff', border: 'none', cursor: loading ? 'not-allowed' : 'pointer', opacity: loading ? 0.7 : 1 }}
+            >
+              {loading ? '...' : 'Subscribe'}
+            </button>
+          </form>
+        </div>
+
         {/* Bottom Bar */}
-        <div className="mt-6 md:mt-16 flex flex-col items-center justify-between border-t border-white/10 pt-4 md:pt-8 text-xs text-white sm:flex-row gap-2 sm:gap-0">
+        <div className="mt-6 md:mt-10 flex flex-col items-center justify-between border-t border-white/10 pt-4 md:pt-8 text-xs text-white sm:flex-row gap-2 sm:gap-0">
           <p>© Copyright 2026. All Rights Reserved. Navrachna Foundation for Entrepreneurship Development</p>
           <p className="mt-2 sm:mt-0">
             Crafted and engineered by <span className="text-[#fbbf24]">Orbitron Labs LLP</span>

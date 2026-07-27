@@ -50,7 +50,7 @@ export function IicItsecPage() {
 
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <h1 className="text-3xl sm:text-4xl font-normal tracking-tight text-white leading-tight drop-shadow-md">
-            Institution’s Innovation Council ITS Engineering College Greater Noida (IIC-ITSEC)
+            Institution’s Innovation Council I.T.S Engineering College Greater Noida (IIC-ITSEC)
           </h1>
         </div>
       </section>
@@ -65,13 +65,13 @@ export function IicItsecPage() {
           </h2>
           <div className="text-sm text-gray-500 leading-relaxed flex flex-col gap-4 text-justify font-normal">
             <p>
-              Institution’s Innovation Council (IIC) program of Ministry of Education Innovation Cell (MIC) aims at functioning IIC in ITS Engineering College (ITSEC) to streamline and strengthen the I&E ecosystem in the campus and foster the culture of Innovation among students, faculty and staff members through multitudinous modes leading to an innovation promotion in the campuses. ITSEC had established Institution Innovation Council (IIC) as per the norms of Innovation Cell, Ministry of Education, Government of India, during IIC Calendar year 2018-19. ITSEC had been rated with 3 Star Rating by MHRD & AICTE for conducting various activities prescribed by Innovation Cell, Ministry of HRD, Govt. of India to promote Innovation and Startup ecosystem in campus during the IIC calendar year 2018-19. ITSEC had been rated with 5 Star Rating and 4 Star Rating by MOE & AICTE for conducting various activities prescribed by Innovation Cell, Ministry of Education, Govt. of India to promote Innovation and Start-up ecosystem in campus during the IIC calendar year 2019-20 and 2020-21 respectively.
+              Institution’s Innovation Council (IIC) program of Ministry of Education Innovation Cell (MIC) aims at functioning IIC in I.T.S Engineering College (ITSEC) to streamline and strengthen the I&E ecosystem in the campus and foster the culture of Innovation among students, faculty and staff members through multitudinous modes leading to an innovation promotion in the campuses. ITSEC had established Institution Innovation Council (IIC) as per the norms of Innovation Cell, Ministry of Education, Government of India, during IIC Calendar year 2018-19. ITSEC had been rated with 3 Star Rating by MHRD & AICTE for conducting various activities prescribed by Innovation Cell, Ministry of HRD, Govt. of India to promote Innovation and Startup ecosystem in campus during the IIC calendar year 2018-19. ITSEC had been rated with 5 Star Rating and 4 Star Rating by MOE & AICTE for conducting various activities prescribed by Innovation Cell, Ministry of Education, Govt. of India to promote Innovation and Start-up ecosystem in campus during the IIC calendar year 2019-20 and 2020-21 respectively.
             </p>
             <p>
               ITSEC was recognized in the band “EXCELLENT” under the category “Colleges/Institutes (Private / Self Financed) (Technical)” in Atal Ranking of Institutions on Innovation Achievement(ARIIA) 2020-2021, a flagship program of the Ministry of Education, Government of India.
             </p>
             <p>
-              Institution’s Innovation Council (IIC) of ITS Engineering College Greater Noida again rated as Highest Star Rating (4 Star) and received a Letter of Appreciation by Ministry of Education Innovation Cell (MIC) and AICTE for the continuous support and contribution towards building the innovation and entrepreneurship culture development in the campus and also extending support to help other Mentee IIC institutions towards growth of the IIC network during the academic year 2021-22.
+              Institution’s Innovation Council (IIC) of I.T.S Engineering College Greater Noida again rated as Highest Star Rating (4 Star) and received a Letter of Appreciation by Ministry of Education Innovation Cell (MIC) and AICTE for the continuous support and contribution towards building the innovation and entrepreneurship culture development in the campus and also extending support to help other Mentee IIC institutions towards growth of the IIC network during the academic year 2021-22.
             </p>
           </div>
         </div>
@@ -84,7 +84,7 @@ export function IicItsecPage() {
             <div>
               <h3 className="text-xl text-[#013759] font-normal mb-4">Vision</h3>
               <p className="text-xs text-gray-500 leading-relaxed text-justify font-normal">
-                To make ITS Engineering College a global hub for pre-incubation, incubation and acceleration ecosystem to promote innovation, start-up and entrepreneurship.
+                To make I.T.S Engineering College a global hub for pre-incubation, incubation and acceleration ecosystem to promote innovation, start-up and entrepreneurship.
               </p>
             </div>
           </div>
@@ -94,7 +94,7 @@ export function IicItsecPage() {
             <div>
               <h3 className="text-xl text-[#013759] font-normal mb-4">Mision</h3>
               <p className="text-xs text-gray-500 leading-relaxed text-justify font-normal">
-                Institution’s Innovation Council (IIC) of ITS Engineering College Greater Noida, a program of Ministry of Education Innovation Cell in collaboration with AICTE, aims to systematically foster the culture of innovation, start-up and entrepreneurship ecosystem in the campus.
+                Institution’s Innovation Council (IIC) of I.T.S Engineering College Greater Noida, a program of Ministry of Education Innovation Cell in collaboration with AICTE, aims to systematically foster the culture of innovation, start-up and entrepreneurship ecosystem in the campus.
               </p>
             </div>
           </div>

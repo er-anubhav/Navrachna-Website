@@ -42,7 +42,7 @@ export function TeamPage() {
       image: teamSudhanshu
     },
     {
-      name: "Mr. Shashwat Panday",
+      name: "Mr. Upendra Kumar Aggarwal",
       role: "Business Plan, Software Developer",
       expertise: [
         "AI & ML Systems",

@@ -171,7 +171,6 @@ export function ServicesPage() {
               { label: 'Electronics Labs', href: '/facilities/electronics-labs', desc: 'Oscilloscopes, power supplies, SMD rework, and more.' },
               { label: 'High End Computers', href: '/facilities/high-end-computers', desc: 'Intel i9, RTX 3090, 128 GB RAM workstations for CAD & simulation.' },
               { label: '3D Printing', href: '/facilities/3d-printing', desc: 'SLA and FDM printers for precision prototype manufacturing.' },
-              { label: 'Fabrication Lab', href: '/facilities/fabrication-lab', desc: 'CO₂ laser cutter, CNC plasma, vinyl cutter, and more.' },
             ].map((item, i) => (
               <Link
                 key={i}
