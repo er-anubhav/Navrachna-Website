@@ -25,6 +25,32 @@ dist-ssr
 .vercel
 
 # Archives & Large Assets
-*.zip
 Newgen_Video's & Photo's/
+*.zip
+*.7z
+*.rar
+*.tar
+*.tar.gz
+
+# Videos
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm
+
+# Temporary images
 image copy*.png
+
+# Environment files
+.env
+.env.*
+
+# Build outputs
+build/
+coverage/
+
+# OS files
+Thumbs.db
+
+
