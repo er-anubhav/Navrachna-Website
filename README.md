@@ -1,6 +1,6 @@
 # Navrachna Foundation for Entrepreneurship Development (NFED)
 
-> **Official Portal for NFED** — An autonomous, sector-agnostic startup incubator and premium co-working ecosystem operated under the aegis of **I.T.S. Engineering College**, Greater Noida.
+> **Official Portal for Navrachna Foundation** — An autonomous, sector-agnostic startup incubator and premium co-working ecosystem operated under the aegis of **I.T.S Engineering College**, Greater Noida.
 
 🌐 **Live Demo**: [https://navrachna.vercel.app](https://navrachna.vercel.app)
 
@@ -10,13 +10,13 @@
 
 Navrachna Foundation for Entrepreneurship Development (NFED) empowers early-stage founders, research innovators, and student entrepreneurs with early-stage velocity, high-fidelity mentorship, prototyping infrastructure, state-of-the-art incubation, and institutional seed grants.
 
-This repository contains the official production web platform for NFED, engineered with modern frontend practices, dynamic UI animations, and seamless mobile responsiveness.
+This repository contains the official production web platform for Navrachna Foundation, engineered with modern frontend practices, dynamic UI animations, and seamless mobile responsiveness.
 
 ---
 
 ## ✨ Key Features
 
-- 🏛️ **About NFED & Vision/Mission**: Comprehensive institutional overview, core values, and strategic regional incubator node roadmap.
+- 🏛️ **About Navrachna Foundation & Vision/Mission**: Comprehensive institutional overview, core values, and strategic regional incubator node roadmap.
 - 👨‍💼 **Leadership Messages**: Insights and vision from executive leadership including Chairman, Vice Chairman, Director, and Advisor / In-Charge.
 - 📜 **Flagship Incubation Schemes**: Detailed information on government grants & fellowships including **MSME BI**, **DST**, **Startin-Up**, and **NewGen-IEDC**.
 - 🛠️ **Engineering Prototyping Facilities**: Interactive specification explorer for Fabrication Labs, 3D Printers, High-End Compute Workstations, and Co-Working Infrastructure.
@@ -71,18 +71,21 @@ Navrachnawebsite/
 ### Prerequisites
 
 Ensure you have the following installed on your machine:
+
 - **Node.js**: `v18.0.0` or higher
 - **npm**: `v9.0.0` or higher
 
 ### Installation
 
 1. **Clone the Repository**:
+
    ```bash
    git clone https://github.com/er-anubhav/Navrachna.git
    cd Navrachna
    ```
 
 2. **Install Dependencies**:
+
    ```bash
    npm install
    ```
@@ -97,12 +100,12 @@ Ensure you have the following installed on your machine:
 
 ## 📦 Scripts & Commands
 
-| Command | Description |
-| :--- | :--- |
-| `npm run dev` | Starts the local Vite development server with HMR. |
-| `npm run build` | Builds optimized production bundle in the `dist/` directory. |
-| `npm run preview` | Previews the local production build built in `dist/`. |
-| `npm run lint` | Runs ESLint static code analysis. |
+| Command           | Description                                                  |
+| :---------------- | :----------------------------------------------------------- |
+| `npm run dev`     | Starts the local Vite development server with HMR.           |
+| `npm run build`   | Builds optimized production bundle in the `dist/` directory. |
+| `npm run preview` | Previews the local production build built in `dist/`.        |
+| `npm run lint`    | Runs ESLint static code analysis.                            |
 
 ---
 
@@ -111,6 +114,7 @@ Ensure you have the following installed on your machine:
 The project is configured for seamless deployment to **Firebase Hosting**.
 
 To build and deploy:
+
 ```bash
 # Generate production bundle
 npm run build
@@ -123,5 +127,5 @@ npx firebase-tools deploy
 
 ## 🏛️ Aegis & Support
 
-Operated under the aegis of **I.T.S. Engineering College**, Greater Noida.  
+Operated under the aegis of **I.T.S Engineering College**, Greater Noida.  
 For inquiries, incubation support, or partnership opportunities, visit [Navrachna Foundation](https://navrachnafoundation.com).

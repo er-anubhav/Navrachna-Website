@@ -18,7 +18,7 @@ const defaultAboutData = {
     title: "Empowering the Next Generation of Innovators",
     titleSize: "text-2xl sm:text-4xl",
     paragraphs: [
-      "Navrachna Foundation for Entrepreneurship Development, a subsidiary of I.T.S. Engineering College, Greater Noida, is a dedicated platform committed to empowering the next generation of entrepreneurs. It enables students, faculty, and aspiring innovators to transform their ideas into impactful ventures by supporting the commercialization of technologies and fostering a strong startup culture.",
+      "Navrachna Foundation for Entrepreneurship Development, a subsidiary of I.T.S Engineering College, Greater Noida, is a dedicated platform committed to empowering the next generation of entrepreneurs. It enables students, faculty, and aspiring innovators to transform their ideas into impactful ventures by supporting the commercialization of technologies and fostering a strong startup culture.",
       "As the driving force behind the Startup Incubation Center, the foundation collaborates with the Government of Uttar Pradesh and is supported under the UP Startup Policy 2020, along with associations with key national bodies like Department of Science & Technology (DST - GOI) and Ministry of Micro, Small and Medium Enterprises (MSME). At its core, Navrachna focuses on nurturing innovation, validating ideas, and bridging the gap between inventors and investors—creating startups that contribute meaningfully to society and economic growth."
     ]
   },

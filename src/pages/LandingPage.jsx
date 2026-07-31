@@ -69,26 +69,26 @@ import leaderAdvisor from '../assets/navrachna_images/leader_advisor.png'
 
 const LEADERSHIP = [
   {
-    role: "Chairman, I.T.S The Education Group",
-    title: "Shri B.L. Gupta",
+    role: "Chairman, The I.T.S Education Group",
+    title: "Shri R.P. Chadha",
     photo: leaderChairman,
     message: "Our vision at Navrachna Foundation is to foster an ecosystem where youthful ambition meets strategic support. We are committed to building an environment that transforms innovative student ideas into sustainable business models that drive economic progress."
   },
   {
-    role: "Vice Chairman, I.T.S The Education Group",
+    role: "Vice Chairman, The I.T.S Education Group",
     title: "Shri Sohil Gupta",
     photo: leaderViceChairman,
     message: "At Navrachna Foundation, we bridge the gap between academic research and commercial reality. By pairing cutting-edge labs with seasoned industry leaders, we equip our founders with the execution speed needed to win."
   },
   {
     role: "Director, I.T.S Engineering College",
-    title: "Dr. Mayank Garg",
+    title: "Prof. (Dr.) Mayank Garg",
     photo: leaderDirector,
     message: "Engineering excellence is the cornerstone of technical innovation. Navrachna Foundation provides the precise multidisciplinary platform, prototyping infrastructure, and technical mentorship needed to scale deep-tech ventures."
   },
   {
     role: "Advisor / In-Charge, Navrachna Foundation",
-    title: "Prof. (Dr.) Sanjay Yadav",
+    title: "Dr. Surya Prasad Mishra",
     photo: leaderAdvisor,
     message: "Navrachna Foundation is built ground-up to serve founders. From government grant assistance to fabrication support, our hands-on incubation framework ensures that no promising idea fails for lack of guidance or capital."
   }
@@ -173,7 +173,7 @@ const STATS = [
 
 const PROGRAMS = [
   {
-    title: "Startin-Up",
+    title: "Startin-UP",
     description: "Discover funding and incubation opportunities through our specialized Startin-Up program, designed to assist and enable young entrepreneurs to initiate commercial exploitation of their technologies.",
     link: "/startin-up"
   },
@@ -279,7 +279,7 @@ const OUR_SPACES = [
     image: spaceCoworking
   },
   {
-    title: "NewGen Board Room",
+    title: "Conference Room",
     description: "Host pitch presentations, investor panels, and executive reviews in our high-tech boardrooms equipped with smart displays and AV suites.",
     image: spaceBoardroom
   },
@@ -299,8 +299,8 @@ const OUR_SPACES = [
     image: space3DPrinting
   },
   {
-    title: "Designing System (CAD & Simulation)",
-    description: "High-end compute systems dedicated to CAD designing, 3D modeling, finite element analysis, and structural simulations.",
+    title: "High-End Computer System",
+    description: "High-end compute systems dedicated to CAD designing, 3D modeling, finite element analysis, Model Training  and structural simulations.",
     image: spaceDesignSystem
   },
   {
@@ -687,7 +687,7 @@ export function LandingPage() {
 
             <div className="text-gray-600 text-xs sm:text-base font-normal leading-relaxed tracking-normal space-y-3 sm:space-y-5 text-left md:text-justify mb-4 sm:mb-8">
               <p>
-                Navrachna Foundation for Entrepreneurship Development, a subsidiary of I.T.S. Engineering College, Greater Noida, is a dedicated platform committed to empowering the next generation of entrepreneurs. It enables students, faculty, and aspiring innovators to transform their ideas into impactful ventures by supporting the commercialization of technologies and fostering a strong startup culture.
+                Navrachna Foundation for Entrepreneurship Development, a subsidiary of I.T.S Engineering College, Greater Noida, is a dedicated platform committed to empowering the next generation of entrepreneurs. It enables students, faculty, and aspiring innovators to transform their ideas into impactful ventures by supporting the commercialization of technologies and fostering a strong startup culture.
               </p>
               <p>
                 As the driving force behind the Startup Incubation Center, the foundation collaborates with the Government of Uttar Pradesh and is supported under the UP Startup Policy 2020, along with associations with key national bodies like Department of Science & Technology (DST - GOI) and Ministry of Micro, Small and Medium Enterprises (MSME). At its core, Navrachna focuses on nurturing innovation, validating ideas, and bridging the gap between inventors and investors—creating startups that contribute meaningfully to society and economic growth.
@@ -830,13 +830,13 @@ export function LandingPage() {
           {/* Left Column - Info & Action */}
           <div className="w-full lg:w-[42%] flex flex-col items-start text-left">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-normal text-[#013759] tracking-tight leading-[1.15] mb-4 lg:mb-6">
-              Explore Our Schemes and <br /> <span className="inline-block"><span className="text-[#10b981]">F</span><span className="text-[#ec4899]">l</span><span className="text-[#3b82f6]">a</span><span className="text-[#f59e0b]">g</span><span className="text-[#ef4444]">s</span><span className="text-[#8b5cf6]">h</span><span className="text-[#06b6d4]">i</span><span className="text-[#3b82f6]">p</span></span>  Programmes
+              Explore our Ecosystem Dimensions
             </h2>
             <p className="text-gray-600 text-sm md:text-md leading-relaxed text-justify mb-6 lg:mb-8 font-normal">
               At Navrachna Foundation, we coordinate incubation schemes that nurture entrepreneurs across every stage of their startup journey. These structured programs combine equity-free prototype grants, monthly fellowship stipends, intensive commercial scaling pipelines, and institutional resources to ensure early-stage ventures gain the right strategic assets to succeed.
             </p>
             <button className="rounded-xl bg-black px-6 py-2.5 sm:px-8 sm:py-3.5 font-medium text-xs sm:text-base text-white shadow-lg hover:bg-gray-800 transition-all duration-300 active:scale-95 cursor-pointer">
-              View all Program
+              View all Programs
             </button>
           </div>
 
