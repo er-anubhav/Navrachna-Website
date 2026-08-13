@@ -24,36 +24,65 @@ import { NewGenIedcPage } from './pages/NewGenIedcPage'
 import { NewGenProjectDetailPage } from './pages/NewGenProjectDetailPage'
 import { ServicesPage } from './pages/ServicesPage'
 
+// Admin CMS Architecture Imports
+import { AuthProvider } from './admin/context/AuthContext'
+import { ProtectedAdminRoute } from './admin/components/ProtectedAdminRoute'
+import { AdminLayout } from './admin/components/AdminLayout'
+import { AdminLoginPage } from './admin/pages/AdminLoginPage'
+import { AdminDashboardPage } from './admin/pages/AdminDashboardPage'
+import { AdminUnauthorizedPage } from './admin/pages/AdminUnauthorizedPage'
+import { AdminSettingsPage } from './admin/pages/AdminSettingsPage'
+import { AdminAnnouncementsPage } from './admin/pages/AdminAnnouncementsPage'
+
 function App() {
   return (
-    <Routes>
-      <Route element={<Layout />}>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/team" element={<TeamPage />} />
-        <Route path="/startin-up" element={<StartinUpPage />} />
-        <Route path="/programs" element={<ProgramsPage />} />
-        <Route path="/programs/:slug" element={<ProgramDetailPage />} />
-        <Route path="/programs/newgen-iedc" element={<NewGenIedcPage />} />
-        <Route path="/programs/newgen-iedc/project/:projectSlug" element={<NewGenProjectDetailPage />} />
-        <Route path="/msme-bi" element={<MsmeBiPage />} />
-        <Route path="/msme-yearly-activities" element={<MsmeYearlyPage />} />
-        <Route path="/msme-hackathons" element={<MsmeHackathonsPage />} />
-        <Route path="/policies" element={<OurPoliciesPage />} />
-        <Route path="/portfolio" element={<PortfolioPage />} />
-        <Route path="/facilities" element={<FacilitiesPage />} />
-        <Route path="/facilities/electronics-labs" element={<ElectronicsLabsPage />} />
-        <Route path="/facilities/high-end-computers" element={<HighEndComputersPage />} />
-        <Route path="/facilities/3d-printing" element={<ThreeDPrintingPage />} />
-        <Route path="/facilities/fabrication-lab" element={<FabricationLabPage />} />
-        <Route path="/innovation-cell/iic-itsec" element={<IicItsecPage />} />
-        <Route path="/services" element={<ServicesPage />} />
-        <Route path="/stories" element={<StoriesPage />} />
-        <Route path="/faq" element={<FaqPage />} />
-        <Route path="/contact" element={<ContactPage />} />
+    <AuthProvider>
+      <Routes>
+        {/* Public Website Routes */}
+        <Route element={<Layout />}>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/team" element={<TeamPage />} />
+          <Route path="/startin-up" element={<StartinUpPage />} />
+          <Route path="/programs" element={<ProgramsPage />} />
+          <Route path="/programs/:slug" element={<ProgramDetailPage />} />
+          <Route path="/programs/newgen-iedc" element={<NewGenIedcPage />} />
+          <Route path="/programs/newgen-iedc/project/:projectSlug" element={<NewGenProjectDetailPage />} />
+          <Route path="/msme-bi" element={<MsmeBiPage />} />
+          <Route path="/msme-yearly-activities" element={<MsmeYearlyPage />} />
+          <Route path="/msme-hackathons" element={<MsmeHackathonsPage />} />
+          <Route path="/policies" element={<OurPoliciesPage />} />
+          <Route path="/portfolio" element={<PortfolioPage />} />
+          <Route path="/facilities" element={<FacilitiesPage />} />
+          <Route path="/facilities/electronics-labs" element={<ElectronicsLabsPage />} />
+          <Route path="/facilities/high-end-computers" element={<HighEndComputersPage />} />
+          <Route path="/facilities/3d-printing" element={<ThreeDPrintingPage />} />
+          <Route path="/facilities/fabrication-lab" element={<FabricationLabPage />} />
+          <Route path="/innovation-cell/iic-itsec" element={<IicItsecPage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/stories" element={<StoriesPage />} />
+          <Route path="/faq" element={<FaqPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+        </Route>
+
+        {/* Public Admin Auth & Error Routes */}
+        <Route path="/admin/login" element={<AdminLoginPage />} />
+        <Route path="/admin/unauthorized" element={<AdminUnauthorizedPage />} />
+
+        {/* Protected Admin CMS Console Routes */}
+        <Route path="/admin" element={<ProtectedAdminRoute />}>
+          <Route element={<AdminLayout />}>
+            <Route index element={<Navigate to="/admin/dashboard" replace />} />
+            <Route path="dashboard" element={<AdminDashboardPage />} />
+            <Route path="settings" element={<AdminSettingsPage />} />
+            <Route path="announcements" element={<AdminAnnouncementsPage />} />
+          </Route>
+        </Route>
+
+        {/* Fallback Wildcard Catch-all */}
         <Route path="*" element={<Navigate to="/" replace />} />
-      </Route>
-    </Routes>
+      </Routes>
+    </AuthProvider>
   )
 }
 
