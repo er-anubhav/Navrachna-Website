@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import heroImage from '../assets/co-working-area-in-greater-noida-12-scaled.webp'
-import slideFull from '../assets/navrachna_images/portfolio/portfolio_slide_full.png'
+import { getStartups } from '../services/startupsService'
 
-// Women-Centric Startup Logos
+// Women-Centric Startup Fallback Logos
 import logoJagmag from '../assets/navrachna_images/portfolio/logo_jagmag.png'
 import logoNeurapex from '../assets/navrachna_images/portfolio/logo_neurapex.png'
 import logoIndusAi from '../assets/navrachna_images/portfolio/logo_indus_ai.png'
@@ -18,7 +18,7 @@ import logoVnorganics from '../assets/navrachna_images/portfolio/logo_vnorganics
 import logoTriposaints from '../assets/navrachna_images/portfolio/logo_triposaints.png'
 import logoTrulyfresh from '../assets/navrachna_images/portfolio/logo_trulyfresh.png'
 
-// Prominent Startup Logos
+// Prominent Startup Fallback Logos
 import logoNextorbit from '../assets/navrachna_images/portfolio/logo_nextorbit.png'
 import logoUnnatjivan from '../assets/navrachna_images/portfolio/logo_unnatjivan.png'
 import logoBigblare from '../assets/navrachna_images/portfolio/logo_bigblare.png'
@@ -34,360 +34,184 @@ import logoRedspiral from '../assets/navrachna_images/portfolio/logo_redspiral.p
 import logoNutritown from '../assets/navrachna_images/portfolio/logo_nutritown.png'
 import logoLaarsa from '../assets/navrachna_images/portfolio/logo_laarsa.png'
 
+const STATIC_STARTUPS = [
+  { name: "Jagmag Lights", logo: logoJagmag, type: "women", category: "Smart Hardware & IoT", desc: "Energy-efficient IoT LED controllers and smart home decorative lighting solutions." },
+  { name: "Neurapex AI", logo: logoNeurapex, type: "women", category: "Artificial Intelligence", desc: "Deep learning & natural language processing systems for enterprise decision automation." },
+  { name: "Indus AI", logo: logoIndusAi, type: "women", category: "Advanced Manufacturing", desc: "AI-driven industrial quality inspection and automated manufacturing vision systems." },
+  { name: "Digiera Private Limited", logo: logoDigieraD, type: "women", category: "Enterprise Software", desc: "Custom web development, mobile apps, and enterprise software engineering consulting." },
+  { name: "ePN (Electro-Proton Network)", logo: logoEpn, type: "women", category: "Electronics & Hardware", desc: "Advanced electronic circuit designs and hardware prototyping solutions." },
+  { name: "MyLyfCare", logo: logoMylyfcare, type: "women", category: "Healthcare Technology", desc: "Digital healthcare aggregator connecting patients to localized diagnostic centers and pharmacies." },
+  { name: "Door to Destination Technologies", logo: logoDoortodestination, type: "women", category: "Smart Logistics", desc: "Tech-enabled hyper-local logistics and smart dispatch routing solutions." },
+  { name: "Green Stag Technologies", logo: logoGreenstag, type: "women", category: "Agrotech & Biomass", desc: "Sustainable biomass processing and green agricultural hardware solutions." },
+  { name: "Barren to Berland Abrosaa", logo: logoAbrosaa, type: "women", category: "Agri-Tech", desc: "Soil rejuvenation technology converting infertile agricultural plots into high-yield croplands." },
+  { name: "Cyberkida Digiera", logo: logoCyberkida, type: "women", category: "Ed-Tech & Cyber Security", desc: "Cybersecurity awareness training tools and interactive ethical hacking e-learning platforms." },
+  { name: "SSB Engineering", logo: logoSsb, type: "women", category: "Heavy Mechanical Engineering", desc: "Heavy industrial machining, custom steel fabrication, and mechanical engineering assemblies." },
+  { name: "VN Organics", logo: logoVnorganics, type: "women", category: "Organic Agriculture", desc: "Chemical-free bio-fertilizers and organic plant nutrient supplements for sustainable farming." },
+  { name: "TripoSaints", logo: logoTriposaints, type: "women", category: "Smart Travel & Tourism", desc: "AI-driven personalized travel itinerary planner and smart tourism booking portal." },
+  { name: "TrulyFresh Hydroponics", logo: logoTrulyfresh, type: "women", category: "Agritech & Hydroponics", desc: "Controlled-environment urban hydroponic farming systems producing pesticide-free greens." },
+  { name: "NextOrbit Innovations", logo: logoNextorbit, type: "prominent", category: "Deep Tech & Aerospace", desc: "Satellite telemetry systems and aerospace payload telemetry processing components." },
+  { name: "Unnat Jivan / Upright Care", logo: logoUnnatjivan, type: "prominent", category: "Assistive Healthcare", desc: "Elderly care assistive technology devices and smart health monitoring systems." },
+  { name: "BigBlare Innovations", logo: logoBigblare, type: "prominent", category: "IoT & Acoustic Sensing", desc: "Acoustic sensing electronics and industrial noise pollution tracking devices." },
+  { name: "Autoremov", logo: logoAutoremov, type: "prominent", category: "Clean-Tech & Automation", desc: "Automotive automated debris removal hardware for commercial solar panels." },
+  { name: "Home Services Tech", logo: logoHomeservices, type: "prominent", category: "Services Aggregator", desc: "On-demand home maintenance technician dispatch and service scheduling platform." },
+  { name: "E4A Solution", logo: logoE4asolution, type: "prominent", category: "Energy Analytics", desc: "Energy efficiency auditing software and industrial power optimization systems." },
+  { name: "Intelligentia Labs", logo: logoIntelligentia, type: "prominent", category: "AI & Embedded Vision", desc: "Edge AI computing modules for autonomous robotics and computer vision." },
+  { name: "UPROI Digital", logo: logoUproi, type: "prominent", category: "Performance Marketing Tech", desc: "Performance marketing analytics and digital ROI optimization suite." },
+  { name: "Kineer Services", logo: logoKineer, type: "prominent", category: "Social Enterprise & Water", desc: "Clean drinking water purification units and inclusive employment initiatives." },
+  { name: "Evergreat Clean Energy", logo: logoEvergreat, type: "prominent", category: "Renewable Energy", desc: "Solar micro-grid storage solutions for rural commercial electrification." },
+  { name: "HexPRS LLP", logo: logoHexagontetch, type: "prominent", category: "Precision Manufacturing", desc: "Precision plastic injection molding and rapid prototype enclosure manufacturing." },
+  { name: "Orbitron Labs LLP", logo: logoRedspiral, type: "prominent", category: "Embedded Systems", desc: "Embedded firmware design and custom micro-controller PCB engineering." },
+  { name: "Nutri Town Superfoods", logo: logoNutritown, type: "prominent", category: "Food Tech & Wellness", desc: "Nutraceutical superfood formulations and fortified organic snack products." },
+  { name: "Laarsa Organic", logo: logoLaarsa, type: "prominent", category: "Organic Health & Wellness", desc: "Organic wellness products derived from cold-pressed medicinal herbal extracts." }
+]
+
 export function PortfolioPage() {
   const [activeTab, setActiveTab] = useState('all')
+  const [startupsList, setStartupsList] = useState(STATIC_STARTUPS)
+  const [loading, setLoading] = useState(true)
 
-  const ALL_STARTUPS = [
-    // --- WOMEN-CENTRIC STARTUPS (14) ---
-    {
-      name: "Jagmag Lights",
-      logo: logoJagmag,
-      type: "women",
-      category: "Smart Hardware & IoT",
-      desc: "Energy-efficient IoT LED controllers and smart home decorative lighting solutions."
-    },
-    {
-      name: "Neurapex AI",
-      logo: logoNeurapex,
-      type: "women",
-      category: "Artificial Intelligence",
-      desc: "Deep learning & natural language processing systems for enterprise decision automation."
-    },
-    {
-      name: "Indus AI",
-      logo: logoIndusAi,
-      type: "women",
-      category: "Advanced Manufacturing",
-      desc: "AI-driven industrial quality inspection and automated manufacturing vision systems."
-    },
-    {
-      name: "Digiera Private Limited",
-      logo: logoDigieraD,
-      type: "women",
-      category: "Enterprise Software",
-      desc: "Custom web development, mobile apps, and enterprise software engineering consulting."
-    },
-    {
-      name: "ePN (Electro-Proton Network)",
-      logo: logoEpn,
-      type: "women",
-      category: "Electronics & Hardware",
-      desc: "Advanced electronic circuit designs and hardware prototyping solutions."
-    },
-    {
-      name: "MyLyfCare",
-      logo: logoMylyfcare,
-      type: "women",
-      category: "Healthcare Technology",
-      desc: "Digital healthcare aggregator connecting patients to localized diagnostic centers and pharmacies."
-    },
-    {
-      name: "Door to Destination Technologies",
-      logo: logoDoortodestination,
-      type: "women",
-      category: "Smart Logistics",
-      desc: "Tech-enabled hyper-local logistics and smart dispatch routing solutions."
-    },
-    {
-      name: "Green Stag Technologies",
-      logo: logoGreenstag,
-      type: "women",
-      category: "Agrotech & Biomass",
-      desc: "Sustainable biomass processing and green agricultural hardware solutions."
-    },
-    {
-      name: "Barren to Berland Abrosaa",
-      logo: logoAbrosaa,
-      type: "women",
-      category: "Agritech & Soil Restoration",
-      desc: "Land reclamation and bio-fertilizer innovations converting wasteland into fertile soil."
-    },
-    {
-      name: "Cyberkida Digiera",
-      logo: logoCyberkida,
-      type: "women",
-      category: "Cyber Security & EdTech",
-      desc: "Ethical hacking training, cyber defense platforms, and digital security auditing."
-    },
-    {
-      name: "SSB Engineering",
-      logo: logoSsb,
-      type: "women",
-      category: "Industrial Prototyping",
-      desc: "Heavy structural fabrication and custom mechanical component manufacturing."
-    },
-    {
-      name: "VN Organics",
-      logo: logoVnorganics,
-      type: "women",
-      category: "Health & Organic Foods",
-      desc: "Pure organic food products and natural wellness formulations."
-    },
-    {
-      name: "TripoSaints",
-      logo: logoTriposaints,
-      type: "women",
-      category: "Sustainable Tourism",
-      desc: "Smart eco-tourism platform providing curated green travel experiences."
-    },
-    {
-      name: "TrulyFresh Hydroponics",
-      logo: logoTrulyfresh,
-      type: "women",
-      category: "Hydroponic Agritech",
-      desc: "Urban hydroponic farming setups delivering pesticide-free fresh produce."
-    },
-
-    // --- PROMINENT STARTUPS (14) ---
-    {
-      name: "NextOrbit Innovations",
-      logo: logoNextorbit,
-      type: "prominent",
-      category: "Aerospace & SpaceTech",
-      desc: "Advanced satellite telemetry components and propulsion simulation software."
-    },
-    {
-      name: "Unnat Jivan (UJ)",
-      logo: logoUnnatjivan,
-      type: "prominent",
-      category: "CleanTech & Renewable Energy",
-      desc: "Solar-powered utility devices and rural green energy distribution kits."
-    },
-    {
-      name: "BigBlare Innovations",
-      logo: logoBigblare,
-      type: "prominent",
-      category: "EV & Embedded Electronics",
-      desc: "DST & MSME-funded EV acceleration enhancers and smart battery management systems."
-    },
-    {
-      name: "Autoremov",
-      logo: logoAutoremov,
-      type: "prominent",
-      category: "AI Image Processing",
-      desc: "Automated AI background removal and computer vision graphic suites."
-    },
-    {
-      name: "Home Services Tech",
-      logo: logoHomeservices,
-      type: "prominent",
-      category: "On-Demand Services",
-      desc: "Hyper-local marketplace connecting skilled technicians with household maintenance needs."
-    },
-    {
-      name: "E4A Solution (Edge for All)",
-      logo: logoE4asolution,
-      type: "prominent",
-      category: "IoT & Edge Computing",
-      desc: "Edge-computing gateways and real-time industrial telemetry sensors."
-    },
-    {
-      name: "Intelligentia Labs",
-      logo: logoIntelligentia,
-      type: "prominent",
-      category: "AI Research & Telemetry",
-      desc: "Machine learning model optimization and edge compute firmware consulting."
-    },
-    {
-      name: "UPROI Digital",
-      logo: logoUproi,
-      type: "prominent",
-      category: "Financial Analytics & Tax Tech",
-      desc: "ROI optimization tools and digital tax compliance platforms for regional MSMEs."
-    },
-    {
-      name: "Kineer Services",
-      logo: logoKineer,
-      type: "prominent",
-      category: "Clean Water & Social Enterprise",
-      desc: "Water purification infrastructure creating dignified employment opportunities."
-    },
-    {
-      name: "Evergreat Clean Energy",
-      logo: logoEvergreat,
-      type: "prominent",
-      category: "Renewable Power Solutions",
-      desc: "Commercial rooftop solar installations and energy storage systems."
-    },
-    {
-      name: "Hexagon Tech Systems",
-      logo: logoHexagontetch,
-      type: "prominent",
-      category: "Deep-Tech Engineering",
-      desc: "High-precision CAD design, FEA structural simulation, and rapid tooling."
-    },
-    {
-      name: "Red Turbine Systems",
-      logo: logoRedspiral,
-      type: "prominent",
-      category: "Industrial Power Hardware",
-      desc: "High-efficiency micro-turbines and heat-recovery power generators."
-    },
-    {
-      name: "Nutri Town Superfoods",
-      logo: logoNutritown,
-      type: "prominent",
-      category: "Bio-Nutrition & Organic Foods",
-      desc: "Nutrient-dense organic superfood formulations and clean snacks."
-    },
-    {
-      name: "Laarsa Organic",
-      logo: logoLaarsa,
-      type: "prominent",
-      category: "Sustainable Agribusiness",
-      desc: "Eco-friendly agricultural outputs and sustainable bio-crop nutrients."
+  useEffect(() => {
+    async function fetchLiveStartups() {
+      setLoading(true)
+      const { data } = await getStartups()
+      if (data && data.length > 0) {
+        const formatted = data.map((item, idx) => {
+          const staticMatch = STATIC_STARTUPS.find(s => s.name.toLowerCase() === item.name.toLowerCase()) || STATIC_STARTUPS[idx % STATIC_STARTUPS.length]
+          return {
+            name: item.name,
+            logo: item.logo_url && item.logo_url.startsWith('http') ? item.logo_url : staticMatch.logo,
+            type: idx < 14 ? 'women' : 'prominent',
+            category: item.startup_categories?.name || staticMatch.category,
+            desc: item.description || staticMatch.desc
+          }
+        })
+        setStartupsList(formatted)
+      } else {
+        setStartupsList(STATIC_STARTUPS)
+      }
+      setLoading(false)
     }
-  ]
 
-  const filteredStartups = ALL_STARTUPS.filter(s => {
+    fetchLiveStartups()
+  }, [])
+
+  const filteredStartups = startupsList.filter((s) => {
+    if (activeTab === 'all') return true
     if (activeTab === 'women') return s.type === 'women'
     if (activeTab === 'prominent') return s.type === 'prominent'
     return true
   })
 
   return (
-    <div className="min-h-screen bg-white font-sans text-gray-900 antialiased">
-      
-      {/* Hero Header Section */}
-      <section className="relative flex min-h-[45vh] w-full items-center justify-center overflow-hidden py-16">
+    <div className="min-h-screen bg-white font-sans text-gray-900 antialiased font-normal">
+
+      {/* Mini Hero Section */}
+      <section className="relative flex min-h-[35vh] w-full items-center justify-center overflow-hidden py-12">
         <div className="absolute inset-0 z-0">
-          <div 
+          <div
             className="absolute inset-0 bg-cover bg-center bg-fixed opacity-70"
             style={{ backgroundImage: `url(${heroImage})` }}
-          ></div>
-          <div className="absolute inset-0 bg-[#013759]/90 pointer-events-none"></div>
+          />
+          <div className="absolute inset-0 bg-[#013759]/90 pointer-events-none" />
         </div>
 
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          <span className="inline-block rounded-full bg-amber-400/20 px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-amber-300 border border-amber-300/30 mb-4">
-            Incubated Ventures Showcase
-          </span>
-          <h1 className="text-3xl sm:text-5xl font-normal tracking-tight text-white leading-tight drop-shadow-md">
-            Our Incubated Portfolio
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-tight text-white leading-tight drop-shadow-md">
+            Our Portfolio Startups
           </h1>
-          <p className="mt-4 max-w-2xl mx-auto text-sm sm:text-base text-white/85 leading-relaxed">
-            Empowering 60+ high-impact startups, including 45+ women-led enterprises and deep-tech innovators supported under DST, StartinUP, and MSME grants.
+          <p className="mt-3 text-xs sm:text-sm text-white/80 max-w-2xl mx-auto">
+            Discover the innovative ventures accelerated by Navrachna Foundation across Deep-Tech, Clean-Tech, Agri-Tech, and Women-Led Entrepreneurship.
           </p>
         </div>
       </section>
 
-      {/* Official Pitch Deck Portfolio Banner Showcase */}
-      <section className="w-full bg-slate-900 py-8 border-b border-slate-800">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="rounded-2xl border border-slate-700 bg-slate-800/80 p-4 sm:p-6 shadow-xl overflow-hidden">
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-4">
-              <div>
-                <h3 className="text-lg sm:text-xl font-medium text-white tracking-tight">
-                  Official Pitch Deck Venture Wall
-                </h3>
-                <p className="text-xs text-slate-400">
-                  Verified Portfolio of Women-Centric & Prominent Incubated Startups (28 Featured)
-                </p>
-              </div>
-              <div className="flex gap-2">
-                <span className="bg-emerald-500/20 text-emerald-300 text-[11px] font-medium px-3 py-1 rounded-full border border-emerald-500/30">
-                  14 Women-Centric
-                </span>
-                <span className="bg-sky-500/20 text-sky-300 text-[11px] font-medium px-3 py-1 rounded-full border border-sky-500/30">
-                  14 Prominent
-                </span>
-              </div>
-            </div>
-            
-            <div className="w-full overflow-hidden rounded-xl border border-slate-700 bg-white/5 p-2 backdrop-blur-md">
-              <img 
-                src={slideFull} 
-                alt="Navrachna Foundation Incubated Portfolio Wall" 
-                className="w-full h-auto object-contain rounded-lg shadow-md"
-              />
-            </div>
-          </div>
+      {/* Filter Tabs & Main Content */}
+      <main className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 flex flex-col gap-12">
+        
+        {/* Filter Navigation */}
+        <div className="flex flex-wrap items-center justify-center gap-3 border-b border-slate-200 pb-6">
+          <button
+            onClick={() => setActiveTab('all')}
+            className={`rounded-full px-5 py-2 text-xs font-normal transition-all ${
+              activeTab === 'all'
+                ? 'bg-[#013759] text-white shadow-sm'
+                : 'bg-slate-100 text-gray-600 hover:bg-slate-200'
+            }`}
+          >
+            All Ventures ({startupsList.length})
+          </button>
+          <button
+            onClick={() => setActiveTab('women')}
+            className={`rounded-full px-5 py-2 text-xs font-normal transition-all ${
+              activeTab === 'women'
+                ? 'bg-[#013759] text-white shadow-sm'
+                : 'bg-slate-100 text-gray-600 hover:bg-slate-200'
+            }`}
+          >
+            Women-Led Startups
+          </button>
+          <button
+            onClick={() => setActiveTab('prominent')}
+            className={`rounded-full px-5 py-2 text-xs font-normal transition-all ${
+              activeTab === 'prominent'
+                ? 'bg-[#013759] text-white shadow-sm'
+                : 'bg-slate-100 text-gray-600 hover:bg-slate-200'
+            }`}
+          >
+            Prominent Incubated Startups
+          </button>
         </div>
-      </section>
 
-      {/* Filter Tabs & Startup Cards Grid Section */}
-      <section className="w-full py-16 sm:py-24 bg-[#f8fafc]">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          
-          {/* Category Filter Tabs */}
-          <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
-            <button
-              onClick={() => setActiveTab('all')}
-              className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 cursor-pointer ${
-                activeTab === 'all'
-                  ? 'bg-[#013759] text-white shadow-md scale-105'
-                  : 'bg-white text-gray-600 border border-slate-200 hover:bg-slate-50'
-              }`}
-            >
-              All Startups ({ALL_STARTUPS.length})
-            </button>
-            <button
-              onClick={() => setActiveTab('women')}
-              className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 cursor-pointer ${
-                activeTab === 'women'
-                  ? 'bg-[#013759] text-white shadow-md scale-105'
-                  : 'bg-white text-gray-600 border border-slate-200 hover:bg-slate-50'
-              }`}
-            >
-              Women Centric Startups (14)
-            </button>
-            <button
-              onClick={() => setActiveTab('prominent')}
-              className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 cursor-pointer ${
-                activeTab === 'prominent'
-                  ? 'bg-[#013759] text-white shadow-md scale-105'
-                  : 'bg-white text-gray-600 border border-slate-200 hover:bg-slate-50'
-              }`}
-            >
-              Prominent Startups (14)
-            </button>
+        {/* Startups Grid */}
+        {loading ? (
+          <div className="py-16 text-center">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#013759] mx-auto mb-4" />
+            <p className="text-sm text-gray-500">Loading portfolio startups from Supabase...</p>
           </div>
-
-          {/* Startups Grid */}
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {filteredStartups.map((startup, idx) => (
-              <div 
-                key={idx} 
-                className="group flex flex-col justify-between rounded-2xl border border-slate-200/80 bg-white p-5 shadow-xs transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredStartups.map((item, index) => (
+              <div
+                key={index}
+                className="flex flex-col justify-between rounded-lg border border-slate-200/80 bg-white p-6 shadow-sm hover:shadow-md transition-all group"
               >
-                <div>
-                  {/* Startup Logo Container */}
-                  <div className="mb-4 flex h-28 w-full items-center justify-center rounded-xl bg-slate-50 p-3 border border-slate-100 group-hover:bg-white transition-colors duration-300">
-                    <img 
-                      src={startup.logo} 
-                      alt={`${startup.name} logo`} 
-                      className="max-h-full max-w-full object-contain transition-transform duration-300 group-hover:scale-105"
+                <div className="flex flex-col gap-4">
+                  {/* Logo Container */}
+                  <div className="w-full h-24 rounded border border-slate-100 bg-slate-50/50 flex items-center justify-center p-4">
+                    <img
+                      src={item.logo}
+                      alt={item.name}
+                      className="max-h-full max-w-full object-contain filter group-hover:brightness-105 transition-all"
                     />
                   </div>
 
-                  {/* Category & Type Badge */}
-                  <div className="flex items-center justify-between gap-2 mb-2">
-                    <span className="text-[10px] font-semibold text-[#074887] tracking-wider uppercase truncate">
-                      {startup.category}
+                  {/* Info Block */}
+                  <div className="flex flex-col gap-1">
+                    <span className="text-[10px] font-normal uppercase tracking-wider text-slate-400">
+                      {item.category}
                     </span>
-                    <span className={`inline-block rounded-full px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wider shrink-0 ${
-                      startup.type === 'women' 
-                        ? 'bg-rose-50 text-rose-700 border border-rose-200' 
-                        : 'bg-sky-50 text-sky-700 border border-sky-200'
-                    }`}>
-                      {startup.type === 'women' ? 'Women Led' : 'Prominent'}
-                    </span>
+                    <h3 className="text-base text-slate-900 font-normal group-hover:text-[#013759] transition-colors leading-snug">
+                      {item.name}
+                    </h3>
                   </div>
 
-                  {/* Title & Description */}
-                  <h3 className="mb-2 text-base font-normal text-[#013759] tracking-tight">
-                    {startup.name}
-                  </h3>
-                  <p className="text-xs text-gray-500 leading-relaxed text-justify">
-                    {startup.desc}
+                  {/* Description */}
+                  <p className="text-xs text-gray-500 line-clamp-3 leading-relaxed text-justify">
+                    {item.desc}
                   </p>
+                </div>
+
+                <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                  <span className="text-[11px] font-normal text-[#013759] uppercase tracking-wider">
+                    Incubated Venture
+                  </span>
                 </div>
               </div>
             ))}
           </div>
+        )}
 
-        </div>
-      </section>
+      </main>
 
     </div>
   )

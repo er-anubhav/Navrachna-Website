@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { getPublishedAnnouncements } from '../services/announcementsService'
 import heroImage from '../assets/co-working-area-in-greater-noida-12-scaled.webp'
 import programsBg from '../assets/navrachna_images/co-working-area-in-greater-noida-13-scaled.webp'
 import spaceCoworking from '../assets/navrachna_images/spaces/coworking.jpg'
@@ -508,12 +509,28 @@ export function LandingPage() {
     return () => clearInterval(interval);
   }, []);
 
+  const [announcements, setAnnouncements] = useState(UPDATES);
+
+  useEffect(() => {
+    async function fetchAnnouncements() {
+      const { data } = await getPublishedAnnouncements();
+      if (data && data.length > 0) {
+        const formatted = data.map(a => ({
+          tag: a.tag || 'Notice',
+          text: a.content || a.title
+        }));
+        setAnnouncements(formatted);
+      }
+    }
+    fetchAnnouncements();
+  }, []);
+
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentUpdate((prev) => (prev + 1) % UPDATES.length);
+      setCurrentUpdate((prev) => (prev + 1) % (announcements.length || 1));
     }, 4000);
     return () => clearInterval(timer);
-  }, []);
+  }, [announcements.length]);
 
   return (
     <div className="relative min-h-screen w-full bg-white overflow-x-hidden max-w-full">
@@ -531,7 +548,7 @@ export function LandingPage() {
           className="relative flex flex-1 items-center overflow-hidden px-3 sm:px-5 min-h-[56px] sm:min-h-[52px] cursor-pointer hover:bg-white/5 transition-colors"
           title="Click to view all announcements"
         >
-          {UPDATES.map((update, index) => (
+          {announcements.map((update, index) => (
             <div
               key={index}
               className={`absolute left-3 right-3 sm:left-5 sm:right-5 flex items-center transition-all duration-700 ease-in-out ${
@@ -552,14 +569,14 @@ export function LandingPage() {
         <button
           onClick={() => setShowAnnouncementsModal(true)}
           className="relative shrink-0 mr-2 sm:mr-4 p-2 text-sky-200 hover:text-white hover:bg-white/10 rounded-full transition-all cursor-pointer flex items-center justify-center"
-          title="View all 4 announcements"
+          title={`View all ${announcements.length} announcements`}
           aria-label="View announcements"
         >
           <svg className="w-5 h-5 sm:w-6 sm:h-6 text-sky-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
           </svg>
           <span className="absolute -top-0.5 -right-0.5 flex h-4.5 w-4.5 items-center justify-center rounded-full bg-red-500 text-[10px] font-bold text-white shadow-md animate-pulse">
-            4
+            {announcements.length}
           </span>
         </button>
       </div>
@@ -582,9 +599,9 @@ export function LandingPage() {
               </button>
             </div>
 
-            {/* Announcements List — compact horizontal layout */}
+            {/* Announcements List */}
             <div className="overflow-y-auto space-y-2 flex-1">
-              {UPDATES.map((item, idx) => (
+              {announcements.map((item, idx) => (
                 <div 
                   key={idx}
                   className="flex items-start gap-2.5 py-2.5 px-3 rounded-xl bg-slate-50 border border-slate-100 hover:border-[#074887]/20 transition-all"

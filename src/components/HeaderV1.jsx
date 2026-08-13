@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import logo from '../assets/navrachna_images/nfed_logo.png'
 
 export function HeaderV1() {
@@ -77,7 +78,7 @@ export function HeaderV1() {
         <div className="flex items-center justify-between px-4 sm:px-8 py-1.5 sm:py-4 lg:py-5">
           {/* Logo & Brand Name */}
           <div className="flex items-center">
-            <a href="/" className="flex items-center gap-2 sm:gap-3 group">
+            <Link to="/" className="flex items-center gap-2 sm:gap-3 group">
               <img src={logo} alt="Navrachna Logo" className="h-8 sm:h-10 w-auto object-contain shrink-0 transition-transform duration-300 group-hover:scale-[1.02]" />
               
               <div className="h-7 sm:h-9 w-px bg-slate-300 shrink-0"></div>
@@ -93,14 +94,14 @@ export function HeaderV1() {
                   (A Section 8 Company of I.T.S Engineering College, Greater Noida)
                 </span>
               </div>
-            </a>
+            </Link>
           </div>
 
           {/* Desktop Navigation (max-lg:hidden flex) */}
           <nav className="max-lg:hidden flex items-center justify-end gap-x-4 xl:gap-x-7 text-xs xl:text-sm font-medium tracking-wide text-[#013759] shrink-0">
-            <a href="/" className="text-[#013759] transition-colors hover:text-[#074887]">Home</a>
-            <a href="/startin-up" className="text-[#013759] transition-colors hover:text-[#074887]">StartIn-UP</a>
-            <a href="/programs/newgen-iedc" className="text-[#013759] transition-colors hover:text-[#074887]">NewGen-IEDC</a>
+            <Link to="/" className="text-[#013759] transition-colors hover:text-[#074887]">Home</Link>
+            <Link to="/startin-up" className="text-[#013759] transition-colors hover:text-[#074887]">StartIn-UP</Link>
+            <Link to="/programs/newgen-iedc" className="text-[#013759] transition-colors hover:text-[#074887]">NewGen-IEDC</Link>
             
             {/* MSME-BI Dropdown */}
             <div 
@@ -108,32 +109,32 @@ export function HeaderV1() {
               onMouseEnter={() => setMsmeOpen(true)}
               onMouseLeave={() => setMsmeOpen(false)}
             >
-              <a href="/msme-bi" className="flex items-center gap-1 text-[#013759] transition-colors hover:text-[#074887] cursor-pointer py-1">
+              <Link to="/msme-bi" className="flex items-center gap-1 text-[#013759] transition-colors hover:text-[#074887] cursor-pointer py-1">
                 MSME-BI <span className="text-[9px] text-gray-400">▼</span>
-              </a>
+              </Link>
               
               {msmeOpen && (
                 <div className="absolute left-0 top-full pt-1.5 w-56 z-50">
                   <div className="rounded-xl border border-slate-100 bg-white p-2 shadow-xl">
-                    <a 
-                      href="/msme-yearly-activities" 
+                    <Link 
+                      to="/msme-yearly-activities" 
                       className="block rounded-lg px-4 py-2 text-xs font-normal text-black hover:bg-slate-50 hover:text-[#074887] transition-colors"
                     >
                       MSME Yearly Activities
-                    </a>
-                    <a 
-                      href="/msme-hackathons" 
+                    </Link>
+                    <Link 
+                      to="/msme-hackathons" 
                       className="block rounded-lg px-4 py-2 text-xs font-normal text-black hover:bg-slate-50 hover:text-[#074887] transition-colors"
                     >
                       MSME Hackathons
-                    </a>
+                    </Link>
                   </div>
                 </div>
               )}
             </div>
 
-            <a href="/policies" className="text-[#013759] transition-colors hover:text-[#074887]">Our Policies</a>
-            <a href="/portfolio" className="text-[#013759] transition-colors hover:text-[#074887]">Portfolio</a>
+            <Link to="/policies" className="text-[#013759] transition-colors hover:text-[#074887]">Our Policies</Link>
+            <Link to="/portfolio" className="text-[#013759] transition-colors hover:text-[#074887]">Portfolio</Link>
             
             {/* Combined More Dropdown */}
             <div 

@@ -1,6 +1,11 @@
 node_modules
-dist
-.vercel
 .git
-*.deb
-google-chrome-stable_current_amd64.deb
+.agents
+Planning
+supabase
+scripts
+dist
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local

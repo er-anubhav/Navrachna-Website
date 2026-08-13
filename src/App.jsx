@@ -21,6 +21,7 @@ import { ThreeDPrintingPage } from './pages/ThreeDPrintingPage'
 import { IicItsecPage } from './pages/IicItsecPage'
 import { FabricationLabPage } from './pages/FabricationLabPage'
 import { NewGenIedcPage } from './pages/NewGenIedcPage'
+import { NewGenProjectDetailPage } from './pages/NewGenProjectDetailPage'
 import { ServicesPage } from './pages/ServicesPage'
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
         <Route path="/programs" element={<ProgramsPage />} />
         <Route path="/programs/:slug" element={<ProgramDetailPage />} />
         <Route path="/programs/newgen-iedc" element={<NewGenIedcPage />} />
+        <Route path="/programs/newgen-iedc/project/:projectSlug" element={<NewGenProjectDetailPage />} />
         <Route path="/msme-bi" element={<MsmeBiPage />} />
         <Route path="/msme-yearly-activities" element={<MsmeYearlyPage />} />
         <Route path="/msme-hackathons" element={<MsmeHackathonsPage />} />
