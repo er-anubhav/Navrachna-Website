@@ -8,8 +8,6 @@ import { FacilitiesPage } from './pages/FacilitiesPage'
 import { StoriesPage } from './pages/StoriesPage'
 import { FaqPage } from './pages/FaqPage'
 import { ContactPage } from './pages/ContactPage'
-import { StartinUpPage } from './pages/StartinUpPage'
-import { MsmeBiPage } from './pages/MsmeBiPage'
 import { MsmeYearlyPage } from './pages/MsmeYearlyPage'
 import { MsmeHackathonsPage } from './pages/MsmeHackathonsPage'
 import { OurPoliciesPage } from './pages/OurPoliciesPage'
@@ -18,9 +16,7 @@ import { TeamPage } from './pages/TeamPage'
 import { ElectronicsLabsPage } from './pages/ElectronicsLabsPage'
 import { HighEndComputersPage } from './pages/HighEndComputersPage'
 import { ThreeDPrintingPage } from './pages/ThreeDPrintingPage'
-import { IicItsecPage } from './pages/IicItsecPage'
 import { FabricationLabPage } from './pages/FabricationLabPage'
-import { NewGenIedcPage } from './pages/NewGenIedcPage'
 import { NewGenProjectDetailPage } from './pages/NewGenProjectDetailPage'
 import { ServicesPage } from './pages/ServicesPage'
 
@@ -33,6 +29,12 @@ import { AdminDashboardPage } from './admin/pages/AdminDashboardPage'
 import { AdminUnauthorizedPage } from './admin/pages/AdminUnauthorizedPage'
 import { AdminSettingsPage } from './admin/pages/AdminSettingsPage'
 import { AdminAnnouncementsPage } from './admin/pages/AdminAnnouncementsPage'
+import { AdminProgramsPage } from './admin/pages/AdminProgramsPage'
+import { AdminServicesPage } from './admin/pages/AdminServicesPage'
+import { AdminEventsPage } from './admin/pages/AdminEventsPage'
+import { AdminStartupsPage } from './admin/pages/AdminStartupsPage'
+import { AdminFacilitiesPage } from './admin/pages/AdminFacilitiesPage'
+import { AdminUsersPage } from './admin/pages/AdminUsersPage'
 
 function App() {
   return (
@@ -43,12 +45,16 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/team" element={<TeamPage />} />
-          <Route path="/startin-up" element={<StartinUpPage />} />
           <Route path="/programs" element={<ProgramsPage />} />
+          
+          {/* Universal Generalized Program Engine Routes */}
           <Route path="/programs/:slug" element={<ProgramDetailPage />} />
-          <Route path="/programs/newgen-iedc" element={<NewGenIedcPage />} />
+          <Route path="/programs/newgen-iedc" element={<ProgramDetailPage />} />
+          <Route path="/msme-bi" element={<ProgramDetailPage />} />
+          <Route path="/startin-up" element={<ProgramDetailPage />} />
+          <Route path="/innovation-cell/iic-itsec" element={<ProgramDetailPage />} />
+
           <Route path="/programs/newgen-iedc/project/:projectSlug" element={<NewGenProjectDetailPage />} />
-          <Route path="/msme-bi" element={<MsmeBiPage />} />
           <Route path="/msme-yearly-activities" element={<MsmeYearlyPage />} />
           <Route path="/msme-hackathons" element={<MsmeHackathonsPage />} />
           <Route path="/policies" element={<OurPoliciesPage />} />
@@ -58,7 +64,6 @@ function App() {
           <Route path="/facilities/high-end-computers" element={<HighEndComputersPage />} />
           <Route path="/facilities/3d-printing" element={<ThreeDPrintingPage />} />
           <Route path="/facilities/fabrication-lab" element={<FabricationLabPage />} />
-          <Route path="/innovation-cell/iic-itsec" element={<IicItsecPage />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/stories" element={<StoriesPage />} />
           <Route path="/faq" element={<FaqPage />} />
@@ -74,6 +79,12 @@ function App() {
           <Route element={<AdminLayout />}>
             <Route index element={<Navigate to="/admin/dashboard" replace />} />
             <Route path="dashboard" element={<AdminDashboardPage />} />
+            <Route path="programs" element={<AdminProgramsPage />} />
+            <Route path="services" element={<AdminServicesPage />} />
+            <Route path="facilities" element={<AdminFacilitiesPage />} />
+            <Route path="events" element={<AdminEventsPage />} />
+            <Route path="startups" element={<AdminStartupsPage />} />
+            <Route path="users" element={<AdminUsersPage />} />
             <Route path="settings" element={<AdminSettingsPage />} />
             <Route path="announcements" element={<AdminAnnouncementsPage />} />
           </Route>
