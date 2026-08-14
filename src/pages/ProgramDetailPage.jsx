@@ -238,17 +238,16 @@ export function ProgramDetailPage() {
             <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-[#d9a036]">
               <span className="w-2 h-2 rounded-full bg-[#d9a036] animate-pulse" />
               <span className="text-[11px] font-mono tracking-widest uppercase">
-                DST NEDB | {slug?.toUpperCase() || 'NEWGEN-IEDC'} — NAVRACHNA FOUNDATION
+                {nodalTag} — NAVRACHNA FOUNDATION
               </span>
             </div>
 
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-normal text-white tracking-tight leading-[1.15]">
-              Innovate. Build. Scale. <br />
-              <span className="text-[#d9a036]">We Incubate Impact.</span>
+              {program.name || program.title}
             </h1>
 
             <p className="text-sm sm:text-base text-slate-300 max-w-xl font-normal leading-relaxed">
-              Empowering student innovators with funding, infrastructure, mentorship and market access to transform ideas into scalable ventures.
+              {program.tagline || program.summary || program.description || 'Empowering student innovators with funding, infrastructure, mentorship and market access to transform ideas into scalable ventures.'}
             </p>
 
             <div className="flex flex-wrap items-center gap-4 mt-3">
@@ -264,10 +263,10 @@ export function ProgramDetailPage() {
               </a>
               
               <a
-                href="#portfolio"
+                href="#incentives"
                 className="border border-white/20 text-white hover:bg-white/10 text-xs sm:text-sm font-normal px-7 py-3.5 rounded-xl transition-all cursor-pointer"
               >
-                Explore Ventures
+                Explore Grants & Perks
               </a>
             </div>
           </div>
