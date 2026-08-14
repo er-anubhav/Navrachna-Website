@@ -218,23 +218,127 @@ export function ProgramDetailPage() {
   return (
     <div className="min-h-screen bg-white font-sans text-gray-900 antialiased font-normal">
       
-      {/* HERO SECTION MATCHING REFERENCE DESIGN */}
-      <section className="relative w-full overflow-hidden py-14 sm:py-16 px-4 sm:px-6 lg:px-8 text-center bg-[#074887]">
-        <div className="absolute inset-0 z-0">
+      {/* HERO SECTION - MATCHING REFERENCE DESIGN */}
+      <section className="relative w-full overflow-hidden bg-[#061e33] py-14 sm:py-20 px-4 sm:px-8 lg:px-12 border-b border-slate-800">
+        {/* Subtle grid pattern background */}
+        <div className="absolute inset-0 z-0 bg-[radial-gradient(#1e3a5f_1px,transparent_1px)] [background-size:24px_24px] opacity-40 pointer-events-none" />
+        
+        {/* Overlay photo with blend */}
+        <div className="absolute inset-0 z-0 opacity-15 mix-blend-overlay pointer-events-none">
           <div 
-            className="absolute inset-0 bg-cover bg-center opacity-25 mix-blend-overlay"
+            className="w-full h-full bg-cover bg-center"
             style={{ backgroundImage: `url(${heroImage})` }}
           />
-          <div className="absolute inset-0 bg-[#074887]/90 pointer-events-none" />
         </div>
 
-        <div className="relative z-10 max-w-6xl mx-auto flex flex-col items-center justify-center gap-2">
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-normal text-white tracking-tight">
-            {program.name || program.title}
-          </h1>
-          <p className="text-xs sm:text-sm text-sky-100/90 max-w-3xl font-normal leading-relaxed">
-            Technology Business Incubation at ITS Engineering College, empowering next-gen builders.
-          </p>
+        <div className="relative z-10 max-w-[1600px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          {/* LEFT COLUMN: CALLOUT & HEADLINE */}
+          <div className="lg:col-span-7 flex flex-col items-start gap-5 text-left">
+            <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-[#d9a036]">
+              <span className="w-2 h-2 rounded-full bg-[#d9a036] animate-pulse" />
+              <span className="text-[11px] font-mono tracking-widest uppercase">
+                DST NEDB | {slug?.toUpperCase() || 'NEWGEN-IEDC'} — NAVRACHNA FOUNDATION
+              </span>
+            </div>
+
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-normal text-white tracking-tight leading-[1.15]">
+              Innovate. Build. Scale. <br />
+              <span className="text-[#d9a036]">We Incubate Impact.</span>
+            </h1>
+
+            <p className="text-sm sm:text-base text-slate-300 max-w-xl font-normal leading-relaxed">
+              Empowering student innovators with funding, infrastructure, mentorship and market access to transform ideas into scalable ventures.
+            </p>
+
+            <div className="flex flex-wrap items-center gap-4 mt-3">
+              <a
+                href="#incubation-form"
+                style={{ color: '#0f172a' }}
+                className="bg-[#d9a036] hover:bg-[#c8922c] !text-slate-900 text-xs sm:text-sm font-normal px-7 py-3.5 rounded-xl shadow-xl transition-all flex items-center gap-2 cursor-pointer"
+              >
+                <span>Apply for Incubation</span>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+              
+              <a
+                href="#portfolio"
+                className="border border-white/20 text-white hover:bg-white/10 text-xs sm:text-sm font-normal px-7 py-3.5 rounded-xl transition-all cursor-pointer"
+              >
+                Explore Ventures
+              </a>
+            </div>
+          </div>
+
+          {/* RIGHT COLUMN: ISOMETRIC BUILDING BLUEPRINT GRAPHIC */}
+          <div className="lg:col-span-5 flex justify-center lg:justify-end">
+            <div className="relative w-full max-w-md aspect-[4/3] rounded-3xl border border-sky-500/20 bg-slate-900/60 p-6 backdrop-blur-xl shadow-2xl flex flex-col justify-between overflow-hidden group">
+              
+              {/* Subtle background blueprint grid */}
+              <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:16px_16px] opacity-30 pointer-events-none" />
+
+              {/* Top Card Badge */}
+              <div className="relative z-10 flex items-center justify-between border-b border-slate-800 pb-3">
+                <div className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
+                  <span className="text-[11px] font-mono text-slate-300">ITS Incubation Hub Blueprint</span>
+                </div>
+                <span className="text-[10px] font-mono text-[#d9a036] bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">
+                  {nodalTag.split(',')[0]}
+                </span>
+              </div>
+
+              {/* Center 3D Isometric Building Vector */}
+              <div className="relative z-10 my-4 flex items-center justify-center py-4">
+                <svg className="w-48 h-48 text-sky-400/80 drop-shadow-[0_10px_25px_rgba(56,189,248,0.2)]" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  {/* Isometric Base Grid */}
+                  <path d="M100 20 L170 60 L100 100 L30 60 Z" stroke="#38bdf8" strokeWidth="1.5" strokeDasharray="3 3" opacity="0.6" fill="rgba(56,189,248,0.05)" />
+                  <path d="M30 60 L30 140 L100 180 L170 140 L170 60" stroke="#1e293b" strokeWidth="1.5" />
+
+                  {/* Building Block 1 */}
+                  <path d="M60 80 L100 60 L140 80 L100 100 Z" fill="#0284c7" fillOpacity="0.4" stroke="#38bdf8" strokeWidth="1.5" />
+                  <path d="M60 80 L60 130 L100 150 L100 100 Z" fill="#0369a1" fillOpacity="0.6" stroke="#0284c7" strokeWidth="1.5" />
+                  <path d="M140 80 L140 130 L100 150 L100 100 Z" fill="#075985" fillOpacity="0.8" stroke="#0284c7" strokeWidth="1.5" />
+
+                  {/* Upper Tower */}
+                  <path d="M80 50 L100 40 L120 50 L100 60 Z" fill="#d9a036" fillOpacity="0.7" stroke="#fbbf24" strokeWidth="1.5" />
+                  <path d="M80 50 L80 80 L100 90 L100 60 Z" fill="#b45309" fillOpacity="0.7" stroke="#d9a036" strokeWidth="1.5" />
+                  <path d="M120 50 L120 80 L100 90 L100 60 Z" fill="#78350f" fillOpacity="0.8" stroke="#d9a036" strokeWidth="1.5" />
+
+                  {/* Window Grid accents */}
+                  <line x1="70" y1="95" x2="90" y2="105" stroke="#7dd3fc" strokeWidth="1" opacity="0.7" />
+                  <line x1="70" y1="110" x2="90" y2="120" stroke="#7dd3fc" strokeWidth="1" opacity="0.7" />
+                  <line x1="110" y1="105" x2="130" y2="95" stroke="#7dd3fc" strokeWidth="1" opacity="0.7" />
+                  <line x1="110" y1="120" x2="130" y2="110" stroke="#7dd3fc" strokeWidth="1" opacity="0.7" />
+
+                  {/* Connection Node Beams */}
+                  <circle cx="100" cy="40" r="3" fill="#fbbf24" />
+                  <line x1="100" y1="40" x2="100" y2="20" stroke="#fbbf24" strokeWidth="1.5" strokeDasharray="2 2" />
+                  <circle cx="100" cy="20" r="2" fill="#38bdf8" />
+                </svg>
+              </div>
+
+              {/* Bottom Stat Row */}
+              <div className="relative z-10 grid grid-cols-3 gap-2 pt-3 border-t border-slate-800 text-center">
+                <div className="flex flex-col">
+                  <span className="text-[10px] text-slate-400 font-mono">Fab Lab</span>
+                  <span className="text-xs font-normal text-slate-100">24/7 Access</span>
+                </div>
+                <div className="flex flex-col border-x border-slate-800">
+                  <span className="text-[10px] text-slate-400 font-mono">Grant Pool</span>
+                  <span className="text-xs font-normal text-[#d9a036]">{program.grant_amount || '₹2.87 Cr'}</span>
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-[10px] text-slate-400 font-mono">Status</span>
+                  <span className="text-xs font-normal text-emerald-400">Applications Open</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
         </div>
       </section>
 
