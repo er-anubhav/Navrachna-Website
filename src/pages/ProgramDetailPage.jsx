@@ -238,7 +238,8 @@ export function ProgramDetailPage() {
         </div>
       </section>
 
-      {/* CORE STATS FLOATING CARD BAR (-mt-12) */}
+      {/* CORE STATS FLOATING CARD BAR (Temporarily removed/commented as requested) */}
+      {/* 
       <section className="relative z-20 -mt-12 w-full px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -252,6 +253,7 @@ export function ProgramDetailPage() {
           </div>
         </div>
       </section>
+      */}
 
       {/* MAIN CONTENT BODY */}
       <main className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 flex flex-col gap-20">
