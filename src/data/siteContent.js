@@ -165,9 +165,9 @@ export const footerColumns = [
     title: 'Programs',
     links: [
       { label: 'NewGen-IEDC', to: '/programs/newgen-iedc' },
-      { label: 'StartinUP', to: '/programs/startinup' },
-      { label: 'MSME-BI', to: '/programs/msme-bi' },
-      { label: 'Innovation Cell', to: '/programs/innovation-cell' },
+      { label: 'StartinUP', to: '/startin-up' },
+      { label: 'MSME-BI', to: '/msme-bi' },
+      { label: 'Innovation Cell', to: '/innovation-cell/iic-itsec' },
     ],
   },
   {
