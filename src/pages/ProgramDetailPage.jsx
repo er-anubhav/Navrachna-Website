@@ -228,18 +228,18 @@ export function ProgramDetailPage() {
           <div className="absolute inset-0 bg-[#074887]/90 pointer-events-none" />
         </div>
 
-        <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center justify-center gap-2">
+        <div className="relative z-10 max-w-6xl mx-auto flex flex-col items-center justify-center gap-2">
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-normal text-white tracking-tight">
             {program.name || program.title}
           </h1>
-          <p className="text-xs sm:text-sm text-sky-100/90 max-w-2xl font-normal leading-relaxed">
+          <p className="text-xs sm:text-sm text-sky-100/90 max-w-3xl font-normal leading-relaxed">
             Technology Business Incubation at ITS Engineering College, empowering next-gen builders.
           </p>
         </div>
       </section>
 
       {/* MAIN CONTENT BODY */}
-      <main className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 flex flex-col gap-20">
+      <main className="mx-auto w-full max-w-[1600px] px-4 py-12 sm:px-8 lg:px-12 flex flex-col gap-20">
         
         {/* SECTION 2: EXECUTIVE OVERVIEW & NODAL MANDATE */}
         <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start font-normal">
@@ -508,7 +508,7 @@ export function ProgramDetailPage() {
             </h2>
           </div>
 
-          <div className="max-w-3xl mx-auto w-full flex flex-col gap-4">
+          <div className="max-w-5xl mx-auto w-full flex flex-col gap-4">
             <details className="bg-slate-50 p-5 rounded-2xl border border-slate-200 text-xs font-normal group">
               <summary className="font-normal text-sm text-[#013759] cursor-pointer flex justify-between items-center">
                 <span>Who is eligible to apply under {program.name || program.title}?</span>
