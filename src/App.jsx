@@ -47,12 +47,16 @@ function App() {
           <Route path="/team" element={<TeamPage />} />
           <Route path="/programs" element={<ProgramsPage />} />
           
-          {/* Universal Generalized Program Engine Routes */}
+          {/* Canonical Dynamic Program Detail Engine Route */}
           <Route path="/programs/:slug" element={<ProgramDetailPage />} />
-          <Route path="/programs/newgen-iedc" element={<ProgramDetailPage />} />
-          <Route path="/msme-bi" element={<ProgramDetailPage />} />
-          <Route path="/startin-up" element={<ProgramDetailPage />} />
-          <Route path="/innovation-cell/iic-itsec" element={<ProgramDetailPage />} />
+
+          {/* Legacy Root Alias Redirects -> Canonical /programs/:slug */}
+          <Route path="/startin-up" element={<Navigate to="/programs/startin-up" replace />} />
+          <Route path="/startinup" element={<Navigate to="/programs/startin-up" replace />} />
+          <Route path="/msme-bi" element={<Navigate to="/programs/msme-bi" replace />} />
+          <Route path="/iic-itsec" element={<Navigate to="/programs/iic-itsec" replace />} />
+          <Route path="/innovation-cell/iic-itsec" element={<Navigate to="/programs/iic-itsec" replace />} />
+          <Route path="/innovation-cell" element={<Navigate to="/programs/iic-itsec" replace />} />
 
           <Route path="/programs/newgen-iedc/project/:projectSlug" element={<NewGenProjectDetailPage />} />
           <Route path="/msme-yearly-activities" element={<MsmeYearlyPage />} />

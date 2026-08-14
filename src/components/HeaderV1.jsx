@@ -100,7 +100,7 @@ export function HeaderV1() {
           {/* Desktop Navigation (max-lg:hidden flex) */}
           <nav className="max-lg:hidden flex items-center justify-end gap-x-4 xl:gap-x-7 text-xs xl:text-sm font-medium tracking-wide text-[#013759] shrink-0">
             <Link to="/" className="text-[#013759] transition-colors hover:text-[#074887]">Home</Link>
-            <Link to="/startin-up" className="text-[#013759] transition-colors hover:text-[#074887]">StartIn-UP</Link>
+            <Link to="/programs/startin-up" className="text-[#013759] transition-colors hover:text-[#074887]">StartIn-UP</Link>
             <Link to="/programs/newgen-iedc" className="text-[#013759] transition-colors hover:text-[#074887]">NewGen-IEDC</Link>
             
             {/* MSME-BI Dropdown */}
@@ -109,7 +109,7 @@ export function HeaderV1() {
               onMouseEnter={() => setMsmeOpen(true)}
               onMouseLeave={() => setMsmeOpen(false)}
             >
-              <Link to="/msme-bi" className="flex items-center gap-1 text-[#013759] transition-colors hover:text-[#074887] cursor-pointer py-1">
+              <Link to="/programs/msme-bi" className="flex items-center gap-1 text-[#013759] transition-colors hover:text-[#074887] cursor-pointer py-1">
                 MSME-BI <span className="text-[9px] text-gray-400">▼</span>
               </Link>
               
@@ -257,7 +257,7 @@ export function HeaderV1() {
             </a>
             
             <a 
-              href="/startin-up" 
+              href="/programs/startin-up" 
               className="block rounded-lg px-3 py-2 text-sm font-medium text-gray-900 hover:bg-slate-50 hover:text-[#074887]"
             >
               Startin-up
@@ -281,7 +281,7 @@ export function HeaderV1() {
               </button>
               {mobileMsmeOpen && (
                 <div className="pl-4 pr-2 py-1 space-y-0.5 bg-slate-50/70 rounded-lg my-1 border-l-2 border-[#074887]/20">
-                  <a href="/msme-bi" className="block px-3 py-1 text-sm font-medium text-gray-800 hover:text-[#074887]">Overview</a>
+                  <a href="/programs/msme-bi" className="block px-3 py-1 text-sm font-medium text-gray-800 hover:text-[#074887]">Overview</a>
                   <a href="/msme-yearly-activities" className="block px-3 py-1 text-sm font-medium text-gray-800 hover:text-[#074887]">MSME Yearly Activities</a>
                   <a href="/msme-hackathons" className="block px-3 py-1 text-sm font-medium text-gray-800 hover:text-[#074887]">MSME Hackathons</a>
                 </div>

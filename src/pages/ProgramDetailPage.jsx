@@ -5,18 +5,9 @@ import heroImage from '../assets/co-working-area-in-greater-noida-12-scaled.webp
 
 export function ProgramDetailPage() {
   const { slug: urlSlug } = useParams()
-  const location = useLocation()
 
-  // Map route aliases to canonical database slugs
-  const getCanonicalSlug = () => {
-    if (location.pathname === '/msme-bi') return 'msme-bi'
-    if (location.pathname === '/startin-up') return 'startin-up'
-    if (location.pathname === '/innovation-cell/iic-itsec') return 'iic-itsec'
-    if (location.pathname === '/programs/newgen-iedc') return 'newgen-iedc'
-    return urlSlug || 'newgen-iedc'
-  }
-
-  const slug = getCanonicalSlug()
+  // Use URL route slug directly (or fallback to newgen-iedc)
+  const slug = urlSlug || 'newgen-iedc'
 
   const [program, setProgram] = useState(null)
   const [associatedStartups, setAssociatedStartups] = useState([])
