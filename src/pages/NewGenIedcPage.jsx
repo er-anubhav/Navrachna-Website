@@ -71,19 +71,22 @@ export function NewGenIedcPage() {
     <div className="min-h-screen bg-white font-sans text-gray-900 antialiased font-normal">
       
       {/* Hero Header */}
-      <section className="relative flex min-h-[35vh] w-full items-center justify-center overflow-hidden py-12">
+      <section className="relative w-full overflow-hidden py-14 sm:py-16 px-4 sm:px-6 lg:px-8 text-center bg-[#074887]">
         <div className="absolute inset-0 z-0">
           <div 
-            className="absolute inset-0 bg-cover bg-center bg-fixed opacity-70"
+            className="absolute inset-0 bg-cover bg-center opacity-25 mix-blend-overlay"
             style={{ backgroundImage: `url(${heroImage})` }}
-          ></div>
-          <div className="absolute inset-0 bg-[#013759]/90 pointer-events-none"></div>
+          />
+          <div className="absolute inset-0 bg-[#074887]/90 pointer-events-none" />
         </div>
 
-        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-tight text-white leading-tight drop-shadow-md">
-            NewGenIDEC Programme
+        <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center justify-center gap-2">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-normal text-white tracking-tight">
+            NewGen-IEDC Programme
           </h1>
+          <p className="text-xs sm:text-sm text-sky-100/90 max-w-2xl font-normal leading-relaxed">
+            Technology Business Incubation at ITS Engineering College, empowering next-gen builders.
+          </p>
         </div>
       </section>
 

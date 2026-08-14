@@ -28,17 +28,24 @@ export function ProgramsPage() {
 
   return (
     <div className="min-h-screen bg-slate-50 font-sans antialiased text-slate-900 font-normal">
-      {/* Hero */}
-      <section className="bg-[#013759] text-white py-16 sm:py-20 px-4 sm:px-6 lg:px-8 text-center">
-        <span className="text-xs font-normal uppercase tracking-widest text-sky-300 block mb-2">
-          NAVRACHNA INCUBATION SCHEMES & TRACKS
-        </span>
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight max-w-4xl mx-auto leading-tight">
-          Government Grants & Institutional Acceleration Programs
-        </h1>
-        <p className="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto mt-4 font-normal leading-relaxed">
-          From student prototype funding to Ministry of MSME commercialization grants — explore our specialized program tracks tailored for every startup stage.
-        </p>
+      {/* Hero Section */}
+      <section className="relative w-full overflow-hidden py-14 sm:py-16 px-4 sm:px-6 lg:px-8 text-center bg-[#074887]">
+        <div className="absolute inset-0 z-0">
+          <div 
+            className="absolute inset-0 bg-cover bg-center opacity-25 mix-blend-overlay"
+            style={{ backgroundImage: `url(${heroImage})` }}
+          />
+          <div className="absolute inset-0 bg-[#074887]/90 pointer-events-none" />
+        </div>
+
+        <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center justify-center gap-2">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-normal text-white tracking-tight">
+            Programs & Incubation Schemes
+          </h1>
+          <p className="text-xs sm:text-sm text-sky-100/90 max-w-2xl font-normal leading-relaxed">
+            Technology Business Incubation at ITS Engineering College, empowering next-gen builders.
+          </p>
+        </div>
       </section>
 
       {/* Main Grid */}

@@ -227,45 +227,23 @@ export function ProgramDetailPage() {
   return (
     <div className="min-h-screen bg-white font-sans text-gray-900 antialiased font-normal">
       
-      {/* HERO SECTION WITH AUTHENTIC BACKGROUND OVERLAY */}
-      <section className="relative flex min-h-[50vh] sm:min-h-[60vh] w-full items-center justify-center overflow-hidden py-20 px-4 sm:px-6 lg:px-8">
+      {/* HERO SECTION MATCHING REFERENCE DESIGN */}
+      <section className="relative w-full overflow-hidden py-14 sm:py-16 px-4 sm:px-6 lg:px-8 text-center bg-[#074887]">
         <div className="absolute inset-0 z-0">
           <div 
-            className="absolute inset-0 bg-cover bg-center bg-fixed opacity-70"
+            className="absolute inset-0 bg-cover bg-center opacity-25 mix-blend-overlay"
             style={{ backgroundImage: `url(${heroImage})` }}
           />
-          <div className="absolute inset-0 bg-[#013759]/90 pointer-events-none" />
+          <div className="absolute inset-0 bg-[#074887]/90 pointer-events-none" />
         </div>
 
-        <div className="relative z-10 mx-auto max-w-4xl text-center flex flex-col items-center gap-4">
-          <span className="inline-block rounded-full bg-white px-4 py-1.5 text-xs font-normal tracking-wider text-[#013759] uppercase shadow-sm">
-            {nodalTag}
-          </span>
-
-          <h1 className="text-3xl sm:text-5xl font-normal tracking-tight text-white leading-tight drop-shadow-md max-w-3xl">
+        <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center justify-center gap-2">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-normal text-white tracking-tight">
             {program.name || program.title}
           </h1>
-
-          <p className="max-w-2xl text-sm sm:text-base text-white/90 leading-relaxed font-normal">
-            {program.description || program.summary}
+          <p className="text-xs sm:text-sm text-sky-100/90 max-w-2xl font-normal leading-relaxed">
+            Technology Business Incubation at ITS Engineering College, empowering next-gen builders.
           </p>
-
-          <div className="mt-4 flex flex-col sm:flex-row items-center gap-4">
-            <a
-              href="#incubation-form"
-              style={{ color: '#013759' }}
-              className="rounded-xl bg-white px-8 py-3.5 text-xs font-normal text-[#013759] shadow-lg hover:-translate-y-0.5 transition-all cursor-pointer"
-            >
-              Register for Incubation
-            </a>
-            <a
-              href="#incentives"
-              style={{ color: '#ffffff' }}
-              className="rounded-xl border border-white/30 bg-white/10 px-8 py-3.5 text-xs font-normal text-white backdrop-blur-md hover:-translate-y-0.5 transition-all"
-            >
-              Explore Scheme Incentives
-            </a>
-          </div>
         </div>
       </section>
 
