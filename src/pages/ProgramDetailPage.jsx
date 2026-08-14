@@ -238,30 +238,13 @@ export function ProgramDetailPage() {
         </div>
       </section>
 
-      {/* CORE STATS FLOATING CARD BAR (Temporarily removed/commented as requested) */}
-      {/* 
-      <section className="relative z-20 -mt-12 w-full px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {stats.map((stat, idx) => (
-              <div key={idx} className="rounded-3xl border border-slate-200/80 bg-white/95 p-6 sm:p-8 shadow-xl backdrop-blur-xl transition-all font-normal">
-                <div className="text-2xl sm:text-3xl font-normal tracking-tight text-[#013759]">{stat.value}</div>
-                <div className="mt-2 text-xs sm:text-sm font-normal text-slate-800">{stat.label}</div>
-                <div className="mt-1 text-[11px] text-slate-500 font-normal">{stat.sub}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-      */}
-
       {/* MAIN CONTENT BODY */}
       <main className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 flex flex-col gap-20">
         
-        {/* SECTION 1: ABOUT & OBJECTIVES */}
+        {/* SECTION 2: EXECUTIVE OVERVIEW & NODAL MANDATE */}
         <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start font-normal">
           <div className="flex flex-col gap-4">
-            <span className="text-xs font-normal tracking-widest text-[#074887] uppercase">PROGRAMME MANDATE</span>
+            <span className="text-xs font-normal tracking-widest text-[#074887] uppercase">PROGRAMME OVERVIEW</span>
             <h2 className="text-2xl sm:text-3xl font-normal text-[#013759]">
               About {program.name || program.title}
             </h2>
@@ -276,29 +259,29 @@ export function ProgramDetailPage() {
           </div>
 
           <div className="flex flex-col gap-4 bg-slate-50/70 p-6 sm:p-8 rounded-3xl border border-slate-200/80">
-            <h3 className="text-lg font-normal text-[#013759]">Key Objectives & Deliverables</h3>
+            <h3 className="text-lg font-normal text-[#013759]">Who Should Apply & Key Mandates</h3>
             <ul className="flex flex-col gap-3.5 text-xs sm:text-sm text-slate-600 text-justify font-normal">
               <li className="flex items-start gap-2.5">
                 <span className="text-[#074887] font-normal">—</span>
-                <span>Harness youth technical energy to build knowledge-based, technology-driven enterprises.</span>
+                <span>Students, Faculty Innovators, and Early-stage Tech Founders building novel prototypes.</span>
               </li>
               <li className="flex items-start gap-2.5">
                 <span className="text-[#074887] font-normal">—</span>
-                <span>Provide non-equity prototype development funding ({program.grant_amount || 'Grant Support'}).</span>
+                <span>Non-equity prototype development funding ({program.grant_amount || 'Grant Support'}).</span>
               </li>
               <li className="flex items-start gap-2.5">
                 <span className="text-[#074887] font-normal">—</span>
-                <span>Offer hands-on fabrication tools including CNC CO₂ Laser Cutters, CNC Plasma, and Form 3B+ SLA printers.</span>
+                <span>Hands-on Fab Lab access: CNC CO₂ Laser Cutters, CNC Plasma, SLA 3D Printers.</span>
               </li>
               <li className="flex items-start gap-2.5">
                 <span className="text-[#074887] font-normal">—</span>
-                <span>Facilitate comprehensive IPR protection, domestic & international patent filings, and trademark registrations.</span>
+                <span>Full IPR & patent filing support for domestic and international patent registrations.</span>
               </li>
             </ul>
           </div>
         </section>
 
-        {/* SECTION 2: INCENTIVES & FINANCIAL BREAKDOWN GRID */}
+        {/* SECTION 3: FINANCIAL INCENTIVES & GRANTS GRID */}
         <section id="incentives" className="flex flex-col gap-8 text-center font-normal">
           <div>
             <span className="mb-2 inline-block rounded-full bg-[#074887]/10 px-4 py-1 text-xs font-normal tracking-widest text-[#074887] uppercase">
@@ -329,7 +312,91 @@ export function ProgramDetailPage() {
           </div>
         </section>
 
-        {/* SECTION 3: NEWGEN PROTOTYPES EXPLORER (FOR NEWGEN-IEDC) */}
+        {/* SECTION 4: INFRASTRUCTURE & ECOSYSTEM ACCESS */}
+        <section className="flex flex-col gap-8 text-center font-normal border-t border-slate-100 pt-16">
+          <div>
+            <span className="mb-2 inline-block rounded-full bg-[#074887]/10 px-4 py-1 text-xs font-normal tracking-widest text-[#074887] uppercase">
+              PHYSICAL FACILITIES
+            </span>
+            <h2 className="text-2xl sm:text-4xl font-normal text-[#013759] tracking-tight">
+              State-of-the-Art Technical Infrastructure
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
+            <div className="p-6 rounded-2xl bg-slate-50/80 border border-slate-200 flex flex-col gap-3 font-normal">
+              <div className="w-10 h-10 rounded-xl bg-white text-[#074887] flex items-center justify-center shadow-sm border border-slate-200">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L5.605 15.13a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                </svg>
+              </div>
+              <h3 className="text-base font-normal text-[#013759]">Rapid Prototyping Fab Lab</h3>
+              <p className="text-xs text-slate-500 leading-relaxed">Full access to CNC CO₂ Laser Cutters, CNC Plasma Cutters, and SLA 3D printers.</p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-slate-50/80 border border-slate-200 flex flex-col gap-3 font-normal">
+              <div className="w-10 h-10 rounded-xl bg-white text-[#074887] flex items-center justify-center shadow-sm border border-slate-200">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <h3 className="text-base font-normal text-[#013759]">High-End Compute Lab</h3>
+              <p className="text-xs text-slate-500 leading-relaxed">Dedicated NVIDIA GPU workstations for AI/ML training, simulations, and CAD modeling.</p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-slate-50/80 border border-slate-200 flex flex-col gap-3 font-normal">
+              <div className="w-10 h-10 rounded-xl bg-white text-[#074887] flex items-center justify-center shadow-sm border border-slate-200">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                </svg>
+              </div>
+              <h3 className="text-base font-normal text-[#013759]">Co-Working Space</h3>
+              <p className="text-xs text-slate-500 leading-relaxed">24/7 incubator desk allocations, meeting rooms, and gigabit fiber connectivity.</p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-slate-50/80 border border-slate-200 flex flex-col gap-3 font-normal">
+              <div className="w-10 h-10 rounded-xl bg-white text-[#074887] flex items-center justify-center shadow-sm border border-slate-200">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+              </div>
+              <h3 className="text-base font-normal text-[#013759]">1-on-1 Mentorship</h3>
+              <p className="text-xs text-slate-500 leading-relaxed">Guidance from senior faculty mentors and industry corporate advisors.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* SECTION 5: SELECTION PROCESS & ROADMAP STEPPER */}
+        <section className="flex flex-col gap-12 border-t border-slate-100 pt-16 font-normal">
+          <div className="text-center">
+            <span className="text-xs font-normal uppercase tracking-widest text-[#074887] block mb-1">ONBOARDING STEPS</span>
+            <h2 className="text-2xl sm:text-4xl font-normal text-[#013759] tracking-tight">
+              Incubation Application Roadmap
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-500 max-w-2xl mx-auto mt-2 font-normal">
+              Follow these 4 structured steps to lock in your incubation slot, secure mentorship, and claim grant assistance.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            {TIMELINE.map((step, idx) => (
+              <div key={idx} className="bg-slate-50/70 p-6 rounded-2xl border border-slate-200 flex flex-col justify-between gap-4 font-normal">
+                <div className="flex flex-col gap-2">
+                  <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center shadow-sm border border-slate-200" style={{ color: step.color }}>
+                    {step.icon}
+                  </div>
+                  <span className="text-[11px] font-mono tracking-wider uppercase mt-1" style={{ color: step.color }}>
+                    {step.step}
+                  </span>
+                  <h3 className="text-base font-normal text-[#013759]">{step.title}</h3>
+                  <p className="text-xs text-slate-500 leading-relaxed mt-1 text-justify">{step.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* SECTION 6: PORTFOLIO & PAST FUNDED PROJECTS */}
         {slug === 'newgen-iedc' && newgenProjects.length > 0 && (
           <section className="flex flex-col gap-8 border-t border-slate-100 pt-16 font-normal">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-4">
@@ -404,7 +471,6 @@ export function ProgramDetailPage() {
           </section>
         )}
 
-        {/* SECTION 4: ASSOCIATED STARTUPS GRID */}
         {associatedStartups.length > 0 && (
           <section className="flex flex-col gap-6 border-t border-slate-100 pt-16 font-normal">
             <div className="border-b border-slate-200 pb-3">
@@ -433,75 +499,59 @@ export function ProgramDetailPage() {
           </section>
         )}
 
-        {/* SECTION 5: PROGRAM EVENTS & HACKATHONS */}
-        {associatedEvents.length > 0 && (
-          <section className="flex flex-col gap-6 border-t border-slate-100 pt-16 font-normal">
-            <div className="border-b border-slate-200 pb-3">
-              <span className="text-xs font-normal uppercase tracking-wider text-[#074887] block">SCHEME COMPETITIONS</span>
-              <h2 className="text-2xl font-normal text-[#013759]">Flagship Events & Hackathons</h2>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {associatedEvents.map((ev) => (
-                <div key={ev.id} className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between font-normal">
-                  <div className="flex flex-col gap-3">
-                    <div className="flex items-center justify-between">
-                      <span className="text-[10px] font-normal text-amber-800 bg-amber-50 border border-amber-200 px-2.5 py-0.5 rounded uppercase">
-                        {ev.event_type}
-                      </span>
-                      {ev.budget_prize_pool > 0 && (
-                        <span className="text-xs font-mono text-emerald-700 font-normal">
-                          Prize Pool: ₹{Number(ev.budget_prize_pool).toLocaleString('en-IN')}
-                        </span>
-                      )}
-                    </div>
-                    <h3 className="text-base font-normal text-slate-900">{ev.title}</h3>
-                    <p className="text-xs text-slate-500 leading-relaxed line-clamp-3">{ev.description}</p>
-                  </div>
-
-                  <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between text-xs">
-                    <span className="text-slate-400 font-mono text-[11px]">Status: {ev.status || 'Active'}</span>
-                    <Link to="/contact" className="text-[#074887] hover:underline font-normal">
-                      Register Interest →
-                    </Link>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-        )}
-
-        {/* SECTION 6: DYNAMIC STEP-BY-STEP INCUBATION TIMELINE */}
-        <section className="flex flex-col gap-12 border-t border-slate-100 pt-16 font-normal">
+        {/* SECTION 7: ELIGIBILITY & FREQUENTLY ASKED QUESTIONS (FAQ) */}
+        <section className="flex flex-col gap-8 border-t border-slate-100 pt-16 font-normal">
           <div className="text-center">
-            <span className="text-xs font-normal uppercase tracking-widest text-[#074887] block mb-1">ONBOARDING STEPS</span>
+            <span className="text-xs font-normal uppercase tracking-widest text-[#074887] block mb-1">COMMON QUESTIONS</span>
             <h2 className="text-2xl sm:text-4xl font-normal text-[#013759] tracking-tight">
-              Incubation Application Roadmap
+              Eligibility & Application FAQs
             </h2>
-            <p className="text-xs sm:text-sm text-slate-500 max-w-2xl mx-auto mt-2 font-normal">
-              Follow these 4 structured steps to lock in your incubation slot, secure mentorship, and claim grant assistance.
-            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            {TIMELINE.map((step, idx) => (
-              <div key={idx} className="bg-slate-50/70 p-6 rounded-2xl border border-slate-200 flex flex-col justify-between gap-4 font-normal">
-                <div className="flex flex-col gap-2">
-                  <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center shadow-sm border border-slate-200" style={{ color: step.color }}>
-                    {step.icon}
-                  </div>
-                  <span className="text-[11px] font-mono tracking-wider uppercase mt-1" style={{ color: step.color }}>
-                    {step.step}
-                  </span>
-                  <h3 className="text-base font-normal text-[#013759]">{step.title}</h3>
-                  <p className="text-xs text-slate-500 leading-relaxed mt-1 text-justify">{step.desc}</p>
-                </div>
-              </div>
-            ))}
+          <div className="max-w-3xl mx-auto w-full flex flex-col gap-4">
+            <details className="bg-slate-50 p-5 rounded-2xl border border-slate-200 text-xs font-normal group">
+              <summary className="font-normal text-sm text-[#013759] cursor-pointer flex justify-between items-center">
+                <span>Who is eligible to apply under {program.name || program.title}?</span>
+                <span className="text-[#074887] text-lg font-normal group-open:rotate-180 transition-transform">+</span>
+              </summary>
+              <p className="mt-3 text-slate-600 leading-relaxed">
+                Students, faculty innovators, alumni, and external tech entrepreneurs working on novel technology prototypes or commercialization concepts are eligible to apply.
+              </p>
+            </details>
+
+            <details className="bg-slate-50 p-5 rounded-2xl border border-slate-200 text-xs font-normal group">
+              <summary className="font-normal text-sm text-[#013759] cursor-pointer flex justify-between items-center">
+                <span>Do I need a registered entity (Pvt Ltd / LLP) before applying?</span>
+                <span className="text-[#074887] text-lg font-normal group-open:rotate-180 transition-transform">+</span>
+              </summary>
+              <p className="mt-3 text-slate-600 leading-relaxed">
+                No! Early-stage concepts at the prototype or idea stage are fully welcome. Navrachna Foundation assists selected teams in formal entity incorporation and IP protection.
+              </p>
+            </details>
+
+            <details className="bg-slate-50 p-5 rounded-2xl border border-slate-200 text-xs font-normal group">
+              <summary className="font-normal text-sm text-[#013759] cursor-pointer flex justify-between items-center">
+                <span>How are financial grants disbursed?</span>
+                <span className="text-[#074887] text-lg font-normal group-open:rotate-180 transition-transform">+</span>
+              </summary>
+              <p className="mt-3 text-slate-600 leading-relaxed">
+                Grants are disbursed in milestone-linked tranches directly credited for hardware procurement, prototyping components, Fab Lab usage, and official IP filing fees.
+              </p>
+            </details>
+
+            <details className="bg-slate-50 p-5 rounded-2xl border border-slate-200 text-xs font-normal group">
+              <summary className="font-normal text-sm text-[#013759] cursor-pointer flex justify-between items-center">
+                <span>Who owns the Intellectual Property (IP) of the project?</span>
+                <span className="text-[#074887] text-lg font-normal group-open:rotate-180 transition-transform">+</span>
+              </summary>
+              <p className="mt-3 text-slate-600 leading-relaxed">
+                The innovators and student founders retain primary IP ownership in accordance with official NSTEDB and institutional IPR guidelines.
+              </p>
+            </details>
           </div>
         </section>
 
-        {/* SECTION 7: INCUBATION CONTACT / APPLICATION FORM BANNER */}
+        {/* SECTION 8: INCUBATION REGISTRATION & APPLICATION FORM CTA */}
         <section id="incubation-form" className="bg-[#013759] text-white p-8 sm:p-12 rounded-3xl flex flex-col sm:flex-row items-center justify-between gap-8 shadow-xl font-normal">
           <div className="flex flex-col gap-2">
             <span className="text-xs font-normal uppercase tracking-widest text-sky-300">
