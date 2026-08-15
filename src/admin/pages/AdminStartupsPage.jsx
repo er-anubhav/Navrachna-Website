@@ -417,6 +417,10 @@ export function AdminStartupsPage() {
       (selectedStatus === 'INCUBATED' ? !isGraduated : isGraduated)
 
     return matchQuery && matchStage && matchRevenue && matchGender && matchSector && matchStatus
+  }).sort((a, b) => {
+    const nameA = parse16Columns(a).company_name.trim().toLowerCase()
+    const nameB = parse16Columns(b).company_name.trim().toLowerCase()
+    return nameA.localeCompare(nameB)
   })
 
   const getInitials = (name) => {

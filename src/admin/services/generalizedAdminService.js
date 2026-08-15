@@ -90,7 +90,7 @@ export async function getAllStartupsAdmin() {
         people ( id, full_name, designation, email, phone )
       )
     `)
-    .order('created_at', { ascending: false })
+    .order('name', { ascending: true })
   return { data: data || [], error }
 }
 
