@@ -66,6 +66,7 @@ function App() {
           <Route path="/innovation-cell" element={<Navigate to="/programs/iic-itsec" replace />} />
 
           <Route path="/programs/newgen-iedc/project/:projectSlug" element={<NewGenProjectDetailPage />} />
+          <Route path="/projects/:projectSlug" element={<NewGenProjectDetailPage />} />
           <Route path="/msme-yearly-activities" element={<MsmeYearlyPage />} />
           <Route path="/msme-hackathons" element={<MsmeHackathonsPage />} />
           <Route path="/policies" element={<OurPoliciesPage />} />

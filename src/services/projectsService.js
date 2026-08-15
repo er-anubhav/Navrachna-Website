@@ -23,9 +23,11 @@ export async function getNewgenProjects() {
   }
 }
 
-export async function getNewgenProjectBySlug(slug) {
+export async function getNewgenProjectBySlug(slugOrId) {
   try {
-    const { data, error } = await supabase
+    const isUuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(slugOrId)
+
+    let { data, error } = await supabase
       .from('newgen_projects')
       .select(`
         id, slug, title, description, patent_status, patent_id, expenditure, image_url, category_label, status,
@@ -35,13 +37,30 @@ export async function getNewgenProjectBySlug(slug) {
           people ( id, full_name, designation, photo_url, email, organization )
         )
       `)
-      .eq('slug', slug)
-      .single()
+      .eq(isUuid ? 'id' : 'slug', slugOrId)
+      .maybeSingle()
 
-    if (error) throw error
+    if (!data && !isUuid) {
+      // Fallback search by ID if slug did not match
+      const fallback = await supabase
+        .from('newgen_projects')
+        .select(`
+          id, slug, title, description, patent_status, patent_id, expenditure, image_url, category_label, status,
+          cohorts ( id, year_label ),
+          project_people (
+            role_in_project,
+            people ( id, full_name, designation, photo_url, email, organization )
+          )
+        `)
+        .eq('id', slugOrId)
+        .maybeSingle()
+
+      data = fallback.data
+    }
+
     return { data, error: null }
   } catch (error) {
-    console.error(`projectsService getNewgenProjectBySlug(${slug}) error:`, error.message)
+    console.error(`projectsService getNewgenProjectBySlug(${slugOrId}) error:`, error.message)
     return { data: null, error }
   }
 }

@@ -22,6 +22,7 @@ export function AdminProjectsPage() {
   const [editingItem, setEditingItem] = useState(null)
   const [selectedIds, setSelectedIds] = useState([])
   const [bulkDeleteConfirmOpen, setBulkDeleteConfirmOpen] = useState(false)
+  const [viewMode, setViewMode] = useState('TABLE')
 
   // Cropper Modal State
   const [cropperOpen, setCropperOpen] = useState(false)
@@ -622,112 +623,266 @@ export function AdminProjectsPage() {
                 </button>
               )}
 
+              {/* View Mode Switcher */}
+              <div className="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200">
+                <button
+                  onClick={() => setViewMode('TABLE')}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-normal transition-all flex items-center gap-1.5 cursor-pointer ${
+                    viewMode === 'TABLE' ? 'bg-white text-[#074887] shadow-xs' : 'text-slate-600 hover:text-slate-900'
+                  }`}
+                  title="Table View"
+                >
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+                  </svg>
+                  <span className="hidden sm:inline">Table</span>
+                </button>
+                <button
+                  onClick={() => setViewMode('GRID')}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-normal transition-all flex items-center gap-1.5 cursor-pointer ${
+                    viewMode === 'GRID' ? 'bg-white text-[#074887] shadow-xs' : 'text-slate-600 hover:text-slate-900'
+                  }`}
+                  title="Grid View"
+                >
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                  </svg>
+                  <span className="hidden sm:inline">Grid</span>
+                </button>
+              </div>
+
               <span className="text-sm text-slate-600 font-mono shrink-0 font-normal">
                 {filtered.length}
               </span>
             </div>
           </div>
 
-          {/* 4-COLUMN GRID VIEW */}
+          {/* PROJECT LISTINGS */}
           {loading ? (
             <div className="p-12 text-center bg-white rounded-2xl border border-slate-200 shadow-xs">
               <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#013759] mx-auto mb-3" />
               <p className="text-xs text-slate-500 font-normal">Loading innovation projects from Supabase...</p>
             </div>
           ) : filtered.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 font-normal">
-              {filtered.map((item) => {
-                const isSelected = selectedIds.includes(item.id)
-                const schemeName = item.cohorts?.programs?.name || 'DST NewGen-IEDC'
-                const cohortYr = item.cohorts?.year_label || '2022-23'
-                const patentSt = item.patent_status || 'NA'
-
-                return (
-                  <div
-                    key={item.id}
-                    className={`bg-white rounded-2xl border ${isSelected ? 'border-[#074887] ring-2 ring-[#074887]/20 bg-sky-50/20' : 'border-slate-200 hover:shadow-md'} shadow-xs transition-all flex flex-col justify-between overflow-hidden group relative`}
-                  >
-                    <div>
-                      {/* 16:9 Aspect Ratio Image Container */}
-                      <div className="aspect-video w-full bg-slate-100 relative overflow-hidden">
-                        <div className="absolute top-3 left-3 z-10">
+            viewMode === 'TABLE' ? (
+              /* TABLE VIEW */
+              <div className="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden font-normal">
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left text-sm text-slate-600">
+                    <thead className="bg-slate-50 text-xs font-normal text-slate-500 uppercase tracking-wider border-b border-slate-200">
+                      <tr>
+                        <th className="py-4 px-6 w-10">
                           <input
                             type="checkbox"
-                            checked={isSelected}
-                            onChange={() => handleToggleSelectOne(item.id)}
-                            className="w-5 h-5 accent-[#074887] rounded cursor-pointer shadow-xs"
+                            checked={filtered.length > 0 && selectedIds.length === filtered.length}
+                            onChange={() => handleToggleSelectAll(filtered)}
+                            className="w-4 h-4 accent-[#074887] rounded cursor-pointer"
                           />
-                        </div>
+                        </th>
+                        <th className="py-4 px-6 font-normal">Project & Innovation Title</th>
+                        <th className="py-4 px-6 font-normal">Scheme / Program</th>
+                        <th className="py-4 px-6 font-normal">Category</th>
+                        <th className="py-4 px-6 font-normal">Patent Status</th>
+                        <th className="py-4 px-6 font-normal">Grant Expenditure</th>
+                        <th className="py-4 px-6 text-right font-normal">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100 font-normal">
+                      {filtered.map((item) => {
+                        const isSelected = selectedIds.includes(item.id)
+                        const schemeName = item.cohorts?.programs?.name || 'DST NewGen-IEDC'
+                        const cohortYr = item.cohorts?.year_label || '2022-23'
+                        const patentSt = item.patent_status || 'NA'
 
-                        {item.image_url ? (
-                          <img
-                            src={item.image_url}
-                            alt={item.title}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                          />
-                        ) : (
-                          <div className="w-full h-full bg-gradient-to-br from-slate-800 to-[#013759] flex flex-col items-center justify-center p-4 text-center">
-                            <span className="text-white text-xs font-mono font-normal tracking-wide uppercase opacity-90">{schemeName}</span>
-                            <span className="text-sky-300 text-[10px] font-mono mt-1">{cohortYr}</span>
+                        return (
+                          <tr key={item.id} className={`hover:bg-slate-50/80 transition-colors ${isSelected ? 'bg-sky-50/30' : ''}`}>
+                            <td className="py-4 px-6">
+                              <input
+                                type="checkbox"
+                                checked={isSelected}
+                                onChange={() => handleToggleSelectOne(item.id)}
+                                className="w-4 h-4 accent-[#074887] rounded cursor-pointer"
+                              />
+                            </td>
+                            <td className="py-4 px-6 font-normal">
+                              <div className="flex items-center gap-3">
+                                {item.image_url ? (
+                                  <img src={item.image_url} alt={item.title} className="w-10 h-10 rounded-lg object-cover border border-slate-200 shrink-0" />
+                                ) : (
+                                  <div className="w-10 h-10 rounded-lg bg-[#013759] text-white flex items-center justify-center text-[10px] font-mono shrink-0">
+                                    PROJ
+                                  </div>
+                                )}
+                                <div>
+                                  <h4 className="font-normal text-slate-900 line-clamp-1">{item.title}</h4>
+                                  <span className="text-xs text-slate-400 font-mono">/{item.slug}</span>
+                                </div>
+                              </div>
+                            </td>
+                            <td className="py-4 px-6 font-normal">
+                              <span className="bg-slate-100 text-slate-700 text-xs px-2.5 py-1 rounded-md border border-slate-200">
+                                {schemeName} ({cohortYr})
+                              </span>
+                            </td>
+                            <td className="py-4 px-6 font-normal">
+                              <span className="text-xs text-[#074887] font-normal">
+                                {item.category_label || 'Smart Hardware'}
+                              </span>
+                            </td>
+                            <td className="py-4 px-6 font-normal">
+                              <span className={`px-2.5 py-1 rounded-md text-xs font-normal border ${patentSt === 'Granted' ? 'bg-emerald-50 text-emerald-800 border-emerald-200' : patentSt === 'Filed' ? 'bg-blue-50 text-blue-800 border-blue-200' : 'bg-slate-50 text-slate-600 border-slate-200'}`}>
+                                {patentSt}
+                              </span>
+                            </td>
+                            <td className="py-4 px-6 font-mono text-xs font-normal text-slate-800">
+                              ₹{(item.expenditure || 250000).toLocaleString('en-IN')}
+                            </td>
+                            <td className="py-4 px-6 text-right font-normal">
+                              <div className="flex items-center justify-end gap-3">
+                                <a
+                                  href={`/programs/newgen-iedc/project/${item.slug || item.id}`}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-emerald-700 hover:text-emerald-900 p-1 rounded-lg hover:bg-emerald-50 transition-colors cursor-pointer"
+                                  title="View Project Showcase Profile"
+                                >
+                                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                  </svg>
+                                </a>
+                                <span className="text-slate-300">|</span>
+                                <button
+                                  onClick={() => openEditModal(item)}
+                                  className="text-[#074887] hover:underline text-xs font-normal cursor-pointer"
+                                >
+                                  Edit
+                                </button>
+                                <span className="text-slate-300">|</span>
+                                <button
+                                  onClick={() => setDeleteConfirmId(item.id)}
+                                  className="text-red-600 hover:underline text-xs font-normal cursor-pointer"
+                                >
+                                  Delete
+                                </button>
+                              </div>
+                            </td>
+                          </tr>
+                        )
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            ) : (
+              /* GRID VIEW */
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 font-normal">
+                {filtered.map((item) => {
+                  const isSelected = selectedIds.includes(item.id)
+                  const schemeName = item.cohorts?.programs?.name || 'DST NewGen-IEDC'
+                  const cohortYr = item.cohorts?.year_label || '2022-23'
+                  const patentSt = item.patent_status || 'NA'
+
+                  return (
+                    <div
+                      key={item.id}
+                      className={`bg-white rounded-2xl border ${isSelected ? 'border-[#074887] ring-2 ring-[#074887]/20 bg-sky-50/20' : 'border-slate-200 hover:shadow-md'} shadow-xs transition-all flex flex-col justify-between overflow-hidden group relative`}
+                    >
+                      <div>
+                        {/* 16:9 Aspect Ratio Image Container */}
+                        <div className="aspect-video w-full bg-slate-100 relative overflow-hidden">
+                          <div className="absolute top-3 left-3 z-10">
+                            <input
+                              type="checkbox"
+                              checked={isSelected}
+                              onChange={() => handleToggleSelectOne(item.id)}
+                              className="w-5 h-5 accent-[#074887] rounded cursor-pointer shadow-xs"
+                            />
                           </div>
-                        )}
 
-                        <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-xs text-[#074887] text-[11px] font-normal px-2.5 py-0.5 rounded-full border border-slate-200 shadow-2xs">
-                          {item.category_label || 'Smart Hardware'}
+                          {item.image_url ? (
+                            <img
+                              src={item.image_url}
+                              alt={item.title}
+                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            />
+                          ) : (
+                            <div className="w-full h-full bg-gradient-to-br from-slate-800 to-[#013759] flex flex-col items-center justify-center p-4 text-center">
+                              <span className="text-white text-xs font-mono font-normal tracking-wide uppercase opacity-90">{schemeName}</span>
+                              <span className="text-sky-300 text-[10px] font-mono mt-1">{cohortYr}</span>
+                            </div>
+                          )}
+
+                          <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-xs text-[#074887] text-[11px] font-normal px-2.5 py-0.5 rounded-full border border-slate-200 shadow-2xs">
+                            {item.category_label || 'Smart Hardware'}
+                          </div>
                         </div>
-                      </div>
 
-                      {/* Card Body */}
-                      <div className="p-5 flex flex-col gap-3">
-                        <div>
-                          <h3 className="text-base font-normal text-[#013759] leading-snug line-clamp-2">
-                            {item.title}
-                          </h3>
-                          <div className="flex items-center gap-2 mt-1">
-                            <span className="bg-slate-100 text-slate-600 text-[10px] font-mono px-2 py-0.5 rounded border border-slate-200">
-                              {schemeName} ({cohortYr})
+                        {/* Card Body */}
+                        <div className="p-5 flex flex-col gap-3">
+                          <div>
+                            <h3 className="text-base font-normal text-[#013759] leading-snug line-clamp-2">
+                              {item.title}
+                            </h3>
+                            <div className="flex items-center gap-2 mt-1">
+                              <span className="bg-slate-100 text-slate-600 text-[10px] font-mono px-2 py-0.5 rounded border border-slate-200">
+                                {schemeName} ({cohortYr})
+                              </span>
+                            </div>
+                          </div>
+
+                          <p className="text-xs text-slate-600 line-clamp-3 leading-relaxed">
+                            {item.description}
+                          </p>
+
+                          <div className="flex items-center justify-between pt-2 border-t border-slate-100 text-xs">
+                            <span className={`px-2 py-0.5 rounded text-[10px] font-normal border ${patentSt === 'Granted' ? 'bg-emerald-50 text-emerald-800 border-emerald-200' : patentSt === 'Filed' ? 'bg-blue-50 text-blue-800 border-blue-200' : 'bg-slate-50 text-slate-600 border-slate-200'}`}>
+                              Patent: {patentSt}
+                            </span>
+                            <span className="font-mono text-slate-700 text-[11px]">
+                              ₹{(item.expenditure || 250000).toLocaleString('en-IN')}
                             </span>
                           </div>
                         </div>
+                      </div>
 
-                        <p className="text-xs text-slate-600 line-clamp-3 leading-relaxed">
-                          {item.description}
-                        </p>
-
-                        <div className="flex items-center justify-between pt-2 border-t border-slate-100 text-xs">
-                          <span className={`px-2 py-0.5 rounded text-[10px] font-normal border ${patentSt === 'Granted' ? 'bg-emerald-50 text-emerald-800 border-emerald-200' : patentSt === 'Filed' ? 'bg-blue-50 text-blue-800 border-blue-200' : 'bg-slate-50 text-slate-600 border-slate-200'}`}>
-                            Patent: {patentSt}
-                          </span>
-                          <span className="font-mono text-slate-700 text-[11px]">
-                            ₹{(item.expenditure || 250000).toLocaleString('en-IN')}
-                          </span>
+                      {/* Card Footer Actions */}
+                      <div className="p-4 bg-slate-50/70 border-t border-slate-100 flex items-center justify-between">
+                        <span className="text-[11px] font-mono text-slate-500">/{item.slug}</span>
+                        <div className="flex items-center gap-3">
+                          <a
+                            href={`/programs/newgen-iedc/project/${item.slug || item.id}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-emerald-700 hover:text-emerald-900 p-1.5 rounded-lg hover:bg-emerald-50 transition-colors cursor-pointer"
+                            title="View Project Showcase Profile"
+                          >
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                            </svg>
+                          </a>
+                          <span className="text-slate-300">|</span>
+                          <button
+                            onClick={() => openEditModal(item)}
+                            className="text-[#074887] hover:underline text-xs font-normal cursor-pointer"
+                          >
+                            Edit
+                          </button>
+                          <span className="text-slate-300">|</span>
+                          <button
+                            onClick={() => setDeleteConfirmId(item.id)}
+                            className="text-red-600 hover:underline text-xs font-normal cursor-pointer"
+                          >
+                            Delete
+                          </button>
                         </div>
                       </div>
                     </div>
-
-                    {/* Card Footer Actions */}
-                    <div className="p-4 bg-slate-50/70 border-t border-slate-100 flex items-center justify-between">
-                      <span className="text-[11px] font-mono text-slate-500">/{item.slug}</span>
-                      <div className="flex items-center gap-3">
-                        <button
-                          onClick={() => openEditModal(item)}
-                          className="text-[#074887] hover:underline text-xs font-normal cursor-pointer"
-                        >
-                          Edit
-                        </button>
-                        <span className="text-slate-300">|</span>
-                        <button
-                          onClick={() => setDeleteConfirmId(item.id)}
-                          className="text-red-600 hover:underline text-xs font-normal cursor-pointer"
-                        >
-                          Delete
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                )
-              })}
-            </div>
+                  )
+                })}
+              </div>
+            )
           ) : (
             <div className="p-12 text-center bg-white rounded-2xl border border-slate-200 shadow-xs text-slate-500 text-sm font-normal">
               No projects found matching your search or scheme filter. Click "Add Project" to register one.
