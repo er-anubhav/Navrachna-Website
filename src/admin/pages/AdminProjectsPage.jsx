@@ -294,20 +294,22 @@ export function AdminProjectsPage() {
     )
   }
 
-  const filtered = projects.filter(p => {
-    const titleMatch = (p.title || '').toLowerCase().includes(searchQuery.toLowerCase())
-    const slugMatch = (p.slug || '').toLowerCase().includes(searchQuery.toLowerCase())
-    const descMatch = (p.description || '').toLowerCase().includes(searchQuery.toLowerCase())
-    const matchesSearch = titleMatch || slugMatch || descMatch
+  const filtered = projects
+    .filter(p => {
+      const titleMatch = (p.title || '').toLowerCase().includes(searchQuery.toLowerCase())
+      const slugMatch = (p.slug || '').toLowerCase().includes(searchQuery.toLowerCase())
+      const descMatch = (p.description || '').toLowerCase().includes(searchQuery.toLowerCase())
+      const matchesSearch = titleMatch || slugMatch || descMatch
 
-    const catVal = p.category_label || ''
-    const matchesCat = selectedCategory === 'ALL' || catVal.toLowerCase() === selectedCategory.toLowerCase()
+      const catVal = p.category_label || ''
+      const matchesCat = selectedCategory === 'ALL' || catVal.toLowerCase() === selectedCategory.toLowerCase()
 
-    const schemeVal = p.cohorts?.programs?.name || 'DST NewGen-IEDC'
-    const matchesScheme = selectedScheme === 'ALL' || schemeVal.toLowerCase().includes(selectedScheme.toLowerCase())
+      const schemeVal = p.cohorts?.programs?.name || 'DST NewGen-IEDC'
+      const matchesScheme = selectedScheme === 'ALL' || schemeVal.toLowerCase().includes(selectedScheme.toLowerCase())
 
-    return matchesSearch && matchesCat && matchesScheme
-  })
+      return matchesSearch && matchesCat && matchesScheme
+    })
+    .sort((a, b) => (a.title || '').localeCompare(b.title || ''))
 
   return (
     <>

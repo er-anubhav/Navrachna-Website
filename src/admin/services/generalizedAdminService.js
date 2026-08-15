@@ -208,7 +208,7 @@ export async function getAllProjectsAdmin() {
         programs ( id, name, slug )
       )
     `)
-    .order('created_at', { ascending: false })
+    .order('title', { ascending: true })
   return { data: data || [], error }
 }
 
