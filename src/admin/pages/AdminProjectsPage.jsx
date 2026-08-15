@@ -682,8 +682,6 @@ export function AdminProjectsPage() {
                         <th className="py-4 px-6 font-normal">Project & Innovation Title</th>
                         <th className="py-4 px-6 font-normal">Scheme / Program</th>
                         <th className="py-4 px-6 font-normal">Category</th>
-                        <th className="py-4 px-6 font-normal">Patent Status</th>
-                        <th className="py-4 px-6 font-normal">Grant Expenditure</th>
                         <th className="py-4 px-6 text-right font-normal">Actions</th>
                       </tr>
                     </thead>
@@ -728,14 +726,6 @@ export function AdminProjectsPage() {
                               <span className="text-xs text-[#074887] font-normal">
                                 {item.category_label || 'Smart Hardware'}
                               </span>
-                            </td>
-                            <td className="py-4 px-6 font-normal">
-                              <span className={`px-2.5 py-1 rounded-md text-xs font-normal border ${patentSt === 'Granted' ? 'bg-emerald-50 text-emerald-800 border-emerald-200' : patentSt === 'Filed' ? 'bg-blue-50 text-blue-800 border-blue-200' : 'bg-slate-50 text-slate-600 border-slate-200'}`}>
-                                {patentSt}
-                              </span>
-                            </td>
-                            <td className="py-4 px-6 font-mono text-xs font-normal text-slate-800">
-                              ₹{(item.expenditure || 250000).toLocaleString('en-IN')}
                             </td>
                             <td className="py-4 px-6 text-right font-normal">
                               <div className="flex items-center justify-end gap-3">
@@ -834,15 +824,6 @@ export function AdminProjectsPage() {
                           <p className="text-xs text-slate-600 line-clamp-3 leading-relaxed">
                             {item.description}
                           </p>
-
-                          <div className="flex items-center justify-between pt-2 border-t border-slate-100 text-xs">
-                            <span className={`px-2 py-0.5 rounded text-[10px] font-normal border ${patentSt === 'Granted' ? 'bg-emerald-50 text-emerald-800 border-emerald-200' : patentSt === 'Filed' ? 'bg-blue-50 text-blue-800 border-blue-200' : 'bg-slate-50 text-slate-600 border-slate-200'}`}>
-                              Patent: {patentSt}
-                            </span>
-                            <span className="font-mono text-slate-700 text-[11px]">
-                              ₹{(item.expenditure || 250000).toLocaleString('en-IN')}
-                            </span>
-                          </div>
                         </div>
                       </div>
 
