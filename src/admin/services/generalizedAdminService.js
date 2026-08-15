@@ -83,8 +83,12 @@ export async function getAllStartupsAdmin() {
     .from('startups')
     .select(`
       *,
-      programs ( id, name ),
-      events ( id, title )
+      startup_categories ( id, name, slug ),
+      startup_founders (
+        role_title,
+        founder_order,
+        people ( id, full_name, designation, email, phone )
+      )
     `)
     .order('created_at', { ascending: false })
   return { data: data || [], error }
@@ -93,7 +97,7 @@ export async function getAllStartupsAdmin() {
 export async function createStartup(payload) {
   const { data, error } = await supabase
     .from('startups')
-    .insert([{ ...payload, foundation_id: ROOT_FOUNDATION_ID }])
+    .insert([payload])
     .select()
     .single()
   return { data, error }
@@ -128,7 +132,7 @@ export async function getAllFacilitiesAdmin() {
 export async function createFacility(payload) {
   const { data, error } = await supabase
     .from('facilities')
-    .insert([{ ...payload, foundation_id: ROOT_FOUNDATION_ID }])
+    .insert([payload])
     .select()
     .single()
   return { data, error }
@@ -146,6 +150,11 @@ export async function updateFacility(id, payload) {
 
 export async function deleteFacility(id) {
   const { error } = await supabase.from('facilities').delete().eq('id', id)
+  return { error }
+}
+
+export async function deleteFacilitiesBulk(ids) {
+  const { error } = await supabase.from('facilities').delete().in('id', ids)
   return { error }
 }
 
@@ -181,5 +190,53 @@ export async function updateUser(id, payload) {
 
 export async function deleteUser(id) {
   const { error } = await supabase.from('users').delete().eq('id', id)
+  return { error }
+}
+
+// --------------------------------------------------------
+// 6. PROTOTYPE & SCHEME PROJECTS (NewGen, MSME, NIDHI-PRAYAS, etc.)
+// --------------------------------------------------------
+export async function getAllProjectsAdmin() {
+  const { data, error } = await supabase
+    .from('newgen_projects')
+    .select(`
+      *,
+      cohorts (
+        id,
+        year_label,
+        program_id,
+        programs ( id, name, slug )
+      )
+    `)
+    .order('created_at', { ascending: false })
+  return { data: data || [], error }
+}
+
+export async function createProject(payload) {
+  const { data, error } = await supabase
+    .from('newgen_projects')
+    .insert([payload])
+    .select()
+    .single()
+  return { data, error }
+}
+
+export async function updateProject(id, payload) {
+  const { data, error } = await supabase
+    .from('newgen_projects')
+    .update(payload)
+    .eq('id', id)
+    .select()
+    .single()
+  return { data, error }
+}
+
+export async function deleteProject(id) {
+  const { error } = await supabase.from('newgen_projects').delete().eq('id', id)
+  return { error }
+}
+
+export async function deleteProjectsBulk(ids) {
+  const { error } = await supabase.from('newgen_projects').delete().in('id', ids)
   return { error }
 }

@@ -20,6 +20,15 @@ export function AdminServicesPage() {
   const [submitting, setSubmitting] = useState(false)
   const [feedback, setFeedback] = useState({ type: '', msg: '' })
 
+  useEffect(() => {
+    if (feedback.msg) {
+      const timer = setTimeout(() => {
+        setFeedback({ type: '', msg: '' })
+      }, 2500)
+      return () => clearTimeout(timer)
+    }
+  }, [feedback])
+
   const loadServices = async () => {
     setLoading(true)
     const { data, error } = await supabase

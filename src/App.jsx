@@ -33,6 +33,7 @@ import { AdminProgramsPage } from './admin/pages/AdminProgramsPage'
 import { AdminServicesPage } from './admin/pages/AdminServicesPage'
 import { AdminEventsPage } from './admin/pages/AdminEventsPage'
 import { AdminStartupsPage } from './admin/pages/AdminStartupsPage'
+import { AdminProjectsPage } from './admin/pages/AdminProjectsPage'
 import { AdminFacilitiesPage } from './admin/pages/AdminFacilitiesPage'
 import { AdminUsersPage } from './admin/pages/AdminUsersPage'
 
@@ -88,6 +89,7 @@ function App() {
             <Route path="facilities" element={<AdminFacilitiesPage />} />
             <Route path="events" element={<AdminEventsPage />} />
             <Route path="startups" element={<AdminStartupsPage />} />
+            <Route path="projects" element={<AdminProjectsPage />} />
             <Route path="users" element={<AdminUsersPage />} />
             <Route path="settings" element={<AdminSettingsPage />} />
             <Route path="announcements" element={<AdminAnnouncementsPage />} />

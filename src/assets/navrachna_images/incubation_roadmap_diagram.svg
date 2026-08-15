@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 350" width="100%" height="100%">
+  <defs>
+    <linearGradient id="curveGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="33%" stop-color="#0284c7" />
+      <stop offset="66%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#a855f7" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.08" />
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1000" height="350" fill="#ffffff" rx="24" />
+
+  <!-- Connecting Wave Line -->
+  <path d="M 120 175 C 220 100, 320 250, 380 175 C 480 100, 580 250, 640 175 C 740 100, 840 250, 880 175" fill="none" stroke="url(#curveGrad)" stroke-width="6" stroke-linecap="round" />
+
+  <!-- NODE 1: STEP 01 -->
+  <g transform="translate(120, 175)" filter="url(#shadow)">
+    <circle r="42" fill="#ffffff" stroke="#10b981" stroke-width="4" />
+    <circle r="30" fill="#ecfdf5" />
+    <!-- Form Icon -->
+    <path d="M-8 -12 L8 -12 L8 12 L-8 12 Z M-4 -6 L4 -6 M-4 0 L4 0 M-4 6 L0 6" stroke="#10b981" stroke-width="2" fill="none" stroke-linecap="round" />
+    <text x="0" y="65" text-anchor="middle" font-family="'Sora', sans-serif" font-size="14" font-weight="600" fill="#013759">STEP 01</text>
+    <text x="0" y="85" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="400" fill="#64748b">Fill the Form</text>
+  </g>
+
+  <!-- NODE 2: STEP 02 -->
+  <g transform="translate(380, 175)" filter="url(#shadow)">
+    <circle r="42" fill="#ffffff" stroke="#0284c7" stroke-width="4" />
+    <circle r="30" fill="#f0f9ff" />
+    <!-- Announcement Icon -->
+    <path d="M-8 0 L4 -8 L4 8 Z M4 -4 L10 -4 M4 4 L8 4" stroke="#0284c7" stroke-width="2" fill="none" stroke-linecap="round" />
+    <text x="0" y="65" text-anchor="middle" font-family="'Sora', sans-serif" font-size="14" font-weight="600" fill="#013759">STEP 02</text>
+    <text x="0" y="85" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="400" fill="#64748b">Wait for Response</text>
+  </g>
+
+  <!-- NODE 3: STEP 03 -->
+  <g transform="translate(640, 175)" filter="url(#shadow)">
+    <circle r="42" fill="#ffffff" stroke="#6366f1" stroke-width="4" />
+    <circle r="30" fill="#eef2ff" />
+    <!-- Presentation Board Icon -->
+    <path d="M-8 -8 L8 -8 L8 4 L-8 4 Z M0 4 L-4 12 M0 4 L4 12 M-4 -2 L4 -2" stroke="#6366f1" stroke-width="2" fill="none" stroke-linecap="round" />
+    <text x="0" y="65" text-anchor="middle" font-family="'Sora', sans-serif" font-size="14" font-weight="600" fill="#013759">STEP 03</text>
+    <text x="0" y="85" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="400" fill="#64748b">Discuss &amp; Finalize</text>
+  </g>
+
+  <!-- NODE 4: STEP 04 -->
+  <g transform="translate(880, 175)" filter="url(#shadow)">
+    <circle r="42" fill="#ffffff" stroke="#a855f7" stroke-width="4" />
+    <circle r="30" fill="#faf5ff" />
+    <!-- Analytics Icon -->
+    <path d="M-8 8 L-8 -2 L-3 4 L2 -6 L8 2" stroke="#a855f7" stroke-width="2" fill="none" stroke-linecap="round" />
+    <text x="0" y="65" text-anchor="middle" font-family="'Sora', sans-serif" font-size="14" font-weight="600" fill="#013759">STEP 04</text>
+    <text x="0" y="85" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="400" fill="#64748b">Regular Meets &amp; Updates</text>
+  </g>
+</svg>
