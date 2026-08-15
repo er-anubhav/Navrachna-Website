@@ -18,7 +18,7 @@ export function AdminStartupsPage() {
   const [selectedSector, setSelectedSector] = useState('ALL')
   const [selectedStatus, setSelectedStatus] = useState('ALL')
 
-  const [viewMode, setViewMode] = useState('GRID')
+  const [viewMode, setViewMode] = useState('TABLE')
   const [isEditingPage, setIsEditingPage] = useState(false)
   const [deleteConfirmId, setDeleteConfirmId] = useState(null)
   const [selectedIds, setSelectedIds] = useState([])
