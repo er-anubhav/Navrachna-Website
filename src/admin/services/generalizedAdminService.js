@@ -163,7 +163,7 @@ export async function deleteFacilitiesBulk(ids) {
 // --------------------------------------------------------
 export async function getAllUsersAdmin() {
   const { data, error } = await supabase
-    .from('users')
+    .from('people')
     .select('*')
     .order('created_at', { ascending: false })
   return { data: data || [], error }
@@ -171,7 +171,7 @@ export async function getAllUsersAdmin() {
 
 export async function createUser(payload) {
   const { data, error } = await supabase
-    .from('users')
+    .from('people')
     .insert([payload])
     .select()
     .single()
@@ -180,7 +180,7 @@ export async function createUser(payload) {
 
 export async function updateUser(id, payload) {
   const { data, error } = await supabase
-    .from('users')
+    .from('people')
     .update(payload)
     .eq('id', id)
     .select()
@@ -189,7 +189,7 @@ export async function updateUser(id, payload) {
 }
 
 export async function deleteUser(id) {
-  const { error } = await supabase.from('users').delete().eq('id', id)
+  const { error } = await supabase.from('people').delete().eq('id', id)
   return { error }
 }
 

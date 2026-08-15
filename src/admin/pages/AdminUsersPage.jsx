@@ -307,10 +307,10 @@ export function AdminUsersPage() {
       <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex items-center justify-between gap-4 font-normal">
         <input
           type="text"
-          placeholder="Filter users by name, email, or organization..."
+          placeholder="Filter users by name, email, designation, or organization..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full max-w-sm rounded-lg border border-slate-300 px-3 py-1.5 text-xs text-slate-900 focus:border-[#013759] focus:outline-none font-normal"
+          className="w-full max-w-md rounded-lg border border-slate-300 px-3.5 py-2 text-xs text-slate-900 focus:border-[#013759] focus:outline-none font-normal"
         />
         <span className="text-xs text-slate-500 font-mono shrink-0 font-normal">
           Showing {filtered.length} of {users.length} People
@@ -329,32 +329,46 @@ export function AdminUsersPage() {
             <table className="w-full text-left text-xs text-slate-700">
               <thead className="bg-slate-50 border-b border-slate-200 text-slate-600 uppercase font-normal text-[10px] tracking-wider">
                 <tr>
-                  <th className="py-3 px-4 font-normal">Full Name & Email</th>
-                  <th className="py-3 px-4 font-normal">Organization</th>
-                  <th className="py-3 px-4 font-normal">Assigned Roles</th>
-                  <th className="py-3 px-4 text-right font-normal">Actions</th>
+                  <th className="py-3.5 px-4 font-normal">Full Name & Contact</th>
+                  <th className="py-3.5 px-4 font-normal">Designation & Organization</th>
+                  <th className="py-3.5 px-4 font-normal">Assigned Roles</th>
+                  <th className="py-3.5 px-4 text-right font-normal">Actions</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
                 {filtered.map((item) => (
                   <tr key={item.id} className="hover:bg-slate-50/80 transition-colors">
-                    <td className="py-3 px-4 font-normal text-slate-900">
-                      <div className="flex flex-col">
-                        <span className="font-normal text-slate-900">{item.full_name}</span>
-                        <span className="font-mono text-slate-400 text-[11px]">{item.email}</span>
+                    <td className="py-3.5 px-4 font-normal text-slate-900">
+                      <div className="flex items-center gap-3">
+                        {item.photo_url ? (
+                          <img src={item.photo_url} alt={item.full_name} className="w-8 h-8 rounded-full object-cover border border-slate-200 shrink-0" />
+                        ) : (
+                          <div className="w-8 h-8 rounded-full bg-[#013759] text-white flex items-center justify-center text-xs font-mono font-normal shrink-0">
+                            {(item.full_name || 'P')[0]}
+                          </div>
+                        )}
+                        <div className="flex flex-col">
+                          <span className="font-normal text-slate-900">{item.full_name}</span>
+                          <span className="font-mono text-slate-400 text-[11px]">{item.email || item.phone || 'No email recorded'}</span>
+                        </div>
                       </div>
                     </td>
-                    <td className="py-3 px-4 text-slate-600 font-normal">{item.organization || 'N/A'}</td>
-                    <td className="py-3 px-4">
+                    <td className="py-3.5 px-4 text-slate-600 font-normal">
+                      <div className="flex flex-col">
+                        <span className="text-slate-900 font-normal">{item.designation || 'N/A'}</span>
+                        <span className="text-[11px] text-slate-400">{item.organization || 'I.T.S. Engineering College'}</span>
+                      </div>
+                    </td>
+                    <td className="py-3.5 px-4">
                       <div className="flex flex-wrap gap-1">
-                        {(item.roles || []).map(r => (
+                        {(item.roles && item.roles.length > 0 ? item.roles : ['member']).map(r => (
                           <span key={r} className="inline-block bg-sky-50 text-[#074887] text-[10px] font-normal px-2 py-0.5 rounded capitalize border border-sky-100">
                             {r}
                           </span>
                         ))}
                       </div>
                     </td>
-                    <td className="py-3 px-4 text-right font-normal">
+                    <td className="py-3.5 px-4 text-right font-normal">
                       <div className="flex items-center justify-end gap-2">
                         <button
                           onClick={() => openEditModal(item)}
