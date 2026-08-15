@@ -20,6 +20,8 @@ export function AdminStartupsPage() {
   const [viewMode, setViewMode] = useState('GRID')
   const [isEditingPage, setIsEditingPage] = useState(false)
   const [deleteConfirmId, setDeleteConfirmId] = useState(null)
+  const [selectedIds, setSelectedIds] = useState([])
+  const [bulkDeleteConfirmOpen, setBulkDeleteConfirmOpen] = useState(false)
   const [editingItem, setEditingItem] = useState(null)
   const [imgErrorMap, setImgErrorMap] = useState({})
   const [editorImgError, setEditorImgError] = useState(false)
@@ -344,9 +346,46 @@ export function AdminStartupsPage() {
     } else {
       setFeedback({ type: 'success', msg: 'Startup record deleted!' })
       setDeleteConfirmId(null)
+      setSelectedIds(prev => prev.filter(item => item !== id))
       loadData()
     }
     setSubmitting(false)
+  }
+
+  const toggleSelect = (id) => {
+    setSelectedIds(prev =>
+      prev.includes(id) ? prev.filter(item => item !== id) : [...prev, id]
+    )
+  }
+
+  const toggleSelectAll = () => {
+    const filteredIds = filtered.map(s => s.id)
+    const allSelected = filteredIds.length > 0 && filteredIds.every(id => selectedIds.includes(id))
+    if (allSelected) {
+      setSelectedIds(prev => prev.filter(id => !filteredIds.includes(id)))
+    } else {
+      setSelectedIds(prev => Array.from(new Set([...prev, ...filteredIds])))
+    }
+  }
+
+  const handleBulkDelete = async () => {
+    if (selectedIds.length === 0) return
+    setSubmitting(true)
+    setFeedback({ type: '', msg: '' })
+    let errorCount = 0
+    for (const id of selectedIds) {
+      const { error } = await deleteStartup(id)
+      if (error) errorCount++
+    }
+    if (errorCount > 0) {
+      setFeedback({ type: 'error', msg: `Deleted with ${errorCount} error(s).` })
+    } else {
+      setFeedback({ type: 'success', msg: `Successfully deleted ${selectedIds.length} startup(s)!` })
+    }
+    setSelectedIds([])
+    setBulkDeleteConfirmOpen(false)
+    setSubmitting(false)
+    loadData()
   }
 
   const uniqueSectors = Array.from(new Set(startups.map(s => parse16Columns(s).sector).filter(Boolean))).sort()
@@ -776,21 +815,76 @@ export function AdminStartupsPage() {
               <h1 className="text-2xl sm:text-3xl font-normal text-[#013759]">Incubated Startups Directory</h1>
             </div>
 
-            <button
-              onClick={openCreateModal}
-              style={{ color: '#ffffff' }}
-              className="bg-[#074887] hover:bg-[#013759] !text-white text-sm font-normal px-5 py-2.5 rounded-xl transition-colors shadow-sm flex items-center gap-2 w-fit cursor-pointer"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
-              </svg>
-              <span>Add Startup</span>
-            </button>
+            <div className="flex items-center gap-3">
+              {selectedIds.length > 0 && (
+                <button
+                  onClick={() => setBulkDeleteConfirmOpen(true)}
+                  style={{ color: '#ffffff' }}
+                  className="bg-red-600 hover:bg-red-700 !text-white text-sm font-normal px-4 py-2.5 rounded-xl transition-colors shadow-sm flex items-center gap-2 cursor-pointer"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                  </svg>
+                  <span>Delete Selected ({selectedIds.length})</span>
+                </button>
+              )}
+
+              <button
+                onClick={openCreateModal}
+                style={{ color: '#ffffff' }}
+                className="bg-[#074887] hover:bg-[#013759] !text-white text-sm font-normal px-5 py-2.5 rounded-xl transition-colors shadow-sm flex items-center gap-2 w-fit cursor-pointer"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
+                </svg>
+                <span>Add Startup</span>
+              </button>
+            </div>
           </div>
 
           {feedback.msg && (
             <div className={`p-4 rounded-xl text-sm border font-normal ${feedback.type === 'success' ? 'bg-emerald-50 text-emerald-800 border-emerald-200' : 'bg-red-50 text-red-800 border-red-200'}`}>
               {feedback.msg}
+            </div>
+          )}
+
+          {/* Multi-Select Action Banner */}
+          {selectedIds.length > 0 && (
+            <div className="bg-sky-50 border border-sky-200 p-4 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-sky-900 font-normal shadow-2xs">
+              <div className="flex items-center gap-2">
+                <span className="font-mono bg-sky-200 text-sky-900 px-2 py-0.5 rounded-lg text-xs">{selectedIds.length}</span>
+                <span>startup(s) currently selected</span>
+              </div>
+
+              <div className="flex items-center gap-2.5">
+                <button
+                  type="button"
+                  onClick={toggleSelectAll}
+                  style={{ color: '#0f172a' }}
+                  className="bg-white hover:bg-slate-100 !text-slate-900 border border-slate-300 px-3.5 py-1.5 rounded-xl font-normal cursor-pointer transition-colors"
+                >
+                  {filtered.length > 0 && filtered.every(s => selectedIds.includes(s.id)) ? 'Deselect All Filtered' : 'Select All Filtered'}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setSelectedIds([])}
+                  style={{ color: '#0f172a' }}
+                  className="bg-white hover:bg-slate-100 !text-slate-900 border border-slate-300 px-3.5 py-1.5 rounded-xl font-normal cursor-pointer transition-colors"
+                >
+                  Clear Selection
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setBulkDeleteConfirmOpen(true)}
+                  style={{ color: '#ffffff' }}
+                  className="bg-red-600 hover:bg-red-700 !text-white px-4 py-1.5 rounded-xl font-normal cursor-pointer transition-colors shadow-2xs flex items-center gap-1.5"
+                >
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                  </svg>
+                  <span>Delete Selected ({selectedIds.length})</span>
+                </button>
+              </div>
             </div>
           )}
 
@@ -884,7 +978,7 @@ export function AdminStartupsPage() {
             </div>
           </div>
 
-          {/* STREAMLINED 4-COLUMN TABLE VIEW (NO SERIAL NUMBER COLUMN) */}
+          {/* STREAMLINED TABLE VIEW WITH MULTI-SELECT CHECKBOXES */}
           {loading ? (
             <div className="p-12 text-center bg-white rounded-2xl border border-slate-200 shadow-xs">
               <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#013759] mx-auto mb-3" />
@@ -896,6 +990,14 @@ export function AdminStartupsPage() {
                 <table className="w-full text-left text-xs text-slate-700">
                   <thead className="bg-slate-50 border-b border-slate-200 text-slate-600 uppercase font-normal text-[10px] tracking-wider">
                     <tr>
+                      <th className="py-3.5 px-4 font-normal w-10 text-center">
+                        <input
+                          type="checkbox"
+                          checked={filtered.length > 0 && filtered.every(s => selectedIds.includes(s.id))}
+                          onChange={toggleSelectAll}
+                          className="w-4 h-4 rounded border-slate-300 text-[#074887] focus:ring-0 cursor-pointer"
+                        />
+                      </th>
                       <th className="py-3.5 px-6 font-normal">Company Name & Sector</th>
                       <th className="py-3.5 px-6 font-normal">Founder & Contact</th>
                       <th className="py-3.5 px-6 font-normal">Stage & Revenue</th>
@@ -906,9 +1008,18 @@ export function AdminStartupsPage() {
                     {filtered.map((item) => {
                       const p = parse16Columns(item)
                       const hasBrokenImg = imgErrorMap[item.id]
+                      const isSelected = selectedIds.includes(item.id)
 
                       return (
-                        <tr key={item.id} className="hover:bg-slate-50/80 transition-colors">
+                        <tr key={item.id} className={`hover:bg-slate-50/80 transition-colors ${isSelected ? 'bg-sky-50/40' : ''}`}>
+                          <td className="py-4 px-4 text-center">
+                            <input
+                              type="checkbox"
+                              checked={isSelected}
+                              onChange={() => toggleSelect(item.id)}
+                              className="w-4 h-4 rounded border-slate-300 text-[#074887] focus:ring-0 cursor-pointer"
+                            />
+                          </td>
                           <td className="py-4 px-6">
                             <div className="flex items-center gap-3">
                               <div className="w-9 h-9 bg-gradient-to-br from-slate-100 to-slate-200 rounded-lg border border-slate-200 overflow-hidden shrink-0 flex items-center justify-center p-1">
@@ -987,28 +1098,37 @@ export function AdminStartupsPage() {
               </div>
             </div>
           ) : (
-            /* CLEAN MODERN SAAS GRID VIEW */
+            /* CLEAN MODERN SAAS GRID VIEW WITH MULTI-SELECT */
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 font-normal">
               {filtered.map((item) => {
                 const p = parse16Columns(item)
                 const hasBrokenImg = imgErrorMap[item.id]
+                const isSelected = selectedIds.includes(item.id)
 
                 return (
-                  <div key={item.id} className="bg-white rounded-2xl border border-slate-200/90 shadow-2xs hover:shadow-md hover:border-slate-300 transition-all duration-200 p-6 flex flex-col justify-between gap-5 group">
+                  <div key={item.id} className={`bg-white rounded-2xl border ${isSelected ? 'border-[#074887] ring-1 ring-[#074887] bg-sky-50/10' : 'border-slate-200/90'} shadow-2xs hover:shadow-md hover:border-slate-300 transition-all duration-200 p-6 flex flex-col justify-between gap-5 group relative`}>
                     
-                    {/* Top Header Row with Logo & Badges */}
-                    <div className="flex items-start justify-between gap-4">
-                      <div className="w-14 h-14 bg-slate-50 rounded-2xl border border-slate-200/80 p-2.5 flex items-center justify-center overflow-hidden shrink-0 group-hover:border-slate-300 transition-colors">
-                        {p.logo_url && !hasBrokenImg ? (
-                          <img
-                            src={p.logo_url}
-                            alt={p.company_name}
-                            onError={() => setImgErrorMap(prev => ({ ...prev, [item.id]: true }))}
-                            className="w-full h-full object-contain"
-                          />
-                        ) : (
-                          <span className="text-lg font-mono text-[#013759] font-normal">{getInitials(p.company_name)}</span>
-                        )}
+                    {/* Top Header Row with Checkbox, Logo & Badges */}
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="flex items-center gap-3">
+                        <input
+                          type="checkbox"
+                          checked={isSelected}
+                          onChange={() => toggleSelect(item.id)}
+                          className="w-4 h-4 rounded border-slate-300 text-[#074887] focus:ring-0 cursor-pointer mt-1 shrink-0"
+                        />
+                        <div className="w-12 h-12 bg-slate-50 rounded-2xl border border-slate-200/80 p-2 flex items-center justify-center overflow-hidden shrink-0 group-hover:border-slate-300 transition-colors">
+                          {p.logo_url && !hasBrokenImg ? (
+                            <img
+                              src={p.logo_url}
+                              alt={p.company_name}
+                              onError={() => setImgErrorMap(prev => ({ ...prev, [item.id]: true }))}
+                              className="w-full h-full object-contain"
+                            />
+                          ) : (
+                            <span className="text-base font-mono text-[#013759] font-normal">{getInitials(p.company_name)}</span>
+                          )}
+                        </div>
                       </div>
 
                       <div className="flex flex-col items-end gap-1.5">
@@ -1126,6 +1246,42 @@ export function AdminStartupsPage() {
                 className="bg-red-600 hover:bg-red-700 !text-white text-xs px-4 py-2 rounded-xl font-normal shadow-xs disabled:opacity-50 cursor-pointer"
               >
                 {submitting ? 'Deleting...' : 'Yes, Delete'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Bulk Delete Confirmation Modal */}
+      {bulkDeleteConfirmOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs font-normal">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-sm w-full p-6 border border-slate-200 flex flex-col gap-4 text-center font-normal">
+            <div className="w-12 h-12 rounded-full bg-red-100 text-red-600 flex items-center justify-center mx-auto">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+              </svg>
+            </div>
+            <h3 className="text-base font-normal text-[#013759]">Confirm Bulk Deletion</h3>
+            <p className="text-xs text-slate-600 font-normal">
+              Are you sure you want to permanently delete <span className="font-mono text-slate-900">{selectedIds.length}</span> selected startup(s)? This action cannot be undone.
+            </p>
+            <div className="flex items-center justify-center gap-3 pt-2 font-normal">
+              <button
+                type="button"
+                onClick={() => setBulkDeleteConfirmOpen(false)}
+                style={{ color: '#0f172a' }}
+                className="bg-slate-100 hover:bg-slate-200 !text-slate-900 text-xs px-4 py-2 rounded-xl font-normal cursor-pointer border border-slate-300"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={handleBulkDelete}
+                disabled={submitting}
+                style={{ color: '#ffffff' }}
+                className="bg-red-600 hover:bg-red-700 !text-white text-xs px-4 py-2 rounded-xl font-normal shadow-xs disabled:opacity-50 cursor-pointer"
+              >
+                {submitting ? 'Deleting...' : `Yes, Delete (${selectedIds.length})`}
               </button>
             </div>
           </div>
