@@ -37,6 +37,8 @@ import { AdminProjectsPage } from './admin/pages/AdminProjectsPage'
 import { AdminFacilitiesPage } from './admin/pages/AdminFacilitiesPage'
 import { AdminUsersPage } from './admin/pages/AdminUsersPage'
 
+import { StartupDetailPage } from './pages/StartupDetailPage'
+
 function App() {
   return (
     <AuthProvider>
@@ -50,6 +52,10 @@ function App() {
           
           {/* Canonical Dynamic Program Detail Engine Route */}
           <Route path="/programs/:slug" element={<ProgramDetailPage />} />
+
+          {/* Canonical Dynamic Startup Showcase Detail Route */}
+          <Route path="/startups/:slug" element={<StartupDetailPage />} />
+          <Route path="/portfolio/:slug" element={<StartupDetailPage />} />
 
           {/* Legacy Root Alias Redirects -> Canonical /programs/:slug */}
           <Route path="/startin-up" element={<Navigate to="/programs/startin-up" replace />} />

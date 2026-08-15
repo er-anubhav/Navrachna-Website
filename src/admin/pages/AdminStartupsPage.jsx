@@ -37,7 +37,7 @@ export function AdminStartupsPage() {
   const [croppedAreaPixels, setCroppedAreaPixels] = useState(null)
   const fileInputRef = useRef(null)
 
-  // Form State for ALL 16 SEPARATE COLUMNS + EXTENSIVITY (Custom Fields)
+  // Form State for ALL 16 SEPARATE COLUMNS + EXTENSIVITY (Custom Fields, Awards & Patents)
   const [formData, setFormData] = useState({
     s_no: 1,
     company_name: '',
@@ -58,7 +58,9 @@ export function AdminStartupsPage() {
     slug: '',
     logo_url: '',
     is_featured: true,
-    custom_fields: []
+    custom_fields: [],
+    awards_and_recognitions: [],
+    patents: []
   })
 
   const [submitting, setSubmitting] = useState(false)
@@ -137,7 +139,9 @@ export function AdminStartupsPage() {
       about_startup: parsed.about_startup || item.description || '',
       slug: item.slug || parsed.slug || '',
       logo_url: (parsed.logo_url !== undefined && parsed.logo_url !== null) ? parsed.logo_url : (item.logo_url || ''),
-      custom_fields: Array.isArray(parsed.custom_fields) ? parsed.custom_fields : []
+      custom_fields: Array.isArray(parsed.custom_fields) ? parsed.custom_fields : [],
+      awards_and_recognitions: Array.isArray(parsed.awards_and_recognitions) ? parsed.awards_and_recognitions : [],
+      patents: Array.isArray(parsed.patents) ? parsed.patents : []
     }
   }
 
@@ -164,7 +168,9 @@ export function AdminStartupsPage() {
       slug: '',
       logo_url: '',
       is_featured: true,
-      custom_fields: []
+      custom_fields: [],
+      awards_and_recognitions: [],
+      patents: []
     })
     setIsEditingPage(true)
   }
@@ -193,7 +199,9 @@ export function AdminStartupsPage() {
       slug: p.slug,
       logo_url: p.logo_url,
       is_featured: item.is_featured !== false,
-      custom_fields: p.custom_fields
+      custom_fields: p.custom_fields,
+      awards_and_recognitions: p.awards_and_recognitions,
+      patents: p.patents
     })
     setIsEditingPage(true)
   }
@@ -274,12 +282,60 @@ export function AdminStartupsPage() {
     }))
   }
 
+  // Awards Dynamic Handlers
+  const addAward = () => {
+    setFormData(prev => ({
+      ...prev,
+      awards_and_recognitions: [...(prev.awards_and_recognitions || []), { title: '', issuer: '', year: '' }]
+    }))
+  }
+
+  const updateAward = (index, key, value) => {
+    setFormData(prev => {
+      const updated = [...(prev.awards_and_recognitions || [])]
+      updated[index] = { ...updated[index], [key]: value }
+      return { ...prev, awards_and_recognitions: updated }
+    })
+  }
+
+  const removeAward = (index) => {
+    setFormData(prev => ({
+      ...prev,
+      awards_and_recognitions: (prev.awards_and_recognitions || []).filter((_, i) => i !== index)
+    }))
+  }
+
+  // Patents Dynamic Handlers
+  const addPatent = () => {
+    setFormData(prev => ({
+      ...prev,
+      patents: [...(prev.patents || []), { title: '', number: '', status: 'Filed / Pending' }]
+    }))
+  }
+
+  const updatePatent = (index, key, value) => {
+    setFormData(prev => {
+      const updated = [...(prev.patents || [])]
+      updated[index] = { ...updated[index], [key]: value }
+      return { ...prev, patents: updated }
+    })
+  }
+
+  const removePatent = (index) => {
+    setFormData(prev => ({
+      ...prev,
+      patents: (prev.patents || []).filter((_, i) => i !== index)
+    }))
+  }
+
   const handleSave = async (e) => {
     if (e) e.preventDefault()
     setSubmitting(true)
     setFeedback({ type: '', msg: '' })
 
     const validCustomFields = formData.custom_fields.filter(cf => cf.key && cf.key.trim() !== '')
+    const validAwards = (formData.awards_and_recognitions || []).filter(a => (typeof a === 'string' ? a.trim() !== '' : a.title && a.title.trim() !== ''))
+    const validPatents = (formData.patents || []).filter(p => (typeof p === 'string' ? p.trim() !== '' : p.title && p.title.trim() !== ''))
 
     const structuredData = {
       s_no: formData.s_no,
@@ -300,7 +356,9 @@ export function AdminStartupsPage() {
       about_startup: formData.about_startup,
       slug: formData.slug,
       logo_url: formData.logo_url || '',
-      custom_fields: validCustomFields
+      custom_fields: validCustomFields,
+      awards_and_recognitions: validAwards,
+      patents: validPatents
     }
 
     const yr = formData.date_of_incorporation ? formData.date_of_incorporation.substring(0, 4) : '2023'
@@ -758,11 +816,139 @@ export function AdminStartupsPage() {
               />
             </div>
 
-            {/* Section 6: Extensible Custom Fields */}
+            {/* Section 6: Awards & Recognitions */}
+            <div className="bg-amber-50/40 p-6 rounded-2xl border border-amber-200/80 flex flex-col gap-4">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="text-base font-normal text-[#013759]">6. Awards & Recognitions</h3>
+                  <p className="text-xs text-slate-500 font-normal">Add competition awards, government honors, grants, and achievements for this venture.</p>
+                </div>
+                <button
+                  type="button"
+                  onClick={addAward}
+                  style={{ color: '#0f172a' }}
+                  className="bg-white hover:bg-slate-100 !text-slate-900 border border-slate-300 text-xs px-4 py-2 rounded-xl font-normal cursor-pointer flex items-center gap-1.5 shadow-2xs transition-colors"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
+                  </svg>
+                  <span>Add Award</span>
+                </button>
+              </div>
+
+              {(!formData.awards_and_recognitions || formData.awards_and_recognitions.length === 0) ? (
+                <p className="text-xs text-slate-400 font-mono italic">No awards or honors added yet. Click "+ Add Award" above to document achievements.</p>
+              ) : (
+                <div className="flex flex-col gap-3">
+                  {formData.awards_and_recognitions.map((award, idx) => (
+                    <div key={idx} className="flex flex-wrap sm:flex-nowrap items-center gap-3 bg-white p-3 rounded-xl border border-amber-200">
+                      <input
+                        type="text"
+                        value={typeof award === 'object' ? award.title : award}
+                        onChange={(e) => updateAward(idx, 'title', e.target.value)}
+                        placeholder="Award / Competition Title (e.g. National Hackathon Winner)"
+                        className="flex-1 rounded-xl border border-slate-300 bg-white px-3.5 py-2 text-xs text-slate-900 focus:border-[#013759] focus:outline-none font-normal"
+                      />
+                      <input
+                        type="text"
+                        value={typeof award === 'object' ? (award.issuer || '') : ''}
+                        onChange={(e) => updateAward(idx, 'issuer', e.target.value)}
+                        placeholder="Issuer / Govt Body (e.g. Ministry of MSME)"
+                        className="w-full sm:w-1/3 rounded-xl border border-slate-300 bg-white px-3.5 py-2 text-xs text-slate-900 focus:border-[#013759] focus:outline-none font-normal"
+                      />
+                      <input
+                        type="text"
+                        value={typeof award === 'object' ? (award.year || '') : ''}
+                        onChange={(e) => updateAward(idx, 'year', e.target.value)}
+                        placeholder="Year (e.g. 2024)"
+                        className="w-24 rounded-xl border border-slate-300 bg-white px-3.5 py-2 text-xs text-slate-900 focus:border-[#013759] focus:outline-none font-mono"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => removeAward(idx)}
+                        className="text-red-600 hover:text-red-800 p-2 rounded-lg hover:bg-red-50 transition-colors cursor-pointer"
+                        title="Remove Award"
+                      >
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                        </svg>
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Section 7: Patents & Intellectual Property (IP) */}
+            <div className="bg-purple-50/40 p-6 rounded-2xl border border-purple-200/80 flex flex-col gap-4">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="text-base font-normal text-[#013759]">7. Patents & Intellectual Property (IP)</h3>
+                  <p className="text-xs text-slate-500 font-normal">Add filed patents, IP registrations, trademark filings, or copyright grants.</p>
+                </div>
+                <button
+                  type="button"
+                  onClick={addPatent}
+                  style={{ color: '#0f172a' }}
+                  className="bg-white hover:bg-slate-100 !text-slate-900 border border-slate-300 text-xs px-4 py-2 rounded-xl font-normal cursor-pointer flex items-center gap-1.5 shadow-2xs transition-colors"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
+                  </svg>
+                  <span>Add Patent / IP</span>
+                </button>
+              </div>
+
+              {(!formData.patents || formData.patents.length === 0) ? (
+                <p className="text-xs text-slate-400 font-mono italic">No patents listed yet. Click "+ Add Patent / IP" above to record patent filings.</p>
+              ) : (
+                <div className="flex flex-col gap-3">
+                  {formData.patents.map((pat, idx) => (
+                    <div key={idx} className="flex flex-wrap sm:flex-nowrap items-center gap-3 bg-white p-3 rounded-xl border border-purple-200">
+                      <input
+                        type="text"
+                        value={typeof pat === 'object' ? pat.title : pat}
+                        onChange={(e) => updatePatent(idx, 'title', e.target.value)}
+                        placeholder="Patent Title (e.g. IoT Acoustic Sensing Controller)"
+                        className="flex-1 rounded-xl border border-slate-300 bg-white px-3.5 py-2 text-xs text-slate-900 focus:border-[#013759] focus:outline-none font-normal"
+                      />
+                      <input
+                        type="text"
+                        value={typeof pat === 'object' ? (pat.number || '') : ''}
+                        onChange={(e) => updatePatent(idx, 'number', e.target.value)}
+                        placeholder="Patent / App No. (e.g. 202411005891)"
+                        className="w-full sm:w-1/3 rounded-xl border border-slate-300 bg-white px-3.5 py-2 text-xs text-slate-900 focus:border-[#013759] focus:outline-none font-mono"
+                      />
+                      <select
+                        value={typeof pat === 'object' ? (pat.status || 'Filed / Pending') : 'Filed / Pending'}
+                        onChange={(e) => updatePatent(idx, 'status', e.target.value)}
+                        className="w-36 rounded-xl border border-slate-300 bg-white px-3 py-2 text-xs text-slate-800 focus:border-[#013759] focus:outline-none font-normal cursor-pointer"
+                      >
+                        <option value="Filed / Pending">Filed / Pending</option>
+                        <option value="Published">Published</option>
+                        <option value="Granted">Granted</option>
+                      </select>
+                      <button
+                        type="button"
+                        onClick={() => removePatent(idx)}
+                        className="text-red-600 hover:text-red-800 p-2 rounded-lg hover:bg-red-50 transition-colors cursor-pointer"
+                        title="Remove Patent"
+                      >
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                        </svg>
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Section 8: Extensible Custom Fields */}
             <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200 flex flex-col gap-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="text-base font-normal text-[#013759]">6. Custom Fields & Future Attributes</h3>
+                  <h3 className="text-base font-normal text-[#013759]">8. Custom Fields & Future Attributes</h3>
                   <p className="text-xs text-slate-500 font-normal">Add custom parameters such as Patent Status, Grant Sanctions, GST Registration, or Co-Founders.</p>
                 </div>
                 <button
@@ -1103,11 +1289,23 @@ export function AdminStartupsPage() {
                           </td>
                           <td className="py-4 px-6 text-right font-normal">
                             <div className="flex items-center justify-end gap-3">
+                              <a
+                                href={`/startups/${p.slug || item.id}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-emerald-700 hover:underline text-xs font-normal cursor-pointer flex items-center gap-1"
+                              >
+                                <span>Showcase</span>
+                                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                </svg>
+                              </a>
+                              <span className="text-slate-300">|</span>
                               <button
                                 onClick={() => openEditModal(item)}
                                 className="text-[#074887] hover:underline text-xs font-normal cursor-pointer"
                               >
-                                Edit Startup
+                                Edit
                               </button>
                               <span className="text-slate-300">|</span>
                               <button
@@ -1221,14 +1419,24 @@ export function AdminStartupsPage() {
                     </div>
 
                     {/* Card Footer Actions */}
-                    <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
-                      <span className="font-mono text-slate-400 text-[11px]">Venture</span>
+                    <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-normal">
+                      <a
+                        href={`/startups/${p.slug || item.id}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-emerald-700 hover:underline cursor-pointer text-xs flex items-center gap-1 font-normal"
+                      >
+                        <span>Showcase</span>
+                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                      </a>
                       <div className="flex items-center gap-3 font-normal">
                         <button
                           onClick={() => openEditModal(item)}
                           className="text-[#074887] hover:underline cursor-pointer"
                         >
-                          Edit Startup
+                          Edit
                         </button>
                         <span className="text-slate-300">|</span>
                         <button

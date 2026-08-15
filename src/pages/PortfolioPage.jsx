@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import heroImage from '../assets/co-working-area-in-greater-noida-12-scaled.webp'
 import { getStartups } from '../services/startupsService'
 
+import { Link } from 'react-router-dom'
+
 // Women-Centric Startup Fallback Logos
 import logoJagmag from '../assets/navrachna_images/portfolio/logo_jagmag.png'
 import logoNeurapex from '../assets/navrachna_images/portfolio/logo_neurapex.png'
@@ -77,12 +79,18 @@ export function PortfolioPage() {
       if (data && data.length > 0) {
         const formatted = data.map((item, idx) => {
           const staticMatch = STATIC_STARTUPS.find(s => s.name.toLowerCase() === item.name.toLowerCase()) || STATIC_STARTUPS[idx % STATIC_STARTUPS.length]
+          let p = {}
+          try { if (item.description) p = JSON.parse(item.description) } catch(e){}
+          const slug = item.slug || p.slug || (item.name || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
+
           return {
+            id: item.id,
+            slug,
             name: item.name,
             logo: item.logo_url && item.logo_url.startsWith('http') ? item.logo_url : staticMatch.logo,
             type: idx < 14 ? 'women' : 'prominent',
             category: item.startup_categories?.name || staticMatch.category,
-            desc: item.description || staticMatch.desc
+            desc: p.about_startup || (typeof item.description === 'string' && !item.description.startsWith('{') ? item.description : staticMatch.desc)
           }
         })
         setStartupsList(formatted)
@@ -170,44 +178,58 @@ export function PortfolioPage() {
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredStartups.map((item, index) => (
-              <div
-                key={index}
-                className="flex flex-col justify-between rounded-lg border border-slate-200/80 bg-white p-6 shadow-sm hover:shadow-md transition-all group"
-              >
-                <div className="flex flex-col gap-4">
-                  {/* Logo Container */}
-                  <div className="w-full h-24 rounded border border-slate-100 bg-slate-50/50 flex items-center justify-center p-4">
-                    <img
-                      src={item.logo}
-                      alt={item.name}
-                      className="max-h-full max-w-full object-contain filter group-hover:brightness-105 transition-all"
-                    />
+            {filteredStartups.map((item, index) => {
+              const itemSlug = item.slug || (item.name || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
+              return (
+                <div
+                  key={index}
+                  className="flex flex-col justify-between rounded-xl border border-slate-200/80 bg-white p-6 shadow-xs hover:shadow-md transition-all group"
+                >
+                  <div className="flex flex-col gap-4">
+                    {/* Logo Container */}
+                    <div className="w-full h-24 rounded-lg border border-slate-100 bg-slate-50/50 flex items-center justify-center p-4">
+                      <img
+                        src={item.logo}
+                        alt={item.name}
+                        className="max-h-full max-w-full object-contain filter group-hover:brightness-105 transition-all"
+                      />
+                    </div>
+
+                    {/* Info Block */}
+                    <div className="flex flex-col gap-1">
+                      <span className="text-[10px] font-normal uppercase tracking-wider text-slate-400">
+                        {item.category}
+                      </span>
+                      <Link to={`/startups/${itemSlug}`}>
+                        <h3 className="text-base text-slate-900 font-normal group-hover:text-[#013759] transition-colors leading-snug">
+                          {item.name}
+                        </h3>
+                      </Link>
+                    </div>
+
+                    {/* Description */}
+                    <p className="text-xs text-slate-500 line-clamp-3 leading-relaxed text-justify font-normal">
+                      {item.desc}
+                    </p>
                   </div>
 
-                  {/* Info Block */}
-                  <div className="flex flex-col gap-1">
-                    <span className="text-[10px] font-normal uppercase tracking-wider text-slate-400">
-                      {item.category}
+                  <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                    <span className="text-[11px] font-normal text-[#013759] uppercase tracking-wider">
+                      Incubated Venture
                     </span>
-                    <h3 className="text-base text-slate-900 font-normal group-hover:text-[#013759] transition-colors leading-snug">
-                      {item.name}
-                    </h3>
+                    <Link
+                      to={`/startups/${itemSlug}`}
+                      className="text-xs text-[#074887] hover:underline font-normal flex items-center gap-1"
+                    >
+                      <span>View Profile</span>
+                      <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                      </svg>
+                    </Link>
                   </div>
-
-                  {/* Description */}
-                  <p className="text-xs text-gray-500 line-clamp-3 leading-relaxed text-justify">
-                    {item.desc}
-                  </p>
                 </div>
-
-                <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
-                  <span className="text-[11px] font-normal text-[#013759] uppercase tracking-wider">
-                    Incubated Venture
-                  </span>
-                </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
         )}
 
