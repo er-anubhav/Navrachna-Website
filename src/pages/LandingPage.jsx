@@ -674,20 +674,20 @@ export function LandingPage() {
 
       {/* Navrachna Foundation Section */}
       <section id="about" className="relative w-full bg-white py-10 sm:py-24 overflow-hidden border-b border-gray-100">
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-6 lg:gap-16">
+        <div className="relative w-full px-6 sm:px-12 lg:px-16 xl:px-24 flex flex-col lg:flex-row items-center gap-8 lg:gap-20">
           
           {/* Left Column: Image Layout */}
-          <div className="w-full lg:w-[48%] flex sm:block flex-row items-center justify-center gap-3 sm:gap-0 h-[220px] sm:h-[450px] lg:h-[520px] relative">
+          <div className="w-full lg:w-1/2 flex sm:block flex-row items-center justify-center gap-3 sm:gap-0 h-[240px] sm:h-[480px] lg:h-[550px] relative shrink-0">
             {/* First Card */}
-            <div className="w-1/2 sm:w-[46%] h-full sm:h-[350px] lg:h-[400px] rounded-2xl sm:rounded-[2.5rem] overflow-hidden shadow-xl sm:shadow-2xl sm:border-4 sm:border-white sm:absolute sm:left-4 sm:top-8 lg:top-4 transform sm:-translate-y-6 lg:-translate-y-8 sm:hover:-translate-y-8 lg:hover:-translate-y-10 transition-all duration-500 ease-out hover:scale-[1.02] bg-[#013759]">
+            <div className="w-1/2 sm:w-[46%] h-full sm:h-[370px] lg:h-[430px] rounded-2xl sm:rounded-[2.5rem] overflow-hidden shadow-xl sm:shadow-2xl sm:border-4 sm:border-white sm:absolute sm:left-4 sm:top-8 lg:top-4 transform sm:-translate-y-6 lg:-translate-y-8 sm:hover:-translate-y-8 lg:hover:-translate-y-10 transition-all duration-500 ease-out hover:scale-[1.02] bg-[#013759]">
               <img 
                 src={heroImage} 
                 alt="Navrachna Incubator Facility" 
                 className="w-full h-full object-cover object-center"
-                />
+              />
             </div>
             {/* Second Card */}
-            <div className="w-1/2 sm:w-[46%] h-full sm:h-[350px] lg:h-[400px] rounded-2xl sm:rounded-[2.5rem] overflow-hidden shadow-xl sm:shadow-2xl sm:border-4 sm:border-white sm:absolute sm:right-4 sm:bottom-8 lg:bottom-4 transform sm:translate-y-6 lg:translate-y-8 sm:hover:translate-y-4 lg:hover:translate-y-6 transition-all duration-500 ease-out hover:scale-[1.02] bg-[#074887]">
+            <div className="w-1/2 sm:w-[46%] h-full sm:h-[370px] lg:h-[430px] rounded-2xl sm:rounded-[2.5rem] overflow-hidden shadow-xl sm:shadow-2xl sm:border-4 sm:border-white sm:absolute sm:right-4 sm:bottom-8 lg:bottom-4 transform sm:translate-y-6 lg:translate-y-8 sm:hover:translate-y-4 lg:hover:translate-y-6 transition-all duration-500 ease-out hover:scale-[1.02] bg-[#074887]">
               <img 
                 src={programsBg} 
                 alt="Co-working workspace desks" 
@@ -698,7 +698,7 @@ export function LandingPage() {
 
           {/* Right Column: Informational Content */}
           <div className="flex-1 flex flex-col items-start text-left">
-            <h2 className="mb-3 sm:mb-6 text-xl sm:text-3xl md:text-4xl font-normal tracking-tight text-[#013759] leading-snug sm:leading-tight">
+            <h2 className="mb-3 sm:mb-6 text-xl sm:text-3xl md:text-4xl lg:text-5xl font-normal tracking-tight text-[#013759] leading-snug sm:leading-tight">
               Navrachna Foundation for Entrepreneurship Development
             </h2>
 
