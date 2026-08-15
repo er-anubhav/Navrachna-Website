@@ -165,7 +165,7 @@ export async function getAllUsersAdmin() {
   const { data, error } = await supabase
     .from('people')
     .select('*')
-    .order('created_at', { ascending: false })
+    .order('full_name', { ascending: true })
   return { data: data || [], error }
 }
 

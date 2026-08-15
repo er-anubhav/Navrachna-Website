@@ -110,11 +110,14 @@ export function AdminUsersPage() {
     setSubmitting(false)
   }
 
-  const filtered = users.filter(u =>
-    (u.full_name && u.full_name.toLowerCase().includes(searchQuery.toLowerCase())) ||
-    (u.email && u.email.toLowerCase().includes(searchQuery.toLowerCase())) ||
-    (u.organization && u.organization.toLowerCase().includes(searchQuery.toLowerCase()))
-  )
+  const filtered = users
+    .filter(u =>
+      (u.full_name && u.full_name.toLowerCase().includes(searchQuery.toLowerCase())) ||
+      (u.email && u.email.toLowerCase().includes(searchQuery.toLowerCase())) ||
+      (u.designation && u.designation.toLowerCase().includes(searchQuery.toLowerCase())) ||
+      (u.organization && u.organization.toLowerCase().includes(searchQuery.toLowerCase()))
+    )
+    .sort((a, b) => (a.full_name || '').localeCompare(b.full_name || ''))
 
   // Dedicated Full Page User Directory Content Editor View
   if (isEditingPage) {
