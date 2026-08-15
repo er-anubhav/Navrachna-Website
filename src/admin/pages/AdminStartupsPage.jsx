@@ -16,6 +16,7 @@ export function AdminStartupsPage() {
   const [selectedRevenue, setSelectedRevenue] = useState('ALL')
   const [selectedGender, setSelectedGender] = useState('ALL')
   const [selectedSector, setSelectedSector] = useState('ALL')
+  const [selectedStatus, setSelectedStatus] = useState('ALL')
 
   const [viewMode, setViewMode] = useState('GRID')
   const [isEditingPage, setIsEditingPage] = useState(false)
@@ -124,7 +125,8 @@ export function AdminStartupsPage() {
       cin_number: parsed.cin_number || 'N/A',
       sector: normalizeSector(parsed.sector || item.startup_categories?.name || 'IT & Tech Services'),
       website: item.website_url || parsed.website || 'N/A',
-      stage: parsed.stage || item.incubation_status || 'Early Traction',
+      stage: parsed.stage || (item.incubation_status === 'graduated' ? 'Graduated' : 'Early Traction'),
+      incubation_status: item.incubation_status || (parsed.stage?.toLowerCase().includes('graduat') ? 'graduated' : 'incubated'),
       mobile_number: primaryFounder?.phone || parsed.mobile_number || 'N/A',
       email_id: primaryFounder?.email || parsed.email_id || 'N/A',
       date_of_incorporation: parsed.date_of_incorporation || item.cohort_year || 'N/A',
@@ -410,7 +412,11 @@ export function AdminStartupsPage() {
     const matchGender = selectedGender === 'ALL' || (selectedGender === 'WOMEN' ? p.is_women_founder : !p.is_women_founder)
     const matchSector = selectedSector === 'ALL' || p.sector.toLowerCase() === selectedSector.toLowerCase()
 
-    return matchQuery && matchStage && matchRevenue && matchGender && matchSector
+    const isGraduated = p.incubation_status === 'graduated' || p.stage.toLowerCase().includes('graduat')
+    const matchStatus = selectedStatus === 'ALL' ||
+      (selectedStatus === 'INCUBATED' ? !isGraduated : isGraduated)
+
+    return matchQuery && matchStage && matchRevenue && matchGender && matchSector && matchStatus
   })
 
   const getInitials = (name) => {
@@ -645,6 +651,7 @@ export function AdminStartupsPage() {
                   <option value="Validation">Validation</option>
                   <option value="Early Traction">Early Traction</option>
                   <option value="Scaling">Scaling</option>
+                  <option value="Graduated">Graduated</option>
                 </select>
               </div>
 
@@ -920,6 +927,17 @@ export function AdminStartupsPage() {
                 ))}
               </select>
 
+              {/* Incubation Status Filter */}
+              <select
+                value={selectedStatus}
+                onChange={(e) => setSelectedStatus(e.target.value)}
+                className="rounded-xl border border-slate-300 bg-white px-3 py-2 text-xs text-slate-800 focus:border-[#013759] focus:outline-none font-normal cursor-pointer"
+              >
+                <option value="ALL">All Statuses (Incubated & Graduated)</option>
+                <option value="INCUBATED">Active Incubated Only</option>
+                <option value="GRADUATED">Graduated Startups Only</option>
+              </select>
+
               {/* Stage Filter */}
               <select
                 value={selectedStage}
@@ -932,6 +950,7 @@ export function AdminStartupsPage() {
                 <option value="Validation">Validation</option>
                 <option value="Early Traction">Early Traction</option>
                 <option value="Scaling">Scaling</option>
+                <option value="Graduated">Graduated</option>
               </select>
 
               {/* Revenue Filter */}
@@ -1066,6 +1085,11 @@ export function AdminStartupsPage() {
                           <td className="py-4 px-6">
                             <div className="flex items-center gap-2">
                               <span className="text-xs text-slate-700 font-mono">Stage: {p.stage}</span>
+                              {(p.incubation_status === 'graduated' || p.stage.toLowerCase().includes('graduat')) && (
+                                <span className="inline-block bg-purple-50 text-purple-700 text-xs font-normal px-2 py-0.5 rounded border border-purple-200">
+                                  Graduated
+                                </span>
+                              )}
                               {p.revenue_in_lakhs > 0 && (
                                 <span className="inline-block bg-emerald-50 text-emerald-800 text-xs font-mono font-normal px-2.5 py-0.5 rounded-lg border border-emerald-200 shadow-2xs">
                                   ₹{p.revenue_in_lakhs}L Rev
@@ -1135,7 +1159,11 @@ export function AdminStartupsPage() {
                         <span className="bg-sky-50 text-[#074887] text-[11px] font-normal px-2.5 py-0.5 rounded-lg border border-sky-100">
                           {p.sector}
                         </span>
-                        {p.revenue_in_lakhs > 0 ? (
+                        {(p.incubation_status === 'graduated' || p.stage.toLowerCase().includes('graduat')) ? (
+                          <span className="bg-purple-50 text-purple-700 text-[10px] font-normal px-2 py-0.5 rounded-lg border border-purple-200">
+                            Graduated
+                          </span>
+                        ) : p.revenue_in_lakhs > 0 ? (
                           <span className="bg-emerald-50 text-emerald-800 text-[11px] font-mono font-normal px-2.5 py-0.5 rounded-lg border border-emerald-200">
                             ₹{p.revenue_in_lakhs}L Rev
                           </span>

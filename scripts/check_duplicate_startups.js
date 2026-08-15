@@ -5,99 +5,33 @@ const SUPABASE_KEY = 'sb_publishable_B3XJLIu7OIjy5IN3VxahGw_8pjq1WuN'
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
 
-async function detailedCheck() {
-  const { data: startups, error } = await supabase
-    .from('startups')
-    .select('*')
-    .order('name', { ascending: true })
+async function checkRemainingStubs() {
+  const { data: startups } = await supabase.from('startups').select('*')
 
-  if (error) {
-    console.error(error)
-    return
-  }
+  const stubIds = [
+    'bd90ec96-c0a4-4f86-854a-cd2cc199bfc7', // Door to Destination stub
+    'c9995f36-ce3d-4da4-9ab6-e1790489efc8', // NextOrbit stub
+    '2e9eebf3-06ab-4398-bfe7-1c84186beb5d', // Barren to Berland Abrosaa stub
+    'd0c022ff-7d0c-41c4-a76e-28ea56b05e5a', // Home Services Tech stub
+    '9036d04f-dd24-4717-b3d1-a74ea8f6788d', // MyLyfCare Private Limited stub
+    '569999f0-d80a-465c-979f-db9f4b571cc8', // TrulyFresh Hydroponics stub
+    '5feea838-39fb-489c-9c41-6d7a09522bdd', // Intelligentia Woods stub
+    'f0732b02-c6ad-4528-a4ed-306d814164a6', // Smart Re-Energy Solutions LLP stub
+    '5bee783e-cb9e-4c30-a24e-c18852c1c29c', // Autoremov stub
+    'cb531a32-4754-449f-9088-048b6a06cc53', // E4A Solution stub
+    '7f826b90-cbd1-445e-9d46-01726ea283ac', // ePN stub
+    '0003e643-1c0a-4c0d-a072-f1e8533cacbe', // Evergreat Clean Energy stub
+    'd77f4642-320b-4ba6-874b-5811c52492c6', // Green Stag Technologies stub
+    'e619a444-ca4f-4282-bbc2-c694be34be86'  // SSB Engineering stub
+  ]
 
-  console.log(`Total records: ${startups.length}\n`)
-
-  const parsedList = startups.map(s => {
-    let p = {}
-    try {
-      if (s.description) p = JSON.parse(s.description)
-    } catch(e) {}
-    return {
-      id: s.id,
-      raw_name: s.name,
-      comp_name: p.company_name || s.name,
-      founder: p.founder_name || '',
-      cin: p.cin_number || 'N/A',
-      revenue: p.revenue_in_lakhs || 0,
-      stage: p.stage || s.incubation_status || 'N/A',
-      logo: p.logo_url || s.logo_url || '',
-      created_at: s.created_at,
-      desc_length: (s.description || '').length
+  console.log(`Checking ${stubIds.length} candidate stub records for deletion:`)
+  stubIds.forEach(id => {
+    const found = startups.find(s => s.id === id)
+    if (found) {
+      console.log(`- [${found.id}] "${found.name}" (Created: ${found.created_at})`)
     }
-  })
-
-  // Compare every pair for high name similarity
-  const duplicatePairs = []
-  for (let i = 0; i < parsedList.length; i++) {
-    for (let j = i + 1; j < parsedList.length; j++) {
-      const a = parsedList[i]
-      const b = parsedList[j]
-
-      const nA = a.comp_name.toLowerCase().replace(/[^a-z0-9]/g, '')
-      const nB = b.comp_name.toLowerCase().replace(/[^a-z0-9]/g, '')
-
-      const fA = a.founder.toLowerCase().replace(/[^a-z0-9]/g, '')
-      const fB = b.founder.toLowerCase().replace(/[^a-z0-9]/g, '')
-
-      let isMatch = false
-      let reason = ''
-
-      if (nA === nB) {
-        isMatch = true
-        reason = 'Exact Normalized Name Match'
-      } else if (nA.includes(nB) || nB.includes(nA)) {
-        // Check if one is a prefix/substring of another (ignoring common suffixes)
-        const stripSuffix = s => s.replace(/(privatelimited|pvtltd|llp|ltd|limited|services|technologies|innovations|solutions)/g, '')
-        const sA = stripSuffix(nA)
-        const sB = stripSuffix(nB)
-        if (sA === sB || sA.includes(sB) || sB.includes(sA)) {
-          isMatch = true
-          reason = 'Base Name Match'
-        }
-      } else if (fA && fB && fA === fB) {
-        isMatch = true
-        reason = 'Same Founder Name'
-      }
-
-      if (isMatch) {
-        duplicatePairs.push({ a, b, reason })
-      }
-    }
-  }
-
-  console.log(`Found ${duplicatePairs.length} duplicate pair connections:\n`)
-
-  duplicatePairs.forEach((pair, idx) => {
-    console.log(`--- PAIR #${idx + 1} (${pair.reason}) ---`)
-    console.log(`RECORD A: [${pair.a.id}] Name: "${pair.a.comp_name}" | Founder: "${pair.a.founder}" | CIN: "${pair.a.cin}" | Rev: ${pair.a.revenue}L | Created: ${pair.a.created_at} | Desc Length: ${pair.a.desc_length}`)
-    console.log(`RECORD B: [${pair.b.id}] Name: "${pair.b.comp_name}" | Founder: "${pair.b.founder}" | CIN: "${pair.b.cin}" | Rev: ${pair.b.revenue}L | Created: ${pair.b.created_at} | Desc Length: ${pair.b.desc_length}`)
-    
-    // Suggest which one to keep
-    let keep = pair.a
-    let remove = pair.b
-    if (pair.b.founder && !pair.a.founder) {
-      keep = pair.b
-      remove = pair.a
-    } else if (pair.b.cin !== 'N/A' && pair.a.cin === 'N/A') {
-      keep = pair.b
-      remove = pair.a
-    } else if (pair.b.desc_length > pair.a.desc_length) {
-      keep = pair.b
-      remove = pair.a
-    }
-    console.log(`   💡 RECOMMEND: Keep [${keep.id}] ("${keep.compName || keep.raw_name}"), Remove [${remove.id}] ("${remove.compName || remove.raw_name}")\n`)
   })
 }
 
-detailedCheck()
+checkRemainingStubs()
