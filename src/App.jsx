@@ -1,43 +1,53 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
-import { Layout } from './components/Layout'
+import { Layout } from './components/common/Layout'
 import { LandingPage } from './pages/LandingPage'
-import { AboutPage } from './pages/AboutPage'
-import { ProgramsPage } from './pages/ProgramsPage'
-import { ProgramDetailPage } from './pages/ProgramDetailPage'
-import { FacilitiesPage } from './pages/FacilitiesPage'
-import { StoriesPage } from './pages/StoriesPage'
-import { FaqPage } from './pages/FaqPage'
-import { ContactPage } from './pages/ContactPage'
-import { MsmeYearlyPage } from './pages/MsmeYearlyPage'
-import { MsmeHackathonsPage } from './pages/MsmeHackathonsPage'
-import { OurPoliciesPage } from './pages/OurPoliciesPage'
-import { PortfolioPage } from './pages/PortfolioPage'
-import { TeamPage } from './pages/TeamPage'
-import { ElectronicsLabsPage } from './pages/ElectronicsLabsPage'
-import { HighEndComputersPage } from './pages/HighEndComputersPage'
-import { ThreeDPrintingPage } from './pages/ThreeDPrintingPage'
-import { FabricationLabPage } from './pages/FabricationLabPage'
-import { NewGenProjectDetailPage } from './pages/NewGenProjectDetailPage'
-import { ServicesPage } from './pages/ServicesPage'
+
+// Company Pages
+import { AboutPage } from './pages/company/AboutPage'
+import { TeamPage } from './pages/company/TeamPage'
+import { ContactPage } from './pages/company/ContactPage'
+import { OurPoliciesPage } from './pages/company/OurPoliciesPage'
+import { StoriesPage } from './pages/company/StoriesPage'
+import { FaqPage } from './pages/company/FaqPage'
+import { ServicesPage } from './pages/company/ServicesPage'
+
+// Facilities Pages
+import { FacilitiesPage } from './pages/facilities/FacilitiesPage'
+import { ElectronicsLabsPage } from './pages/facilities/ElectronicsLabsPage'
+import { HighEndComputersPage } from './pages/facilities/HighEndComputersPage'
+import { ThreeDPrintingPage } from './pages/facilities/ThreeDPrintingPage'
+import { FabricationLabPage } from './pages/facilities/FabricationLabPage'
+
+// Programs Pages
+import { ProgramsPage } from './pages/programs/ProgramsPage'
+import { ProgramDetailPage } from './pages/programs/ProgramDetailPage'
+import { NewGenProjectDetailPage } from './pages/programs/NewGenProjectDetailPage'
+import { MsmeYearlyPage } from './pages/programs/MsmeYearlyPage'
+import { MsmeHackathonsPage } from './pages/programs/MsmeHackathonsPage'
+
+// Gallery Page
+import { GalleryPage } from './pages/gallery/GalleryPage'
+
+// Portfolio Pages
+import { PortfolioPage } from './pages/portfolio/PortfolioPage'
+import { StartupDetailPage } from './pages/portfolio/StartupDetailPage'
 
 // Admin CMS Architecture Imports
 import { AuthProvider } from './admin/context/AuthContext'
 import { ProtectedAdminRoute } from './admin/components/ProtectedAdminRoute'
 import { AdminLayout } from './admin/components/AdminLayout'
-import { AdminLoginPage } from './admin/pages/AdminLoginPage'
-import { AdminDashboardPage } from './admin/pages/AdminDashboardPage'
-import { AdminUnauthorizedPage } from './admin/pages/AdminUnauthorizedPage'
-import { AdminSettingsPage } from './admin/pages/AdminSettingsPage'
-import { AdminAnnouncementsPage } from './admin/pages/AdminAnnouncementsPage'
-import { AdminProgramsPage } from './admin/pages/AdminProgramsPage'
-import { AdminServicesPage } from './admin/pages/AdminServicesPage'
-import { AdminEventsPage } from './admin/pages/AdminEventsPage'
-import { AdminStartupsPage } from './admin/pages/AdminStartupsPage'
-import { AdminProjectsPage } from './admin/pages/AdminProjectsPage'
-import { AdminFacilitiesPage } from './admin/pages/AdminFacilitiesPage'
-import { AdminUsersPage } from './admin/pages/AdminUsersPage'
-
-import { StartupDetailPage } from './pages/StartupDetailPage'
+import { AdminLoginPage } from './admin/pages/auth/AdminLoginPage'
+import { AdminUnauthorizedPage } from './admin/pages/auth/AdminUnauthorizedPage'
+import { AdminDashboardPage } from './admin/pages/dashboard/AdminDashboardPage'
+import { AdminSettingsPage } from './admin/pages/dashboard/AdminSettingsPage'
+import { AdminUsersPage } from './admin/pages/dashboard/AdminUsersPage'
+import { AdminAnnouncementsPage } from './admin/pages/cms/AdminAnnouncementsPage'
+import { AdminProgramsPage } from './admin/pages/cms/AdminProgramsPage'
+import { AdminServicesPage } from './admin/pages/cms/AdminServicesPage'
+import { AdminEventsPage } from './admin/pages/cms/AdminEventsPage'
+import { AdminStartupsPage } from './admin/pages/cms/AdminStartupsPage'
+import { AdminProjectsPage } from './admin/pages/cms/AdminProjectsPage'
+import { AdminFacilitiesPage } from './admin/pages/cms/AdminFacilitiesPage'
 
 function App() {
   return (
@@ -64,6 +74,7 @@ function App() {
           <Route path="/iic-itsec" element={<Navigate to="/programs/iic-itsec" replace />} />
           <Route path="/innovation-cell/iic-itsec" element={<Navigate to="/programs/iic-itsec" replace />} />
           <Route path="/innovation-cell" element={<Navigate to="/programs/iic-itsec" replace />} />
+          <Route path="/kartavyam" element={<Navigate to="/programs/kartavyam" replace />} />
 
           <Route path="/programs/newgen-iedc/project/:projectSlug" element={<NewGenProjectDetailPage />} />
           <Route path="/projects/:projectSlug" element={<NewGenProjectDetailPage />} />
@@ -76,6 +87,7 @@ function App() {
           <Route path="/facilities/high-end-computers" element={<HighEndComputersPage />} />
           <Route path="/facilities/3d-printing" element={<ThreeDPrintingPage />} />
           <Route path="/facilities/fabrication-lab" element={<FabricationLabPage />} />
+          <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/stories" element={<StoriesPage />} />
           <Route path="/faq" element={<FaqPage />} />

@@ -1,0 +1,120 @@
+import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { supabase } from '../../lib/supabase'
+import heroImage from '../../assets/co-working-area-in-greater-noida-12-scaled.webp'
+
+export function ProgramsPage() {
+  const [programs, setPrograms] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    async function loadPrograms() {
+      setLoading(true)
+      const { data, error } = await supabase
+        .from('programs')
+        .select('*')
+        .order('created_at', { ascending: true })
+
+      if (error) {
+        console.error('Error fetching programs:', error)
+      } else {
+        setPrograms(data || [])
+      }
+      setLoading(false)
+    }
+
+    loadPrograms()
+  }, [])
+
+  return (
+    <div className="min-h-screen bg-slate-50 font-sans antialiased text-slate-900 font-normal">
+      {/* Hero Section */}
+      <section className="relative w-full overflow-hidden py-14 sm:py-16 px-4 sm:px-6 lg:px-8 text-center bg-[#074887]">
+        <div className="absolute inset-0 z-0">
+          <div 
+            className="absolute inset-0 bg-cover bg-center opacity-25 mix-blend-overlay"
+            style={{ backgroundImage: `url(${heroImage})` }}
+          />
+          <div className="absolute inset-0 bg-[#074887]/90 pointer-events-none" />
+        </div>
+
+        <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center justify-center gap-2">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-normal text-white tracking-tight">
+            Programs &amp; Incubation Schemes
+          </h1>
+          <p className="text-xs sm:text-sm text-sky-100/90 max-w-2xl font-normal leading-relaxed">
+            Technology Business Incubation at ITS Engineering College, empowering next-gen builders.
+          </p>
+        </div>
+      </section>
+
+      {/* Main Grid */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        {loading ? (
+          <div className="p-12 text-center">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#013759] mx-auto mb-3" />
+            <p className="text-xs text-slate-500 font-normal">Loading programs...</p>
+          </div>
+        ) : programs.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {programs.map((program) => (
+              <Link
+                key={program.id}
+                to={`/programs/${program.slug}`}
+                className="bg-white p-7 rounded-2xl border border-slate-200 shadow-sm hover:border-[#074887] hover:shadow-md transition-all flex flex-col justify-between font-normal group"
+              >
+                <div className="flex flex-col gap-3">
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="flex items-center gap-2">
+                      <span className="text-[10px] font-normal uppercase tracking-wider text-[#074887] bg-sky-50 px-2.5 py-1 rounded">
+                        {program.type?.replace('_', ' ') || 'SCHEME'}
+                      </span>
+                      {program.is_active !== false ? (
+                        <span className="inline-flex items-center gap-1 text-[10px] font-normal text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                          <span>Applications Open</span>
+                        </span>
+                      ) : (
+                        <span className="inline-flex items-center gap-1 text-[10px] font-normal text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200">
+                          <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                          <span>Applications Closed</span>
+                        </span>
+                      )}
+                    </div>
+                    {program.grant_amount && (
+                      <span className="text-[11px] font-mono text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded border border-emerald-200">
+                        {program.grant_amount}
+                      </span>
+                    )}
+                  </div>
+
+                  <h2 className="text-xl font-normal text-slate-900 group-hover:text-[#074887] transition-colors">
+                    {program.name || program.title}
+                  </h2>
+
+                  <p className="text-xs text-slate-500 leading-relaxed line-clamp-3">
+                    {program.description || program.summary}
+                  </p>
+                </div>
+
+                <div className="pt-5 mt-5 border-t border-slate-100 flex items-center justify-between text-xs">
+                  <span className="font-mono text-slate-400 text-[11px]">/{program.slug}</span>
+                  <span className="text-[#074887] font-normal flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
+                    <span>Explore Detailed Scheme</span>
+                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        ) : (
+          <div className="p-12 text-center text-slate-500 text-xs font-normal">
+            No active programs currently listed.
+          </div>
+        )}
+      </section>
+    </div>
+  )
+}

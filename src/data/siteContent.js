@@ -261,8 +261,8 @@ export const facilities = [
     slug: 'electronics-assembly-lab',
     title: 'Electronics Assembly & Testing Bench',
     category: 'Electronics & PCB Prototyping',
-    detail: 'Dedicated hardware assembly bench equipped with ESD anti-static mats, wrist strap grounding jacks, overhead illumination, and multi-socket AC power distribution.',
-    specs: ['ESD Anti-Static Matting', 'Overhead Lighting', 'Integrated AC Power Strips'],
+    detail: 'Dedicated hardware assembly bench with multi-socket AC power distribution and overhead illumination.',
+    specs: ['Hardware Assembly Bench', 'Overhead Lighting', 'Integrated AC Power Strips'],
     image: '/src/assets/navrachna_images/spaces/laser_cutting.jpg'
   },
 
