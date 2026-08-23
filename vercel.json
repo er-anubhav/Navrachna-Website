@@ -1,5 +1,5 @@
 {
-  "name": "navrachna-dev",
+  "name": "navrachna",
   "outputDirectory": "dist",
   "rewrites": [
     {
