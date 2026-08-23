@@ -1,4 +1,6 @@
 {
+  "name": "navrachna-dev",
+  "outputDirectory": "dist",
   "rewrites": [
     {
       "source": "/(.*)",
